@@ -1,4 +1,4 @@
-# AOE Technology Radar - Content
+# technology_radar    
 
 This is the location of AOE techradar content - published under: https://www.aoe.com/techradar/
 

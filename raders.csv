@@ -1,0 +1,3 @@
+spring-boot,"spring-boot",adopt,languages-and-frameworks,"spring-boot,spring-framework"
+spring-batch,"spring-batch",adopt,languages-and-frameworks,"spring-boot,spring-framework,spring-batch"
+spring-integration,"spring-integration",adopt,languages-and-frameworks,"spring-boot,spring-framework,spring-batch,spring-integration"

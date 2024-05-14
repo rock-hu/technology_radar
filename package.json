@@ -1,14 +1,19 @@
 {
-  "name": "aoe-techradar",
+  "name": "technology_radar",
   "private": true,
   "version": "4.3.0",
   "main": "index.js",
   "license": "MIT",
+  
   "scripts": {
     "build": "techradar build",
-    "serve": "techradar serve"
+    "serve": "techradar serve",
+    "plop": "plop"
   },
   "dependencies": {
-    "aoe_technology_radar": "github:AOEpeople/aoe_technology_radar#main"
+    "aoe_technology_radar": "github:AOEpeople/aoe_technology_radar#v4.3.0"
+  },
+  "devDependencies": {
+    "plop": "^3.1.1"
   }
 }
