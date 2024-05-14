@@ -16,5 +16,5 @@ Core principles of Inner Source include:
 - written communication: all decisions should be comprehensible and transparent
 - rewards and motivation: every contribution is important and deserves recognition
 
-As AOE strives for a high involvement of every employee into decision processes and organizational development, Inner
+As strives for a high involvement of every employee into decision processes and organizational development, Inner
 Source seems an ideal fit to our [company culture](https://www.aoe.com/en/career/how-we-work.html).

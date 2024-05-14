@@ -4,7 +4,6 @@
   "version": "4.3.0",
   "main": "index.js",
   "license": "MIT",
-  
   "scripts": {
     "build": "techradar build",
     "serve": "techradar serve",
@@ -14,6 +13,7 @@
     "aoe_technology_radar": "github:AOEpeople/aoe_technology_radar#v4.3.0"
   },
   "devDependencies": {
-    "plop": "^3.1.1"
+    "http-server": "^14.1.1",
+    "plop": "^4.0.1"
   }
 }

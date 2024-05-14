@@ -1,17 +1,17 @@
-# How to use the AOE Technology Radar
+# How to use the Technology Radar
 
 ### Introduction
 
 Technology is advancing rapidly, with new technologies and innovations constantly emerging.
 
-It is essential for a development and technology company like AOE to continually improve and keep
+It is essential for a development and technology company like to continually improve and keep
 track of the latest valuable innovations. It is important to actively seek out innovations and new
 technologies and periodically question established technologies and methods.
 
 But, it is also important to wisely choose which technologies to use in our daily work and in the
 different projects we are carrying out. As we all know: There is no silver bullet.
 
-### What is the AOE Technology Radar?
+### What is the Technology Radar?
 
 The Tech Radar provides an overview of different technologies, including languages, frameworks,
 tools, and patterns, as well as platforms, that we consider 'new or noteworthy.' The radar does not
@@ -38,7 +38,7 @@ Its goal is to guide and inspire daily work within the teams. Additionally, it a
 valuable information and a high-level perspective to enable decisions to be made with a deeper
 understanding of the subject matter, resulting in more informed and coordinated choices.
 
-We also hope that developers outside of AOE will find the information in our technology overview
+We also hope that developers outside of will find the information in our technology overview
 inspiring.
 
 We categorize the items into four quadrants, and sometimes, when it's not entirely clear where an
@@ -73,7 +73,7 @@ item belongs, we choose the best fit.
   items here when we believe they should no longer be employed, as we have identified better options
   or alternatives.
 
-### Contributing to the AOE Technology Radar
+### Contributing to the Technology Radar
 
-Contributions and source code of the AOE Tech Radar are on
-GitHub: [AOE Tech Radar on GitHub](https://github.com/AOEpeople/aoe_technology_radar)
+Contributions and source code of the Tech Radar are on
+GitHub: [Tech Radar on GitHub](https://github.com/AOEpeople/aoe_technology_radar)

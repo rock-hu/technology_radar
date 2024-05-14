@@ -19,4 +19,4 @@ The main benefits in that approach are:
   * Tool consistency over all projects
 
 If you take the monorepo approach, of course you want to have a tool to manage it. There are a lot of them on the market 
-and at AOE we have decided to go with [Nx](/tools/nx/).
+and at we have decided to go with [Nx](/tools/nx/).

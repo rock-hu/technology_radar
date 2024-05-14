@@ -1,7 +1,7 @@
 # technology_radar    
 
 
-A static site generator for AOE Technology Radar
+A static site generator for Technology Radar
 
 ![Technology Radar](./assets/techradar.png)
 
