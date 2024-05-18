@@ -1,7 +1,7 @@
 ---
 title:      "ELK Stack"
 ring:       adopt
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 ---
 
 The company behind Elasticsearch offers a very nice solution for logging and analysis of distributed data such as logfiles.

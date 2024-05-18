@@ -1,7 +1,7 @@
 ---
 title:      "Elasticsearch"
 ring:       trial
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 ---
 
 Elasticsearch is a REST-based search and analytics engine based on Lucene.

@@ -22,5 +22,5 @@ With [scripts](https://docs.npmjs.com/misc/scripts) you get support for the most
 
 Other useful features:
 
--   mirror support for your own repository (e.g. [artifactory](/platforms-and-aoe-services/artifactory/))
+-   mirror support for your own repository (e.g. [artifactory](/platforms-and-services/artifactory/))
 -   can be used for server and client JavaScript development (see [node.js](/languages-and-frameworks/node-js/) )

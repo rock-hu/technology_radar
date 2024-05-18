@@ -1,7 +1,7 @@
 ---
 title:      "Kubernetes"
 ring:       assess
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 tags:       [academy training, devops]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title:      "Software Bill of Materials (SBOM)"
 ring:       assess
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 tags:       [devops, security]
 ---
 

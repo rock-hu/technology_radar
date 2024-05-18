@@ -1,7 +1,7 @@
 ---
 title: "Loki"
 ring: trial
-quadrant: platforms-and-aoe-services
+quadrant: platforms-and-services
 featured: true
 tags: [devops]
 ---

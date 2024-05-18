@@ -10,7 +10,7 @@ tags: [plop]
 ? radar artifact spring-integration
 ? title spring-integration
 ? ring - adopt|trial|assess|hold adopt
-? quadrant - languages-and-frameworks|methods-and-patterns|platforms-and-aoe-services|tools languages-and-frameworks
+? quadrant - languages-and-frameworks|methods-and-patterns|platforms-and-services|tools languages-and-frameworks
 ? tags -  "spring-boot,spring-framework,spring-batch,spring-integration"
 ⠋ 2024-05-15
 ✔  ++ /radar/2024-05-15/spring-integration.md

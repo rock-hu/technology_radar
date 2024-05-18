@@ -1,6 +1,6 @@
 ---
 title:      "ELK Stack"
 ring:       adopt
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 featured:   false
 ---

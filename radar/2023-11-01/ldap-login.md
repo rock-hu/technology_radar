@@ -1,7 +1,7 @@
 ---
 title:      "LDAP Login"
 ring:       hold
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 tags:       [devops, security]
 featured:   false
 ---

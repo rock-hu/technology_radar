@@ -1,7 +1,7 @@
 ---
 title:      "Harbor"
 ring:       trial
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 tags:       [devops]
 ---
 

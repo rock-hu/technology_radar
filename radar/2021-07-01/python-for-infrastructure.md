@@ -1,7 +1,7 @@
 ---
 title:      "Python for Infrastructure Glue Code"
 ring:       assess
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 tags: [devops, coding]
 ---
 

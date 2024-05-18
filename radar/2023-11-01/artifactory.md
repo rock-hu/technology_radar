@@ -1,7 +1,7 @@
 ---
 title:      "Artifactory"
 ring:       hold
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 featured:   false
 ---
 

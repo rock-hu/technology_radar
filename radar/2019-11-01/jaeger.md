@@ -1,10 +1,10 @@
 ---
 title:      "Jaeger"
 ring:       trial
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 ---
 
-[Jaeger](https://www.jaegertracing.io/) is a tool for [Distributed Tracing](/platforms-and-aoe-services/distributed-tracing/).
+[Jaeger](https://www.jaegertracing.io/) is a tool for [Distributed Tracing](/platforms-and-services/distributed-tracing/).
 Developed at Uber and inspired by Dapper and OpenZipkin it grew into an [Cloud Native Computing Foundation](https://www.cncf.io/) project.
 
 Jaeger is a great tool for troubleshooting distributed systems, such as microservice architectures.

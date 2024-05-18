@@ -1,7 +1,7 @@
 ---
 title:      "AWS Lambda"
 ring:       trial
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 ---
 
 AWS Lambda is one of the exciting new "cloud-native" / serverless ways to run code without worrying about infrastructure.

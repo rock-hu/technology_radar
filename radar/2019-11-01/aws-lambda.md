@@ -1,6 +1,6 @@
 ---
 title:      "AWS Lambda"
 ring:       trial
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 featured:   false
 ---

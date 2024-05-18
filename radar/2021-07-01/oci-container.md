@@ -1,7 +1,7 @@
 ---
 title:      "OCI Container"
 ring:       adopt
-quadrant:   platforms-and-aoe-services
+quadrant:   platforms-and-services
 tags: [devops]
 ---
 
@@ -13,6 +13,6 @@ In a DevOps environment, this helps a lot as we can run the exact same software 
 
 In a CI environment building the containers allows us to package and test the whole environment instead of different software components on different runtimes in a much more stable way.
 
-Backed by services such as [Kubernetes](/platforms-and-aoe-services/kubernetes/) and [Helm](/platforms-and-aoe-services/helm/), we can deploy containers on a flexible infrastructure and enable our developers to test their software more easily in different environments.
+Backed by services such as [Kubernetes](/platforms-and-services/kubernetes/) and [Helm](/platforms-and-services/helm/), we can deploy containers on a flexible infrastructure and enable our developers to test their software more easily in different environments.
 
 Here at AOE, we use containers in different projects to become more flexible and faster, which increases our focus on development of even better and more stable software.
