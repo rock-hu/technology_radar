@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: technology-radar-pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -39,6 +39,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: cp overrides/.nojekyll docs/.nojekyll
+      - run: ls -l
       - run: if [ -n "$(git status --porcelain)" ]; then echo 'workspace is dirty after rebuilding' ; git status ; git diff ; exit 1 ; fi
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -51,6 +52,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+          pages: write      # to deploy to Pages
+          id-token: write   # to verify the deployment originates from an appropriate source    
     needs: build
     steps:
       - name: Deploy to GitHub Pages
