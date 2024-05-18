@@ -2,7 +2,7 @@ name: Semanticore
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   semanticore:
     runs-on: ubuntu-latest
