@@ -38,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-techradar-${{ hashFiles('**/package-lock.json') }}        
       - run: npm ci
       - run: npm run build
-      - run: cp overrides/.nojekyll docs/.nojekyll
+      - run: cp overrides/.nojekyll build/.nojekyll
       - run: ls -l
       - run: if [ -n "$(git status --porcelain)" ]; then echo 'workspace is dirty after rebuilding' ; git status ; git diff ; exit 1 ; fi
       - name: Upload Artifact
