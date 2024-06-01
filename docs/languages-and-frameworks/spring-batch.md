@@ -13,22 +13,30 @@
 title: ItemReader,ItemProcessor,ItemWriter
 ---
 classDiagram
-    interface ItemReader {
+    class ItemReader {
+        <<interface>>
         + T read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException
     }
-    interface ItemWriter {
+    class ItemWriter {
+        <<interface>>
         + void write(@NonNull Chunk<? extends T> chunk) throws Exception
     }
-    interface ItemProcessor {
+    class ItemProcessor {
+        <<interface>>
         + O process(@NonNull I item) throws Exception
     }
-    interface ItemStream {
+    class ItemStream {
+        <<interface>>
         + void open(ExecutionContext executionContext) throws ItemStreamException
         + void update(ExecutionContext executionContext) throws ItemStreamException
         + void close() throws ItemStreamException
     }
-    interface ItemStreamWriter extends ItemStream, ItemWriter {}
-    interface ItemStreamReader extends ItemStream, ItemReader {}
+    class ItemStreamWriter extends ItemStream, ItemWriter {
+        <<interface>>
+    }
+    class ItemStreamReader extends ItemStream, ItemReader {
+        <<interface>>
+    }
     class ValidatingItemProcessor implements ItemProcessor, InitializingBean {
         - Validator<? super T> validator
         -  boolean filter
@@ -60,18 +68,22 @@ classDiagram
 title: Partitioner
 ---
 classDiagram
-    interface PartitionHandler {
+    class PartitionHandler {
+        <<interface>>
         + Collection<StepExecution> handle(StepExecutionSplitter stepSplitter, StepExecution stepExecution) throws Exception
     }
-    interface StepExecutionSplitter {
+    class StepExecutionSplitter {
+        <<interface>>
         + String getStepName()
         + Set<StepExecution> split(StepExecution stepExecution, int gridSize) throws JobExecutionException
     }
-    interface Partitioner {
+    class Partitioner {
+        <<interface>>
         + Map<String, ExecutionContext> partition(int gridSize)
     }
-    interface PartitionNameProvider {
-     + Collection<String> getPartitionNames(int gridSize)
+    class PartitionNameProvider {
+        <<interface>>
+         + Collection<String> getPartitionNames(int gridSize)
     }
     class SimplePartitioner implements Partitioner {
      - static final String PARTITION_KEY = "partition"
@@ -104,15 +116,21 @@ classDiagram
         + static Duration calculateDuration(LocalDateTime startTime, LocalDateTime endTime)
         + static String formatDuration(Duration duration)
     }
-    enum BatchJobObservation implements ObservationDocumentation {}
-    interface BatchJobObservationConvention extends ObservationConvention<BatchJobContext> {
+    class BatchJobObservation implements ObservationDocumentation {
+        <<enumeration>>
+    }
+    class BatchJobObservationConvention extends ObservationConvention<BatchJobContext> {
+        <<interface>>
         + boolean supportsContext(Observation.Context context)
     }
     class DefaultBatchJobObservationConvention implements BatchJobObservationConvention {
 
     }
-    enum BatchStepObservation implements ObservationDocumentation {}
-    interface BatchStepObservationConvention extends ObservationConvention<BatchStepContext> {
+    class BatchStepObservation implements ObservationDocumentation {
+        <<enumeration>>
+    }
+    class BatchStepObservationConvention extends ObservationConvention<BatchStepContext> {
+        <<interface>>
         + boolean supportsContext(Observation.Context context)
     }
     class DefaultBatchStepObservationConvention implements BatchStepObservationConvention {
@@ -256,12 +274,12 @@ erDiagram
      LONGVARCHAR SERIALIZED_CONTEXT
     }
 
-    BATCH_JOB_INSTANCE ||--o{ BATCH_JOB_EXECUTION_PARAMS : job parameters
-    BATCH_JOB_INSTANCE ||--o{ BATCH_JOB_EXECUTION : job executions
-    BATCH_JOB_EXECUTION ||--o{ BATCH_JOB_EXECUTION_PARAMS : execution parameters
-    BATCH_JOB_EXECUTION ||--o{ BATCH_STEP_EXECUTION : step executions
-    BATCH_JOB_EXECUTION ||--o{ BATCH_JOB_EXECUTION_CONTEXT : job execution context
-    BATCH_STEP_EXECUTION ||--o{ BATCH_STEP_EXECUTION_CONTEXT : step execution context
+    BATCH_JOB_INSTANCE ||--o{ BATCH_JOB_EXECUTION_PARAMS : job
+    BATCH_JOB_INSTANCE ||--o{ BATCH_JOB_EXECUTION : job
+    BATCH_JOB_EXECUTION ||--o{ BATCH_JOB_EXECUTION_PARAMS : execution
+    BATCH_JOB_EXECUTION ||--o{ BATCH_STEP_EXECUTION : execution
+    BATCH_JOB_EXECUTION ||--o{ BATCH_JOB_EXECUTION_CONTEXT : execution
+    BATCH_STEP_EXECUTION ||--o{ BATCH_STEP_EXECUTION_CONTEXT : execution
 ```
 
 ## references
