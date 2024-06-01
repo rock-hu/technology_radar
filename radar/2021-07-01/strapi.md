@@ -5,7 +5,7 @@ quadrant: tools
 tags: [frontend]
 ---
 
-Strapi is a headless CMS built with Javascript on Node.js.
+Strapi is a headless CMS built with JavaScript on Node.js.
 Its data-centered approach offers great flexibility for many use cases by integrating with the available APIs.
 
 Strapi's API comes in a RESTful and [GraphQL](/methods-and-patterns/graphql/) variant.

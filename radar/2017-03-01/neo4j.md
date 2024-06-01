@@ -6,8 +6,8 @@ quadrant:   platforms-and-services
 
 Neo4j is one of the oldest Open Source Graph Databases. It's one of the rare NoSQL databases that is fully ACID-compliant. We see two main advantages of graph databases:
 
-* for a lot of domains there is a natural way of modeling this in a graph (the Neo4j website says "everything is a graph"),
-* and querying relations between nodes is very efficient in a graph database.
+- for a lot of domains there is a natural way of modeling this in a graph (the Neo4j website says "everything is a graph"),
+- and querying relations between nodes is very efficient in a graph database.
 
 Neo4j database is implemented in Java and can therefore be embedded in your application if you live on the JVM.
 

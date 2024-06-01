@@ -8,7 +8,7 @@ quadrant:   languages-and-frameworks
 
 It offers support for the latest EcmaScript features and has strict typing and support for interfaces built in.
 
-JavaScript scoping, which led into recurring workarounds such as **var self = this, myFunc.bind(this)_,_**was eliminated in TypeScript.
+JavaScript scoping, which led into recurring workarounds such as **var self = this, myFunc.bind(this)*,***was eliminated in TypeScript.
 
 In TypeScript **this** stays **this**, which leads to more readable and understandable code from an OOP perspective.
 

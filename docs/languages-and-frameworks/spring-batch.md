@@ -1,54 +1,209 @@
 # spring-batch
 
-## context  
+## dependencies    
+
+- spring-batch-core
+- spring-batch-infrastructure
+- spring-batch-integration
 
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-
-
-
-```mermaid
-sequenceDiagram
-    Alice->>John: Hello John, how are you?
-    John-->>Alice: Great!
-    Alice-)John: See you later!
-```
+## context
 
 
 ```mermaid
 ---
-title: Animal example
+title: ItemReader,ItemProcessor,ItemWriter
 ---
 classDiagram
-    note "From Duck till Zebra"
-    Animal <|-- Duck
-    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
-    Animal <|-- Fish
-    Animal <|-- Zebra
-    Animal : +int age
-    Animal : +String gender
-    Animal: +isMammal()
-    Animal: +mate()
-    class Duck{
-        +String beakColor
-        +swim()
-        +quack()
+    interface ItemReader<T> {
+        + T read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException
     }
-    class Fish{
-        -int sizeInFeet
-        -canEat()
+    interface ItemWriter<T> {
+        + void write(@NonNull Chunk<? extends T> chunk) throws Exception
     }
-    class Zebra{
-        +bool is_wild
-        +run()
+    interface ItemProcessor<I, O> {
+        + O process(@NonNull I item) throws Exception
+    }
+    interface ItemStream {
+        + void open(ExecutionContext executionContext) throws ItemStreamException
+        + void update(ExecutionContext executionContext) throws ItemStreamException
+        + void close() throws ItemStreamException
+    }
+    interface ItemStreamWriter<T> extends ItemStream, ItemWriter<T> {}
+    interface ItemStreamReader<T> extends ItemStream, ItemReader<T> {}
+    class ValidatingItemProcessor<T> implements ItemProcessor<T, T>, InitializingBean {
+        - Validator<? super T> validator
+        -  boolean filter
+        +  T process(T item) throws ValidationException
+    }
+    class BeanValidatingItemProcessor<T> extends ValidatingItemProcessor<T> {
+        - Validator validator
+        + void afterPropertiesSet() throws Exception
+    }
+    class SpringValidator<T> implements Validator<T>, InitializingBean {
+        - org.springframework.validation.Validator validator
+        + void validate(T item) throws ValidationException
     }
 
+    class Chunk<W> implements Iterable<W>, Serializable {
+        - List<W> items
+        - List<SkipWrapper<W>> skips
+        - List<Exception> errors
+        - Object userData
+        - boolean end
+        - boolean busy
+    }
+```
+
+## partition    
+```mermaid
+---
+title: Partitioner
+---
+classDiagram
+    interface PartitionHandler {
+        + Collection<StepExecution> handle(StepExecutionSplitter stepSplitter, StepExecution stepExecution) throws Exception
+    }
+    interface StepExecutionSplitter {
+        + String getStepName()
+        + Set<StepExecution> split(StepExecution stepExecution, int gridSize) throws JobExecutionException
+    }
+    interface Partitioner {
+        + Map<String, ExecutionContext> partition(int gridSize)
+    }
+    interface PartitionNameProvider {
+	    + Collection<String> getPartitionNames(int gridSize)
+    }
+    class SimplePartitioner implements Partitioner {
+	    - static final String PARTITION_KEY = "partition"
+	    + Map<String, ExecutionContext> partition(int gridSize)
+    }
+    class MultiResourcePartitioner implements Partitioner {
+    	- static final String DEFAULT_KEY_NAME = "fileName"
+    	- static final String PARTITION_KEY = "partition"
+    	- Resource[] resources = new Resource[0]
+    	- String keyName = DEFAULT_KEY_NAME
+    	+ Map<String, ExecutionContext> partition(int gridSize)
+    }
+```
+
+
+## observability    
+```mermaid
+---
+title: BatchMetrics
+---
+classDiagram
+    class BatchMetrics {
+        + static final String METRICS_PREFIX = "spring.batch."
+        + static Timer createTimer(MeterRegistry meterRegistry, String name, String description, Tag... tags)
+        + static Counter createCounter(MeterRegistry meterRegistry, String name, String description, Tag... tags)
+        + static Observation createObservation(String name, BatchJobContext context,ObservationRegistry observationRegistry)
+        + static Observation createObservation(String name, BatchStepContext context,ObservationRegistry observationRegistry)
+        + static Timer.Sample createTimerSample(MeterRegistry meterRegistry)
+        + static LongTaskTimer createLongTaskTimer(MeterRegistry meterRegistry, String name, String description,Tag... tags)
+        + static Duration calculateDuration(LocalDateTime startTime, LocalDateTime endTime)
+        + static String formatDuration(Duration duration)
+    }
+    enum BatchJobObservation implements ObservationDocumentation {}
+    interface BatchJobObservationConvention extends ObservationConvention<BatchJobContext> {
+        + boolean supportsContext(Observation.Context context)
+    }
+    class DefaultBatchJobObservationConvention implements BatchJobObservationConvention {
+        
+    }
+    enum BatchStepObservation implements ObservationDocumentation {}
+    interface BatchStepObservationConvention extends ObservationConvention<BatchStepContext> {
+        + boolean supportsContext(Observation.Context context)
+    }
+    class DefaultBatchStepObservationConvention implements BatchStepObservationConvention {
+        
+    }
+```
+
+https://github.com/spring-projects/spring-batch/blob/main/spring-batch-core/src/main/resources/org/springframework/batch/core/schema-h2.sql
+
+```sql
+CREATE TABLE BATCH_JOB_INSTANCE  (
+	JOB_INSTANCE_ID BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY ,
+	VERSION BIGINT ,
+	JOB_NAME VARCHAR(100) NOT NULL,
+	JOB_KEY VARCHAR(32) NOT NULL,
+	constraint JOB_INST_UN unique (JOB_NAME, JOB_KEY)
+) ;
+
+CREATE TABLE BATCH_JOB_EXECUTION  (
+	JOB_EXECUTION_ID BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY ,
+	VERSION BIGINT  ,
+	JOB_INSTANCE_ID BIGINT NOT NULL,
+	CREATE_TIME TIMESTAMP(9) NOT NULL,
+	START_TIME TIMESTAMP(9) DEFAULT NULL ,
+	END_TIME TIMESTAMP(9) DEFAULT NULL ,
+	STATUS VARCHAR(10) ,
+	EXIT_CODE VARCHAR(2500) ,
+	EXIT_MESSAGE VARCHAR(2500) ,
+	LAST_UPDATED TIMESTAMP(9),
+	constraint JOB_INST_EXEC_FK foreign key (JOB_INSTANCE_ID)
+	references BATCH_JOB_INSTANCE(JOB_INSTANCE_ID)
+) ;
+
+CREATE TABLE BATCH_JOB_EXECUTION_PARAMS  (
+	JOB_EXECUTION_ID BIGINT NOT NULL ,
+	PARAMETER_NAME VARCHAR(100) NOT NULL ,
+	PARAMETER_TYPE VARCHAR(100) NOT NULL ,
+	PARAMETER_VALUE VARCHAR(2500) ,
+	IDENTIFYING CHAR(1) NOT NULL ,
+	constraint JOB_EXEC_PARAMS_FK foreign key (JOB_EXECUTION_ID)
+	references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID)
+) ;
+
+CREATE TABLE BATCH_STEP_EXECUTION  (
+	STEP_EXECUTION_ID BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY ,
+	VERSION BIGINT NOT NULL,
+	STEP_NAME VARCHAR(100) NOT NULL,
+	JOB_EXECUTION_ID BIGINT NOT NULL,
+	CREATE_TIME TIMESTAMP(9) NOT NULL,
+	START_TIME TIMESTAMP(9) DEFAULT NULL ,
+	END_TIME TIMESTAMP(9) DEFAULT NULL ,
+	STATUS VARCHAR(10) ,
+	COMMIT_COUNT BIGINT ,
+	READ_COUNT BIGINT ,
+	FILTER_COUNT BIGINT ,
+	WRITE_COUNT BIGINT ,
+	READ_SKIP_COUNT BIGINT ,
+	WRITE_SKIP_COUNT BIGINT ,
+	PROCESS_SKIP_COUNT BIGINT ,
+	ROLLBACK_COUNT BIGINT ,
+	EXIT_CODE VARCHAR(2500) ,
+	EXIT_MESSAGE VARCHAR(2500) ,
+	LAST_UPDATED TIMESTAMP(9),
+	constraint JOB_EXEC_STEP_FK foreign key (JOB_EXECUTION_ID)
+	references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID)
+) ;
+
+CREATE TABLE BATCH_STEP_EXECUTION_CONTEXT  (
+	STEP_EXECUTION_ID BIGINT NOT NULL PRIMARY KEY,
+	SHORT_CONTEXT VARCHAR(2500) NOT NULL,
+	SERIALIZED_CONTEXT LONGVARCHAR ,
+	constraint STEP_EXEC_CTX_FK foreign key (STEP_EXECUTION_ID)
+	references BATCH_STEP_EXECUTION(STEP_EXECUTION_ID)
+) ;
+
+CREATE TABLE BATCH_JOB_EXECUTION_CONTEXT  (
+	JOB_EXECUTION_ID BIGINT NOT NULL PRIMARY KEY,
+	SHORT_CONTEXT VARCHAR(2500) NOT NULL,
+	SERIALIZED_CONTEXT LONGVARCHAR ,
+	constraint JOB_EXEC_CTX_FK foreign key (JOB_EXECUTION_ID)
+	references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID)
+) ;
+
+```
+
+```dotnetcli
+|o	o|	Zero or one
+||	||	Exactly one
+}o	o{	Zero or more (no upper limit)
+}|	|{	One or more (no upper limit)
 ```
 
 ```mermaid
@@ -56,19 +211,63 @@ classDiagram
 title: Order example
 ---
 erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-```
+    BATCH_JOB_INSTANCE {
+    	JOB_INSTANCE_ID BIGINT,
+    	VERSION BIGINT ,
+    	JOB_NAME VARCHAR(100),
+    	JOB_KEY VARCHAR(32),
+    }
+    BATCH_JOB_EXECUTION {
+    	JOB_EXECUTION_ID BIGINT,
+    	VERSION BIGINT  ,
+    	JOB_INSTANCE_ID BIGINT ,
+    	STATUS VARCHAR(10)
+    }
+    BATCH_JOB_EXECUTION_PARAMS {
+    	JOB_EXECUTION_ID BIGINT ,
+    	PARAMETER_NAME VARCHAR(100),
+    	PARAMETER_TYPE VARCHAR(100),
+    	PARAMETER_VALUE VARCHAR(2500) ,
+    	IDENTIFYING CHAR(1)
+    }
+    BATCH_STEP_EXECUTION {
+    	STEP_EXECUTION_ID BIGINT ,
+    	VERSION BIGINT,
+    	STEP_NAME VARCHAR(100),
+    	JOB_EXECUTION_ID BIGINT,
+    	CREATE_TIME TIMESTAMP(9),
+    	STATUS VARCHAR(10) ,
+    	COMMIT_COUNT BIGINT ,
+    	READ_COUNT BIGINT ,
+    	FILTER_COUNT BIGINT ,
+    	WRITE_COUNT BIGINT ,
+    	READ_SKIP_COUNT BIGINT ,
+    	WRITE_SKIP_COUNT BIGINT ,
+    	PROCESS_SKIP_COUNT BIGINT ,
+    	ROLLBACK_COUNT BIGINT
+    }
+    BATCH_STEP_EXECUTION_CONTEXT {
+    	STEP_EXECUTION_ID BIGINT,
+    	SHORT_CONTEXT VARCHAR(2500),
+    	SERIALIZED_CONTEXT LONGVARCHAR ,
+    }
+    BATCH_JOB_EXECUTION_CONTEXT {
+    	JOB_EXECUTION_ID BIGINT,
+    	SHORT_CONTEXT VARCHAR(2500),
+    	SERIALIZED_CONTEXT LONGVARCHAR ,
+    }
 
-```mermaid
-
+    BATCH_JOB_INSTANCE ||--o{ BATCH_JOB_EXECUTION_PARAMS : job parameters
+    BATCH_JOB_INSTANCE ||--o{ BATCH_JOB_EXECUTION : job executions
+    BATCH_JOB_EXECUTION ||--o{ BATCH_JOB_EXECUTION_PARAMS : execution parameters
+    BATCH_JOB_EXECUTION ||--o{ BATCH_STEP_EXECUTION : step executions
+    BATCH_JOB_EXECUTION ||--o{ BATCH_JOB_EXECUTION_CONTEXT : job execution context
+    BATCH_STEP_EXECUTION ||--o{ BATCH_STEP_EXECUTION_CONTEXT : step execution context
 ```
 
 
 ## references
 
-| Item | Link(s) |
-| :--- | ------- |
-|  spring-batch    |  [spring-batch](https://github.com/rock-hu/technology_radar/blob/master/docs/spring-batch.md)       |
-|||
+| Item         | Link(s)                                 |
+| :----------- | --------------------------------------- |
+| spring-batch | https://spring.io/projects/spring-batch |

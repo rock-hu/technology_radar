@@ -10,10 +10,10 @@ We also like the term "self-contained systems" instead of microservices.
 
 The benefits we see are:
 
-*  better handling of complexity compared to adding features in a monolithic approach
-*  being able to use the languages and framework that best fit the purpose of the service
-*  enabling better parallel work in big teams or multi-team projects
-*  flexibility in deploying changes to production - by just deploying the changed service
+- better handling of complexity compared to adding features in a monolithic approach
+- being able to use the languages and framework that best fit the purpose of the service
+- enabling better parallel work in big teams or multi-team projects
+- flexibility in deploying changes to production - by just deploying the changed service
 
 Related patterns are [Strategic Domain Driven Design](/methods-and-patterns/strategic-domain-driven-design/) as an approach to wisely cut your architecture according to useful bounded contexts and decide on the relevant communication and "translation" between the services.
 In case you are looking for a small visualisation tool for your microservice architecture you might find [vistecture](https://github.com/AOEpeople/vistecture/) useful.

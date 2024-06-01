@@ -14,6 +14,7 @@ Knowledge silos get opened up. All learnings can be directly visualized.
 We tried this method a couple of times with different sized scopes. We believe it can be of value and has potential.
 
 ## Method Overview
+
 It's like brainstorming - with the goal to visualize a business line or process.
 
 Event Storming is done in a workshop format.

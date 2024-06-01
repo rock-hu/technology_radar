@@ -5,4 +5,4 @@ quadrant:   tools
 featured:   false
 ---
 
-We merged "GitLab CI" and [GitLab](/tools/gitlab/) 
+We merged "GitLab CI" and [GitLab](/tools/gitlab/)

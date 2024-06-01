@@ -14,23 +14,23 @@ therefore resolves the complete transient dependencies on the fly.
 
 Most of these package- or dependency management solutions support two artefacts:
 
-* a semantic dependency definition. This defines the compatible versions of the
+- a semantic dependency definition. This defines the compatible versions of the
   required dependencies. (Composer: composer.json / npm: package.json)
-* a lock file defining the exact revisions of the dependencies and the transient
+- a lock file defining the exact revisions of the dependencies and the transient
   dependencies (dependencies of dependencies). This is created after running the
   tool. (Composer: composer.lock / npm: npm-shrinkwrap.json / yarn: yarn.lock).
 
 We suggest the following:
 
-* Keep the dependency definition AND the lock file in version control. This
+- Keep the dependency definition AND the lock file in version control. This
   ensures that chained dependencies are also locked and you have changes of that
   file visible in your version control commit history. This helps finding issues
   or bugs that might relate to unintended updates in external modules or
   transient dependencies.
-* Build Step: The application build step should use the the pinned versions
+- Build Step: The application build step should use the the pinned versions
   (with the help of the lock file) to ensure that the same revisions of the
   dependent packages are used.
-* It's also suggested to use local or central caches for the retrieval of
+- It's also suggested to use local or central caches for the retrieval of
   packages. (E.g.
   [artifactory as composer and npm cache](/platforms-and-services/artifactory/))
 

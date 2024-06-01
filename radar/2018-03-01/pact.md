@@ -4,7 +4,7 @@ ring:       trial
 quadrant:   tools
 ---
 
-PACT (http://pact.io/) is a family of frameworks that provides support for *Consumer Driven Contract testing* across different languages and frameworks.
+PACT (<http://pact.io/>) is a family of frameworks that provides support for *Consumer Driven Contract testing* across different languages and frameworks.
 
 Consumer Driven Contract testing is a pattern for testing interfaces/boundaries between services.
 
@@ -13,4 +13,4 @@ It puts "providers" in the position to run the PACT tests inside their Continuou
 
 This approach makes sense in organisations where teams collaborate more closely (See [Strategic Domain Driven Design](/methods-and-patterns/strategic-domain-driven-design/) ), e.g. to build [Microservice oriented architectures](/methods-and-patterns/microservices/)
 
-Consumer Driven Contract Testing and how it can be conducted with PACT is documented very nicely on the official PACT website: https://docs.pact.io/.
+Consumer Driven Contract Testing and how it can be conducted with PACT is documented very nicely on the official PACT website: <https://docs.pact.io/>.

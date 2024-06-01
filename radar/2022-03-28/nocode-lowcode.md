@@ -25,21 +25,21 @@ platforms for internal tools, for example to help organise events or onboarding 
 
 Here are our thoughts on this:
 
-* We see opportunities to improve communication and collaboration between developers on such platforms and non-technical
+- We see opportunities to improve communication and collaboration between developers on such platforms and non-technical
   professionals (domain experts), as they can collaborate on the platform directly during the process of creating the
   digital product.
 
-* If the use case fits into the sweet spot of the platform, the results are very fast and surprising.
+- If the use case fits into the sweet spot of the platform, the results are very fast and surprising.
 
-* There is a logical trade-off between simplicity and flexibility: platforms with a high level of abstraction and a low
+- There is a logical trade-off between simplicity and flexibility: platforms with a high level of abstraction and a low
   learning curve can deliver good results very quickly. However, if you have requirements that do not fit into the
   "standard" of the platform, it becomes difficult to customise. On the other hand, platforms that allow a lot of
   configuration and scripting come with a higher learning curve. And in some respects it may end being similar to using
   a programming framework.
 
-* Operating costs can become a relevant factor - especially if you pay for high performance and higher utilisation.
+- Operating costs can become a relevant factor - especially if you pay for high performance and higher utilisation.
 
-* You have to realise that with complex applications there is much more to do than "just" writing code. Test
+- You have to realise that with complex applications there is much more to do than "just" writing code. Test
   architecture, api design, integrations, careful design of the solution, proper testing, CI/CD strategy etc. So
   there is still a need for skilled (development) teams to do this work.
 

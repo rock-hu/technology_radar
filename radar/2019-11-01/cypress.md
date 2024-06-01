@@ -9,17 +9,17 @@ tags:       [academy training, frontend, quality assurance]
 
 **Good:**
 
-* [Open source](https://github.com/cypress-io/cypress)
-* [Locally installed](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
-* Straightforward (installed via npm, and all tests are written in JavaScript)
-* Good [documentation](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) and learning materials
-* Can run in a [headless mode](https://docs.cypress.io/guides/guides/command-line.html#cypress-run)
+- [Open source](https://github.com/cypress-io/cypress)
+- [Locally installed](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
+- Straightforward (installed via npm, and all tests are written in JavaScript)
+- Good [documentation](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) and learning materials
+- Can run in a [headless mode](https://docs.cypress.io/guides/guides/command-line.html#cypress-run)
 
 **Not so good:**
 
-* No cross-browser testing (only Chrome and Electron)
-* Scenarios with multiple browser tabs cannot be tested
-* Relatively new test tool, although it is becoming more popular
+- No cross-browser testing (only Chrome and Electron)
+- Scenarios with multiple browser tabs cannot be tested
+- Relatively new test tool, although it is becoming more popular
 
 **Example of a test:**
 

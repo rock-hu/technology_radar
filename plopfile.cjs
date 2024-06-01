@@ -41,42 +41,6 @@ module.exports = function (plop) {
     ],
   });
   plop.setGenerator("article", {
-    description: "article markdown",
-    prompts: [
-      {
-        type: "input",
-        name: "module",
-        message: "module please",
-      },
-      {
-        type: "input",
-        name: "article",
-        message: "article please",
-      },
-    ],
-    actions: [
-      {
-        type: "add",
-        path: "docs/{{module}}/{{article}}.js",
-        templateFile: "templates/article.hbs",
-        force: false,
-      },
-    ],
-  });
-
-  plop.setHelper("today", function () {
-    var today = new Date();
-    let date =
-      today.getFullYear() +
-      "-" +
-      ("0" + (today.getMonth() + 1)).slice(-2) +
-      "-" +
-      ("0" + today.getDate()).slice(-2);
-    console.log(date);
-    return date;
-  });
-
-  plop.setGenerator("article", {
     description: "article",
     prompts: [
       {
@@ -97,8 +61,22 @@ module.exports = function (plop) {
         templateFile: "templates/article.hbs",
         abortOnFail: false,
         skipIfExists: true,
-        force: false,
+        force: true,
       },
     ],
+  });
+  plop.setHelper("double-quotes", function (line) {
+    return line.replaceAll('"', "");
+  });
+  plop.setHelper("today", function () {
+    var today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      ("0" + (today.getMonth() + 1)).slice(-2) +
+      "-" +
+      ("0" + today.getDate()).slice(-2);
+    console.log(date);
+    return date;
   });
 };

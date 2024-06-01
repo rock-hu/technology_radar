@@ -2,7 +2,6 @@
 
 ## context  
 
-
 ```mermaid
 graph TD;
     A-->B;
@@ -11,15 +10,12 @@ graph TD;
     C-->D;
 ```
 
-
-
 ```mermaid
 sequenceDiagram
     Alice->>John: Hello John, how are you?
     John-->>Alice: Great!
     Alice-)John: See you later!
 ```
-
 
 ```mermaid
 ---
@@ -65,10 +61,8 @@ erDiagram
 
 ```
 
-
 ## references
 
 | Item | Link(s) |
 | :--- | ------- |
-|  spring-ws    |  [spring-ws](https://github.com/rock-hu/technology_radar/blob/master/docs/spring-ws.md)       |
 |||

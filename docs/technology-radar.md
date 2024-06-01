@@ -1,5 +1,4 @@
-# technology_radar    
-
+# technology_radar
 
 A static site generator for Technology Radar
 
@@ -44,10 +43,9 @@ Now using node v18.17.1 (npm v9.6.7)
 Now using node v18.17.1 (npm v9.6.7)
 ```
 
-
 ### step 1: create a new project
 
-Ensure node.js ist installed and create a new project by creating a new folder with a `package.json`
+Ensure Node.js ist installed and create a new project by creating a new folder with a `package.json`
 file like the following and adapt to your needs:
 
 ```json
@@ -116,7 +114,7 @@ An array with of `radar`, `tags`, `list` in order you want them to appear on the
 
 | Attribute   | Description                                                 |
 | ----------- | ----------------------------------------------------------- |
-| id          | Used as reference in the radar markdown files and URLs      |
+| id          | Used as reference in the radar Markdown files and URLs      |
 | title       | Title of the quadrant                                       |
 | description | Will be shown on startpage and on the quadrants detail page |
 | color       | Color of the quadrant arcs and blips                        |
@@ -125,7 +123,7 @@ An array with of `radar`, `tags`, `list` in order you want them to appear on the
 
 | Attribute   | Description                                                                 |
 | ----------- | --------------------------------------------------------------------------- |
-| id          | Used as reference in the radar markdown files                               |
+| id          | Used as reference in the radar Markdown files                               |
 | title       | Title of the ring. Will be used in the badge                                |
 | description |                                                                             |
 | color       | Color of the ring's badge                                                   |

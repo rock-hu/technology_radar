@@ -44,7 +44,7 @@ inspiring.
 We categorize the items into four quadrants, and sometimes, when it's not entirely clear where an
 item belongs, we choose the best fit.
 
-#### The quadrants are:
+#### The quadrants are
 
 - **Languages & Frameworks:** In this category, we include development languages like Scala or
   Golang, as well as low-level development frameworks such as Play or Symfony. These are valuable
@@ -58,7 +58,7 @@ item belongs, we choose the best fit.
 - **Platforms & Operations:** In this quadrant, we group technologies related to the operation of
   software, infrastructure, and platform-related tools and services.
 
-#### Each of the items is classified in one of these rings:
+#### Each of the items is classified in one of these rings
 
 - **Adopt:** We wholeheartedly recommend this technology. It has been extensively used in many teams
   for an extended period, proving its stability and utility.

@@ -20,10 +20,10 @@ In the past year, we have moved from a more centralistic or standalone IT and op
 
 And, we changed to cross-functional teams and a "you build it, you run it" approach for the bigger projects.
 We have seen that this leads to the following positive effects:
-* Software application architecture demands a certain infrastructure and the other way around. Having all the know-how in one team leads to more major decisions and implementations. Also, solving of root causes for problems works better.
-* Rotating operation and incident management inside the whole team brings everyone into closer contact with the day-to-day operation of their software. This results in a shared and improved responsibility and commitment to the complete platform in the team. In addition, this brings developers into contact with the customer - which is an important feedback loop as well.
-* Increased flexibility in the infrastructure: Implementations and adjustments in the infrastructure are faster and can be done together with the ongoing agile development of the platform.
-* Developers also explicitly think of operation issues when building the application - since they are responsible for operation. For example, logging concept, monitoring aspects and resilience patterns are now explicitly optimized continuously and improve faster.
+- Software application architecture demands a certain infrastructure and the other way around. Having all the know-how in one team leads to more major decisions and implementations. Also, solving of root causes for problems works better.
+- Rotating operation and incident management inside the whole team brings everyone into closer contact with the day-to-day operation of their software. This results in a shared and improved responsibility and commitment to the complete platform in the team. In addition, this brings developers into contact with the customer - which is an important feedback loop as well.
+- Increased flexibility in the infrastructure: Implementations and adjustments in the infrastructure are faster and can be done together with the ongoing agile development of the platform.
+- Developers also explicitly think of operation issues when building the application - since they are responsible for operation. For example, logging concept, monitoring aspects and resilience patterns are now explicitly optimized continuously and improve faster.
 Important enabler of such an approach is the size and available budget for the project (not every project allows for having a continuous cross-functional teams that carries out ongoing development and operations). Also, this requires a certain amount of independence for the team.
 
 As always, we are establishing "community of interests" to improve and promote the knowledge transfer between different teams.

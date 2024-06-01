@@ -11,10 +11,12 @@ majority of our teams.
 We have two main reasons for discarding Grunt in favor of other tools:
 
 ### Speed
+
 If a decent amount of tasks is reached, Grunt is known to run slower than other tools, because it heavily relies on I/O operations and
 always stores the result of one task as files on the disk.
 
 ### Configuration
+
 On large projects where a lot of automation is required, it can get very tedious to maintain complex and parallel running tasks.
 The grunt configuration files sometimes simply don´t gave us the flexibility that we needed.
 

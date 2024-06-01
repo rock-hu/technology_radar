@@ -6,7 +6,7 @@ tags: [agile, coding]
 ---
 
 While practising pair programming for several years now at AOE, we have started using
-[remote mob programming](https://www.remotemobprogramming.org/) extensively when 
+[remote mob programming](https://www.remotemobprogramming.org/) extensively when
 switching to remote work during the COVID-19 pandemic.
 
 Mob programming brings the driver/navigator pattern to another level by adding a group

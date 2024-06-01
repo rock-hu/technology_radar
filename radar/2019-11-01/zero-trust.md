@@ -11,6 +11,7 @@ With Zero Trust, there are no assumptions made about the level of trust, and eve
 Frameworks like Google's BeyondCorp are built upon that pattern.
 
 ## Motivation and History
+
 Classical security paradigms traditionally safeguard a particular network perimeter, such as a company intranet.
 
 Once a person is "inside" – for example, by working within the company network or connecting to it through VPN – they are generally deemed trustworthy.
@@ -20,15 +21,18 @@ However, with the rise of cloud technologies and microservices, and the fact tha
 This presents challenges for authenticating subjects that previously relied heavily on network segments.
 
 ## Principles of Zero Trust
+
 Zero Trust assumes that no user, service, or device is trusted by default, regardless of location or network. It requires continuous verification of identity, strict access controls, and consistent monitoring of network activity.
 
 **Basic Principles:**
+
 - Least Privilege
 - Assume Breach
 - Strong Identity Verification
 - Verify Explicitly
 
 It involves many **areas and aspects**, including:
+
 - Identities and Identity Awareness
 - Device and Device Authentication
 - Networking and Firewall
@@ -40,11 +44,13 @@ It involves many **areas and aspects**, including:
 - Security Monitoring and Automation
 
 ## Implementations
+
 In 2009 Google implemented a zero trust architecture referred to as [BeyondCorp](https://cloud.google.com/beyondcorp). It utilizes OAuth and OpenID standards for implementing Authn and Authz, and has influenced the development of modern Zero Trust architectures.
 
 Typical implementations involve using standards and tools for IAM and SSO, such as [Keycloak](/tools/keycloak/).
 
 ## Summary
+
 While network segments and VPN connections may still be relevant in specific areas, is increasingly implementing a Zero Trust approach in all solutions, components, and services.
 
 We are currently adopting best practices for Zero Trust, which align with the BeyondCorp framework and utilize the OAuth and OpenID Connect standards.
