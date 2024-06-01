@@ -8,6 +8,7 @@ featured: true
 [Scala 3](https://docs.scala-lang.org/scala3/) is the successor of the Scala 2.x series programming language.
 
 It's not just a small iteration on Scala 2 but a complete overhaul of the language trying to improve in several areas like:
+
 - Syntax
   - "quiet" syntax for control structures like `if`, `while` and `for`
   - optional `new` operator

@@ -12,6 +12,7 @@ We have also made the experience when new teams start off with using blocking or
 We recommend to use trunk based development with short-lived (<1day) feature branches, because this has shown to support continuous integration and team collaboration the best. However, we do accept teams choices to use GitFlow, we just do not try to encourage them in the first place.
 
 See also:
+
 - trunk based development <https://trunkbaseddevelopment.com/>
 - <https://medium.com/@fagnerbrack/one-commit-one-change-3d10b10cebbf>
 - <https://martinfowler.com/bliki/FeatureBranch.html>

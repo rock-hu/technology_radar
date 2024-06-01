@@ -14,6 +14,7 @@ And for software design to be successful, it is very important that everybody (i
 CRC sessions help to design and align the high-level object design and collaboration of your system with the whole team. During such sessions new team members can learn from the experience and explanations of tropers.
 
 This is how we often conduct a CRC Session:
+
 - Preparation:
   - Make sure everybody has a high-level overview of the software (bounded context / use case overview). Because design should also focus on the long term.
   - Choose some scenarios (such as "customer adds a promoted product to cart and sees the discounts...") that you want to discuss in this session

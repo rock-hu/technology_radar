@@ -9,6 +9,7 @@ Architecture Decision Records
 
 ADR is a lightweight documentation of important architecture decisions taken by the team.
 Without documentation of the architecture and the architecture decisions, new team members can only do two things:
+
 - either (blindly) accept what they find and see or
 - (blindly) change things
 
@@ -19,6 +20,7 @@ In larger projects with many teams we also establish a regular "architecture boa
 Often, the architecture decisions are taken in such meetings.
 
 The main purpose of this documentation is to:
+
 - inform new team members about the previous architecture decisions and their purpose and backgrounds
 - inform the whole team (including all people who were absent)
 - create documentation that can be used to remember things (e.g. conventions, patterns, etc.)

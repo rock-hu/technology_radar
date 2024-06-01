@@ -21,5 +21,6 @@ This allows encapsulating the core features of that application, while integrati
 Decoupling the core logic from its presentation layer allows picking the best technology stack for the various parts independently.
 
 For further reading see:
+
 - [Understanding API First Design](https://www.programmableweb.com/api-university/understanding-api-first-design)
 - [When crafting your API strategy, put design first](http://www.techradar.com/news/software/applications/when-crafting-your-api-strategy-put-design-first-1262043?src=rss&attr=all)

@@ -8,6 +8,7 @@ tags: [devops]
 [Pulumi](https://www.pulumi.com/) is a tool in the infrastructure-as-code space that is quite similar to [Terraform](https://www.terraform.io/) in that it also provide a declarative way to provision cloud infrastructure and services.
 
 What makes it interesting is that all configuration is done in one of currently 4 supported general-purpose languages/runtimes:
+
 - JavaScript/Typescript
 - Python
 - .NET Core

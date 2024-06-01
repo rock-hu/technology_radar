@@ -4,7 +4,7 @@
 
 > Resilience4j is a lightweight fault tolerance library inspired by Netflix Hystrix, but designed for functional programming.
 
-Resilience4j provides higher-order functions (decorators) to enhance any functional interface, lambda expression or method reference with a Circuit Breaker, Rate Limiter, Retry or Bulkhead. You can stack more than one decorator on any functional interface, lambda expression or method reference. The advantage is that you have the choice to select the decorators you need and nothing else.    
+Resilience4j provides higher-order functions (decorators) to enhance any functional interface, lambda expression or method reference with a Circuit Breaker, Rate Limiter, Retry or Bulkhead. You can stack more than one decorator on any functional interface, lambda expression or method reference. The advantage is that you have the choice to select the decorators you need and nothing else.
 
 **resilience4j vsNetflix Hystrix**
 
@@ -14,7 +14,8 @@ Resilience4j provides higher-order functions (decorators) to enhance any functio
 - This library provides custom Reactor or RxJava operators to decorate any reactive type with a `Circuit Breaker`, `Bulkhead` or `Ratelimiter`.
 - Hystrix and this library emit a stream of events which are useful to system operators to monitor metrics about execution outcomes and latency.
 
-## dependencies    
+## dependencies
+
 - resilience4j-core
 - resilience4j-ratelimiter
 - resilience4j-cache
@@ -47,4 +48,4 @@ Resilience4j provides higher-order functions (decorators) to enhance any functio
 
 | Item         | Link(s)                                             |
 | :----------- | --------------------------------------------------- |
-| resilience4j | https://resilience4j.readme.io/docs/getting-started |
+| resilience4j | <https://resilience4j.readme.io/docs/getting-started> |

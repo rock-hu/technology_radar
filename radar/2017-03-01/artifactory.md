@@ -17,6 +17,7 @@ Artifactory provides a powerful REST-API for managing Artifacts including a powe
 It is utilized to provide complex release processes based on QA-Attributes on an artifact level.
 
 Artifactory at currently comes with some problems, too:
+
 - Cleanup in Artifactory has to be done manually. Therefore, if every build is pushed to Artifactory it currently pollutes disk space since old or unused versions are never removed.
 - The Composer Integration mirroring GitHub proves to be slower than directly connecting to GitHub.
 
