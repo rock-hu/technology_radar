@@ -1,4 +1,4 @@
-module.exports = function (plop) {
+export default function (plop) {
   plop.setGenerator("radar", {
     description: "radar",
     prompts: [
@@ -101,4 +101,4 @@ module.exports = function (plop) {
       },
     ],
   });
-};
+}

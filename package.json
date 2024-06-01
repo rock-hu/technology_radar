@@ -3,7 +3,6 @@
   "homepage": "https://github.com/rock-hu/technology_radar",
   "private": true,
   "version": "4.3.0",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "cp-cli config-local.json config.json && techradar build",
