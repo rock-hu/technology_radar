@@ -1,18 +1,24 @@
 {
   "name": "technology_radar",
+  "homepage": "https://github.com/rock-hu/technology_radar",
   "private": true,
   "version": "4.3.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "techradar build",
+    "build": "cp-cli config-local.json config.json && techradar build",
+    "build:pages": "cp-cli config-pages.json config.json && techradar build",
     "serve": "techradar serve",
-    "plop": "plop"
+    "plop": "plop",
+    "predeploy": "npm run build:pages",
+    "deploy": "gh-pages -d build --dotfiles true --nojekyll true"
   },
   "dependencies": {
     "aoe_technology_radar": "^4"
   },
   "devDependencies": {
+    "cp-cli": "^2.0.0",
+    "gh-pages": "^6.1.1",
     "http-server": "^14.1.1",
     "plop": "^4.0.1"
   }

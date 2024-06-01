@@ -11,3 +11,4 @@ techradar
 # bin
 src/rd.json
 nohup.out
+config.json

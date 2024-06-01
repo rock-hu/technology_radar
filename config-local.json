@@ -1,6 +1,6 @@
 {
-  "basePath": "/technology_radar",
-  "baseUrl": "https://rock-hu.github.io/",
+  "basePath": "/",
+  "baseUrl": "https://www.aoe.com/techradar",
   "editUrl": "https://github.com/rock-hu/technology_radar/blob/master/radar/{release}/{id}.md",
   "colors": {
     "foreground": "#fff",
