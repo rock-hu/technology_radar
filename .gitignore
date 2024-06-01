@@ -10,3 +10,4 @@ build
 techradar
 # bin
 src/rd.json
+nohup.out

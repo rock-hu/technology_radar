@@ -36,24 +36,30 @@ module.exports = function (plop) {
         templateFile: "templates/radar.hbs",
         abortOnFail: false,
         skipIfExists: true,
-        force: false,
+        force: true,
       },
     ],
   });
-  plop.setGenerator("controller", {
-    description: "application controller logic",
+  plop.setGenerator("article", {
+    description: "article markdown",
     prompts: [
       {
         type: "input",
-        name: "name",
-        message: "controller name please",
+        name: "module",
+        message: "module please",
+      },
+      {
+        type: "input",
+        name: "article",
+        message: "article please",
       },
     ],
     actions: [
       {
         type: "add",
-        path: "src/{{name}}.js",
-        templateFile: "plop-templates/controller.hbs",
+        path: "docs/{{module}}/{{article}}.js",
+        templateFile: "templates/article.hbs",
+        force: false,
       },
     ],
   });
