@@ -1,0 +1,127 @@
+@startuml
+
+
+skinparam linetype polyline
+skinparam linetype ortho
+
+title: Partitioner
+package org.springframework.batch.core.partition <<Frame>> {
+    interface PartitionHandler {
+        + Collection<StepExecution> handle(StepExecutionSplitter stepSplitter,StepExecution stepExecution) throws Exception
+    }    
+    class AbstractPartitionHandler implements PartitionHandler {
+        # abstract Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
+        + Collection<StepExecution> handle(final StepExecutionSplitter stepSplitter,final StepExecution managerStepExecution) throws Exception
+    }
+    note right
+    Set<StepExecution> stepExecutions = stepSplitter.split(managerStepExecution, gridSize)
+    return doHandle(managerStepExecution, stepExecutions)
+    end note
+
+    class TaskExecutorPartitionHandler extends AbstractPartitionHandler implements StepHolder, InitializingBean {
+        - TaskExecutor taskExecutor = new SyncTaskExecutor()
+        - Step step
+        # Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
+        # FutureTask<StepExecution> createTask(final Step step, final StepExecution stepExecution)
+    }
+    note right 
+    class TaskExecutorPartitionHandler extends AbstractPartitionHandler implements StepHolder, InitializingBean {
+        private TaskExecutor taskExecutor = new SyncTaskExecutor();
+
+        protected Set<StepExecution> doHandle(StepExecution managerStepExecution, Set<StepExecution> partitionStepExecutions) throws Exception {
+            Set<Future<StepExecution>> tasks = new HashSet<>(getGridSize());
+            for (StepExecution stepExecution : partitionStepExecutions) {
+                FutureTask<StepExecution> task = createTask(step, stepExecution);
+                taskExecutor.execute(task);
+                tasks.add(task);
+            }
+        }
+    }
+    end note
+    interface StepExecutionSplitter {
+        + String getStepName()
+        + Set<StepExecution> split(StepExecution stepExecution,int gridSize) throws JobExecutionException
+    }
+    class SimpleStepExecutionSplitter implements StepExecutionSplitter, InitializingBean {
+        - {static} String STEP_NAME_SEPARATOR = ":"
+        - JobRepository jobRepository
+        - String stepName
+        - Partitioner partitioner
+        + SimpleStepExecutionSplitter(JobRepository jobRepository, boolean allowStartIfComplete, String stepName,Partitioner partitioner)
+        + Set<StepExecution> split(StepExecution stepExecution, int gridSize) throws JobExecutionException
+    }
+    interface Partitioner {
+        + Map<String, ExecutionContext> partition(int gridSize)
+    }
+    interface PartitionNameProvider {
+         + Collection<String> getPartitionNames(int gridSize)
+    }
+    class SimplePartitioner implements Partitioner {
+     - static final String PARTITION_KEY = "partition"
+     + Map<String, ExecutionContext> partition(int gridSize)
+    }
+    class MultiResourcePartitioner implements Partitioner {
+     - static final String DEFAULT_KEY_NAME = "fileName"
+     - static final String PARTITION_KEY = "partition"
+     - Resource[] resources = new Resource[0]
+     - String keyName = DEFAULT_KEY_NAME
+     + Map<String, ExecutionContext> partition(int gridSize)
+    }
+    
+    MultiResourcePartitioner -> Partitioner : partition(int gridSize)
+    SimplePartitioner -> Partitioner : partition(int gridSize)
+    AbstractPartitionHandler -> PartitionHandler : doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions)
+    TaskExecutorPartitionHandler -> 
+}
+
+
+package org.springframework.batch.integration.partition <<Frame>> {
+
+    class MessageChannelPartitionHandler extends AbstractPartitionHandler implements InitializingBean {
+        - MessagingTemplate messagingGateway
+        - PollableChannel replyChannel
+        - String stepName
+        - long pollInterval = 10000
+        - JobExplorer jobExplorer
+        - DataSource dataSource
+        + void afterPropertiesSet()
+        # Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
+        - Set<StepExecution> pollReplies(final StepExecution managerStepExecution, final Set<StepExecution> split) throws Exception
+        - Set<StepExecution> receiveReplies(PollableChannel currentReplyChannel)
+        - Message<StepExecutionRequest> createMessage(int sequenceNumber, int sequenceSize,StepExecutionRequest stepExecutionRequest, PollableChannel replyChannel)
+    }
+    note right
+    import org.springframework.batch.poller.DirectPoller;
+    import org.springframework.batch.poller.Poller;
+    import org.springframework.integration.annotation.Aggregator;
+    import org.springframework.integration.annotation.MessageEndpoint;
+    import org.springframework.integration.annotation.Payloads;
+    import org.springframework.integration.channel.QueueChannel;
+    import org.springframework.integration.core.MessagingTemplate;
+
+    for (StepExecution stepExecution : partitionStepExecutions) {
+        Message<StepExecutionRequest> request = createMessage(count++, partitionStepExecutions.size(),new StepExecutionRequest(stepName, stepExecution.getJobExecutionId(), stepExecution.getId()),replyChannel);
+        messagingGateway.send(request);
+    }
+    end note
+    class StepExecutionRequestHandler {
+        - JobExplorer jobExplorer
+        - StepLocator stepLocator
+        + StepExecution handle(StepExecutionRequest request)
+    }
+    note right
+    @MessageEndpoint
+    public class StepExecutionRequestHandler {
+	    @ServiceActivator
+	    public StepExecution handle(StepExecutionRequest request) {
+            StepExecution stepExecution = jobExplorer.getStepExecution(jobExecutionId, stepExecutionId);
+            String stepName = request.getStepName();
+            Step step = stepLocator.getStep(stepName);
+            step.execute(stepExecution);
+        }        
+    }
+    end note
+}
+
+
+@enduml

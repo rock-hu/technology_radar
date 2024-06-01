@@ -1,0 +1,102 @@
+@startuml
+
+
+skinparam linetype polyline
+skinparam linetype ortho
+
+title: Partitioner
+
+package org.springframework.batch.core <<Frame>> {
+    class JobParameters implements Serializable {
+        - final Map<String, JobParameter<?>> parameters
+    }
+    class JobParametersBuilder {
+        - Map<String, JobParameter<?>> parameterMap
+        - JobExplorer jobExplorer
+        + JobParametersBuilder(JobParameters jobParameters, JobExplorer jobExplorer)
+        + JobParameters toJobParameters()
+        + JobParametersBuilder addString(String key, @NonNull String parameter, boolean identifying)
+        + JobParametersBuilder addDate(String key, @NonNull Date parameter, boolean identifying)
+        + JobParametersBuilder addLocalDate(String key, @NonNull LocalDate parameter, boolean identifying)
+        + JobParametersBuilder addLocalTime(String key, @NonNull LocalTime parameter, boolean identifying)
+        + JobParametersBuilder addLong(String key, @NonNull Long parameter, boolean identifying)
+        + JobParametersBuilder addDouble(String key, @NonNull Double parameter, boolean identifying)
+        + <T> JobParametersBuilder addJobParameter(String name, @NonNull T value, Class<T> type, boolean identifying)
+    }
+}
+
+
+package org.springframework.batch.core.launch <<Frame>> {
+
+    interface JobLauncher {
+        + JobExecution run(Job job, JobParameters jobParameters)
+    }
+    interface JobOperator {
+        + List<Long> getJobInstances(String jobName, int start, int count)
+        + JobInstance getJobInstance(String jobName, JobParameters jobParameters)
+        + Set<Long> getRunningExecutions(String jobName)
+        + String getParameters(long executionId)
+        + Long start(String jobName, Properties parameters)
+        + Long restart(long executionId)
+        + Set<String> getJobNames()
+        + JobExecution abandon(long jobExecutionId)
+        + Map<Long, String> getStepExecutionSummaries(long executionId)
+        + String getSummary(long executionId)
+        + boolean stop(long executionId)
+        + Long startNextInstance(String jobName)
+    }
+}
+
+
+package org.springframework.batch.core.launch.support <<Frame>> {
+    class SimpleJobOperator implements JobOperator, InitializingBean {
+        - ListableJobLocator jobRegistry
+        - JobExplorer jobExplorer
+        - JobLauncher jobLauncher
+        - JobRepository jobRepository
+        - JobParametersConverter jobParametersConverter
+    }
+}
+
+
+package org.springframework.batch.core.repository <<Frame>> {
+    interface JobRepository {
+        + List<String> getJobNames()
+        + List<JobInstance> findJobInstancesByName(String jobName, int start, int count)
+        + List<JobExecution> findJobExecutions(JobInstance jobInstance)
+        + boolean isJobInstanceExists(String jobName, JobParameters jobParameters)
+        + JobInstance createJobInstance(String jobName, JobParameters jobParameters)
+        + JobExecution createJobExecution(String jobName, JobParameters jobParameters)
+        + void update(JobExecution jobExecution)
+        + void add(StepExecution stepExecution)
+        + void addAll(Collection<StepExecution> stepExecutions)
+        + void updateExecutionContext(StepExecution stepExecution)
+        + void updateExecutionContext(JobExecution jobExecution)
+        + JobInstance getJobInstance(String jobName, JobParameters jobParameters)
+        + StepExecution getLastStepExecution(JobInstance jobInstance, String stepName)
+        + JobExecution getLastJobExecution(String jobName, JobParameters jobParameters)
+        + void deleteStepExecution(StepExecution stepExecution)
+        + void deleteJobExecution(JobExecution jobExecution)
+        + void deleteJobInstance(JobInstance jobInstance)
+    }
+}
+
+package org.springframework.batch.core.repository.support <<Frame>> {
+    class SimpleJobRepository implements org.springframework.batch.core.repository.JobRepository {
+        - JobInstanceDao jobInstanceDao
+        - JobExecutionDao jobExecutionDao
+        - StepExecutionDao stepExecutionDao
+        - ExecutionContextDao executionContextDao
+        + SimpleJobRepository(JobInstanceDao jobInstanceDao, JobExecutionDao jobExecutionDao,StepExecutionDao stepExecutionDao, ExecutionContextDao executionContextDao)
+    }
+}
+
+
+package org.springframework.batch.core.scope <<Frame>> {
+    class JobScope extends BatchScopeSupport {
+        - {static} String TARGET_NAME_PREFIX = "jobScopedTarget."
+        + {static} String ID_KEY = "JOB_IDENTIFIER"
+        - Object mutex
+    }
+}
+@enduml

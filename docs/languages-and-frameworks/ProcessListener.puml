@@ -1,0 +1,51 @@
+@startuml
+
+
+skinparam linetype polyline
+skinparam linetype ortho
+
+title: ProcessListener
+
+package org.springframework.batch.core <<Frame>> {
+    interface StepListener {}
+    interface ItemProcessListener<T, S> extends StepListener {
+        + void beforeProcess(T item)
+        + void afterProcess(T item, @Nullable S result)
+        + void onProcessError(T item, Exception e)
+    }
+    interface SkipListener<T, S> extends StepListener {
+        + void onSkipInRead(Throwable t)
+        + void onSkipInWrite(S item, Throwable t)
+        + void onSkipInProcess(T item, Throwable t) 
+    }
+    interface JobExecutionListener {
+        + void beforeJob(JobExecution jobExecution)
+        + void afterJob(JobExecution jobExecution)
+    }
+    interface ItemReadListener<T> extends StepListener {
+        + void beforeRead()
+        + void afterRead(T item)
+        + void onReadError(Exception ex)
+    }
+    interface ItemWriteListener<S> extends StepListener {
+        + void beforeWrite(Chunk<? extends S> items)
+        + void afterWrite(Chunk<? extends S> items)
+        + void onWriteError(Exception exception, Chunk<? extends S> items)
+    }
+    interface ItemProcessListener<T, S> extends StepListener {
+        + void beforeProcess(T item)
+        + void afterProcess(T item, @Nullable S result)
+        + void onProcessError(T item, Exception e)
+    }
+    interface ChunkListener extends StepListener {
+        + void beforeChunk(ChunkContext context)
+        + void afterChunk(ChunkContext context)
+        + void afterChunkError(ChunkContext context) 
+    }
+    interface StepExecutionListener extends StepListener {
+        + void beforeStep(StepExecution stepExecution)
+        + ExitStatus afterStep(StepExecution stepExecution)
+    }
+}
+
+@enduml

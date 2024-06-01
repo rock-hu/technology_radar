@@ -1,0 +1,177 @@
+@startuml
+
+
+skinparam linetype polyline
+skinparam linetype ortho
+
+title: ItemReader,ItemProcessor,ItemWriter
+
+package org.springframework.batch.item <<Frame>> {
+    interface ItemReader<T> {
+        + <T> read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException
+    }
+    interface ItemWriter<T> {
+        + void write(Chunk<T> chunk) throws Exception
+    }
+    interface ItemProcessor<I,O> {
+        + <O> process(<I> item) throws Exception
+    }
+    interface ItemStream {
+        + void open(ExecutionContext executionContext) throws ItemStreamException
+        + void update(ExecutionContext executionContext) throws ItemStreamException
+        + void close() throws ItemStreamException
+    }
+    interface ItemStreamWriter<T> extends ItemStream, ItemWriter {
+    }
+    interface ItemStreamReader<T> extends ItemStream, ItemReader {
+    }
+    class ValidatingItemProcessor<T> implements ItemProcessor, InitializingBean{
+        - Validator<? super T> validator
+        -  boolean filter
+        +  T process(T item) throws ValidationException
+    }
+    class BeanValidatingItemProcessor<T> extends ValidatingItemProcessor  {
+        - Validator validator
+        + void afterPropertiesSet() throws Exception
+    }
+    class SpringValidator<T> implements Validator, InitializingBean  {
+        - org.springframework.validation.Validator validator
+        + void validate(T item) throws ValidationException
+    }
+    class Chunk {
+        - List<W> items
+        - List<SkipWrapper<W>> skips
+        - List<Exception> errors
+        - Object userData
+        - boolean end
+        - boolean busy
+    }
+    abstract class ItemStreamSupport implements ItemStream {
+
+    }
+    abstract class AbstractItemStreamItemReader<T> extends ItemStreamSupport implements ItemStreamReader {
+
+    }
+    abstract class AbstractItemCountingItemStreamItemReader<T> extends AbstractItemStreamItemReader {
+        - {static} String READ_COUNT = "read.count";
+        - {static} String READ_COUNT_MAX = "read.count.max";
+        - int currentItemCount = 0;
+        - int maxItemCount = Integer.MAX_VALUE;
+        - boolean saveState = true;
+        # abstract T doRead() throws Exception
+        # abstract void doOpen() throws Exception
+        # abstract void doClose() throws Exception
+        + T read() throws Exception
+        + void close() throws ItemStreamException
+        + void open(ExecutionContext executionContext) throws ItemStreamException
+        + void update(ExecutionContext executionContext) throws ItemStreamException
+    }
+    note right
+        public void close() throws ItemStreamException {
+        doClose();
+        }
+        public T read() throws Exception {
+        return doRead();
+        }
+        public void open(ExecutionContext executionContext) throws ItemStreamException {
+        doOpen();
+        }
+    end note
+    class FlatFileItemReader<T> extends AbstractItemCountingItemStreamItemReader implements ResourceAwareItemReaderItemStream, InitializingBean {
+        - RecordSeparatorPolicy recordSeparatorPolicy
+        - Resource resource
+        - LineMapper<T> lineMapper
+        - int linesToSkip = 0
+        - LineCallbackHandler skippedLinesCallback
+        - boolean strict = true
+        - BufferedReaderFactory bufferedReaderFactory
+        - BufferedReader reader
+        # T doRead() throws Exception
+        - String readLine()
+    }
+    note right
+        protected T doRead() throws Exception {
+        String line = readLine();
+        return lineMapper.mapLine(line, lineCount);
+        }
+    end note
+    interface LineMapper<T> {
+        + T mapLine(String line, int lineNumber) throws Exception
+    }
+}
+
+
+package org.springframework.batch.item.file <<Frame>> {
+    class MultiResourceItemReader<T> extends AbstractItemStreamItemReader {
+        + {static} String RESOURCE_KEY = "resourceIndex"
+        - Resource[] resources
+        - boolean strict
+        - Comparator<Resource> comparator
+        - ResourceAwareItemReaderItemStream<? extends T> delegate
+        + T read() throws Exception, UnexpectedInputException, ParseException
+        + void open(ExecutionContext executionContext) throws ItemStreamException
+        + void update(ExecutionContext executionContext) throws ItemStreamException
+        + void close() throws ItemStreamException
+    }
+    note right
+    public void open(ExecutionContext executionContext) throws ItemStreamException {
+        Arrays.sort(resources, comparator);
+		if (executionContext.containsKey(getExecutionContextKey(RESOURCE_KEY))) {
+			currentResource = executionContext.getInt(getExecutionContextKey(RESOURCE_KEY));
+            ...
+			delegate.setResource(resources[currentResource]);
+			delegate.open(executionContext);
+		}
+    }
+    end note
+    class MultiResourceItemWriter<T> extends AbstractItemStreamItemWriter {
+        - {static} String RESOURCE_INDEX_KEY = "resource.index"
+        - {static} String CURRENT_RESOURCE_ITEM_COUNT = "resource.item.count"
+        - Resource resource
+        - ResourceAwareItemWriterItemStream<? super T> delegate
+        - int itemCountLimitPerResource = Integer.MAX_VALUE
+        - int currentResourceItemCount = 0
+        - int resourceIndex = 1
+        - ResourceSuffixCreator suffixCreator
+        + void write(Chunk<? extends T> items) throws Exception
+        + void open(ExecutionContext executionContext) throws ItemStreamException
+        + void update(ExecutionContext executionContext) throws ItemStreamException
+    }
+}
+
+
+package org.springframework.batch.item.file.mapping <<Frame>> {
+    class DefaultLineMapper<T> implements LineMapper, InitializingBean {
+        - LineTokenizer tokenizer
+        - FieldSetMapper<T> fieldSetMapper
+        + T mapLine(String line, int lineNumber) throws Exception
+    }
+    class PatternMatchingCompositeLineMapper<T> implements LineMapper, InitializingBean {
+        - PatternMatchingCompositeLineTokenizer tokenizer
+        - PatternMatcher<FieldSetMapper<T>> patternMatcher
+        + T mapLine(String line, int lineNumber) throws Exception
+    }
+    note right
+        public T mapLine(String line, int lineNumber) throws Exception {
+        return patternMatcher.match(line).mapFieldSet(this.tokenizer.tokenize(line));
+        }
+    end note
+    class JsonLineMapper<Map<String, Object>> implements LineMapper{
+        - MappingJsonFactory factory
+        + Map<String, Object> mapLine(String line, int lineNumber)
+    }
+    interface FieldSetMapper<T> {
+        T mapFieldSet(FieldSet fieldSet) throws BindException;
+    }
+    class BeanWrapperFieldSetMapper<T> extends DefaultPropertyEditorRegistrar implements FieldSetMapper, BeanFactoryAware, InitializingBean {
+        - String name
+        - Class<? extends T> type
+        - BeanFactory beanFactory
+        - ConcurrentMap<DistanceHolder, ConcurrentMap<String, String>> propertiesMatched
+        - boolean strict
+        - ConversionService conversionService
+        - boolean isCustomEditorsSet
+        + T mapFieldSet(FieldSet fs) throws BindException
+    }
+}
+@enduml

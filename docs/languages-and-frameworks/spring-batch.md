@@ -6,6 +6,19 @@
 - spring-batch-infrastructure
 - spring-batch-integration
 
+
+```dotnetcli
+<|-- inheritance
+*-- composition
+o-- aggregation
+--> association
+..> dependency
+..|> realization
+-- solid link
+.. dashed link
+```
+
+
 ## context
 
 ```mermaid
@@ -13,17 +26,17 @@
 title: ItemReader,ItemProcessor,ItemWriter
 ---
 classDiagram
-    class ItemReader {
+    class ItemReader~T~ {
         <<interface>>
-        + T read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException
+        + ~T~ read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException
     }
-    class ItemWriter {
+    class ItemWriter~T~ {
         <<interface>>
-        + void write(@NonNull Chunk<? extends T> chunk) throws Exception
+        + void write(Chunk~T~ chunk) throws Exception
     }
-    class ItemProcessor {
+    class ItemProcessor~I~ {
         <<interface>>
-        + O process(@NonNull I item) throws Exception
+        + ~O~ process(~I~ item) throws Exception
     }
     class ItemStream {
         <<interface>>
@@ -31,27 +44,27 @@ classDiagram
         + void update(ExecutionContext executionContext) throws ItemStreamException
         + void close() throws ItemStreamException
     }
-    class ItemStreamWriter extends ItemStream,ItemWriter {
+    class ItemStreamWriter {
         <<interface>>
     }
-    class ItemStreamReader extends ItemStream,ItemReader {
+    class ItemStreamReader {
         <<interface>>
     }
-    class ValidatingItemProcessor implements ItemProcessor,InitializingBean {
+    class ValidatingItemProcessor~T~{
         - Validator<? super T> validator
         -  boolean filter
-        +  T process(T item) throws ValidationException
+        +  ~T~ process(~T~ item) throws ValidationException
     }
-    class BeanValidatingItemProcessor extends ValidatingItemProcessor {
+    class BeanValidatingItemProcessor~T~  {
         - Validator validator
         + void afterPropertiesSet() throws Exception
     }
-    class SpringValidator implements Validator,InitializingBean {
+    class SpringValidator  {
         - org.springframework.validation.Validator validator
         + void validate(T item) throws ValidationException
     }
 
-    class Chunk implements Iterable,Serializable {
+    class Chunk {
         - List<W> items
         - List<SkipWrapper<W>> skips
         - List<Exception> errors
@@ -59,6 +72,23 @@ classDiagram
         - boolean end
         - boolean busy
     }
+    ItemStream <|-- ItemStreamWriter
+    ItemWriter <|-- ItemStreamWriter
+
+
+    ItemStream <|-- ItemStreamReader
+    ItemReader <|-- ItemStreamReader
+
+    ItemProcessor <|-- ValidatingItemProcessor
+    InitializingBean <|-- ValidatingItemProcessor
+
+    ValidatingItemProcessor <|-- BeanValidatingItemProcessor
+    Validator <|-- SpringValidator
+    InitializingBean <|--  SpringValidator
+    Iterabl <|-- Chunk
+    Serializable <|-- Chunk
+
+    
 ```
 
 ## partition
@@ -258,7 +288,7 @@ CREATE TABLE BATCH_JOB_EXECUTION_CONTEXT  (
 
 ```mermaid
 ---
-title: Order example
+title: SPRING_BATCH
 ---
 erDiagram
     BATCH_JOB_INSTANCE {

@@ -1,0 +1,39 @@
+@startuml
+
+
+skinparam linetype polyline
+skinparam linetype ortho
+
+title: BatchMetrics
+
+package org.springframework.batch.core.observability <<Frame>> {
+    class BatchMetrics {
+        + {static} final String METRICS_PREFIX = "spring.batch."
+        + {static} Timer createTimer(MeterRegistry meterRegistry, String name, String description, Tag... tags)
+        + {static} Counter createCounter(MeterRegistry meterRegistry, String name, String description, Tag... tags)
+        + {static} Observation createObservation(String name, BatchJobContext context,ObservationRegistry observationRegistry)
+        + {static} Observation createObservation(String name, BatchStepContext context,ObservationRegistry observationRegistry)
+        + {static} Timer.Sample createTimerSample(MeterRegistry meterRegistry)
+        + {static} LongTaskTimer createLongTaskTimer(MeterRegistry meterRegistry, String name, String description,Tag... tags)
+        + {static} Duration calculateDuration(LocalDateTime startTime, LocalDateTime endTime)
+        + {static} String formatDuration(Duration duration)
+    }
+    enum BatchJobObservation implements ObservationDocumentation {
+    }
+    interface BatchJobObservationConvention<BatchJobContext> extends ObservationConvention {
+        + boolean supportsContext(Observation.Context context)
+    }
+
+    class DefaultBatchJobObservationConvention implements BatchJobObservationConvention {
+
+    }
+    enum BatchStepObservation implements ObservationDocumentation {
+    }
+    interface BatchStepObservationConvention<BatchStepContext> extends ObservationConvention {
+        + boolean supportsContext(Observation.Context context)
+    }
+    class DefaultBatchStepObservationConvention implements BatchStepObservationConvention {
+
+    }
+}
+@enduml
