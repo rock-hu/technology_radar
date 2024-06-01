@@ -31,13 +31,13 @@ classDiagram
         + void update(ExecutionContext executionContext) throws ItemStreamException
         + void close() throws ItemStreamException
     }
-    class ItemStreamWriter extends ItemStream, ItemWriter {
+    class ItemStreamWriter extends ItemStream,ItemWriter {
         <<interface>>
     }
-    class ItemStreamReader extends ItemStream, ItemReader {
+    class ItemStreamReader extends ItemStream,ItemReader {
         <<interface>>
     }
-    class ValidatingItemProcessor implements ItemProcessor, InitializingBean {
+    class ValidatingItemProcessor implements ItemProcessor,InitializingBean {
         - Validator<? super T> validator
         -  boolean filter
         +  T process(T item) throws ValidationException
@@ -46,12 +46,12 @@ classDiagram
         - Validator validator
         + void afterPropertiesSet() throws Exception
     }
-    class SpringValidator implements Validator, InitializingBean {
+    class SpringValidator implements Validator,InitializingBean {
         - org.springframework.validation.Validator validator
         + void validate(T item) throws ValidationException
     }
 
-    class Chunk implements Iterable, Serializable {
+    class Chunk implements Iterable,Serializable {
         - List<W> items
         - List<SkipWrapper<W>> skips
         - List<Exception> errors
@@ -70,12 +70,41 @@ title: Partitioner
 classDiagram
     class PartitionHandler {
         <<interface>>
-        + Collection<StepExecution> handle(StepExecutionSplitter stepSplitter, StepExecution stepExecution) throws Exception
+        + Collection<StepExecution> handle(StepExecutionSplitter stepSplitter,StepExecution stepExecution) throws Exception
     }
+    note "Set<StepExecution> stepExecutions = stepSplitter.split(managerStepExecution, gridSize)\nreturn doHandle(managerStepExecution, stepExecutions)"
+    class AbstractPartitionHandler implements PartitionHandler {
+        # abstract Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
+        + Collection<StepExecution> handle(final StepExecutionSplitter stepSplitter,final StepExecution managerStepExecution) throws Exception
+    }
+    note "for (StepExecution stepExecution : partitionStepExecutions) {\n    FutureTask<StepExecution> task = createTask(step, stepExecution);\n}"
+    class TaskExecutorPartitionHandler extends AbstractPartitionHandler implements StepHolder, InitializingBean {
+        - TaskExecutor taskExecutor = new SyncTaskExecutor()
+        - Step step
+        # Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
+        # FutureTask<StepExecution> createTask(final Step step, final StepExecution stepExecution)
+    }
+
+
+    note "for (StepExecution stepExecution : partitionStepExecutions) {\n    Message<StepExecutionRequest> request = createMessage(count++, partitionStepExecutions.size(),new StepExecutionRequest(stepName, stepExecution.getJobExecutionId(), stepExecution.getId()),replyChannel);\nmessagingGateway.send(request);\n}"
+    class MessageChannelPartitionHandler extends AbstractPartitionHandler implements InitializingBean {
+        - MessagingTemplate messagingGateway
+        - PollableChannel replyChannel
+        - String stepName
+        - long pollInterval = 10000
+        - JobExplorer jobExplorer
+        - DataSource dataSource
+        + void afterPropertiesSet()
+        # Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
+        - Set<StepExecution> pollReplies(final StepExecution managerStepExecution, final Set<StepExecution> split) throws Exception
+        - Set<StepExecution> receiveReplies(PollableChannel currentReplyChannel)
+        - Message<StepExecutionRequest> createMessage(int sequenceNumber, int sequenceSize,StepExecutionRequest stepExecutionRequest, PollableChannel replyChannel)
+    }
+    
     class StepExecutionSplitter {
         <<interface>>
         + String getStepName()
-        + Set<StepExecution> split(StepExecution stepExecution, int gridSize) throws JobExecutionException
+        + Set<StepExecution> split(StepExecution stepExecution,int gridSize) throws JobExecutionException
     }
     class Partitioner {
         <<interface>>
@@ -96,6 +125,10 @@ classDiagram
      - String keyName = DEFAULT_KEY_NAME
      + Map<String, ExecutionContext> partition(int gridSize)
     }
+
+    MultiResourcePartitioner -> Partitioner : partition(int gridSize)
+    SimplePartitioner -> Partitioner : partition(int gridSize)
+    AbstractPartitionHandler -> PartitionHandler : doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions)
 ```
 
 ## observability
@@ -119,7 +152,7 @@ classDiagram
     class BatchJobObservation implements ObservationDocumentation {
         <<enumeration>>
     }
-    class BatchJobObservationConvention extends ObservationConvention<BatchJobContext> {
+    class BatchJobObservationConvention<BatchJobContext> extends ObservationConvention {
         <<interface>>
         + boolean supportsContext(Observation.Context context)
     }
@@ -129,7 +162,7 @@ classDiagram
     class BatchStepObservation implements ObservationDocumentation {
         <<enumeration>>
     }
-    class BatchStepObservationConvention extends ObservationConvention<BatchStepContext> {
+    class BatchStepObservationConvention<BatchStepContext> extends ObservationConvention {
         <<interface>>
         + boolean supportsContext(Observation.Context context)
     }
