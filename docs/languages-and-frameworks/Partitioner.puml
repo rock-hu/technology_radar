@@ -68,10 +68,9 @@ package org.springframework.batch.core.partition <<Frame>> {
      + Map<String, ExecutionContext> partition(int gridSize)
     }
     
-    MultiResourcePartitioner -> Partitioner : partition(int gridSize)
-    SimplePartitioner -> Partitioner : partition(int gridSize)
-    AbstractPartitionHandler -> PartitionHandler : doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions)
-    TaskExecutorPartitionHandler -> 
+    MultiResourcePartitioner -down-> Partitioner : partition(int gridSize)
+    SimplePartitioner -down-> Partitioner : partition(int gridSize)
+    AbstractPartitionHandler -down-> PartitionHandler : doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions)
 }
 
 

@@ -1,0 +1,18 @@
+<project name="technology_radar" default="scan-gen-plantuml" basedir=".">
+
+
+	<path id="plantuml.path">
+		<fileset dir="libs" includes="plantuml-*-1.2024.5.jar" />
+	</path>
+	<taskdef name="plantuml" classname="net.sourceforge.plantuml.ant.PlantUmlTask"
+		classpathref="plantuml.path" />
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"
+		classpath="${basedir}/libs/ant-contrib-1.0b3.jar" />
+	<target name="scan-gen-plantuml">
+		<plantuml config="${basedir}/config.cfg">
+			<fileset dir="${basedir}">
+				<include name="docs/**/*.puml" />
+			</fileset>
+		</plantuml>
+	</target>
+</project>

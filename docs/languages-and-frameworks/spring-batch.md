@@ -6,7 +6,6 @@
 - spring-batch-infrastructure
 - spring-batch-integration
 
-
 ```dotnetcli
 <|-- inheritance
 *-- composition
@@ -18,190 +17,17 @@ o-- aggregation
 .. dashed link
 ```
 
+## ItemReader,ItemProcessor,ItemWriter
 
-## context
+![ItemProcessor](./ItemProcessor.png)
 
-```mermaid
----
-title: ItemReader,ItemProcessor,ItemWriter
----
-classDiagram
-    class ItemReader~T~ {
-        <<interface>>
-        + ~T~ read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException
-    }
-    class ItemWriter~T~ {
-        <<interface>>
-        + void write(Chunk~T~ chunk) throws Exception
-    }
-    class ItemProcessor~I~ {
-        <<interface>>
-        + ~O~ process(~I~ item) throws Exception
-    }
-    class ItemStream {
-        <<interface>>
-        + void open(ExecutionContext executionContext) throws ItemStreamException
-        + void update(ExecutionContext executionContext) throws ItemStreamException
-        + void close() throws ItemStreamException
-    }
-    class ItemStreamWriter {
-        <<interface>>
-    }
-    class ItemStreamReader {
-        <<interface>>
-    }
-    class ValidatingItemProcessor~T~{
-        - Validator<? super T> validator
-        -  boolean filter
-        +  ~T~ process(~T~ item) throws ValidationException
-    }
-    class BeanValidatingItemProcessor~T~  {
-        - Validator validator
-        + void afterPropertiesSet() throws Exception
-    }
-    class SpringValidator  {
-        - org.springframework.validation.Validator validator
-        + void validate(T item) throws ValidationException
-    }
+## Partitioner
 
-    class Chunk {
-        - List<W> items
-        - List<SkipWrapper<W>> skips
-        - List<Exception> errors
-        - Object userData
-        - boolean end
-        - boolean busy
-    }
-    ItemStream <|-- ItemStreamWriter
-    ItemWriter <|-- ItemStreamWriter
-
-
-    ItemStream <|-- ItemStreamReader
-    ItemReader <|-- ItemStreamReader
-
-    ItemProcessor <|-- ValidatingItemProcessor
-    InitializingBean <|-- ValidatingItemProcessor
-
-    ValidatingItemProcessor <|-- BeanValidatingItemProcessor
-    Validator <|-- SpringValidator
-    InitializingBean <|--  SpringValidator
-    Iterabl <|-- Chunk
-    Serializable <|-- Chunk
-
-    
-```
-
-## partition
-
-```mermaid
----
-title: Partitioner
----
-classDiagram
-    class PartitionHandler {
-        <<interface>>
-        + Collection<StepExecution> handle(StepExecutionSplitter stepSplitter,StepExecution stepExecution) throws Exception
-    }
-    note "Set<StepExecution> stepExecutions = stepSplitter.split(managerStepExecution, gridSize)\nreturn doHandle(managerStepExecution, stepExecutions)"
-    class AbstractPartitionHandler implements PartitionHandler {
-        # abstract Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
-        + Collection<StepExecution> handle(final StepExecutionSplitter stepSplitter,final StepExecution managerStepExecution) throws Exception
-    }
-    note "for (StepExecution stepExecution : partitionStepExecutions) {\n    FutureTask<StepExecution> task = createTask(step, stepExecution);\n}"
-    class TaskExecutorPartitionHandler extends AbstractPartitionHandler implements StepHolder, InitializingBean {
-        - TaskExecutor taskExecutor = new SyncTaskExecutor()
-        - Step step
-        # Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
-        # FutureTask<StepExecution> createTask(final Step step, final StepExecution stepExecution)
-    }
-
-
-    note "for (StepExecution stepExecution : partitionStepExecutions) {\n    Message<StepExecutionRequest> request = createMessage(count++, partitionStepExecutions.size(),new StepExecutionRequest(stepName, stepExecution.getJobExecutionId(), stepExecution.getId()),replyChannel);\nmessagingGateway.send(request);\n}"
-    class MessageChannelPartitionHandler extends AbstractPartitionHandler implements InitializingBean {
-        - MessagingTemplate messagingGateway
-        - PollableChannel replyChannel
-        - String stepName
-        - long pollInterval = 10000
-        - JobExplorer jobExplorer
-        - DataSource dataSource
-        + void afterPropertiesSet()
-        # Set<StepExecution> doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions) throws Exception
-        - Set<StepExecution> pollReplies(final StepExecution managerStepExecution, final Set<StepExecution> split) throws Exception
-        - Set<StepExecution> receiveReplies(PollableChannel currentReplyChannel)
-        - Message<StepExecutionRequest> createMessage(int sequenceNumber, int sequenceSize,StepExecutionRequest stepExecutionRequest, PollableChannel replyChannel)
-    }
-    
-    class StepExecutionSplitter {
-        <<interface>>
-        + String getStepName()
-        + Set<StepExecution> split(StepExecution stepExecution,int gridSize) throws JobExecutionException
-    }
-    class Partitioner {
-        <<interface>>
-        + Map<String, ExecutionContext> partition(int gridSize)
-    }
-    class PartitionNameProvider {
-        <<interface>>
-         + Collection<String> getPartitionNames(int gridSize)
-    }
-    class SimplePartitioner implements Partitioner {
-     - static final String PARTITION_KEY = "partition"
-     + Map<String, ExecutionContext> partition(int gridSize)
-    }
-    class MultiResourcePartitioner implements Partitioner {
-     - static final String DEFAULT_KEY_NAME = "fileName"
-     - static final String PARTITION_KEY = "partition"
-     - Resource[] resources = new Resource[0]
-     - String keyName = DEFAULT_KEY_NAME
-     + Map<String, ExecutionContext> partition(int gridSize)
-    }
-
-    MultiResourcePartitioner -> Partitioner : partition(int gridSize)
-    SimplePartitioner -> Partitioner : partition(int gridSize)
-    AbstractPartitionHandler -> PartitionHandler : doHandle(StepExecution managerStepExecution,Set<StepExecution> partitionStepExecutions)
-```
+![](./Partitioner.png)
 
 ## observability
 
-```mermaid
----
-title: BatchMetrics
----
-classDiagram
-    class BatchMetrics {
-        + static final String METRICS_PREFIX = "spring.batch."
-        + static Timer createTimer(MeterRegistry meterRegistry, String name, String description, Tag... tags)
-        + static Counter createCounter(MeterRegistry meterRegistry, String name, String description, Tag... tags)
-        + static Observation createObservation(String name, BatchJobContext context,ObservationRegistry observationRegistry)
-        + static Observation createObservation(String name, BatchStepContext context,ObservationRegistry observationRegistry)
-        + static Timer.Sample createTimerSample(MeterRegistry meterRegistry)
-        + static LongTaskTimer createLongTaskTimer(MeterRegistry meterRegistry, String name, String description,Tag... tags)
-        + static Duration calculateDuration(LocalDateTime startTime, LocalDateTime endTime)
-        + static String formatDuration(Duration duration)
-    }
-    class BatchJobObservation implements ObservationDocumentation {
-        <<enumeration>>
-    }
-    class BatchJobObservationConvention<BatchJobContext> extends ObservationConvention {
-        <<interface>>
-        + boolean supportsContext(Observation.Context context)
-    }
-    class DefaultBatchJobObservationConvention implements BatchJobObservationConvention {
-
-    }
-    class BatchStepObservation implements ObservationDocumentation {
-        <<enumeration>>
-    }
-    class BatchStepObservationConvention<BatchStepContext> extends ObservationConvention {
-        <<interface>>
-        + boolean supportsContext(Observation.Context context)
-    }
-    class DefaultBatchStepObservationConvention implements BatchStepObservationConvention {
-
-    }
-```
-
-<https://github.com/spring-projects/spring-batch/blob/main/spring-batch-core/src/main/resources/org/springframework/batch/core/schema-h2.sql>
+![](./BatchMetrics.png)
 
 ```sql
 CREATE TABLE BATCH_JOB_INSTANCE  (

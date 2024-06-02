@@ -1,0 +1,83 @@
+@startuml
+
+'skinparam linetype polyline
+'skinparam linetype ortho
+
+title: openrewrite
+
+package repository {
+    artifact artifact
+    artifact pipline
+    frame linters {
+        rectangle "openapi linter"
+        rectangle "java linter"
+        rectangle "koltlin linter"
+        rectangle "swift linter"
+        rectangle "typescript linter"
+        rectangle "..."
+    }
+
+    frame plugins {
+        rectangle "spotbugs-maven-plugin"
+        rectangle "spotless-maven-plugin"
+        rectangle "maven-site-plugin" as site
+        rectangle "maven-checkstyle-plugin"
+        rectangle "maven-pmd-plugin"
+        rectangle "maven-surefire-report-plugin"
+        rectangle "maven-dependency-plugin"
+        rectangle "rewrite-maven-plugin" as rewriteMavenPlugin
+    }
+    pipline -down-> artifact: 1.git clone \napply maven plugins into maven pom.xml
+    pipline -down-> linters : 2.apply linters
+    pipline -down-> plugins : 3.maven exec plugins
+    pipline -down-> rewriteMavenPlugin : 4.maven exec openrewrite recipes
+    pipline -down-> site : 6.mvn site:site html reports
+}
+
+
+package org.openrewrite.maven {
+    frame recipes {
+        rectangle "rewrite-bom" as bom
+        rectangle "rewrite-cobol" as cobol
+        rectangle "rewrite-javascript" as javascript
+        rectangle "rewrite-kotlin" as kotlin
+        rectangle "rewrite-polyglot" as polyglot
+        rectangle "rewrite-python" as python
+        rectangle "rewrite-templating" as templating
+        rectangle "rewrite-analysis" as analysis
+        rectangle "rewrite-ai-search" as search
+        rectangle "rewrite-apache" as apache
+        rectangle "rewrite-circleci" as circleci
+        rectangle "rewrite-cloud-suitability-analyzer" as suitability
+        rectangle "rewrite-concourse" as concourse
+        rectangle "rewrite-cucumber-jvm" as cucumber
+        rectangle "rewrite-github-actions" as actions
+        rectangle "rewrite-hibernate" as hibernate
+        rectangle "rewrite-jackson" as jackson
+        rectangle "rewrite-java-dependencies" as dependencies
+        rectangle "rewrite-java-security" as security
+        rectangle "rewrite-jenkins" as jenkins
+        rectangle "rewrite-kubernetes" as kubernetes
+        rectangle "rewrite-liberty" as liberty
+        rectangle "rewrite-launchdarkly" as launchdarkly
+        rectangle "rewrite-logging-frameworks" as logging
+        rectangle "rewrite-micrometer" as micrometer
+        rectangle "rewrite-micronaut" as micronaut
+        rectangle "rewrite-migrate-java" as java
+        rectangle "rewrite-nodejs" as nodejs
+        rectangle "rewrite-okhttp" as okhttp
+        rectangle "rewrite-openapi" as openapi
+        rectangle "rewrite-quarkus" as quarkus
+        rectangle "rewrite-recommendations" as recommendations
+        rectangle "rewrite-spring" as spring
+        rectangle "rewrite-sql" as sql
+        rectangle "rewrite-static-analysis" as statics
+        rectangle "rewrite-struts" as struts
+        rectangle "rewrite-terraform" as terraform
+        rectangle "rewrite-testing-frameworks" as testing
+        rectangle "..."
+    }
+}
+
+rewriteMavenPlugin -down-> recipes : 5.exec recipe
+@enduml
