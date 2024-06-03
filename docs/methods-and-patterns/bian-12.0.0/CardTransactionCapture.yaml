@@ -1,1580 +1,2849 @@
 openapi: 3.0.1
 info:
   title: Card Transaction Capture
-  description: A distributed facility to capture card transactions at the point of sale
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Card Transaction Capture (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CardTransactionCapture/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CardTransactionCapture/12.0.1'
 paths:
-  '/CardTransactionCapture/{cardtransactioncaptureid}/Control':
-    put:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: CoCR Control the processing of Credit Charge Card Financial Capture Transaction
-      description: CoCR Control the processing of Credit Charge Card Financial Capture Transaction
-      operationId: Control
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/ControlCreditChargeCardFinancialCaptureTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ControlCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/Exchange':
-    put:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: 'EcCR Accept, verify, etc. aspects of Credit Charge Card Financial Capture Transaction processing'
-      description: 'EcCR Accept, verify, etc. aspects of Credit Charge Card Financial Capture Transaction processing'
-      operationId: Exchange
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeCreditChargeCardFinancialCaptureTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/Execute':
-    put:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: ExCR Execute an available automated action for Credit Charge Card Financial Capture Transaction
-      description: ExCR Execute an available automated action for Credit Charge Card Financial Capture Transaction
-      operationId: Execute
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteCreditChargeCardFinancialCaptureTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /CardTransactionCapture/Initiate:
-    post:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: InCR Instantiate a new Credit Charge Card Financial Capture Transaction
-      description: InCR Instantiate a new Credit Charge Card Financial Capture Transaction
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateCreditChargeCardFinancialCaptureTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/Retrieve':
-    get:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: ReCR Retrieve details about any aspect of Credit Charge Card Financial Capture Transaction
-      description: ReCR Retrieve details about any aspect of Credit Charge Card Financial Capture Transaction
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/Request':
-    put:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: RqCR Request manual intervention or a decision with respect to Credit Charge Card Financial Capture Transaction
-      description: RqCR Request manual intervention or a decision with respect to Credit Charge Card Financial Capture Transaction
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestCreditChargeCardFinancialCaptureTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/Update':
-    put:
-      tags:
-        - CR - CreditChargeCardFinancialCaptureTransaction
-      summary: UpCR Update details relating to Credit Charge Card Financial Capture Transaction
-      description: UpCR Update details relating to Credit Charge Card Financial Capture Transaction
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCreditChargeCardFinancialCaptureTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCreditChargeCardFinancialCaptureTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionConsolidation/{transactionconsolidationid}/Control':
-    put:
-      tags:
-        - BQ - TransactionConsolidation
-      summary: CoBQ Control the processing of Transaction Consolidation
-      description: CoBQ Control the processing of Transaction Consolidation
-      operationId: ControlTransactionConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionconsolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionConsolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionConsolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionConsolidation/{transactionconsolidationid}/Exchange':
-    put:
-      tags:
-        - BQ - TransactionConsolidation
-      summary: 'EcBQ Accept, verify, etc. aspects of Transaction Consolidation processing'
-      description: 'EcBQ Accept, verify, etc. aspects of Transaction Consolidation processing'
-      operationId: ExchangeTransactionConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionconsolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionConsolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionConsolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionConsolidation/{transactionconsolidationid}/Execute':
-    put:
-      tags:
-        - BQ - TransactionConsolidation
-      summary: ExBQ Execute an available automated action for Transaction Consolidation
-      description: ExBQ Execute an available automated action for Transaction Consolidation
-      operationId: ExecuteTransactionConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionconsolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionConsolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionConsolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionAuthorization/Initiate':
-    post:
-      tags:
-        - BQ - TransactionAuthorization
-      summary: InBQ Instantiate a new Transaction Authorization
-      description: InBQ Instantiate a new Transaction Authorization
-      operationId: InitiateTransactionAuthorization
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionAuthorization'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionAuthorization'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionCapture/Initiate':
-    post:
-      tags:
-        - BQ - TransactionCapture
-      summary: InBQ Instantiate a new Transaction Capture
-      description: InBQ Instantiate a new Transaction Capture
-      operationId: InitiateTransactionCapture
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionCapture'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionCapture'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionConsolidation/Initiate':
-    post:
-      tags:
-        - BQ - TransactionConsolidation
-      summary: InBQ Instantiate a new Transaction Consolidation
-      description: InBQ Instantiate a new Transaction Consolidation
-      operationId: InitiateTransactionConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionConsolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionConsolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionReversal/Initiate':
-    post:
-      tags:
-        - BQ - TransactionReversal
-      summary: InBQ Instantiate a new Transaction Reversal
-      description: InBQ Instantiate a new Transaction Reversal
-      operationId: InitiateTransactionReversal
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionReversal'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionReversal'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionAuthorization/{transactionauthorizationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TransactionAuthorization
-      summary: ReBQ Retrieve details about any aspect of Transaction Authorization
-      description: ReBQ Retrieve details about any aspect of Transaction Authorization
-      operationId: RetrieveTransactionAuthorization
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionauthorizationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTransactionAuthorizationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionCapture/{transactioncaptureid}/Retrieve':
-    get:
-      tags:
-        - BQ - TransactionCapture
-      summary: ReBQ Retrieve details about any aspect of Transaction Capture
-      description: ReBQ Retrieve details about any aspect of Transaction Capture
-      operationId: RetrieveTransactionCapture
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactioncaptureid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTransactionCaptureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionConsolidation/{transactionconsolidationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TransactionConsolidation
-      summary: ReBQ Retrieve details about any aspect of Transaction Consolidation
-      description: ReBQ Retrieve details about any aspect of Transaction Consolidation
-      operationId: RetrieveTransactionConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionconsolidationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTransactionConsolidationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionReversal/{transactionreversalid}/Retrieve':
-    get:
-      tags:
-        - BQ - TransactionReversal
-      summary: ReBQ Retrieve details about any aspect of Transaction Reversal
-      description: ReBQ Retrieve details about any aspect of Transaction Reversal
-      operationId: RetrieveTransactionReversal
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionreversalid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTransactionReversalResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionAuthorization/{transactionauthorizationid}/Update':
-    put:
-      tags:
-        - BQ - TransactionAuthorization
-      summary: UpBQ Update details relating to Transaction Authorization
-      description: UpBQ Update details relating to Transaction Authorization
-      operationId: UpdateTransactionAuthorization
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionauthorizationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionAuthorization'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionAuthorization'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionCapture/{transactioncaptureid}/Update':
-    put:
-      tags:
-        - BQ - TransactionCapture
-      summary: UpBQ Update details relating to Transaction Capture
-      description: UpBQ Update details relating to Transaction Capture
-      operationId: UpdateTransactionCapture
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactioncaptureid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionCapture'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionCapture'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionConsolidation/{transactionconsolidationid}/Update':
-    put:
-      tags:
-        - BQ - TransactionConsolidation
-      summary: UpBQ Update details relating to Transaction Consolidation
-      description: UpBQ Update details relating to Transaction Consolidation
-      operationId: UpdateTransactionConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionconsolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionConsolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionConsolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardTransactionCapture/{cardtransactioncaptureid}/TransactionReversal/{transactionreversalid}/Update':
-    put:
-      tags:
-        - BQ - TransactionReversal
-      summary: UpBQ Update details relating to Transaction Reversal
-      description: UpBQ Update details relating to Transaction Reversal
-      operationId: UpdateTransactionReversal
-      parameters:
-        - $ref: '#/components/parameters/cardtransactioncaptureid'
-        - $ref: '#/components/parameters/transactionreversalid'
-      requestBody:
-        $ref: '#/components/requestBodies/TransactionReversal'
-      responses:
-        '200':
-          $ref: '#/components/responses/TransactionReversal'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/{creditchargecardfinancialcapturetransactionid}/Control':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) CoCR Control the processing of Credit Charge Card
+          Financial Capture Transaction
+        description: >-
+          (DDD Service) CoCR Control the processing of Credit Charge Card
+          Financial Capture Transaction
+        operationId: CreditChargeCardFinancialCaptureTransaction/Control
+        parameters:
+          - $ref: >-
+              #/components/parameters/creditchargecardfinancialcapturetransactionid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ControlCreditChargeCardFinancialCaptureTransactionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ControlCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/{creditchargecardfinancialcapturetransactionid}/Exchange':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Credit Charge Card
+          Financial Capture Transaction processing
+        description: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Credit Charge Card
+          Financial Capture Transaction processing
+        operationId: CreditChargeCardFinancialCaptureTransaction/Exchange
+        parameters:
+          - $ref: >-
+              #/components/parameters/creditchargecardfinancialcapturetransactionid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExchangeCreditChargeCardFinancialCaptureTransactionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExchangeCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/{creditchargecardfinancialcapturetransactionid}/Execute':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) ExCR Execute an available automated action for Credit
+          Charge Card Financial Capture Transaction
+        description: >-
+          (DDD Service) ExCR Execute an available automated action for Credit
+          Charge Card Financial Capture Transaction
+        operationId: CreditChargeCardFinancialCaptureTransaction/Execute
+        parameters:
+          - $ref: >-
+              #/components/parameters/creditchargecardfinancialcapturetransactionid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExecuteCreditChargeCardFinancialCaptureTransactionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExecuteCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) InCR Instantiate a new Credit Charge Card Financial
+          Capture Transaction
+        description: >-
+          (DDD Service) InCR Instantiate a new Credit Charge Card Financial
+          Capture Transaction
+        operationId: CreditChargeCardFinancialCaptureTransaction/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateCreditChargeCardFinancialCaptureTransactionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/{creditchargecardfinancialcapturetransactionid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Credit Charge
+          Card Financial Capture Transaction
+        description: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Credit Charge
+          Card Financial Capture Transaction
+        operationId: CreditChargeCardFinancialCaptureTransaction/Retrieve
+        parameters:
+          - $ref: >-
+              #/components/parameters/creditchargecardfinancialcapturetransactionid
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/{creditchargecardfinancialcapturetransactionid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Credit Charge Card Financial Capture Transaction
+        description: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Credit Charge Card Financial Capture Transaction
+        operationId: CreditChargeCardFinancialCaptureTransaction/Request
+        parameters:
+          - $ref: >-
+              #/components/parameters/creditchargecardfinancialcapturetransactionid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestCreditChargeCardFinancialCaptureTransactionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditChargeCardFinancialCaptureTransaction/{creditchargecardfinancialcapturetransactionid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CreditChargeCardFinancialCaptureTransaction'
+        summary: >-
+          (DDD Service) UpCR Update details relating to Credit Charge Card
+          Financial Capture Transaction
+        description: >-
+          (DDD Service) UpCR Update details relating to Credit Charge Card
+          Financial Capture Transaction
+        operationId: CreditChargeCardFinancialCaptureTransaction/Update
+        parameters:
+          - $ref: >-
+              #/components/parameters/creditchargecardfinancialcapturetransactionid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateCreditChargeCardFinancialCaptureTransactionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateCreditChargeCardFinancialCaptureTransactionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionconsolidationid}/TransactionConsolidation/Control':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionConsolidation'
+        summary: (DDD Service) CoBQ Control the processing of Transaction Consolidation
+        description: (DDD Service) CoBQ Control the processing of Transaction Consolidation
+        operationId: TransactionConsolidation/Control
+        parameters:
+          - $ref: '#/components/parameters/transactionconsolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ControlTransactionConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ControlTransactionConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionconsolidationid}/TransactionConsolidation/Exchange':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionConsolidation'
+        summary: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Transaction
+          Consolidation processing
+        description: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Transaction
+          Consolidation processing
+        operationId: TransactionConsolidation/Exchange
+        parameters:
+          - $ref: '#/components/parameters/transactionconsolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExchangeTransactionConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeTransactionConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionconsolidationid}/TransactionConsolidation/Execute':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionConsolidation'
+        summary: >-
+          (DDD Service) ExBQ Execute an available automated action for
+          Transaction Consolidation
+        description: >-
+          (DDD Service) ExBQ Execute an available automated action for
+          Transaction Consolidation
+        operationId: TransactionConsolidation/Execute
+        parameters:
+          - $ref: '#/components/parameters/transactionconsolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteTransactionConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteTransactionConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/TransactionAuthorization/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionAuthorization'
+        summary: (DDD Service) InBQ Instantiate a new Transaction Authorization
+        description: (DDD Service) InBQ Instantiate a new Transaction Authorization
+        operationId: TransactionAuthorization/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateTransactionAuthorizationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateTransactionAuthorizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/TransactionCapture/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionCapture'
+        summary: (DDD Service) InBQ Instantiate a new Transaction Capture
+        description: (DDD Service) InBQ Instantiate a new Transaction Capture
+        operationId: TransactionCapture/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateTransactionCaptureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateTransactionCaptureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/TransactionConsolidation/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionConsolidation'
+        summary: (DDD Service) InBQ Instantiate a new Transaction Consolidation
+        description: (DDD Service) InBQ Instantiate a new Transaction Consolidation
+        operationId: TransactionConsolidation/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateTransactionConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateTransactionConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/TransactionReversal/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionReversal'
+        summary: (DDD Service) InBQ Instantiate a new Transaction Reversal
+        description: (DDD Service) InBQ Instantiate a new Transaction Reversal
+        operationId: TransactionReversal/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateTransactionReversalRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateTransactionReversalResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionauthorizationid}/TransactionAuthorization/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TransactionAuthorization'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Authorization
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Authorization
+        operationId: TransactionAuthorization/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/transactionauthorizationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTransactionAuthorizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactioncaptureid}/TransactionCapture/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TransactionCapture'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Capture
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Capture
+        operationId: TransactionCapture/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/transactioncaptureid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTransactionCaptureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionconsolidationid}/TransactionConsolidation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TransactionConsolidation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Consolidation
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Consolidation
+        operationId: TransactionConsolidation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/transactionconsolidationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTransactionConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionreversalid}/TransactionReversal/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TransactionReversal'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Reversal
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Transaction
+          Reversal
+        operationId: TransactionReversal/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/transactionreversalid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTransactionReversalResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionauthorizationid}/TransactionAuthorization/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionAuthorization'
+        summary: >-
+          (DDD Service) UpBQ Update details relating to Transaction
+          Authorization
+        description: >-
+          (DDD Service) UpBQ Update details relating to Transaction
+          Authorization
+        operationId: TransactionAuthorization/Update
+        parameters:
+          - $ref: '#/components/parameters/transactionauthorizationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTransactionAuthorizationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTransactionAuthorizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactioncaptureid}/TransactionCapture/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionCapture'
+        summary: (DDD Service) UpBQ Update details relating to Transaction Capture
+        description: (DDD Service) UpBQ Update details relating to Transaction Capture
+        operationId: TransactionCapture/Update
+        parameters:
+          - $ref: '#/components/parameters/transactioncaptureid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTransactionCaptureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTransactionCaptureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionconsolidationid}/TransactionConsolidation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionConsolidation'
+        summary: >-
+          (DDD Service) UpBQ Update details relating to Transaction
+          Consolidation
+        description: >-
+          (DDD Service) UpBQ Update details relating to Transaction
+          Consolidation
+        operationId: TransactionConsolidation/Update
+        parameters:
+          - $ref: '#/components/parameters/transactionconsolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTransactionConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTransactionConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardTransactionCapture/{transactionreversalid}/TransactionReversal/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TransactionReversal'
+        summary: (DDD Service) UpBQ Update details relating to Transaction Reversal
+        description: (DDD Service) UpBQ Update details relating to Transaction Reversal
+        operationId: TransactionReversal/Update
+        parameters:
+          - $ref: '#/components/parameters/transactionreversalid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTransactionReversalRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTransactionReversalResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: The Credit/Charge Card Financial Capture Transaction specific Business Service
-    TransactionReversal:
-      type: object
-      properties:
-        TransactionReversalPreconditions:
-          type: string
-          description: The required status/situation prior to the execution of the task
-          format: string
-        TransactionReversalTaskSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the transaction task
-          format: string
-        CardTransactionReversal:
-          $ref: '#/components/schemas/businessservice'
-        TransactionReversalPostconditions:
-          type: string
-          description: The completion status and any triggered/dependent actions once the task has been completed
-          format: string
-        TransactionReversalCardTransactionReversalServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        TransactionReversalCardTransactionReversalServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        TransactionReversalCardTransactionReversalServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        TransactionReversalCardTransactionReversalServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        TransactionReversalCardTransactionReversalServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing  within Card Capture. \nExample: Execute a payment transaction."
-    TransactionCapture:
-      type: object
-      properties:
-        TransactionCapturePreconditions:
-          type: string
-          description: The required status/situation prior to the execution of the task
-          format: string
-        TransactionCaptureTaskSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the transaction task
-          format: string
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        TransactionCapturePostconditions:
-          type: string
-          description: The completion status and any triggered/dependent actions once the task has been completed
-          format: string
-        TransactionCaptureServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        TransactionCaptureServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        TransactionCaptureServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        TransactionCaptureServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        TransactionCaptureServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing  within Card Capture. \nExample: Execute a payment transaction."
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    text:
-      type: object
-      properties:
-        Text:
-          type: string
-          description: Text is a character string such as a finite set of characters generally in the form of words of a language. (UN/CEFACT)
-          format: datatype
-      description: "The unit of measure like Percentage or BPS\n\nBasis points (BPS) refers to a common unit of measure for interest rates and other percentages in finance."
-    datetime:
-      type: object
-      properties:
-        DateTimeContent:
-          type: string
-          description: ''
-          format: string
-        TimeZoneCode:
-          type: string
-          description: ''
-          format: string
-        DaylightSavingIndicator:
-          type: string
-          description: ''
-          format: string
-      description: Date and time at which the range starts. (ISO20022)
-    datetimeperiod:
-      type: object
-      properties:
-        FromDateTime:
-          $ref: '#/components/schemas/datetime'
-        ToDateTime:
-          $ref: '#/components/schemas/datetime'
-      description: ''
-    rate:
-      type: object
-      properties:
-        RateValue:
-          $ref: '#/components/schemas/value'
-        RateUnit:
-          $ref: '#/components/schemas/text'
-        RatePeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        RateCapitalUnit:
-          $ref: '#/components/schemas/text'
-      description: ''
-    CardTransactionCaptureOutcome:
-      type: object
-      properties:
-        CardTransactionCaptureCalendar:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureCounterparty:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureDividend:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureFees:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureInterest:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureMargining:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureNotionalPrincipal:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureOptions:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureRates:
-          $ref: '#/components/schemas/rate'
-        CardTransactionCaptureSettlement:
-          type: string
-          description: ''
-          format: string
-        CardTransactionCaptureWorkProduct:
-          type: string
-          description: ''
-          format: string
-      description: "Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing  within Card Capture. \nExample: Execute a payment transaction."
-    TransactionAuthorization:
-      type: object
-      properties:
-        TransactionAuthorizationPreconditions:
-          type: string
-          description: The required status/situation prior to the execution of the task
-          format: string
-        TransactionAuthorizationTaskSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the transaction task
-          format: string
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        TransactionAuthorizationPostconditions:
-          type: string
-          description: The completion status and any triggered/dependent actions once the task has been completed
-          format: string
-        TransactionAuthorizationServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        TransactionAuthorizationServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        TransactionAuthorizationServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        TransactionAuthorizationServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        TransactionAuthorizationServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing  within Card Capture. \nExample: Execute a payment transaction."
-    TransactionConsolidation:
-      type: object
-      properties:
-        TransactionConsolidationPreconditions:
-          type: string
-          description: The required status/situation prior to the execution of the task
-          format: string
-        TransactionConsolidationTaskSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the transaction task
-          format: string
-        CardTransactionConsolidation:
-          $ref: '#/components/schemas/businessservice'
-        TransactionConsolidationPostconditions:
-          type: string
-          description: The completion status and any triggered/dependent actions once the task has been completed
-          format: string
-        TransactionConsolidationCardTransactionConsolidationServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        TransactionConsolidationCardTransactionConsolidationServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        TransactionConsolidationCardTransactionConsolidationServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing  within Card Capture. \nExample: Execute a payment transaction."
-    CreditChargeCardFinancialCaptureTransaction:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransactionParameterType:
-          type: string
-          description: A Classification value that distinguishes between business service transaction within Credit/Charge Card Financial Capture Transaction
-          format: string
-        CreditChargeCardFinancialCaptureTransactionSelectedOption:
-          type: string
-          description: A selected optional business service as subject matter of Credit/Charge Card Financial Capture Transaction
-          format: string
-        CreditChargeCardFinancialCaptureTransactionStatus:
-          type: string
-          description: The status of Credit/Charge Card Financial Capture Transaction
-          format: string
-        CreditChargeCardFinancialCaptureTransactionType:
-          type: string
-          description: A Classification value that specifies type of business action for this  Credit/Charge Card Financial Capture Transaction
-          format: string
-        CreditChargeCardFinancialCaptureTransactionTransactionType:
-          type: string
-          description: A Classification value that specifies type of transaction for this  Credit/Charge Card Financial Capture Transaction
-          format: string
-        CreditChargeCardFinancialCaptureTransactionTransaction:
-          type: string
-          description: Reference to Credit/Charge Card Financial Capture Transaction
-          format: string
-      description: "Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing  within Card Capture. \nExample: Execute a payment transaction."
     ControlCreditChargeCardFinancialCaptureTransactionRequest:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CoCR Control the processing of Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
     ControlCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CoCR Control the processing of Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
+    ControlCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExchangeCreditChargeCardFinancialCaptureTransactionRequest:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EcCR Accept, verify, etc. aspects of Credit Charge Card Financial Capture Transaction processing'
+              description: '|||'
+              format: String
     ExchangeCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EcCR Accept, verify, etc. aspects of Credit Charge Card Financial Capture Transaction processing'
+              description: '|||'
+              format: String
+    ExchangeCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExecuteCreditChargeCardFinancialCaptureTransactionRequest:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: ExCR Execute an available automated action for Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
     ExecuteCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExCR Execute an available automated action for Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
+    ExecuteCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateCreditChargeCardFinancialCaptureTransactionRequest:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Instantiate a new Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
     InitiateCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Instantiate a new Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
+    InitiateCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about any aspect of Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
+    RetrieveCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestCreditChargeCardFinancialCaptureTransactionRequest:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Request manual intervention or a decision with respect to Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
     RequestCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention or a decision with respect to Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
+    RequestCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateCreditChargeCardFinancialCaptureTransactionRequest:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionTransactionType:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update details relating to Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
     UpdateCreditChargeCardFinancialCaptureTransactionResponse:
-      type: object
-      properties:
-        CreditChargeCardFinancialCaptureTransaction:
-          type: object
-          properties:
-            CreditChargeCardFinancialCaptureTransactionParameterType:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CreditChargeCardFinancialCaptureTransactionStatus:
+              description: '|||'
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details relating to Credit Charge Card Financial Capture Transaction'
+              description: '|||'
+              format: String
+    UpdateCreditChargeCardFinancialCaptureTransaction:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ControlTransactionConsolidationRequest:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    BusinessService:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BusinessServiceType:
+              enum:
+                  -  Businessservicetypevalues
+              type: string
+              description: ">\r\n* `Businessservicetypevalues` \r\n* "
+    ControlTransactionConsolidationResponse:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ControlTransactionConsolidation:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ExchangeTransactionConsolidationRequest:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExchangeTransactionConsolidationResponse:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExchangeTransactionConsolidation:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ExecuteTransactionConsolidationRequest:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExecuteTransactionConsolidationResponse:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExecuteTransactionConsolidation:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateTransactionAuthorizationRequest:
+        type: object
+        properties:
+          TransactionAuthorizationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionAuthorizationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionAuthorizationResponse:
+        type: object
+        properties:
+          TransactionAuthorizationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionAuthorizationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionAuthorization:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateTransactionCaptureRequest:
+        type: object
+        properties:
+          TransactionCapturePreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionCapturePostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionCaptureResponse:
+        type: object
+        properties:
+          TransactionCapturePreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionCapturePostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionCapture:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateTransactionConsolidationRequest:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionConsolidationResponse:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionConsolidation:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateTransactionReversalRequest:
+        type: object
+        properties:
+          TransactionReversalPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionReversal:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionReversalPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionReversalResponse:
+        type: object
+        properties:
+          TransactionReversalPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionReversal:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionReversalPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTransactionReversal:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTransactionAuthorizationResponse:
-      type: object
-      properties:
-        TransactionAuthorization:
-          type: object
-          properties:
-            TransactionAuthorizationPreconditions:
+        type: object
+        properties:
+          TransactionAuthorizationPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionAuthorizationTaskSchedule:
+              description: '|||'
+              format: String
+          TransactionAuthorizationTaskSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessService:
-              $ref: '#/components/schemas/businessservice'
-            TransactionAuthorizationPostconditions:
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionAuthorizationPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionAuthorizationServiceType:
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionAuthorizationServiceDescription:
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionAuthorizationServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionAuthorizationServiceWorkProduct:
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionAuthorizationServiceName:
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Transaction Authorization'
+              description: '|||'
+              format: String
+    RetrieveTransactionAuthorization:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTransactionCaptureResponse:
-      type: object
-      properties:
-        TransactionCapture:
-          type: object
-          properties:
-            TransactionCapturePreconditions:
+        type: object
+        properties:
+          TransactionCapturePreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionCaptureTaskSchedule:
+              description: '|||'
+              format: String
+          TransactionCaptureTaskSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessService:
-              $ref: '#/components/schemas/businessservice'
-            TransactionCapturePostconditions:
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionCapturePostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionCaptureServiceType:
+              description: '|||'
+              format: String
+          TransactionCaptureServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionCaptureServiceDescription:
+              description: '|||'
+              format: String
+          TransactionCaptureServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionCaptureServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          TransactionCaptureServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionCaptureServiceWorkProduct:
+              description: '|||'
+              format: String
+          TransactionCaptureServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionCaptureServiceName:
+              description: '|||'
+              format: String
+          TransactionCaptureServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Transaction Capture'
+              description: '|||'
+              format: String
+    RetrieveTransactionCapture:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTransactionConsolidationResponse:
-      type: object
-      properties:
-        TransactionConsolidation:
-          type: object
-          properties:
-            TransactionConsolidationPreconditions:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionConsolidationTaskSchedule:
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionConsolidation:
-              $ref: '#/components/schemas/businessservice'
-            TransactionConsolidationPostconditions:
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionConsolidationCardTransactionConsolidationServiceType:
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionConsolidationCardTransactionConsolidationServiceName:
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Transaction Consolidation'
+              description: '|||'
+              format: String
+    RetrieveTransactionConsolidation:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTransactionReversalResponse:
-      type: object
-      properties:
-        TransactionReversal:
-          type: object
-          properties:
-            TransactionReversalPreconditions:
+        type: object
+        properties:
+          TransactionReversalPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionReversalTaskSchedule:
+              description: '|||'
+              format: String
+          TransactionReversalTaskSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionReversal:
-              $ref: '#/components/schemas/businessservice'
-            TransactionReversalPostconditions:
+              description: '|||'
+              format: String
+          CardTransactionReversal:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionReversalPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionReversalCardTransactionReversalServiceType:
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionReversalCardTransactionReversalServiceDescription:
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionReversalCardTransactionReversalServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionReversalCardTransactionReversalServiceWorkProduct:
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            TransactionReversalCardTransactionReversalServiceName:
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Transaction Reversal'
+              description: '|||'
+              format: String
+    RetrieveTransactionReversal:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTransactionAuthorizationRequest:
+        type: object
+        properties:
+          TransactionAuthorizationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionAuthorizationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionAuthorizationResponse:
+        type: object
+        properties:
+          TransactionAuthorizationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionAuthorizationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionAuthorizationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionAuthorization:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTransactionCaptureRequest:
+        type: object
+        properties:
+          TransactionCapturePreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionCapturePostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionCaptureResponse:
+        type: object
+        properties:
+          TransactionCapturePreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionCapturePostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionCaptureServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionCapture:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTransactionConsolidationRequest:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionConsolidationResponse:
+        type: object
+        properties:
+          TransactionConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionConsolidation:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionConsolidationCardTransactionConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionConsolidation:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTransactionReversalRequest:
+        type: object
+        properties:
+          TransactionReversalPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionReversal:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionReversalPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionReversalResponse:
+        type: object
+        properties:
+          TransactionReversalPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalTaskSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CardTransactionReversal:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          TransactionReversalPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceType:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          TransactionReversalCardTransactionReversalServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTransactionReversal:
+        type: object
+        properties:
+          CreditChargeCardFinancialCaptureTransactionParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CreditChargeCardFinancialCaptureTransactionTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     ControlCreditChargeCardFinancialCaptureTransactionResponse:
-      description: ControlCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlCreditChargeCardFinancialCaptureTransactionResponse'
+        description: CreditChargeCardFinancialCaptureTransactionControl
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ControlCreditChargeCardFinancialCaptureTransactionResponse
     ExchangeCreditChargeCardFinancialCaptureTransactionResponse:
-      description: ExchangeCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeCreditChargeCardFinancialCaptureTransactionResponse'
+        description: CreditChargeCardFinancialCaptureTransactionExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExchangeCreditChargeCardFinancialCaptureTransactionResponse
     ExecuteCreditChargeCardFinancialCaptureTransactionResponse:
-      description: ExecuteCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteCreditChargeCardFinancialCaptureTransactionResponse'
+        description: CreditChargeCardFinancialCaptureTransactionExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecuteCreditChargeCardFinancialCaptureTransactionResponse
     InitiateCreditChargeCardFinancialCaptureTransactionResponse:
-      description: InitiateCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCreditChargeCardFinancialCaptureTransactionResponse'
+        description: CreditChargeCardFinancialCaptureTransactionInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCreditChargeCardFinancialCaptureTransactionResponse
     RetrieveCreditChargeCardFinancialCaptureTransactionResponse:
-      description: RetrieveCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCreditChargeCardFinancialCaptureTransactionResponse'
+        description: CreditChargeCardFinancialCaptureTransactionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveCreditChargeCardFinancialCaptureTransactionResponse
     RequestCreditChargeCardFinancialCaptureTransactionResponse:
-      description: RequestCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCreditChargeCardFinancialCaptureTransactionResponse'
+        description: CreditChargeCardFinancialCaptureTransactionRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestCreditChargeCardFinancialCaptureTransactionResponse
     UpdateCreditChargeCardFinancialCaptureTransactionResponse:
-      description: UpdateCreditChargeCardFinancialCaptureTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCreditChargeCardFinancialCaptureTransactionResponse'
-    TransactionConsolidation:
-      description: TransactionConsolidation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionConsolidation'
-    TransactionAuthorization:
-      description: TransactionAuthorization
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionAuthorization'
-    TransactionCapture:
-      description: TransactionCapture
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionCapture'
-    TransactionReversal:
-      description: TransactionReversal
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionReversal'
+        description: CreditChargeCardFinancialCaptureTransactionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateCreditChargeCardFinancialCaptureTransactionResponse
+    ControlTransactionConsolidationResponse:
+        description: TransactionConsolidationControl
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlTransactionConsolidationResponse'
+    ExchangeTransactionConsolidationResponse:
+        description: TransactionConsolidationExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeTransactionConsolidationResponse'
+    ExecuteTransactionConsolidationResponse:
+        description: TransactionConsolidationExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteTransactionConsolidationResponse'
+    InitiateTransactionAuthorizationResponse:
+        description: TransactionAuthorizationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionAuthorizationResponse'
+    InitiateTransactionCaptureResponse:
+        description: TransactionCaptureInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionCaptureResponse'
+    InitiateTransactionConsolidationResponse:
+        description: TransactionConsolidationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionConsolidationResponse'
+    InitiateTransactionReversalResponse:
+        description: TransactionReversalInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionReversalResponse'
     RetrieveTransactionAuthorizationResponse:
-      description: RetrieveTransactionAuthorizationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTransactionAuthorizationResponse'
+        description: TransactionAuthorizationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTransactionAuthorizationResponse'
     RetrieveTransactionCaptureResponse:
-      description: RetrieveTransactionCaptureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTransactionCaptureResponse'
+        description: TransactionCaptureRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTransactionCaptureResponse'
     RetrieveTransactionConsolidationResponse:
-      description: RetrieveTransactionConsolidationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTransactionConsolidationResponse'
+        description: TransactionConsolidationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTransactionConsolidationResponse'
     RetrieveTransactionReversalResponse:
-      description: RetrieveTransactionReversalResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTransactionReversalResponse'
+        description: TransactionReversalRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTransactionReversalResponse'
+    UpdateTransactionAuthorizationResponse:
+        description: TransactionAuthorizationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionAuthorizationResponse'
+    UpdateTransactionCaptureResponse:
+        description: TransactionCaptureUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionCaptureResponse'
+    UpdateTransactionConsolidationResponse:
+        description: TransactionConsolidationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionConsolidationResponse'
+    UpdateTransactionReversalResponse:
+        description: TransactionReversalUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionReversalResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    cardtransactioncaptureid:
-      name: cardtransactioncaptureid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    creditchargecardfinancialcapturetransactionid:
+        name: creditchargecardfinancialcapturetransactionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     transactionconsolidationid:
-      name: transactionconsolidationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: transactionconsolidationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     transactionauthorizationid:
-      name: transactionauthorizationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: transactionauthorizationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     transactioncaptureid:
-      name: transactioncaptureid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: transactioncaptureid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     transactionreversalid:
-      name: transactionreversalid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: transactionreversalid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     ControlCreditChargeCardFinancialCaptureTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlCreditChargeCardFinancialCaptureTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ControlCreditChargeCardFinancialCaptureTransactionRequest
+        required: true
     ExchangeCreditChargeCardFinancialCaptureTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeCreditChargeCardFinancialCaptureTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExchangeCreditChargeCardFinancialCaptureTransactionRequest
+        required: true
     ExecuteCreditChargeCardFinancialCaptureTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteCreditChargeCardFinancialCaptureTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecuteCreditChargeCardFinancialCaptureTransactionRequest
+        required: true
     InitiateCreditChargeCardFinancialCaptureTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCreditChargeCardFinancialCaptureTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCreditChargeCardFinancialCaptureTransactionRequest
+        required: true
+    RetrieveCreditChargeCardFinancialCaptureTransactionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     RequestCreditChargeCardFinancialCaptureTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCreditChargeCardFinancialCaptureTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestCreditChargeCardFinancialCaptureTransactionRequest
+        required: true
     UpdateCreditChargeCardFinancialCaptureTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCreditChargeCardFinancialCaptureTransactionRequest'
-      required: true
-    TransactionConsolidation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionConsolidation'
-      required: true
-    TransactionAuthorization:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionAuthorization'
-      required: true
-    TransactionCapture:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionCapture'
-      required: true
-    TransactionReversal:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TransactionReversal'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateCreditChargeCardFinancialCaptureTransactionRequest
+        required: true
+    ControlTransactionConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlTransactionConsolidationRequest'
+        required: true
+    ExchangeTransactionConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeTransactionConsolidationRequest'
+        required: true
+    ExecuteTransactionConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteTransactionConsolidationRequest'
+        required: true
+    InitiateTransactionAuthorizationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionAuthorizationRequest'
+        required: true
+    InitiateTransactionCaptureRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionCaptureRequest'
+        required: true
+    InitiateTransactionConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionConsolidationRequest'
+        required: true
+    InitiateTransactionReversalRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTransactionReversalRequest'
+        required: true
+    RetrieveTransactionAuthorizationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveTransactionCaptureRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveTransactionConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveTransactionReversalRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateTransactionAuthorizationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionAuthorizationRequest'
+        required: true
+    UpdateTransactionCaptureRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionCaptureRequest'
+        required: true
+    UpdateTransactionConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionConsolidationRequest'
+        required: true
+    UpdateTransactionReversalRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTransactionReversalRequest'
+        required: true

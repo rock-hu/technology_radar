@@ -1,1892 +1,3086 @@
 openapi: 3.0.1
 info:
   title: System Development
-  description: 'Develop new, enhance existing applications and integrate package based systems solutions'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    System Development (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/SystemDevelopment/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/SystemDevelopment/12.0.1'
 paths:
-  /SystemDevelopment/Create:
-    post:
-      tags:
-        - CR - ITSystemDevelopment
-      summary: CrCR Create/initiate a system development project
-      description: CrCR Create/initiate a system development project
-      operationId: Create
-      requestBody:
-        $ref: '#/components/requestBodies/CreateITSystemDevelopmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CreateITSystemDevelopmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/Update':
-    put:
-      tags:
-        - CR - ITSystemDevelopment
-      summary: UpCR Update details of an active system development project
-      description: UpCR Update details of an active system development project
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateITSystemDevelopmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateITSystemDevelopmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/Request':
-    put:
-      tags:
-        - CR - ITSystemDevelopment
-      summary: RqCR Request manual intervention in a project
-      description: RqCR Request manual intervention in a project
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestITSystemDevelopmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestITSystemDevelopmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/Retrieve':
-    get:
-      tags:
-        - CR - ITSystemDevelopment
-      summary: ReCR Retrieve details/reports about a system development project
-      description: ReCR Retrieve details/reports about a system development project
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveITSystemDevelopmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/FunctionalSpecification/{functionalspecificationid}/Update':
-    put:
-      tags:
-        - BQ - FunctionalSpecification
-      summary: UpBQ Update aspects of the functional specification
-      description: UpBQ Update aspects of the functional specification
-      operationId: UpdateFunctionalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/functionalspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/FunctionalSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/FunctionalSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/FunctionalSpecification/{functionalspecificationid}/Capture':
-    put:
-      tags:
-        - BQ - FunctionalSpecification
-      summary: CaBQ Capture details relating to the functional specification activity
-      description: CaBQ Capture details relating to the functional specification activity
-      operationId: CaptureFunctionalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/functionalspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureFunctionalSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureFunctionalSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/FunctionalSpecification/{functionalspecificationid}/Request':
-    put:
-      tags:
-        - BQ - FunctionalSpecification
-      summary: RqBQ Request manual intervention to the functional specification
-      description: RqBQ Request manual intervention to the functional specification
-      operationId: RequestFunctionalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/functionalspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/FunctionalSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/FunctionalSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/FunctionalSpecification/{functionalspecificationid}/Retrieve':
-    get:
-      tags:
-        - BQ - FunctionalSpecification
-      summary: ReBQ Retrieve details about the functional specification tasks
-      description: ReBQ Retrieve details about the functional specification tasks
-      operationId: RetrieveFunctionalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/functionalspecificationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFunctionalSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TechnicalSpecification/{technicalspecificationid}/Update':
-    put:
-      tags:
-        - BQ - TechnicalSpecification
-      summary: UpBQ Update aspects of the technical specification
-      description: UpBQ Update aspects of the technical specification
-      operationId: UpdateTechnicalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/technicalspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TechnicalSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/TechnicalSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TechnicalSpecification/{technicalspecificationid}/Capture':
-    put:
-      tags:
-        - BQ - TechnicalSpecification
-      summary: CaBQ Capture details relating to the technical specification activity
-      description: CaBQ Capture details relating to the technical specification activity
-      operationId: CaptureTechnicalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/technicalspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureTechnicalSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureTechnicalSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TechnicalSpecification/{technicalspecificationid}/Request':
-    put:
-      tags:
-        - BQ - TechnicalSpecification
-      summary: RqBQ Request manual intervention to the technical specification
-      description: RqBQ Request manual intervention to the technical specification
-      operationId: RequestTechnicalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/technicalspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TechnicalSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/TechnicalSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TechnicalSpecification/{technicalspecificationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TechnicalSpecification
-      summary: ReBQ Retrieve details about the technical specification tasks
-      description: ReBQ Retrieve details about the technical specification tasks
-      operationId: RetrieveTechnicalSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/technicalspecificationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTechnicalSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/SoftwareandDataSpecification/{softwareanddataspecificationid}/Update':
-    put:
-      tags:
-        - BQ - SoftwareandDataSpecification
-      summary: UpBQ Update aspects of the software and data specification
-      description: UpBQ Update aspects of the software and data specification
-      operationId: UpdateSoftwareandDataSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/softwareanddataspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/SoftwareandDataSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/SoftwareandDataSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/SoftwareandDataSpecification/{softwareanddataspecificationid}/Capture':
-    put:
-      tags:
-        - BQ - SoftwareandDataSpecification
-      summary: CaBQ Capture details relating to the software and data specification activity
-      description: CaBQ Capture details relating to the software and data specification activity
-      operationId: CaptureSoftwareandDataSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/softwareanddataspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureSoftwareandDataSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureSoftwareandDataSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/SoftwareandDataSpecification/{softwareanddataspecificationid}/Request':
-    put:
-      tags:
-        - BQ - SoftwareandDataSpecification
-      summary: RqBQ Request manual intervention to the software and data specification
-      description: RqBQ Request manual intervention to the software and data specification
-      operationId: RequestSoftwareandDataSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/softwareanddataspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/SoftwareandDataSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/SoftwareandDataSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/SoftwareandDataSpecification/{softwareanddataspecificationid}/Retrieve':
-    get:
-      tags:
-        - BQ - SoftwareandDataSpecification
-      summary: ReBQ Retrieve details about the software and data specification tasks
-      description: ReBQ Retrieve details about the software and data specification tasks
-      operationId: RetrieveSoftwareandDataSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/softwareanddataspecificationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveSoftwareandDataSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TestingSpecification/{testingspecificationid}/Update':
-    put:
-      tags:
-        - BQ - TestingSpecification
-      summary: UpBQ Update aspects of the testing specification
-      description: UpBQ Update aspects of the testing specification
-      operationId: UpdateTestingSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/testingspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TestingSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/TestingSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TestingSpecification/{testingspecificationid}/Capture':
-    put:
-      tags:
-        - BQ - TestingSpecification
-      summary: CaBQ Capture details relating to the testing specification activity
-      description: CaBQ Capture details relating to the testing specification activity
-      operationId: CaptureTestingSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/testingspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureTestingSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureTestingSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TestingSpecification/{testingspecificationid}/Request':
-    put:
-      tags:
-        - BQ - TestingSpecification
-      summary: RqBQ Request manual intervention to the testing specification
-      description: RqBQ Request manual intervention to the testing specification
-      operationId: RequestTestingSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/testingspecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TestingSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/TestingSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/TestingSpecification/{testingspecificationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TestingSpecification
-      summary: ReBQ Retrieve details about the testing specification tasks
-      description: ReBQ Retrieve details about the testing specification tasks
-      operationId: RetrieveTestingSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/testingspecificationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTestingSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/UsageSpecification/{usagespecificationid}/Update':
-    put:
-      tags:
-        - BQ - UsageSpecification
-      summary: UpBQ Update aspects of the usage specification
-      description: UpBQ Update aspects of the usage specification
-      operationId: UpdateUsageSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/usagespecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/UsageSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/UsageSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/UsageSpecification/{usagespecificationid}/Capture':
-    put:
-      tags:
-        - BQ - UsageSpecification
-      summary: CaBQ Capture details relating to the usage specification activity
-      description: CaBQ Capture details relating to the usage specification activity
-      operationId: CaptureUsageSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/usagespecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureUsageSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureUsageSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/UsageSpecification/{usagespecificationid}/Request':
-    put:
-      tags:
-        - BQ - UsageSpecification
-      summary: RqBQ Request manual intervention to the usage specification
-      description: RqBQ Request manual intervention to the usage specification
-      operationId: RequestUsageSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/usagespecificationid'
-      requestBody:
-        $ref: '#/components/requestBodies/UsageSpecification'
-      responses:
-        '200':
-          $ref: '#/components/responses/UsageSpecification'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/SystemDevelopment/{systemdevelopmentid}/UsageSpecification/{usagespecificationid}/Retrieve':
-    get:
-      tags:
-        - BQ - UsageSpecification
-      summary: ReBQ Retrieve details about the usage specification tasks
-      description: ReBQ Retrieve details about the usage specification tasks
-      operationId: RetrieveUsageSpecification
-      parameters:
-        - $ref: '#/components/parameters/systemdevelopmentid'
-        - $ref: '#/components/parameters/usagespecificationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveUsageSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ITSystemDevelopment/Create':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - ITSystemDevelopment'
+        summary: (DDD Service) CrCR Create/initiate a system development project
+        description: (DDD Service) CrCR Create/initiate a system development project
+        operationId: ITSystemDevelopment/Create
+        requestBody:
+          $ref: '#/components/requestBodies/CreateITSystemDevelopmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CreateITSystemDevelopmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ITSystemDevelopment/{itsystemdevelopmentid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ITSystemDevelopment'
+        summary: >-
+          (DDD Service) UpCR Update details of an active system development
+          project
+        description: >-
+          (DDD Service) UpCR Update details of an active system development
+          project
+        operationId: ITSystemDevelopment/Update
+        parameters:
+          - $ref: '#/components/parameters/itsystemdevelopmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateITSystemDevelopmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateITSystemDevelopmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ITSystemDevelopment/{itsystemdevelopmentid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ITSystemDevelopment'
+        summary: (DDD Service) RqCR Request manual intervention in a project
+        description: (DDD Service) RqCR Request manual intervention in a project
+        operationId: ITSystemDevelopment/Request
+        parameters:
+          - $ref: '#/components/parameters/itsystemdevelopmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestITSystemDevelopmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestITSystemDevelopmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ITSystemDevelopment/{itsystemdevelopmentid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ITSystemDevelopment'
+        summary: >-
+          (DDD Service) ReCR Retrieve details/reports about a system development
+          project
+        description: >-
+          (DDD Service) ReCR Retrieve details/reports about a system development
+          project
+        operationId: ITSystemDevelopment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/itsystemdevelopmentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveITSystemDevelopmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{functionalspecificationid}/FunctionalSpecification/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalSpecification'
+        summary: (DDD Service) UpBQ Update aspects of the functional specification
+        description: (DDD Service) UpBQ Update aspects of the functional specification
+        operationId: FunctionalSpecification/Update
+        parameters:
+          - $ref: '#/components/parameters/functionalspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateFunctionalSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateFunctionalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{functionalspecificationid}/FunctionalSpecification/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalSpecification'
+        summary: >-
+          (DDD Service) CaBQ Capture details relating to the functional
+          specification activity
+        description: >-
+          (DDD Service) CaBQ Capture details relating to the functional
+          specification activity
+        operationId: FunctionalSpecification/Capture
+        parameters:
+          - $ref: '#/components/parameters/functionalspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureFunctionalSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureFunctionalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{functionalspecificationid}/FunctionalSpecification/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalSpecification'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention to the functional
+          specification
+        description: >-
+          (DDD Service) RqBQ Request manual intervention to the functional
+          specification
+        operationId: FunctionalSpecification/Request
+        parameters:
+          - $ref: '#/components/parameters/functionalspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestFunctionalSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestFunctionalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{functionalspecificationid}/FunctionalSpecification/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - FunctionalSpecification'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about the functional specification
+          tasks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about the functional specification
+          tasks
+        operationId: FunctionalSpecification/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/functionalspecificationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFunctionalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{technicalspecificationid}/TechnicalSpecification/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TechnicalSpecification'
+        summary: (DDD Service) UpBQ Update aspects of the technical specification
+        description: (DDD Service) UpBQ Update aspects of the technical specification
+        operationId: TechnicalSpecification/Update
+        parameters:
+          - $ref: '#/components/parameters/technicalspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTechnicalSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTechnicalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{technicalspecificationid}/TechnicalSpecification/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TechnicalSpecification'
+        summary: >-
+          (DDD Service) CaBQ Capture details relating to the technical
+          specification activity
+        description: >-
+          (DDD Service) CaBQ Capture details relating to the technical
+          specification activity
+        operationId: TechnicalSpecification/Capture
+        parameters:
+          - $ref: '#/components/parameters/technicalspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureTechnicalSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureTechnicalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{technicalspecificationid}/TechnicalSpecification/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TechnicalSpecification'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention to the technical
+          specification
+        description: >-
+          (DDD Service) RqBQ Request manual intervention to the technical
+          specification
+        operationId: TechnicalSpecification/Request
+        parameters:
+          - $ref: '#/components/parameters/technicalspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestTechnicalSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestTechnicalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{technicalspecificationid}/TechnicalSpecification/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TechnicalSpecification'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about the technical specification
+          tasks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about the technical specification
+          tasks
+        operationId: TechnicalSpecification/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/technicalspecificationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTechnicalSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{softwareanddataspecificationid}/SoftwareandDataSpecification/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - SoftwareandDataSpecification'
+        summary: >-
+          (DDD Service) UpBQ Update aspects of the software and data
+          specification
+        description: >-
+          (DDD Service) UpBQ Update aspects of the software and data
+          specification
+        operationId: SoftwareandDataSpecification/Update
+        parameters:
+          - $ref: '#/components/parameters/softwareanddataspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateSoftwareandDataSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateSoftwareandDataSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{softwareanddataspecificationid}/SoftwareandDataSpecification/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - SoftwareandDataSpecification'
+        summary: >-
+          (DDD Service) CaBQ Capture details relating to the software and data
+          specification activity
+        description: >-
+          (DDD Service) CaBQ Capture details relating to the software and data
+          specification activity
+        operationId: SoftwareandDataSpecification/Capture
+        parameters:
+          - $ref: '#/components/parameters/softwareanddataspecificationid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/CaptureSoftwareandDataSpecificationRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureSoftwareandDataSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{softwareanddataspecificationid}/SoftwareandDataSpecification/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - SoftwareandDataSpecification'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention to the software and
+          data specification
+        description: >-
+          (DDD Service) RqBQ Request manual intervention to the software and
+          data specification
+        operationId: SoftwareandDataSpecification/Request
+        parameters:
+          - $ref: '#/components/parameters/softwareanddataspecificationid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestSoftwareandDataSpecificationRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestSoftwareandDataSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{softwareanddataspecificationid}/SoftwareandDataSpecification/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - SoftwareandDataSpecification'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about the software and data
+          specification tasks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about the software and data
+          specification tasks
+        operationId: SoftwareandDataSpecification/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/softwareanddataspecificationid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveSoftwareandDataSpecificationResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{testingspecificationid}/TestingSpecification/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TestingSpecification'
+        summary: (DDD Service) UpBQ Update aspects of the testing specification
+        description: (DDD Service) UpBQ Update aspects of the testing specification
+        operationId: TestingSpecification/Update
+        parameters:
+          - $ref: '#/components/parameters/testingspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTestingSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTestingSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{testingspecificationid}/TestingSpecification/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TestingSpecification'
+        summary: >-
+          (DDD Service) CaBQ Capture details relating to the testing
+          specification activity
+        description: >-
+          (DDD Service) CaBQ Capture details relating to the testing
+          specification activity
+        operationId: TestingSpecification/Capture
+        parameters:
+          - $ref: '#/components/parameters/testingspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureTestingSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureTestingSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{testingspecificationid}/TestingSpecification/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TestingSpecification'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention to the testing
+          specification
+        description: >-
+          (DDD Service) RqBQ Request manual intervention to the testing
+          specification
+        operationId: TestingSpecification/Request
+        parameters:
+          - $ref: '#/components/parameters/testingspecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestTestingSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestTestingSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{testingspecificationid}/TestingSpecification/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TestingSpecification'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about the testing specification
+          tasks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about the testing specification
+          tasks
+        operationId: TestingSpecification/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/testingspecificationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTestingSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{usagespecificationid}/UsageSpecification/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - UsageSpecification'
+        summary: (DDD Service) UpBQ Update aspects of the usage specification
+        description: (DDD Service) UpBQ Update aspects of the usage specification
+        operationId: UsageSpecification/Update
+        parameters:
+          - $ref: '#/components/parameters/usagespecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateUsageSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateUsageSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{usagespecificationid}/UsageSpecification/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - UsageSpecification'
+        summary: >-
+          (DDD Service) CaBQ Capture details relating to the usage specification
+          activity
+        description: >-
+          (DDD Service) CaBQ Capture details relating to the usage specification
+          activity
+        operationId: UsageSpecification/Capture
+        parameters:
+          - $ref: '#/components/parameters/usagespecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureUsageSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureUsageSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{usagespecificationid}/UsageSpecification/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - UsageSpecification'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention to the usage
+          specification
+        description: >-
+          (DDD Service) RqBQ Request manual intervention to the usage
+          specification
+        operationId: UsageSpecification/Request
+        parameters:
+          - $ref: '#/components/parameters/usagespecificationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestUsageSpecificationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestUsageSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/SystemDevelopment/{usagespecificationid}/UsageSpecification/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - UsageSpecification'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about the usage specification
+          tasks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about the usage specification
+          tasks
+        operationId: UsageSpecification/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/usagespecificationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveUsageSpecificationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    TestingSpecification:
-      type: object
-      properties:
-        TestingSpecificationTaskDefinition:
-          type: string
-          description: Details the testing tasks and deliverables of system development project
-          format: string
-        TestingSpecificationTaskWorkProducts:
-          type: string
-          description: Collection of design and development work products used in the testing of the developed system
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated project documents
-          format: object
-        SystemTestingSpecification:
-          type: string
-          description: The testing specification and results as a suitably structured and formatted document
-          format: string
-      description: "A collection of one or more deliverables that may be further defined in terms of an approach to be followed to create them\n\nExamples: Functional module specification"
-    UsageSpecification:
-      type: object
-      properties:
-        UsageSpecificationTaskDefinition:
-          type: string
-          description: Details the usage guidelines specification tasks and deliverables of the system development project
-          format: string
-        UsageSpecificationTaskWorkProducts:
-          type: string
-          description: Collection of design and development work products used in the definition of usage guidelines etc.
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated project documents
-          format: object
-        SystemFunctionalSpecification:
-          type: string
-          description: The usage guideline specification as a suitably structured and formatted document
-          format: string
-      description: "A collection of one or more deliverables that may be further defined in terms of an approach to be followed to create them\n\nExamples: Functional module specification"
-    FunctionalSpecification:
-      type: object
-      properties:
-        FunctionalSpecificationTaskDefinition:
-          type: string
-          description: Details the functional specification tasks and deliverables of system development project
-          format: string
-        FunctionalSpecificationTaskWorkProducts:
-          type: string
-          description: Collection of design and development work products used in the definition of functional requirements
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated project documents
-          format: object
-        SystemFunctionalSpecification:
-          type: string
-          description: The functional specification as a suitably structured and formatted document
-          format: string
-      description: "A collection of one or more deliverables that may be further defined in terms of an approach to be followed to create them\n\nExamples: Functional module specification"
-    SoftwareandDataSpecification:
-      type: object
-      properties:
-        SoftwareandDataSpecificationTaskDefinition:
-          type: string
-          description: Details the software and data specification/development tasks and deliverables of system development project
-          format: string
-        SoftwareandDataSpecificationTaskWorkProducts:
-          type: string
-          description: Collection of design and development work products used in the implementation of the software and data specification
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated project documents
-          format: object
-        SystemSoftwareandDataSpecification:
-          type: string
-          description: The developed software and data specification in a format suited for production deployment
-          format: string
-      description: "A collection of one or more deliverables that may be further defined in terms of an approach to be followed to create them\n\nExamples: Functional module specification"
-    TechnicalSpecification:
-      type: object
-      properties:
-        TechnicalSpecificationTaskDefinition:
-          type: string
-          description: Details the technical specification tasks and deliverables of system development project
-          format: string
-        TechnicalSpecificationTaskWorkProducts:
-          type: string
-          description: Collection of design and development work products used in the definition of technical requirements
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated project documents
-          format: object
-        SystemTechnicalSpecification:
-          type: string
-          description: The technical specification as a suitably structured and formatted document
-          format: string
-      description: "A collection of one or more deliverables that may be further defined in terms of an approach to be followed to create them\n\nExamples: Functional module specification"
-    ITSystemDevelopment:
-      type: object
-      properties:
-        SystemDevelopmentProjectName:
-          type: string
-          description: The reference to and descriptive name of the deployment project
-          format: string
-        SystemDevelopmentProjectType:
-          type: string
-          description: 'The type of deployment project (e.g. service update, new product release)'
-          format: string
-        SystemDevelopmentProjectDescription:
-          type: string
-          description: 'A description of the scope, goal and make-up of the product deployment project'
-          format: string
-        SystemDevelopmentImplementationPlan:
-          type: string
-          description: 'The derived deployment execution plan, covering tasks from the completion and acceptance of the deployment plan through to completion of the deployment including post deployment analysis tasks if required. Consolidates the different aspects of the plan. (Captures both planned and actual results)'
-          format: string
-        SystemDevelopmentBudget:
-          type: string
-          description: The financial considerations for the deployment (includes planning and execution)
-          format: string
-        SystemDevelopmentProjectOrganization:
-          type: string
-          description: The organizational aspects of the deployment effort (includes planning and execution)
-          format: string
-        SystemDevelopmentProjectSchedule:
-          type: string
-          description: 'The deployment schedule of events, planned and actual (includes planning and execution tasks)'
-          format: string
-        DateType:
-          type: string
-          description: 'Key dates associated with the development of the deployment plan (e.g. planning start date, deployment plan approval, deployment plan sign-off)'
-          format: string
-        Date:
-          type: string
-          description: Value of the specific date type
-          format: string
-      description: "To build or enhance something, typically an IT production systems  within System Development. Includes development, Assessment and deployment activities.\nExample: Build, enhance, test and deploy a major enhancement to a production product processing system."
     CreateITSystemDevelopmentRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CrCR Create/initiate a system development project'
+              description: '|||'
+              format: String
     CreateITSystemDevelopmentResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CrCR Create/initiate a system development project'
+              description: '|||'
+              format: String
+    CreateITSystemDevelopment:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateITSystemDevelopmentRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update details of an active system development project'
+              description: '|||'
+              format: String
     UpdateITSystemDevelopmentResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details of an active system development project'
+              description: '|||'
+              format: String
+    UpdateITSystemDevelopment:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestITSystemDevelopmentRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Request manual intervention in a project'
+              description: '|||'
+              format: String
     RequestITSystemDevelopmentResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention in a project'
+              description: '|||'
+              format: String
+    RequestITSystemDevelopment:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveITSystemDevelopmentResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details/reports about a system development project'
+              description: '|||'
+              format: String
+    RetrieveITSystemDevelopment:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateFunctionalSpecificationRequest:
+        type: object
+        properties:
+          FunctionalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateFunctionalSpecificationResponse:
+        type: object
+        properties:
+          FunctionalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateFunctionalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureFunctionalSpecificationRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalSpecification:
-          type: object
-          properties:
-            FunctionalSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaBQ Capture details relating to the functional specification activity'
+              description: '|||'
+              format: Object
     CaptureFunctionalSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalSpecification:
-          type: object
-          properties:
-            FunctionalSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CaBQ Capture details relating to the functional specification activity'
+              description: '|||'
+              format: Object
+    CaptureFunctionalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestFunctionalSpecificationRequest:
+        type: object
+        properties:
+          FunctionalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestFunctionalSpecificationResponse:
+        type: object
+        properties:
+          FunctionalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestFunctionalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveFunctionalSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalSpecification:
-          type: object
-          properties:
-            FunctionalSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          FunctionalSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SystemFunctionalSpecification:
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about the functional specification tasks'
+              description: '|||'
+              format: String
+    RetrieveFunctionalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTechnicalSpecificationRequest:
+        type: object
+        properties:
+          TechnicalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTechnicalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTechnicalSpecificationResponse:
+        type: object
+        properties:
+          TechnicalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTechnicalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTechnicalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureTechnicalSpecificationRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        TechnicalSpecification:
-          type: object
-          properties:
-            TechnicalSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            TechnicalSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaBQ Capture details relating to the technical specification activity'
+              description: '|||'
+              format: Object
     CaptureTechnicalSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        TechnicalSpecification:
-          type: object
-          properties:
-            TechnicalSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            TechnicalSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CaBQ Capture details relating to the technical specification activity'
+              description: '|||'
+              format: Object
+    CaptureTechnicalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestTechnicalSpecificationRequest:
+        type: object
+        properties:
+          TechnicalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTechnicalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestTechnicalSpecificationResponse:
+        type: object
+        properties:
+          TechnicalSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTechnicalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestTechnicalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTechnicalSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        TechnicalSpecification:
-          type: object
-          properties:
-            TechnicalSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            TechnicalSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          TechnicalSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SystemTechnicalSpecification:
+              description: '|||'
+              format: Object
+          SystemTechnicalSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about the technical specification tasks'
+              description: '|||'
+              format: String
+    RetrieveTechnicalSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateSoftwareandDataSpecificationRequest:
+        type: object
+        properties:
+          SoftwareandDataSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemSoftwareandDataSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateSoftwareandDataSpecificationResponse:
+        type: object
+        properties:
+          SoftwareandDataSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemSoftwareandDataSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateSoftwareandDataSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureSoftwareandDataSpecificationRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        SoftwareandDataSpecification:
-          type: object
-          properties:
-            SoftwareandDataSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            SoftwareandDataSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaBQ Capture details relating to the software and data specification activity'
+              description: '|||'
+              format: Object
     CaptureSoftwareandDataSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        SoftwareandDataSpecification:
-          type: object
-          properties:
-            SoftwareandDataSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            SoftwareandDataSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CaBQ Capture details relating to the software and data specification activity'
+              description: '|||'
+              format: Object
+    CaptureSoftwareandDataSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestSoftwareandDataSpecificationRequest:
+        type: object
+        properties:
+          SoftwareandDataSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemSoftwareandDataSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestSoftwareandDataSpecificationResponse:
+        type: object
+        properties:
+          SoftwareandDataSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemSoftwareandDataSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestSoftwareandDataSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveSoftwareandDataSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        SoftwareandDataSpecification:
-          type: object
-          properties:
-            SoftwareandDataSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            SoftwareandDataSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          SoftwareandDataSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SystemSoftwareandDataSpecification:
+              description: '|||'
+              format: Object
+          SystemSoftwareandDataSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about the software and data specification tasks'
+              description: '|||'
+              format: String
+    RetrieveSoftwareandDataSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTestingSpecificationRequest:
+        type: object
+        properties:
+          TestingSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTestingSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTestingSpecificationResponse:
+        type: object
+        properties:
+          TestingSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTestingSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTestingSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureTestingSpecificationRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        TestingSpecification:
-          type: object
-          properties:
-            TestingSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          TestingSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            TestingSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaBQ Capture details relating to the testing specification activity'
+              description: '|||'
+              format: Object
     CaptureTestingSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        TestingSpecification:
-          type: object
-          properties:
-            TestingSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          TestingSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            TestingSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CaBQ Capture details relating to the testing specification activity'
+              description: '|||'
+              format: Object
+    CaptureTestingSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestTestingSpecificationRequest:
+        type: object
+        properties:
+          TestingSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTestingSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestTestingSpecificationResponse:
+        type: object
+        properties:
+          TestingSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemTestingSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestTestingSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTestingSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        TestingSpecification:
-          type: object
-          properties:
-            TestingSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          TestingSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            TestingSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          TestingSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SystemTestingSpecification:
+              description: '|||'
+              format: Object
+          SystemTestingSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about the testing specification tasks'
+              description: '|||'
+              format: String
+    RetrieveTestingSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateUsageSpecificationRequest:
+        type: object
+        properties:
+          UsageSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateUsageSpecificationResponse:
+        type: object
+        properties:
+          UsageSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    UpdateUsageSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureUsageSpecificationRequest:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        UsageSpecification:
-          type: object
-          properties:
-            UsageSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          UsageSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            UsageSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaBQ Capture details relating to the usage specification activity'
+              description: '|||'
+              format: Object
     CaptureUsageSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentImplementationPlan:
+        type: object
+        properties:
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-        UsageSpecification:
-          type: object
-          properties:
-            UsageSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          UsageSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            UsageSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CaBQ Capture details relating to the usage specification activity'
+              description: '|||'
+              format: Object
+    CaptureUsageSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestUsageSpecificationRequest:
+        type: object
+        properties:
+          UsageSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestUsageSpecificationResponse:
+        type: object
+        properties:
+          UsageSpecificationTaskDefinition:
+              type: string
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
+              type: string
+              description: '|||'
+              format: String
+    RequestUsageSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveUsageSpecificationResponse:
-      type: object
-      properties:
-        ITSystemDevelopment:
-          type: object
-          properties:
-            SystemDevelopmentProjectName:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectType:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectType:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectDescription:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentImplementationPlan:
+              description: '|||'
+              format: String
+          SystemDevelopmentImplementationPlan:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentBudget:
+              description: '|||'
+              format: String
+          SystemDevelopmentBudget:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectOrganization:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectOrganization:
               type: string
-              description: "\r\n"
-              format: string
-            SystemDevelopmentProjectSchedule:
+              description: '|||'
+              format: String
+          SystemDevelopmentProjectSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        UsageSpecification:
-          type: object
-          properties:
-            UsageSpecificationTaskDefinition:
+              description: '|||'
+              format: String
+          UsageSpecificationTaskDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            UsageSpecificationTaskWorkProducts:
+              description: '|||'
+              format: String
+          UsageSpecificationTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SystemFunctionalSpecification:
+              description: '|||'
+              format: Object
+          SystemFunctionalSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about the usage specification tasks'
+              description: '|||'
+              format: String
+    RetrieveUsageSpecification:
+        type: object
+        properties:
+          SystemDevelopmentProjectName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentImplementationPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectOrganization:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SystemDevelopmentProjectSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     CreateITSystemDevelopmentResponse:
-      description: CreateITSystemDevelopmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateITSystemDevelopmentResponse'
+        description: ITSystemDevelopmentCreate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CreateITSystemDevelopmentResponse'
     UpdateITSystemDevelopmentResponse:
-      description: UpdateITSystemDevelopmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateITSystemDevelopmentResponse'
+        description: ITSystemDevelopmentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateITSystemDevelopmentResponse'
     RequestITSystemDevelopmentResponse:
-      description: RequestITSystemDevelopmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestITSystemDevelopmentResponse'
+        description: ITSystemDevelopmentRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestITSystemDevelopmentResponse'
     RetrieveITSystemDevelopmentResponse:
-      description: RetrieveITSystemDevelopmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveITSystemDevelopmentResponse'
-    FunctionalSpecification:
-      description: FunctionalSpecification
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FunctionalSpecification'
+        description: ITSystemDevelopmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveITSystemDevelopmentResponse'
+    UpdateFunctionalSpecificationResponse:
+        description: FunctionalSpecificationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFunctionalSpecificationResponse'
     CaptureFunctionalSpecificationResponse:
-      description: CaptureFunctionalSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureFunctionalSpecificationResponse'
+        description: FunctionalSpecificationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureFunctionalSpecificationResponse'
+    RequestFunctionalSpecificationResponse:
+        description: FunctionalSpecificationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestFunctionalSpecificationResponse'
     RetrieveFunctionalSpecificationResponse:
-      description: RetrieveFunctionalSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFunctionalSpecificationResponse'
-    TechnicalSpecification:
-      description: TechnicalSpecification
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TechnicalSpecification'
+        description: FunctionalSpecificationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFunctionalSpecificationResponse'
+    UpdateTechnicalSpecificationResponse:
+        description: TechnicalSpecificationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTechnicalSpecificationResponse'
     CaptureTechnicalSpecificationResponse:
-      description: CaptureTechnicalSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureTechnicalSpecificationResponse'
+        description: TechnicalSpecificationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureTechnicalSpecificationResponse'
+    RequestTechnicalSpecificationResponse:
+        description: TechnicalSpecificationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestTechnicalSpecificationResponse'
     RetrieveTechnicalSpecificationResponse:
-      description: RetrieveTechnicalSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTechnicalSpecificationResponse'
-    SoftwareandDataSpecification:
-      description: SoftwareandDataSpecification
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SoftwareandDataSpecification'
+        description: TechnicalSpecificationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTechnicalSpecificationResponse'
+    UpdateSoftwareandDataSpecificationResponse:
+        description: SoftwareandDataSpecificationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateSoftwareandDataSpecificationResponse'
     CaptureSoftwareandDataSpecificationResponse:
-      description: CaptureSoftwareandDataSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureSoftwareandDataSpecificationResponse'
+        description: SoftwareandDataSpecificationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureSoftwareandDataSpecificationResponse'
+    RequestSoftwareandDataSpecificationResponse:
+        description: SoftwareandDataSpecificationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestSoftwareandDataSpecificationResponse'
     RetrieveSoftwareandDataSpecificationResponse:
-      description: RetrieveSoftwareandDataSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveSoftwareandDataSpecificationResponse'
-    TestingSpecification:
-      description: TestingSpecification
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TestingSpecification'
+        description: SoftwareandDataSpecificationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveSoftwareandDataSpecificationResponse
+    UpdateTestingSpecificationResponse:
+        description: TestingSpecificationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTestingSpecificationResponse'
     CaptureTestingSpecificationResponse:
-      description: CaptureTestingSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureTestingSpecificationResponse'
+        description: TestingSpecificationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureTestingSpecificationResponse'
+    RequestTestingSpecificationResponse:
+        description: TestingSpecificationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestTestingSpecificationResponse'
     RetrieveTestingSpecificationResponse:
-      description: RetrieveTestingSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTestingSpecificationResponse'
-    UsageSpecification:
-      description: UsageSpecification
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UsageSpecification'
+        description: TestingSpecificationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTestingSpecificationResponse'
+    UpdateUsageSpecificationResponse:
+        description: UsageSpecificationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateUsageSpecificationResponse'
     CaptureUsageSpecificationResponse:
-      description: CaptureUsageSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureUsageSpecificationResponse'
+        description: UsageSpecificationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureUsageSpecificationResponse'
+    RequestUsageSpecificationResponse:
+        description: UsageSpecificationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestUsageSpecificationResponse'
     RetrieveUsageSpecificationResponse:
-      description: RetrieveUsageSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveUsageSpecificationResponse'
+        description: UsageSpecificationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveUsageSpecificationResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    systemdevelopmentid:
-      name: systemdevelopmentid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    itsystemdevelopmentid:
+        name: itsystemdevelopmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     functionalspecificationid:
-      name: functionalspecificationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: functionalspecificationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     technicalspecificationid:
-      name: technicalspecificationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: technicalspecificationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     softwareanddataspecificationid:
-      name: softwareanddataspecificationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: softwareanddataspecificationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     testingspecificationid:
-      name: testingspecificationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: testingspecificationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     usagespecificationid:
-      name: usagespecificationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: usagespecificationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     CreateITSystemDevelopmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateITSystemDevelopmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CreateITSystemDevelopmentRequest'
+        required: true
     UpdateITSystemDevelopmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateITSystemDevelopmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateITSystemDevelopmentRequest'
+        required: true
     RequestITSystemDevelopmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestITSystemDevelopmentRequest'
-      required: true
-    FunctionalSpecification:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FunctionalSpecification'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestITSystemDevelopmentRequest'
+        required: true
+    RetrieveITSystemDevelopmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateFunctionalSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFunctionalSpecificationRequest'
+        required: true
     CaptureFunctionalSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureFunctionalSpecificationRequest'
-      required: true
-    TechnicalSpecification:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TechnicalSpecification'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureFunctionalSpecificationRequest'
+        required: true
+    RequestFunctionalSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestFunctionalSpecificationRequest'
+        required: true
+    RetrieveFunctionalSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateTechnicalSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTechnicalSpecificationRequest'
+        required: true
     CaptureTechnicalSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureTechnicalSpecificationRequest'
-      required: true
-    SoftwareandDataSpecification:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SoftwareandDataSpecification'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureTechnicalSpecificationRequest'
+        required: true
+    RequestTechnicalSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestTechnicalSpecificationRequest'
+        required: true
+    RetrieveTechnicalSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateSoftwareandDataSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateSoftwareandDataSpecificationRequest'
+        required: true
     CaptureSoftwareandDataSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureSoftwareandDataSpecificationRequest'
-      required: true
-    TestingSpecification:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TestingSpecification'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureSoftwareandDataSpecificationRequest'
+        required: true
+    RequestSoftwareandDataSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestSoftwareandDataSpecificationRequest'
+        required: true
+    RetrieveSoftwareandDataSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateTestingSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTestingSpecificationRequest'
+        required: true
     CaptureTestingSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureTestingSpecificationRequest'
-      required: true
-    UsageSpecification:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UsageSpecification'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureTestingSpecificationRequest'
+        required: true
+    RequestTestingSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestTestingSpecificationRequest'
+        required: true
+    RetrieveTestingSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateUsageSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateUsageSpecificationRequest'
+        required: true
     CaptureUsageSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureUsageSpecificationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureUsageSpecificationRequest'
+        required: true
+    RequestUsageSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestUsageSpecificationRequest'
+        required: true
+    RetrieveUsageSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

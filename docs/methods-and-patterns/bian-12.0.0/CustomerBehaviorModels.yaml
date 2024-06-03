@@ -1,1492 +1,1847 @@
 openapi: 3.0.1
 info:
   title: Customer Behavior Models
-  description: 'This service domain handles the design and maintenance of a portfolio of customer behavior models that might be used in all aspects of customer relationship development, sales, servicing and product fulfillment'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Customer Behavior Models (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CustomerBehaviorModels/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CustomerBehaviorModels/12.0.1'
 paths:
-  /CustomerBehaviorModels/Create:
-    post:
-      tags:
-        - CR - CustomerBehaviorModelSpecification
-      summary: CrCR Create or register an imported customer behavior model
-      description: CrCR Create or register an imported customer behavior model
-      operationId: Create
-      requestBody:
-        $ref: '#/components/requestBodies/CreateCustomerBehaviorModelSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CreateCustomerBehaviorModelSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Execute':
-    put:
-      tags:
-        - CR - CustomerBehaviorModelSpecification
-      summary: ExCR Automatically download a customer behavior model
-      description: ExCR Automatically download a customer behavior model
-      operationId: Execute
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteCustomerBehaviorModelSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteCustomerBehaviorModelSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Request':
-    put:
-      tags:
-        - CR - CustomerBehaviorModelSpecification
-      summary: RqCR Request the use of a customer behavior model
-      description: RqCR Request the use of a customer behavior model
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestCustomerBehaviorModelSpecificationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestCustomerBehaviorModelSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Retrieve':
-    get:
-      tags:
-        - CR - CustomerBehaviorModelSpecification
-      summary: ReCR Retrieve details about a customer behavior model
-      description: ReCR Retrieve details about a customer behavior model
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCustomerBehaviorModelSpecificationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/FunctionalRequirements/{functionalrequirementsid}/Update':
-    put:
-      tags:
-        - BQ - FunctionalRequirements
-      summary: UpBQ Update the requirements or other properties of a model
-      description: UpBQ Update the requirements or other properties of a model
-      operationId: UpdateFunctionalRequirements
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/functionalrequirementsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateFunctionalRequirementsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateFunctionalRequirementsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/FunctionalRequirements/{functionalrequirementsid}/Capture':
-    put:
-      tags:
-        - BQ - FunctionalRequirements
-      summary: CaBQ Capture usage reports for a customer behavior model
-      description: CaBQ Capture usage reports for a customer behavior model
-      operationId: CaptureFunctionalRequirements
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/functionalrequirementsid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureFunctionalRequirementsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureFunctionalRequirementsRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/FunctionalRequirements/{functionalrequirementsid}/Request':
-    put:
-      tags:
-        - BQ - FunctionalRequirements
-      summary: RqBQ Request changes or improvements to a model
-      description: RqBQ Request changes or improvements to a model
-      operationId: RequestFunctionalRequirements
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/functionalrequirementsid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestFunctionalRequirementsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestFunctionalRequirementsRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/FunctionalRequirements/{functionalrequirementsid}/Retrieve':
-    get:
-      tags:
-        - BQ - FunctionalRequirements
-      summary: ReBQ Retrieve details about the model specification and properties
-      description: ReBQ Retrieve details about the model specification and properties
-      operationId: RetrieveFunctionalRequirements
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/functionalrequirementsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFunctionalRequirementsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Testing/{testingid}/Update':
-    put:
-      tags:
-        - BQ - Testing
-      summary: UpBQ Update user testing content
-      description: UpBQ Update user testing content
-      operationId: UpdateTesting
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/testingid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateTestingRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateTestingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Testing/{testingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Testing
-      summary: ReBQ Retrieve details and testing results
-      description: ReBQ Retrieve details and testing results
-      operationId: RetrieveTesting
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/testingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTestingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Production/{productionid}/Execute':
-    put:
-      tags:
-        - BQ - Production
-      summary: ExBQ Get automated support for model deployment
-      description: ExBQ Get automated support for model deployment
-      operationId: ExecuteProduction
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/productionid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteProductionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteProductionRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Production/{productionid}/Request':
-    put:
-      tags:
-        - BQ - Production
-      summary: RqBQ Request production support for a deployed model
-      description: RqBQ Request production support for a deployed model
-      operationId: RequestProduction
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/productionid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestProductionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestProductionRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CustomerBehaviorModels/{customerbehaviormodelsid}/Production/{productionid}/Retrieve':
-    get:
-      tags:
-        - BQ - Production
-      summary: ReBQ Retrieve details and documentation covering model production deployment
-      description: ReBQ Retrieve details and documentation covering model production deployment
-      operationId: RetrieveProduction
-      parameters:
-        - $ref: '#/components/parameters/customerbehaviormodelsid'
-        - $ref: '#/components/parameters/productionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProductionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModelSpecification/Create':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CustomerBehaviorModelSpecification'
+        summary: >-
+          (DDD Service) CrCR Create or register an imported customer behavior
+          model
+        description: >-
+          (DDD Service) CrCR Create or register an imported customer behavior
+          model
+        operationId: CustomerBehaviorModelSpecification/Create
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/CreateCustomerBehaviorModelSpecificationRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/CreateCustomerBehaviorModelSpecificationResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModelSpecification/{customerbehaviormodelspecificationid}/Execute':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CustomerBehaviorModelSpecification'
+        summary: (DDD Service) ExCR Automatically download a customer behavior model
+        description: (DDD Service) ExCR Automatically download a customer behavior model
+        operationId: CustomerBehaviorModelSpecification/Execute
+        parameters:
+          - $ref: '#/components/parameters/customerbehaviormodelspecificationid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExecuteCustomerBehaviorModelSpecificationRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExecuteCustomerBehaviorModelSpecificationResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModelSpecification/{customerbehaviormodelspecificationid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CustomerBehaviorModelSpecification'
+        summary: (DDD Service) RqCR Request the use of a customer behavior model
+        description: (DDD Service) RqCR Request the use of a customer behavior model
+        operationId: CustomerBehaviorModelSpecification/Request
+        parameters:
+          - $ref: '#/components/parameters/customerbehaviormodelspecificationid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestCustomerBehaviorModelSpecificationRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestCustomerBehaviorModelSpecificationResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModelSpecification/{customerbehaviormodelspecificationid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CustomerBehaviorModelSpecification'
+        summary: (DDD Service) ReCR Retrieve details about a customer behavior model
+        description: (DDD Service) ReCR Retrieve details about a customer behavior model
+        operationId: CustomerBehaviorModelSpecification/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/customerbehaviormodelspecificationid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveCustomerBehaviorModelSpecificationResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{functionalrequirementsid}/FunctionalRequirements/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalRequirements'
+        summary: >-
+          (DDD Service) UpBQ Update the requirements or other properties of a
+          model
+        description: >-
+          (DDD Service) UpBQ Update the requirements or other properties of a
+          model
+        operationId: FunctionalRequirements/Update
+        parameters:
+          - $ref: '#/components/parameters/functionalrequirementsid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateFunctionalRequirementsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateFunctionalRequirementsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{functionalrequirementsid}/FunctionalRequirements/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalRequirements'
+        summary: (DDD Service) CaBQ Capture usage reports for a customer behavior model
+        description: (DDD Service) CaBQ Capture usage reports for a customer behavior model
+        operationId: FunctionalRequirements/Capture
+        parameters:
+          - $ref: '#/components/parameters/functionalrequirementsid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureFunctionalRequirementsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureFunctionalRequirementsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{functionalrequirementsid}/FunctionalRequirements/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalRequirements'
+        summary: (DDD Service) RqBQ Request changes or improvements to a model
+        description: (DDD Service) RqBQ Request changes or improvements to a model
+        operationId: FunctionalRequirements/Request
+        parameters:
+          - $ref: '#/components/parameters/functionalrequirementsid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestFunctionalRequirementsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestFunctionalRequirementsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{functionalrequirementsid}/FunctionalRequirements/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - FunctionalRequirements'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about the model specification and
+          properties
+        description: >-
+          (DDD Service) ReBQ Retrieve details about the model specification and
+          properties
+        operationId: FunctionalRequirements/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/functionalrequirementsid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFunctionalRequirementsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{testingid}/Testing/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Testing'
+        summary: (DDD Service) UpBQ Update user testing content
+        description: (DDD Service) UpBQ Update user testing content
+        operationId: Testing/Update
+        parameters:
+          - $ref: '#/components/parameters/testingid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTestingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTestingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{testingid}/Testing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Testing'
+        summary: (DDD Service) ReBQ Retrieve details and testing results
+        description: (DDD Service) ReBQ Retrieve details and testing results
+        operationId: Testing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/testingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTestingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{productionid}/Production/Execute':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Production'
+        summary: (DDD Service) ExBQ Get automated support for model deployment
+        description: (DDD Service) ExBQ Get automated support for model deployment
+        operationId: Production/Execute
+        parameters:
+          - $ref: '#/components/parameters/productionid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteProductionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteProductionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{productionid}/Production/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Production'
+        summary: (DDD Service) RqBQ Request production support for a deployed model
+        description: (DDD Service) RqBQ Request production support for a deployed model
+        operationId: Production/Request
+        parameters:
+          - $ref: '#/components/parameters/productionid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestProductionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestProductionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CustomerBehaviorModels/{productionid}/Production/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Production'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details and documentation covering model
+          production deployment
+        description: >-
+          (DDD Service) ReBQ Retrieve details and documentation covering model
+          production deployment
+        operationId: Production/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/productionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProductionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    Testing:
-      type: object
-      properties:
-        CustomerBehaviorModelTestReference:
-          type: string
-          description: Reference to a type of test
-          format: object
-        CustomerBehaviorModelTestType:
-          type: string
-          description: 'Defines the type of test (e.g. unit, integration, load, user acceptance etc.)'
-          format: string
-        CustomerBehaviorModelTestHarnessReference:
-          type: string
-          description: Reference to the testing environment used to apply the test
-          format: object
-        CustomerBehaviorModelTestResult:
-          type: string
-          description: Record of testing applied to the model
-          format: string
-        CustomerBehaviorModelTestingTaskReference:
-          type: string
-          description: Reference to a type of testing activity
-          format: object
-        CustomerBehaviorModelTestingTaskRecord:
-          type: string
-          description: The record of work products used for this testing activity
-          format: string
-        CustomerBehaviorModelComplianceTaskReference:
-          type: string
-          description: Reference to compliance conformance check for the specification
-          format: object
-        CustomerBehaviorModelComplianceTaskRecord:
-          type: string
-          description: Record of the compliance conformance check for the specification
-          format: string
-        CustomerBehaviorModelComplianceTestReference:
-          type: string
-          description: Reference to a compliance task performed against the specification
-          format: object
-        CustomerBehaviorModelComplianceTestType:
-          type: string
-          description: Record of the compliance test applied to the specification
-          format: string
-      description: "The main design elements/views making up the overall specification\n\nExamples: Business Requirements"
-    FunctionalRequirements:
-      type: object
-      properties:
-        CustomerBehaviorModelDesignTaskReference:
-          type: string
-          description: Reference to a type of functional requirements specification activity
-          format: object
-        CustomerBehaviorModelDesignTaskRecord:
-          type: string
-          description: The record of work products used for the design task
-          format: string
-        CustomerMarketDataServiceReference:
-          type: string
-          description: Reference to external service information provider used to obtain example production data for design
-          format: object
-        CustomerMarketDataRecord:
-          type: string
-          description: Record of example production data file
-          format: string
-        CustomerBehaviorModelFeedbackRecord:
-          type: string
-          description: 'User provided and solicited feedback, suggestions for model refinement'
-          format: string
-        CustomerBehaviorModelRequirementsSpecification:
-          type: string
-          description: The model functional requirements specification (with versioning as appropriate)
-          format: string
-      description: "The main design elements/views making up the overall specification\n\nExamples: Business Requirements"
-    Production:
-      type: object
-      properties:
-        CustomerBehaviorModelOperationalRequirements:
-          type: string
-          description: Specification of the operational and technical requirements
-          format: string
-        CustomerBehaviorModelAllowedUsage:
-          type: string
-          description: Defines rules and suitability for model usage
-          format: string
-        CustomerBehaviorModelUsageGuidelines:
-          type: string
-          description: Provides guidance on the use of the model
-          format: string
-      description: "The main design elements/views making up the overall specification\n\nExamples: Business Requirements"
-    CustomerBehaviorModelSpecification:
-      type: object
-      properties:
-        CustomerBehaviorModelType:
-          type: string
-          description: The type or category of behavior model (e.g. life event detection)
-          format: string
-        CustomerBehaviorModelPurpose:
-          type: string
-          description: A description of the model that clarifies the intended analysis/insights provided
-          format: string
-        CustomerBehaviorModelDeployment:
-          type: string
-          description: Maintains the current deployment configuration of the model
-          format: string
-        EmployeeBusinessUnitReference:
-          type: string
-          description: Reference to the business units where the model is deployed and in use
-          format: object
-        CustomerBehaviorModelDeploymentConfiguration:
-          type: string
-          description: Details of the deployment for reference
-          format: string
-        CustomerBehaviorModelDeploymentTaskReference:
-          type: string
-          description: Reference to deployment task
-          format: object
-        CustomerBehaviorModelDeploymentTaskRecord:
-          type: string
-          description: Recorded details of a deployment task
-          format: string
-        CustomerBehaviorModelStatus:
-          type: string
-          description: 'The operational and development status of the model (e.g. under development, available, under review)'
-          format: string
-        CustomerBehaviorModelUsage:
-          type: string
-          description: Tracking deployment and usage frequency
-          format: string
-        CustomerBehaviorModelImpact:
-          type: string
-          description: Track reporting of the impact/accuracy of the model's insights
-          format: string
-        CustomerBehaviorModelVersion:
-          type: string
-          description: Release version of available model plus version history as appropriate
-          format: string
-        CustomerBehaviorModel:
-          type: string
-          description: The deployable model in any appropriate form (including historical versions as appropriate)
-          format: string
-      description: "Create and maintain a design for a procedure, product/service model or other such entity  within Customer Behavior Models. \nExample: Create and maintain product designs and analytical models."
     CreateCustomerBehaviorModelSpecificationRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelImpact:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelImpact:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CrCR Create or register an imported customer behavior model'
+              description: '|||'
+              format: String
     CreateCustomerBehaviorModelSpecificationResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelPurpose:
+        type: object
+        properties:
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelImpact:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelImpact:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CrCR Create or register an imported customer behavior model'
+              description: '|||'
+              format: String
+    CreateCustomerBehaviorModelSpecification:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExecuteCustomerBehaviorModelSpecificationRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: ExCR Automatically download a customer behavior model'
+              description: '|||'
+              format: String
     ExecuteCustomerBehaviorModelSpecificationResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExCR Automatically download a customer behavior model'
+              description: '|||'
+              format: String
+    ExecuteCustomerBehaviorModelSpecification:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestCustomerBehaviorModelSpecificationRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Request the use of a customer behavior model'
+              description: '|||'
+              format: String
     RequestCustomerBehaviorModelSpecificationResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request the use of a customer behavior model'
+              description: '|||'
+              format: String
+    RequestCustomerBehaviorModelSpecification:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCustomerBehaviorModelSpecificationResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelImpact:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelImpact:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a customer behavior model'
+              description: '|||'
+              format: String
+    RetrieveCustomerBehaviorModelSpecification:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateFunctionalRequirementsRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalRequirements:
-          type: object
-          properties:
-            CustomerBehaviorModelDesignTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDesignTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDesignTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDesignTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelFeedbackRecord:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelFeedbackRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelRequirementsSpecification:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelRequirementsSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update the requirements or other properties of a model'
+              description: '|||'
+              format: String
     UpdateFunctionalRequirementsResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalRequirements:
-          type: object
-          properties:
-            CustomerBehaviorModelDesignTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDesignTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDesignTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDesignTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelFeedbackRecord:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelFeedbackRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelRequirementsSpecification:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelRequirementsSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update the requirements or other properties of a model'
+              description: '|||'
+              format: String
+    UpdateFunctionalRequirements:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureFunctionalRequirementsRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalRequirements:
-          type: object
-          properties:
-            CustomerBehaviorModelFeedbackRecord:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelFeedbackRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CaBQ Capture usage reports for a customer behavior model'
+              description: '|||'
+              format: String
     RequestFunctionalRequirementsRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelImpact:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelImpact:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalRequirements:
-          type: object
-          properties:
-            CustomerBehaviorModelRequirementsSpecification:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelRequirementsSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqBQ Request changes or improvements to a model'
+              description: '|||'
+              format: String
     RetrieveFunctionalRequirementsResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelPurpose:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelImpact:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelImpact:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalRequirements:
-          type: object
-          properties:
-            CustomerBehaviorModelDesignTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDesignTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDesignTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDesignTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerMarketDataServiceReference:
+              description: '|||'
+              format: String
+          CustomerMarketDataServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketDataRecord:
+              description: '|||'
+              format: Object
+          CustomerMarketDataRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelFeedbackRecord:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelFeedbackRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelRequirementsSpecification:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelRequirementsSpecification:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about the model specification and properties'
+              description: '|||'
+              format: String
+    RetrieveFunctionalRequirements:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateTestingRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        Testing:
-          type: object
-          properties:
-            CustomerBehaviorModelTestReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestType:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelTestHarnessReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestHarnessReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestResult:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestResult:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelTestingTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestingTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestingTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestingTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update user testing content'
+              description: '|||'
+              format: String
     UpdateTestingResponse:
-      type: object
-      properties:
-        Testing:
-          type: object
-          properties:
-            CustomerBehaviorModelTestReference:
+        type: object
+        properties:
+          CustomerBehaviorModelTestReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestType:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelTestHarnessReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestHarnessReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestResult:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestResult:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelTestingTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestingTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestingTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestingTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update user testing content'
+              description: '|||'
+              format: String
+    UpdateTesting:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTestingResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelType:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        Testing:
-          type: object
-          properties:
-            CustomerBehaviorModelTestReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestType:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelTestHarnessReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestHarnessReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestResult:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestResult:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelTestingTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelTestingTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelTestingTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelTestingTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details and testing results'
+              description: '|||'
+              format: String
+    RetrieveTesting:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ExecuteProductionRequest:
+        type: object
+        properties:
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelVersion:
+              type: string
+              description: '|||'
+              format: String
     ExecuteProductionResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelDeployment:
+        type: object
+        properties:
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        Production:
-          type: object
-          properties:
-            CustomerBehaviorModelOperationalRequirements:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelOperationalRequirements:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelAllowedUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelAllowedUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsageGuidelines:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsageGuidelines:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExBQ Get automated support for model deployment'
-    ExecuteProductionRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+    ExecuteProduction:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelVersion:
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: ExBQ Get automated support for model deployment'
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestProductionRequest:
+        type: object
+        properties:
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelVersion:
+              type: string
+              description: '|||'
+              format: String
     RequestProductionResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelDeployment:
+        type: object
+        properties:
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        Production:
-          type: object
-          properties:
-            CustomerBehaviorModelOperationalRequirements:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelOperationalRequirements:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelAllowedUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelAllowedUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsageGuidelines:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsageGuidelines:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqBQ Request production support for a deployed model'
-    RequestProductionRequest:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelDeployment:
+              description: '|||'
+              format: String
+    RequestProduction:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelVersion:
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqBQ Request production support for a deployed model'
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveProductionResponse:
-      type: object
-      properties:
-        CustomerBehaviorModelSpecification:
-          type: object
-          properties:
-            CustomerBehaviorModelDeployment:
+        type: object
+        properties:
+          CustomerBehaviorModelDeployment:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentConfiguration:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelDeploymentTaskReference:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerBehaviorModelDeploymentTaskRecord:
+              description: '|||'
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelStatus:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelVersion:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelVersion:
               type: string
-              description: "\r\n"
-              format: string
-        Production:
-          type: object
-          properties:
-            CustomerBehaviorModelOperationalRequirements:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelOperationalRequirements:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelAllowedUsage:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelAllowedUsage:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerBehaviorModelUsageGuidelines:
+              description: '|||'
+              format: String
+          CustomerBehaviorModelUsageGuidelines:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details and documentation covering model production deployment'
+              description: '|||'
+              format: String
+    RetrieveProduction:
+        type: object
+        properties:
+          CustomerBehaviorModelType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelPurpose:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeployment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentConfiguration:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelDeploymentTaskReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerBehaviorModelDeploymentTaskRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelImpact:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModelVersion:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerBehaviorModel:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     CreateCustomerBehaviorModelSpecificationResponse:
-      description: CreateCustomerBehaviorModelSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateCustomerBehaviorModelSpecificationResponse'
+        description: CustomerBehaviorModelSpecificationCreate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CreateCustomerBehaviorModelSpecificationResponse
     ExecuteCustomerBehaviorModelSpecificationResponse:
-      description: ExecuteCustomerBehaviorModelSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteCustomerBehaviorModelSpecificationResponse'
+        description: CustomerBehaviorModelSpecificationExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecuteCustomerBehaviorModelSpecificationResponse
     RequestCustomerBehaviorModelSpecificationResponse:
-      description: RequestCustomerBehaviorModelSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCustomerBehaviorModelSpecificationResponse'
+        description: CustomerBehaviorModelSpecificationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestCustomerBehaviorModelSpecificationResponse
     RetrieveCustomerBehaviorModelSpecificationResponse:
-      description: RetrieveCustomerBehaviorModelSpecificationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCustomerBehaviorModelSpecificationResponse'
+        description: CustomerBehaviorModelSpecificationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveCustomerBehaviorModelSpecificationResponse
     UpdateFunctionalRequirementsResponse:
-      description: UpdateFunctionalRequirementsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFunctionalRequirementsResponse'
-    CaptureFunctionalRequirementsRequest:
-      description: CaptureFunctionalRequirementsRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureFunctionalRequirementsRequest'
-    RequestFunctionalRequirementsRequest:
-      description: RequestFunctionalRequirementsRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestFunctionalRequirementsRequest'
+        description: FunctionalRequirementsUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFunctionalRequirementsResponse'
+    CaptureFunctionalRequirementsResponse:
+        description: FunctionalRequirementsCapture
+        content:
+          'application/json:':
+            schema:
+              type: string
+    RequestFunctionalRequirementsResponse:
+        description: FunctionalRequirementsRequest
+        content:
+          'application/json:':
+            schema:
+              type: string
     RetrieveFunctionalRequirementsResponse:
-      description: RetrieveFunctionalRequirementsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFunctionalRequirementsResponse'
+        description: FunctionalRequirementsRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFunctionalRequirementsResponse'
     UpdateTestingResponse:
-      description: UpdateTestingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateTestingResponse'
+        description: TestingUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTestingResponse'
     RetrieveTestingResponse:
-      description: RetrieveTestingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTestingResponse'
-    ExecuteProductionRequest:
-      description: ExecuteProductionRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteProductionRequest'
-    RequestProductionRequest:
-      description: RequestProductionRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductionRequest'
+        description: TestingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTestingResponse'
+    ExecuteProductionResponse:
+        description: ProductionExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteProductionResponse'
+    RequestProductionResponse:
+        description: ProductionRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestProductionResponse'
     RetrieveProductionResponse:
-      description: RetrieveProductionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProductionResponse'
+        description: ProductionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProductionResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    customerbehaviormodelsid:
-      name: customerbehaviormodelsid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    customerbehaviormodelspecificationid:
+        name: customerbehaviormodelspecificationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     functionalrequirementsid:
-      name: functionalrequirementsid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: functionalrequirementsid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     testingid:
-      name: testingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: testingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     productionid:
-      name: productionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: productionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     CreateCustomerBehaviorModelSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateCustomerBehaviorModelSpecificationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CreateCustomerBehaviorModelSpecificationRequest
+        required: true
     ExecuteCustomerBehaviorModelSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteCustomerBehaviorModelSpecificationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecuteCustomerBehaviorModelSpecificationRequest
+        required: true
     RequestCustomerBehaviorModelSpecificationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCustomerBehaviorModelSpecificationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestCustomerBehaviorModelSpecificationRequest
+        required: true
+    RetrieveCustomerBehaviorModelSpecificationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateFunctionalRequirementsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFunctionalRequirementsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFunctionalRequirementsRequest'
+        required: true
     CaptureFunctionalRequirementsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureFunctionalRequirementsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureFunctionalRequirementsRequest'
+        required: true
     RequestFunctionalRequirementsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestFunctionalRequirementsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestFunctionalRequirementsRequest'
+        required: true
+    RetrieveFunctionalRequirementsRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateTestingRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateTestingRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTestingRequest'
+        required: true
+    RetrieveTestingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     ExecuteProductionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteProductionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteProductionRequest'
+        required: true
     RequestProductionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestProductionRequest'
+        required: true
+    RetrieveProductionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

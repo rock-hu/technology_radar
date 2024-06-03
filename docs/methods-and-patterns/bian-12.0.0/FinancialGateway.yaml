@@ -1,971 +1,1340 @@
 openapi: 3.0.1
 info:
   title: Financial Gateway
-  description: 'This service domain operates automated message interfaces to secure networks such as SWIFT, TELEX, ACH and Financial Market/Exchange reporting services'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Financial Gateway (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/FinancialGateway/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/FinancialGateway/12.0.1'
 paths:
-  /FinancialGateway/Initiate:
-    post:
-      tags:
-        - CR - FinancialGatewayOperatingSession
-      summary: InCR Initiate the financial gateway service session
-      description: InCR Initiate the financial gateway service session
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateFinancialGatewayOperatingSessionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateFinancialGatewayOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Update':
-    put:
-      tags:
-        - CR - FinancialGatewayOperatingSession
-      summary: UpCR Update the gateway service details
-      description: UpCR Update the gateway service details
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateFinancialGatewayOperatingSessionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateFinancialGatewayOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Request':
-    put:
-      tags:
-        - CR - FinancialGatewayOperatingSession
-      summary: RqCR Report an issue with the production service
-      description: RqCR Report an issue with the production service
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestFinancialGatewayOperatingSessionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestFinancialGatewayOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Retrieve':
-    get:
-      tags:
-        - CR - FinancialGatewayOperatingSession
-      summary: ReCR Retrieve details and statistics relating to a session
-      description: ReCR Retrieve details and statistics relating to a session
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFinancialGatewayOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Inbound/Initiate':
-    post:
-      tags:
-        - BQ - Inbound
-      summary: InBQ Initiate inbound financial message handling
-      description: InBQ Initiate inbound financial message handling
-      operationId: InitiateInbound
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateInboundRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateInboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Inbound/{inboundid}/Retrieve':
-    get:
-      tags:
-        - BQ - Inbound
-      summary: ReBQ Retrieve details about an inbound financial message
-      description: ReBQ Retrieve details about an inbound financial message
-      operationId: RetrieveInbound
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-        - $ref: '#/components/parameters/inboundid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveInboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Outbound/Initiate':
-    post:
-      tags:
-        - BQ - Outbound
-      summary: InBQ Initiate outbound financial message handling
-      description: InBQ Initiate outbound financial message handling
-      operationId: InitiateOutbound
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateOutboundRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateOutboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialGateway/{financialgatewayid}/Outbound/{outboundid}/Retrieve':
-    get:
-      tags:
-        - BQ - Outbound
-      summary: ReBQ Retrieve details about an outbound financial message
-      description: ReBQ Retrieve details about an outbound financial message
-      operationId: RetrieveOutbound
-      parameters:
-        - $ref: '#/components/parameters/financialgatewayid'
-        - $ref: '#/components/parameters/outboundid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveOutboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/FinancialGatewayOperatingSession/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - FinancialGatewayOperatingSession'
+        summary: (DDD Service) InCR Initiate the financial gateway service session
+        description: (DDD Service) InCR Initiate the financial gateway service session
+        operationId: FinancialGatewayOperatingSession/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateFinancialGatewayOperatingSessionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateFinancialGatewayOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialGatewayOperatingSession/{financialgatewayoperatingsessionid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - FinancialGatewayOperatingSession'
+        summary: (DDD Service) UpCR Update the gateway service details
+        description: (DDD Service) UpCR Update the gateway service details
+        operationId: FinancialGatewayOperatingSession/Update
+        parameters:
+          - $ref: '#/components/parameters/financialgatewayoperatingsessionid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateFinancialGatewayOperatingSessionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateFinancialGatewayOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialGatewayOperatingSession/{financialgatewayoperatingsessionid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - FinancialGatewayOperatingSession'
+        summary: (DDD Service) RqCR Report an issue with the production service
+        description: (DDD Service) RqCR Report an issue with the production service
+        operationId: FinancialGatewayOperatingSession/Request
+        parameters:
+          - $ref: '#/components/parameters/financialgatewayoperatingsessionid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestFinancialGatewayOperatingSessionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestFinancialGatewayOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialGatewayOperatingSession/{financialgatewayoperatingsessionid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - FinancialGatewayOperatingSession'
+        summary: >-
+          (DDD Service) ReCR Retrieve details and statistics relating to a
+          session
+        description: >-
+          (DDD Service) ReCR Retrieve details and statistics relating to a
+          session
+        operationId: FinancialGatewayOperatingSession/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/financialgatewayoperatingsessionid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveFinancialGatewayOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Inbound/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Inbound'
+        summary: (DDD Service) InBQ Initiate inbound financial message handling
+        description: (DDD Service) InBQ Initiate inbound financial message handling
+        operationId: Inbound/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateInboundRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateInboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialGateway/{inboundid}/Inbound/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Inbound'
+        summary: (DDD Service) ReBQ Retrieve details about an inbound financial message
+        description: (DDD Service) ReBQ Retrieve details about an inbound financial message
+        operationId: Inbound/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/inboundid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveInboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Outbound/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Outbound'
+        summary: (DDD Service) InBQ Initiate outbound financial message handling
+        description: (DDD Service) InBQ Initiate outbound financial message handling
+        operationId: Outbound/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateOutboundRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateOutboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialGateway/{outboundid}/Outbound/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Outbound'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about an outbound financial
+          message
+        description: >-
+          (DDD Service) ReBQ Retrieve details about an outbound financial
+          message
+        operationId: Outbound/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/outboundid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveOutboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    Outbound:
-      type: object
-      properties:
-        FinancialGatewayOutboundMessageType:
-          type: string
-          description: Reference to the type of message (defines format)
-          format: string
-        FinancialGatewayOutboundMessageRecord:
-          type: string
-          description: The message content in any suitable format
-          format: string
-        FinancialGatewayOutboundMessageSender:
-          type: string
-          description: Employee/Business unit sending the message
-          format: string
-        FinancialGatewayOutboundMessageReceiver:
-          type: string
-          description: The addressee of the message (identified by the financial gateway recognized party reference)
-          format: string
-        FinancialGatewayOutboundMessageStatus:
-          type: string
-          description: 'Used to track delivery  (e.g. pending, delivered, possible duplicate, error)'
-          format: string
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    Inbound:
-      type: object
-      properties:
-        FinancialGatewayInboundMessageType:
-          type: string
-          description: Reference to the type of message (defines format)
-          format: string
-        FinancialGatewayInboundMessageRecord:
-          type: string
-          description: The message content in any suitable format
-          format: string
-        FinancialGatewayInboundMessageReceiver:
-          type: string
-          description: Employee/Business unit addressed by the message
-          format: string
-        FinancialGatewayInboundMessageStatus:
-          type: string
-          description: 'Used to track delivery  (e.g. pending, delivered, possible duplicate, error)'
-          format: string
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: Key dates and times for the session ISODate|ISODate (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022 BM ()
-    FinancialGatewayOperatingSession:
-      type: object
-      properties:
-        FinancialGatewayServiceType:
-          type: string
-          description: 'The type of gateway (e.g. ACH, SWIFT)'
-          format: string
-        FinancialGatewayServiceSessionStatistics:
-          type: string
-          description: Service activity statistics that are maintained during the session
-          format: string
-        FinancialGatewayServiceSessionReportType:
-          type: string
-          description: 'Session reports that can be accessed during the session (e.g. real-time status, session statistics)'
-          format: string
-        FinancialGatewayServiceSessionReport:
-          type: string
-          description: The session activity report
-          format: string
-        FinancialGatewayServiceSessionDate:
-          $ref: '#/components/schemas/date'
-        FinancialGatewayServiceSessionIssueRecord:
-          type: string
-          description: A record of any production issues arising during the gateway session
-          format: string
-        EmployeeBusinessUnitReference:
-          type: string
-          description: The source of the issue report if appropriate
-          format: object
-        MessageReference:
-          type: string
-          description: Reference to the financial message(s) involved in the issue
-          format: object
-        ProductionIssueType:
-          type: string
-          description: The type of network event or error being recorded (e.g. device failure)
-          format: string
-        ProductionIssueDescription:
-          type: string
-          description: The description of the event error
-          format: string
-        ProductionIssueDiagnosis:
-          type: string
-          description: Evaluation of the event cause and impact assessment
-          format: string
-        ProductionIssueResolutionTask:
-          type: string
-          description: Description of corrective action proposed and taken
-          format: string
-        ProductionIssueRecord:
-          type: string
-          description: 'Details of the issue, response and interested parties logged for reference'
-          format: string
-        ProductionIssueStatus:
-          type: string
-          description: Tracking the state of resolution of a reported issue during the session
-          format: string
-      description: 'Operate equipment and/or a largely automated facility within Financial Gateway. '
     InitiateFinancialGatewayOperatingSessionRequest:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionReportType:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionDate:
-              $ref: '#/components/schemas/date'
-            FinancialGatewayServiceSessionIssueRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            MessageReference:
+              description: '|||'
+              format: Object
+          MessageReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate the financial gateway service session'
+              description: '|||'
+              format: String
     InitiateFinancialGatewayOperatingSessionResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceSessionStatistics:
+        type: object
+        properties:
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionReportType:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionDate:
-              $ref: '#/components/schemas/date'
-            FinancialGatewayServiceSessionIssueRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueRecord:
+              description: '|||'
+              format: String
+          ProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate the financial gateway service session'
+              description: '|||'
+              format: String
+    InitiateFinancialGatewayOperatingSession:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateFinancialGatewayOperatingSessionRequest:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionReportType:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionDate:
-              $ref: '#/components/schemas/date'
-            FinancialGatewayServiceSessionIssueRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            MessageReference:
+              description: '|||'
+              format: Object
+          MessageReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueRecord:
+              description: '|||'
+              format: String
+          ProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update the gateway service details'
+              description: '|||'
+              format: String
     UpdateFinancialGatewayOperatingSessionResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionReportType:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionDate:
-              $ref: '#/components/schemas/date'
-            FinancialGatewayServiceSessionIssueRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            MessageReference:
+              description: '|||'
+              format: Object
+          MessageReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueRecord:
+              description: '|||'
+              format: String
+          ProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update the gateway service details'
+              description: '|||'
+              format: String
+    UpdateFinancialGatewayOperatingSession:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestFinancialGatewayOperatingSessionRequest:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceSessionIssueRecord:
+        type: object
+        properties:
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            MessageReference:
+              description: '|||'
+              format: Object
+          MessageReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Report an issue with the production service'
+              description: '|||'
+              format: String
     RequestFinancialGatewayOperatingSessionResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceSessionIssueRecord:
+        type: object
+        properties:
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            MessageReference:
+              description: '|||'
+              format: Object
+          MessageReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueRecord:
+              description: '|||'
+              format: String
+          ProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Report an issue with the production service'
+              description: '|||'
+              format: String
+    RequestFinancialGatewayOperatingSession:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveFinancialGatewayOperatingSessionResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionReportType:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionDate:
-              $ref: '#/components/schemas/date'
-            FinancialGatewayServiceSessionIssueRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            MessageReference:
+              description: '|||'
+              format: Object
+          MessageReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueRecord:
+              description: '|||'
+              format: String
+          ProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details and statistics relating to a session'
+              description: '|||'
+              format: String
+    RetrieveFinancialGatewayOperatingSession:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateInboundRequest:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Inbound:
-          type: object
-          properties:
-            FinancialGatewayInboundMessageType:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayInboundMessageRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayInboundMessageReceiver:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageReceiver:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayInboundMessageStatus:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate inbound financial message handling'
+              description: '|||'
+              format: String
     InitiateInboundResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceSessionStatistics:
+        type: object
+        properties:
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Inbound:
-          type: object
-          properties:
-            FinancialGatewayInboundMessageStatus:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate inbound financial message handling'
+              description: '|||'
+              format: String
+    InitiateInbound:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveInboundResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Inbound:
-          type: object
-          properties:
-            FinancialGatewayInboundMessageType:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayInboundMessageRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayInboundMessageReceiver:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageReceiver:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayInboundMessageStatus:
+              description: '|||'
+              format: String
+          FinancialGatewayInboundMessageStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about an inbound financial message'
+              description: '|||'
+              format: String
+    RetrieveInbound:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateOutboundRequest:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Outbound:
-          type: object
-          properties:
-            FinancialGatewayOutboundMessageType:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageSender:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageSender:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageReceiver:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageReceiver:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageStatus:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate outbound financial message handling'
+              description: '|||'
+              format: String
     InitiateOutboundResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceSessionStatistics:
+        type: object
+        properties:
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Outbound:
-          type: object
-          properties:
-            FinancialGatewayOutboundMessageStatus:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate outbound financial message handling'
+              description: '|||'
+              format: String
+    InitiateOutbound:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveOutboundResponse:
-      type: object
-      properties:
-        FinancialGatewayOperatingSession:
-          type: object
-          properties:
-            FinancialGatewayServiceType:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayServiceSessionStatistics:
+              description: '|||'
+              format: String
+          FinancialGatewayServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Outbound:
-          type: object
-          properties:
-            FinancialGatewayOutboundMessageType:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageRecord:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageSender:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageSender:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageReceiver:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageReceiver:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialGatewayOutboundMessageStatus:
+              description: '|||'
+              format: String
+          FinancialGatewayOutboundMessageStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about an outbound financial message'
+              description: '|||'
+              format: String
+    RetrieveOutbound:
+        type: object
+        properties:
+          FinancialGatewayServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialGatewayServiceSessionDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          FinancialGatewayServiceSessionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MessageReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateFinancialGatewayOperatingSessionResponse:
-      description: InitiateFinancialGatewayOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateFinancialGatewayOperatingSessionResponse'
+        description: FinancialGatewayOperatingSessionInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateFinancialGatewayOperatingSessionResponse
     UpdateFinancialGatewayOperatingSessionResponse:
-      description: UpdateFinancialGatewayOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFinancialGatewayOperatingSessionResponse'
+        description: FinancialGatewayOperatingSessionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateFinancialGatewayOperatingSessionResponse
     RequestFinancialGatewayOperatingSessionResponse:
-      description: RequestFinancialGatewayOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestFinancialGatewayOperatingSessionResponse'
+        description: FinancialGatewayOperatingSessionRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestFinancialGatewayOperatingSessionResponse
     RetrieveFinancialGatewayOperatingSessionResponse:
-      description: RetrieveFinancialGatewayOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFinancialGatewayOperatingSessionResponse'
+        description: FinancialGatewayOperatingSessionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveFinancialGatewayOperatingSessionResponse
     InitiateInboundResponse:
-      description: InitiateInboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateInboundResponse'
+        description: InboundInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateInboundResponse'
     RetrieveInboundResponse:
-      description: RetrieveInboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveInboundResponse'
+        description: InboundRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveInboundResponse'
     InitiateOutboundResponse:
-      description: InitiateOutboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateOutboundResponse'
+        description: OutboundInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOutboundResponse'
     RetrieveOutboundResponse:
-      description: RetrieveOutboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveOutboundResponse'
+        description: OutboundRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveOutboundResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    financialgatewayid:
-      name: financialgatewayid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    financialgatewayoperatingsessionid:
+        name: financialgatewayoperatingsessionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     inboundid:
-      name: inboundid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: inboundid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     outboundid:
-      name: outboundid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: outboundid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateFinancialGatewayOperatingSessionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateFinancialGatewayOperatingSessionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateFinancialGatewayOperatingSessionRequest
+        required: true
     UpdateFinancialGatewayOperatingSessionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFinancialGatewayOperatingSessionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateFinancialGatewayOperatingSessionRequest
+        required: true
     RequestFinancialGatewayOperatingSessionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestFinancialGatewayOperatingSessionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestFinancialGatewayOperatingSessionRequest
+        required: true
+    RetrieveFinancialGatewayOperatingSessionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateInboundRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateInboundRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateInboundRequest'
+        required: true
+    RetrieveInboundRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateOutboundRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateOutboundRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOutboundRequest'
+        required: true
+    RetrieveOutboundRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

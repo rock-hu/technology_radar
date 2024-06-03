@@ -1,2491 +1,2446 @@
 openapi: 3.0.1
 info:
   title: ACH Operations
-  description: This service domain operates the Automated Clearing House (ACH) access gateway between the bank and the ACH service provider
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    ACH Operations (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/ACHOperations/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/ACHOperations/12.0.1'
 paths:
-  '/ACHOperations/{achoperationsid}/Update':
-    put:
-      tags:
-        - CR - ACHFulfillmentOperatingSession
-      summary: UpCR Update the operating schedule parameters
-      description: UpCR Update the operating schedule parameters
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/ACHFulfillmentOperatingSession'
-      responses:
-        '200':
-          $ref: '#/components/responses/ACHFulfillmentOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Retrieve':
-    get:
-      tags:
-        - CR - ACHFulfillmentOperatingSession
-      summary: ReCR Retrieve details about the ACH access service session
-      description: ReCR Retrieve details about the ACH access service session
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveACHFulfillmentOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/InboundACH/Initiate':
-    post:
-      tags:
-        - BQ - InboundACH
-      summary: InBQ Initiate an inbound ACH transaction batch handling
-      description: InBQ Initiate an inbound ACH transaction batch handling
-      operationId: InitiateInboundACH
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateInboundACHRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateInboundACHResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/InboundACH/{inboundachid}/Update':
-    put:
-      tags:
-        - BQ - InboundACH
-      summary: UpBQ Update an inbound ACH transaction batch
-      description: UpBQ Update an inbound ACH transaction batch
-      operationId: UpdateInboundACH
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/inboundachid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateInboundACHRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateInboundACHResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/InboundACH/{inboundachid}/Retrieve':
-    get:
-      tags:
-        - BQ - InboundACH
-      summary: ReBQ Retrieve details about an inbound ACH transaction batch
-      description: ReBQ Retrieve details about an inbound ACH transaction batch
-      operationId: RetrieveInboundACH
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/inboundachid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveInboundACHResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/OutboundACH/Initiate':
-    post:
-      tags:
-        - BQ - OutboundACH
-      summary: InBQ Initiate an outbound ACH transaction batch handling
-      description: InBQ Initiate an outbound ACH transaction batch handling
-      operationId: InitiateOutboundACH
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateOutboundACHRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateOutboundACHRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/OutboundACH/{outboundachid}/Update':
-    put:
-      tags:
-        - BQ - OutboundACH
-      summary: UpBQ Update an outbound ACH transaction batch
-      description: UpBQ Update an outbound ACH transaction batch
-      operationId: UpdateOutboundACH
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/outboundachid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateOutboundACHRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateOutboundACHResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/OutboundACH/{outboundachid}/Retrieve':
-    get:
-      tags:
-        - BQ - OutboundACH
-      summary: ReBQ Retrieve details about an outbound ACH transaction batch
-      description: ReBQ Retrieve details about an outbound ACH transaction batch
-      operationId: RetrieveOutboundACH
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/outboundachid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveOutboundACHResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Warehousing/Initiate':
-    post:
-      tags:
-        - BQ - Warehousing
-      summary: InBQ Initiate a warehoused outbound ACH transaction batch
-      description: InBQ Initiate a warehoused outbound ACH transaction batch
-      operationId: InitiateWarehousing
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateWarehousingRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateWarehousingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Warehousing/{warehousingid}/Update':
-    put:
-      tags:
-        - BQ - Warehousing
-      summary: UpBQ Update a warehoused outbound ACH transaction batch
-      description: UpBQ Update a warehoused outbound ACH transaction batch
-      operationId: UpdateWarehousing
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/warehousingid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateWarehousingRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateWarehousingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Warehousing/{warehousingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Warehousing
-      summary: ReBQ Retrieve details about a warehoused outbound ACH transaction batch
-      description: ReBQ Retrieve details about a warehoused outbound ACH transaction batch
-      operationId: RetrieveWarehousing
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/warehousingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveWarehousingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/ClearingandSettlement/Initiate':
-    post:
-      tags:
-        - BQ - ClearingandSettlement
-      summary: InBQ Initiate an ACH transaction batch clearing and settlement processing
-      description: InBQ Initiate an ACH transaction batch clearing and settlement processing
-      operationId: InitiateClearingandSettlement
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateClearingandSettlementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateClearingandSettlementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/ClearingandSettlement/{clearingandsettlementid}/Update':
-    put:
-      tags:
-        - BQ - ClearingandSettlement
-      summary: UpBQ Update an ACH transaction batch in clearing and settlement
-      description: UpBQ Update an ACH transaction batch in clearing and settlement
-      operationId: UpdateClearingandSettlement
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/clearingandsettlementid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateClearingandSettlementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateClearingandSettlementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/ClearingandSettlement/{clearingandsettlementid}/Retrieve':
-    get:
-      tags:
-        - BQ - ClearingandSettlement
-      summary: ReBQ Retrieve details about an ACH transaction batch in clearing and settlement
-      description: ReBQ Retrieve details about an ACH transaction batch in clearing and settlement
-      operationId: RetrieveClearingandSettlement
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/clearingandsettlementid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveClearingandSettlementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Reconciliation/Initiate':
-    post:
-      tags:
-        - BQ - Reconciliation
-      summary: InBQ Initiate the reconciliation of ACH transactions
-      description: InBQ Initiate the reconciliation of ACH transactions
-      operationId: InitiateReconciliation
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateReconciliationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateReconciliationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Reconciliation/{reconciliationid}/Update':
-    put:
-      tags:
-        - BQ - Reconciliation
-      summary: UpBQ Update an transaction in reconciliations
-      description: UpBQ Update an transaction in reconciliations
-      operationId: UpdateReconciliation
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/reconciliationid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateReconciliationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateReconciliationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ACHOperations/{achoperationsid}/Reconciliation/{reconciliationid}/Retrieve':
-    get:
-      tags:
-        - BQ - Reconciliation
-      summary: ReBQ Retrieve details about ACH transaction reconciliations
-      description: ReBQ Retrieve details about ACH transaction reconciliations
-      operationId: RetrieveReconciliation
-      parameters:
-        - $ref: '#/components/parameters/achoperationsid'
-        - $ref: '#/components/parameters/reconciliationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveReconciliationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ACHFulfillmentOperatingSession/{achfulfillmentoperatingsessionid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ACHFulfillmentOperatingSession'
+        summary: (DDD Service) UpCR Update the operating schedule parameters
+        description: (DDD Service) UpCR Update the operating schedule parameters
+        operationId: ACHFulfillmentOperatingSession/Update
+        parameters:
+          - $ref: '#/components/parameters/achfulfillmentoperatingsessionid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateACHFulfillmentOperatingSessionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateACHFulfillmentOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHFulfillmentOperatingSession/{achfulfillmentoperatingsessionid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ACHFulfillmentOperatingSession'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about the ACH access service
+          session
+        description: >-
+          (DDD Service) ReCR Retrieve details about the ACH access service
+          session
+        operationId: ACHFulfillmentOperatingSession/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/achfulfillmentoperatingsessionid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveACHFulfillmentOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/InboundACH/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - InboundACH'
+        summary: (DDD Service) InBQ Initiate an inbound ACH transaction batch handling
+        description: (DDD Service) InBQ Initiate an inbound ACH transaction batch handling
+        operationId: InboundACH/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateInboundACHRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateInboundACHResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{inboundachid}/InboundACH/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - InboundACH'
+        summary: (DDD Service) UpBQ Update an inbound ACH transaction batch
+        description: (DDD Service) UpBQ Update an inbound ACH transaction batch
+        operationId: InboundACH/Update
+        parameters:
+          - $ref: '#/components/parameters/inboundachid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateInboundACHRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateInboundACHResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{inboundachid}/InboundACH/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - InboundACH'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about an inbound ACH transaction
+          batch
+        description: >-
+          (DDD Service) ReBQ Retrieve details about an inbound ACH transaction
+          batch
+        operationId: InboundACH/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/inboundachid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveInboundACHResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/OutboundACH/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - OutboundACH'
+        summary: (DDD Service) InBQ Initiate an outbound ACH transaction batch handling
+        description: (DDD Service) InBQ Initiate an outbound ACH transaction batch handling
+        operationId: OutboundACH/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateOutboundACHRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateOutboundACHResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{outboundachid}/OutboundACH/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - OutboundACH'
+        summary: (DDD Service) UpBQ Update an outbound ACH transaction batch
+        description: (DDD Service) UpBQ Update an outbound ACH transaction batch
+        operationId: OutboundACH/Update
+        parameters:
+          - $ref: '#/components/parameters/outboundachid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateOutboundACHRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateOutboundACHResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{outboundachid}/OutboundACH/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - OutboundACH'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about an outbound ACH transaction
+          batch
+        description: >-
+          (DDD Service) ReBQ Retrieve details about an outbound ACH transaction
+          batch
+        operationId: OutboundACH/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/outboundachid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveOutboundACHResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Warehousing/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Warehousing'
+        summary: >-
+          (DDD Service) InBQ Initiate a warehoused outbound ACH transaction
+          batch
+        description: >-
+          (DDD Service) InBQ Initiate a warehoused outbound ACH transaction
+          batch
+        operationId: Warehousing/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateWarehousingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateWarehousingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{warehousingid}/Warehousing/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Warehousing'
+        summary: (DDD Service) UpBQ Update a warehoused outbound ACH transaction batch
+        description: (DDD Service) UpBQ Update a warehoused outbound ACH transaction batch
+        operationId: Warehousing/Update
+        parameters:
+          - $ref: '#/components/parameters/warehousingid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateWarehousingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateWarehousingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{warehousingid}/Warehousing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Warehousing'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a warehoused outbound ACH
+          transaction batch
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a warehoused outbound ACH
+          transaction batch
+        operationId: Warehousing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/warehousingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveWarehousingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ClearingandSettlement/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - ClearingandSettlement'
+        summary: >-
+          (DDD Service) InBQ Initiate an ACH transaction batch clearing and
+          settlement processing
+        description: >-
+          (DDD Service) InBQ Initiate an ACH transaction batch clearing and
+          settlement processing
+        operationId: ClearingandSettlement/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateClearingandSettlementRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateClearingandSettlementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{clearingandsettlementid}/ClearingandSettlement/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ClearingandSettlement'
+        summary: >-
+          (DDD Service) UpBQ Update an ACH transaction batch in clearing and
+          settlement
+        description: >-
+          (DDD Service) UpBQ Update an ACH transaction batch in clearing and
+          settlement
+        operationId: ClearingandSettlement/Update
+        parameters:
+          - $ref: '#/components/parameters/clearingandsettlementid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateClearingandSettlementRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateClearingandSettlementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{clearingandsettlementid}/ClearingandSettlement/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ClearingandSettlement'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about an ACH transaction batch in
+          clearing and settlement
+        description: >-
+          (DDD Service) ReBQ Retrieve details about an ACH transaction batch in
+          clearing and settlement
+        operationId: ClearingandSettlement/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/clearingandsettlementid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveClearingandSettlementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Reconciliation/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Reconciliation'
+        summary: (DDD Service) InBQ Initiate the reconciliation of ACH transactions
+        description: (DDD Service) InBQ Initiate the reconciliation of ACH transactions
+        operationId: Reconciliation/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateReconciliationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateReconciliationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{reconciliationid}/Reconciliation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Reconciliation'
+        summary: (DDD Service) UpBQ Update an transaction in reconciliations
+        description: (DDD Service) UpBQ Update an transaction in reconciliations
+        operationId: Reconciliation/Update
+        parameters:
+          - $ref: '#/components/parameters/reconciliationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateReconciliationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateReconciliationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ACHOperations/{reconciliationid}/Reconciliation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Reconciliation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about ACH transaction
+          reconciliations
+        description: >-
+          (DDD Service) ReBQ Retrieve details about ACH transaction
+          reconciliations
+        operationId: Reconciliation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/reconciliationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveReconciliationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    ClearingandSettlement:
-      type: object
-      properties:
-        CorrespondentBankReference:
-          type: string
-          description: Reference to the correspondent bank referenced in the ACH transaction
-          format: object
-        CorrespondentBankClearingAgreementReference:
-          type: string
-          description: 'Reference to the clearing agreement between bank and clearing house - includes schedule, limits'
-          format: object
-        CorrespondentBankClearingAgreementClearingInstructions:
-          type: string
-          description: Customer specific default clearing instructions
-          format: string
-        CorrespondentBankClearingAgreementSettlementInstructions:
-          type: string
-          description: Customer specific default settlement instruction e.g. to handle netting arrangements
-          format: string
-        MirrorNostroAccountReference:
-          type: string
-          description: Account used central bank clearing reconciliations
-          format: object
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    OutboundACH:
-      type: object
-      properties:
-        OutboundACHTransactionBatchReference:
-          type: string
-          description: Reference to the batch ACH record
-          format: object
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    Reconciliation:
-      type: object
-      properties:
-        ACHReconciliationTaskResult:
-          type: string
-          description: Details of the reconciliation resolution
-          format: string
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    InboundACH:
-      type: object
-      properties:
-        InboundACHTransactionBatchReference:
-          type: string
-          description: Reference to an inbound ACH transaction batch
-          format: object
-        ACHPaymentTransactionReference:
-          type: string
-          description: Reference to a ACH payment transaction - included in the batch
-          format: object
-        ACHPaymentTransactionRecord:
-          type: string
-          description: Record of key transaction fields
-          format: string
-        PaymentTransactionInitiatorReference:
-          type: string
-          description: Reference to the originator of the payment transaction
-          format: object
-        PayerReference:
-          type: string
-          description: Reference to the source of funds in the payment
-          format: object
-        PayerBankReference:
-          type: string
-          description: Reference to the payer's bank
-          format: object
-        PayerProductInstanceReference:
-          type: string
-          description: Reference to the payer's account (source of funds)
-          format: object
-        PayeeReference:
-          type: string
-          description: Reference to the transaction payee
-          format: object
-        PayeeProductInstanceReference:
-          type: string
-          description: Reference to the payee's account (target for funds)
-          format: object
-        PayeeBankReference:
-          type: string
-          description: Reference to the payee's bank
-          format: object
-        SpecialInstructions:
-          type: string
-          description: Transaction specific clearing and settlement instructions if appropriate
-          format: string
-        Amount:
-          type: string
-          description: Key amounts from the transaction
-          format: string
-        Currency:
-          type: string
-          description: Currencies of the amounts
-          format: string
-        DateType:
-          type: string
-          description: 'Key date types included in the transaction (e.g. order, booking, execution, value date, interest bearing)'
-          format: string
-        Date:
-          type: string
-          description: Value of the date type
-          format: string
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The schedule for handling the warehoused transaction batch
-    Warehousing:
-      type: object
-      properties:
-        ScheduleReleaseDateTime:
-          $ref: '#/components/schemas/date'
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    ACHFulfillmentOperatingSession:
-      type: object
-      properties:
-        ACHReference:
-          type: string
-          description: Reference to the ACH service
-          format: object
-        ACHAccessSchedule:
-          type: string
-          description: Details the ACH service availability
-          format: string
-      description: 'Operate equipment and/or a largely automated facility within ACH Fulfillment. '
+    UpdateACHFulfillmentOperatingSessionRequest:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: '|||'
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: '|||'
+              format: String
+    UpdateACHFulfillmentOperatingSessionResponse:
+        type: object
+        properties:
+          ACHAccessSchedule:
+              type: string
+              description: '|||'
+              format: String
+    UpdateACHFulfillmentOperatingSession:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveACHFulfillmentOperatingSessionResponse:
-      type: object
-      properties:
-        ACHFulfillmentOperatingSession:
-          type: object
-          properties:
-            ACHReference:
+        type: object
+        properties:
+          ACHReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHAccessSchedule:
+              description: '|||'
+              format: Object
+          ACHAccessSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about the ACH access service session'
+              description: '|||'
+              format: String
+    RetrieveACHFulfillmentOperatingSession:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateInboundACHRequest:
-      type: object
-      properties:
-        ACHFulfillmentOperatingSession:
-          type: object
-          properties:
-            ACHReference:
+        type: object
+        properties:
+          ACHReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHAccessSchedule:
+              description: '|||'
+              format: Object
+          ACHAccessSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: String
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate an inbound ACH transaction batch handling'
+              description: '|||'
+              format: String
     InitiateInboundACHResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate an inbound ACH transaction batch handling'
+              description: '|||'
+              format: String
+    InitiateInboundACH:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateInboundACHRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update an inbound ACH transaction batch'
+              description: '|||'
+              format: String
     UpdateInboundACHResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update an inbound ACH transaction batch'
+              description: '|||'
+              format: String
+    UpdateInboundACH:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveInboundACHResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about an inbound ACH transaction batch'
+              description: '|||'
+              format: String
+    RetrieveInboundACH:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateOutboundACHRequest:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
+              type: string
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
+              type: string
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
+              type: string
+              description: '|||'
+              format: Object
+          PayerReference:
+              type: string
+              description: '|||'
+              format: Object
+          PayerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          PayeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          PayeeBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialInstructions:
+              type: string
+              description: '|||'
+              format: String
+          Amount:
+              type: string
+              description: '|||'
+              format: String
+          Currency:
+              type: string
+              description: '|||'
+              format: String
+          DateType:
+              type: string
+              description: '|||'
+              format: String
     InitiateOutboundACHResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            DateType:
+        type: object
+        properties:
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: InBQ Initiate an outbound ACH transaction batch handling'
-    InitiateOutboundACHRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+    InitiateOutboundACH:
+        type: object
+        properties:
+          ACHReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
-              type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
-              type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
-              type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
-              type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
-              type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
-              type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
-              type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
-              type: string
-              description: "\r\n"
-              format: string
-            Amount:
-              type: string
-              description: "\r\n"
-              format: string
-            Currency:
-              type: string
-              description: "\r\n"
-              format: string
-            DateType:
-              type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate an outbound ACH transaction batch handling'
+              description: "||\r\n|"
+              format: String
     UpdateOutboundACHRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpBQ Update an outbound ACH transaction batch'
+              description: '|||'
+              format: Object
     UpdateOutboundACHResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update an outbound ACH transaction batch'
+              description: '|||'
+              format: String
+    UpdateOutboundACH:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveOutboundACHResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReBQ Retrieve details about an outbound ACH transaction batch'
+              description: '|||'
+              format: Object
+    RetrieveOutboundACH:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateWarehousingRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        Warehousing:
-          type: object
-          properties:
-            ScheduleReleaseDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Input: InBQ Initiate a warehoused outbound ACH transaction batch'
+              description: '|||'
+              format: Object
+          ScheduleReleaseDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     InitiateWarehousingResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            DateType:
+        type: object
+        properties:
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate a warehoused outbound ACH transaction batch'
+              description: '|||'
+              format: String
+    InitiateWarehousing:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateWarehousingRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        Warehousing:
-          type: object
-          properties:
-            ScheduleReleaseDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Input: UpBQ Update a warehoused outbound ACH transaction batch'
+              description: '|||'
+              format: Object
+          ScheduleReleaseDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     UpdateWarehousingResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        Warehousing:
-          type: object
-          properties:
-            ScheduleReleaseDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Output: UpBQ Update a warehoused outbound ACH transaction batch'
+              description: '|||'
+              format: Object
+          ScheduleReleaseDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    UpdateWarehousing:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveWarehousingResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            ACHPaymentTransactionReference:
+        type: object
+        properties:
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        Warehousing:
-          type: object
-          properties:
-            ScheduleReleaseDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Output: ReBQ Retrieve details about a warehoused outbound ACH transaction batch'
+              description: '|||'
+              format: Object
+          ScheduleReleaseDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    RetrieveWarehousing:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateClearingandSettlementRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InBQ Initiate an ACH transaction batch clearing and settlement processing'
+              description: '|||'
+              format: Object
     InitiateClearingandSettlementResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            DateType:
+        type: object
+        properties:
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate an ACH transaction batch clearing and settlement processing'
+              description: '|||'
+              format: String
+    InitiateClearingandSettlement:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateClearingandSettlementRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpBQ Update an ACH transaction batch in clearing and settlement'
+              description: '|||'
+              format: Object
     UpdateClearingandSettlementResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: UpBQ Update an ACH transaction batch in clearing and settlement'
+              description: '|||'
+              format: Object
+    UpdateClearingandSettlement:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveClearingandSettlementResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReBQ Retrieve details about an ACH transaction batch in clearing and settlement'
+              description: '|||'
+              format: Object
+    RetrieveClearingandSettlement:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateReconciliationRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InBQ Initiate the reconciliation of ACH transactions'
+              description: '|||'
+              format: Object
     InitiateReconciliationResponse:
-      type: object
-      properties:
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+        type: object
+        properties:
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        Reconciliation:
-          type: object
-          properties:
-            ACHReconciliationTaskResult:
+              description: '|||'
+              format: Object
+          ACHReconciliationTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate the reconciliation of ACH transactions'
+              description: '|||'
+              format: String
+    InitiateReconciliation:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateReconciliationRequest:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-        Reconciliation:
-          type: object
-          properties:
-            ACHReconciliationTaskResult:
+              description: '|||'
+              format: Object
+          ACHReconciliationTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update an transaction in reconciliations'
+              description: '|||'
+              format: String
     UpdateReconciliationResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-        Reconciliation:
-          type: object
-          properties:
-            ACHReconciliationTaskResult:
+              description: '|||'
+              format: Object
+          ACHReconciliationTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update an transaction in reconciliations'
+              description: '|||'
+              format: String
+    UpdateReconciliation:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveReconciliationResponse:
-      type: object
-      properties:
-        InboundACH:
-          type: object
-          properties:
-            InboundACHTransactionBatchReference:
+        type: object
+        properties:
+          InboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionReference:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ACHPaymentTransactionRecord:
+              description: '|||'
+              format: Object
+          ACHPaymentTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionInitiatorReference:
+              description: '|||'
+              format: String
+          PaymentTransactionInitiatorReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerReference:
+              description: '|||'
+              format: Object
+          PayerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerBankReference:
+              description: '|||'
+              format: Object
+          PayerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayerProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayerProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeReference:
+              description: '|||'
+              format: Object
+          PayeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeProductInstanceReference:
+              description: '|||'
+              format: Object
+          PayeeProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            PayeeBankReference:
+              description: '|||'
+              format: Object
+          PayeeBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialInstructions:
+              description: '|||'
+              format: Object
+          SpecialInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            Currency:
+              description: '|||'
+              format: String
+          Currency:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OutboundACH:
-          type: object
-          properties:
-            OutboundACHTransactionBatchReference:
+              description: '|||'
+              format: String
+          OutboundACHTransactionBatchReference:
               type: string
-              description: "\r\n"
-              format: object
-        ClearingandSettlement:
-          type: object
-          properties:
-            CorrespondentBankReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementReference:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondentBankClearingAgreementClearingInstructions:
+              description: '|||'
+              format: Object
+          CorrespondentBankClearingAgreementClearingInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondentBankClearingAgreementSettlementInstructions:
+              description: '|||'
+              format: String
+          CorrespondentBankClearingAgreementSettlementInstructions:
               type: string
-              description: "\r\n"
-              format: string
-            MirrorNostroAccountReference:
+              description: '|||'
+              format: String
+          MirrorNostroAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-        Reconciliation:
-          type: object
-          properties:
-            ACHReconciliationTaskResult:
+              description: '|||'
+              format: Object
+          ACHReconciliationTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about ACH transaction reconciliations'
+              description: '|||'
+              format: String
+    RetrieveReconciliation:
+        type: object
+        properties:
+          ACHReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ACHAccessSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    ACHFulfillmentOperatingSession:
-      description: ACHFulfillmentOperatingSession
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ACHFulfillmentOperatingSession'
+    UpdateACHFulfillmentOperatingSessionResponse:
+        description: ACHFulfillmentOperatingSessionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateACHFulfillmentOperatingSessionResponse
     RetrieveACHFulfillmentOperatingSessionResponse:
-      description: RetrieveACHFulfillmentOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveACHFulfillmentOperatingSessionResponse'
+        description: ACHFulfillmentOperatingSessionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveACHFulfillmentOperatingSessionResponse
     InitiateInboundACHResponse:
-      description: InitiateInboundACHResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateInboundACHResponse'
+        description: InboundACHInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateInboundACHResponse'
     UpdateInboundACHResponse:
-      description: UpdateInboundACHResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateInboundACHResponse'
+        description: InboundACHUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateInboundACHResponse'
     RetrieveInboundACHResponse:
-      description: RetrieveInboundACHResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveInboundACHResponse'
-    InitiateOutboundACHRequest:
-      description: InitiateOutboundACHRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateOutboundACHRequest'
+        description: InboundACHRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveInboundACHResponse'
+    InitiateOutboundACHResponse:
+        description: OutboundACHInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOutboundACHResponse'
     UpdateOutboundACHResponse:
-      description: UpdateOutboundACHResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateOutboundACHResponse'
+        description: OutboundACHUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateOutboundACHResponse'
     RetrieveOutboundACHResponse:
-      description: RetrieveOutboundACHResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveOutboundACHResponse'
+        description: OutboundACHRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveOutboundACHResponse'
     InitiateWarehousingResponse:
-      description: InitiateWarehousingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateWarehousingResponse'
+        description: WarehousingInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateWarehousingResponse'
     UpdateWarehousingResponse:
-      description: UpdateWarehousingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateWarehousingResponse'
+        description: WarehousingUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateWarehousingResponse'
     RetrieveWarehousingResponse:
-      description: RetrieveWarehousingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveWarehousingResponse'
+        description: WarehousingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveWarehousingResponse'
     InitiateClearingandSettlementResponse:
-      description: InitiateClearingandSettlementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateClearingandSettlementResponse'
+        description: ClearingandSettlementInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateClearingandSettlementResponse'
     UpdateClearingandSettlementResponse:
-      description: UpdateClearingandSettlementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateClearingandSettlementResponse'
+        description: ClearingandSettlementUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateClearingandSettlementResponse'
     RetrieveClearingandSettlementResponse:
-      description: RetrieveClearingandSettlementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveClearingandSettlementResponse'
+        description: ClearingandSettlementRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveClearingandSettlementResponse'
     InitiateReconciliationResponse:
-      description: InitiateReconciliationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateReconciliationResponse'
+        description: ReconciliationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateReconciliationResponse'
     UpdateReconciliationResponse:
-      description: UpdateReconciliationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateReconciliationResponse'
+        description: ReconciliationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateReconciliationResponse'
     RetrieveReconciliationResponse:
-      description: RetrieveReconciliationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveReconciliationResponse'
+        description: ReconciliationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveReconciliationResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    achoperationsid:
-      name: achoperationsid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    achfulfillmentoperatingsessionid:
+        name: achfulfillmentoperatingsessionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     inboundachid:
-      name: inboundachid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: inboundachid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     outboundachid:
-      name: outboundachid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: outboundachid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     warehousingid:
-      name: warehousingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: warehousingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     clearingandsettlementid:
-      name: clearingandsettlementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: clearingandsettlementid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     reconciliationid:
-      name: reconciliationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: reconciliationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
-    ACHFulfillmentOperatingSession:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ACHFulfillmentOperatingSession'
-      required: true
+    UpdateACHFulfillmentOperatingSessionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateACHFulfillmentOperatingSessionRequest'
+        required: true
+    RetrieveACHFulfillmentOperatingSessionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateInboundACHRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateInboundACHRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateInboundACHRequest'
+        required: true
     UpdateInboundACHRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateInboundACHRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateInboundACHRequest'
+        required: true
+    RetrieveInboundACHRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateOutboundACHRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateOutboundACHRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOutboundACHRequest'
+        required: true
     UpdateOutboundACHRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateOutboundACHRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateOutboundACHRequest'
+        required: true
+    RetrieveOutboundACHRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateWarehousingRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateWarehousingRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateWarehousingRequest'
+        required: true
     UpdateWarehousingRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateWarehousingRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateWarehousingRequest'
+        required: true
+    RetrieveWarehousingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateClearingandSettlementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateClearingandSettlementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateClearingandSettlementRequest'
+        required: true
     UpdateClearingandSettlementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateClearingandSettlementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateClearingandSettlementRequest'
+        required: true
+    RetrieveClearingandSettlementRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateReconciliationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateReconciliationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateReconciliationRequest'
+        required: true
     UpdateReconciliationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateReconciliationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateReconciliationRequest'
+        required: true
+    RetrieveReconciliationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

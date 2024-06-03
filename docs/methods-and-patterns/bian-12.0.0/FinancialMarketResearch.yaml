@@ -1,571 +1,749 @@
 openapi: 3.0.1
 info:
   title: Financial Market Research
-  description: The service domain consolidates external financial market research
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Financial Market Research (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/FinancialMarketResearch/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/FinancialMarketResearch/12.0.1'
 paths:
-  /FinancialMarketResearch/Register:
-    post:
-      tags:
-        - CR - FinancialMarketResearchDirectoryEntry
-      summary: InCR Register or establish a financial market research viewpoint
-      description: InCR Register or establish a financial market research viewpoint
-      operationId: Register
-      requestBody:
-        $ref: '#/components/requestBodies/RegisterFinancialMarketResearchDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RegisterFinancialMarketResearchDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialMarketResearch/{financialmarketresearchid}/Update':
-    put:
-      tags:
-        - CR - FinancialMarketResearchDirectoryEntry
-      summary: UpCR Update the details or make-up of a financial market research viewpoint
-      description: UpCR Update the details or make-up of a financial market research viewpoint
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/financialmarketresearchid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateFinancialMarketResearchDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateFinancialMarketResearchDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialMarketResearch/{financialmarketresearchid}/Execute':
-    put:
-      tags:
-        - CR - FinancialMarketResearchDirectoryEntry
-      summary: ExCR Automatically extract details of a maintained financial market research viewpoint
-      description: ExCR Automatically extract details of a maintained financial market research viewpoint
-      operationId: Execute
-      parameters:
-        - $ref: '#/components/parameters/financialmarketresearchid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteFinancialMarketResearchDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteFinancialMarketResearchDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialMarketResearch/{financialmarketresearchid}/Request':
-    put:
-      tags:
-        - CR - FinancialMarketResearchDirectoryEntry
-      summary: RqCR Request a viewpoint is refreshed or adjusted in some manner
-      description: RqCR Request a viewpoint is refreshed or adjusted in some manner
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/financialmarketresearchid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestFinancialMarketResearchDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestFinancialMarketResearchDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/FinancialMarketResearch/{financialmarketresearchid}/Retrieve':
-    get:
-      tags:
-        - CR - FinancialMarketResearchDirectoryEntry
-      summary: ReCR Retrieve details about and the content of a maintained financial market research viewpoint
-      description: ReCR Retrieve details about and the content of a maintained financial market research viewpoint
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/financialmarketresearchid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFinancialMarketResearchDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/FinancialMarketResearchDirectoryEntry/Register':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - FinancialMarketResearchDirectoryEntry'
+        summary: >-
+          (DDD Service) InCR Register or establish a financial market research
+          viewpoint
+        description: >-
+          (DDD Service) InCR Register or establish a financial market research
+          viewpoint
+        operationId: FinancialMarketResearchDirectoryEntry/Register
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RegisterFinancialMarketResearchDirectoryEntryRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RegisterFinancialMarketResearchDirectoryEntryResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialMarketResearchDirectoryEntry/{financialmarketresearchdirectoryentryid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - FinancialMarketResearchDirectoryEntry'
+        summary: >-
+          (DDD Service) UpCR Update the details or make-up of a financial market
+          research viewpoint
+        description: >-
+          (DDD Service) UpCR Update the details or make-up of a financial market
+          research viewpoint
+        operationId: FinancialMarketResearchDirectoryEntry/Update
+        parameters:
+          - $ref: '#/components/parameters/financialmarketresearchdirectoryentryid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateFinancialMarketResearchDirectoryEntryRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateFinancialMarketResearchDirectoryEntryResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialMarketResearchDirectoryEntry/{financialmarketresearchdirectoryentryid}/Execute':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - FinancialMarketResearchDirectoryEntry'
+        summary: >-
+          (DDD Service) ExCR Automatically extract details of a maintained
+          financial market research viewpoint
+        description: >-
+          (DDD Service) ExCR Automatically extract details of a maintained
+          financial market research viewpoint
+        operationId: FinancialMarketResearchDirectoryEntry/Execute
+        parameters:
+          - $ref: '#/components/parameters/financialmarketresearchdirectoryentryid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExecuteFinancialMarketResearchDirectoryEntryRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExecuteFinancialMarketResearchDirectoryEntryResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialMarketResearchDirectoryEntry/{financialmarketresearchdirectoryentryid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - FinancialMarketResearchDirectoryEntry'
+        summary: >-
+          (DDD Service) RqCR Request a viewpoint is refreshed or adjusted in
+          some manner
+        description: >-
+          (DDD Service) RqCR Request a viewpoint is refreshed or adjusted in
+          some manner
+        operationId: FinancialMarketResearchDirectoryEntry/Request
+        parameters:
+          - $ref: '#/components/parameters/financialmarketresearchdirectoryentryid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestFinancialMarketResearchDirectoryEntryRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestFinancialMarketResearchDirectoryEntryResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FinancialMarketResearchDirectoryEntry/{financialmarketresearchdirectoryentryid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - FinancialMarketResearchDirectoryEntry'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about and the content of a
+          maintained financial market research viewpoint
+        description: >-
+          (DDD Service) ReCR Retrieve details about and the content of a
+          maintained financial market research viewpoint
+        operationId: FinancialMarketResearchDirectoryEntry/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/financialmarketresearchdirectoryentryid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveFinancialMarketResearchDirectoryEntryResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    FinancialMarketResearchDirectoryEntry:
-      type: object
-      properties:
-        FinancialMarketResearchViewpointType:
-          type: string
-          description: The type of financial market research view provided by the research (e.g. common stock comparison)
-          format: string
-        FinancialMarketResearchViewpointDescription:
-          type: string
-          description: A description of the available market research consolidated for this maintained viewpoint
-          format: string
-        ReferencedFinancialMarketResearchRecord:
-          type: string
-          description: The externally sourced reports that are used to assemble the research viewpoint
-          format: string
-        FinancialMarketResearchReportTypeReference:
-          type: string
-          description: Reference to a specific type of predefined market research report or database
-          format: string
-        FinancialMarketResearchReportTypeDefinition:
-          type: string
-          description: Describes the available market research report content (e.g. customer social network usage analysis)
-          format: string
-        FinancialMarketResearchReportVersionPeriod:
-          type: string
-          description: Defines the version and period covered by the research
-          format: string
-        FinancialMarketResearchReport:
-          type: string
-          description: Is the content of the report or database in any suitable form
-          format: string
-        FinancialMarketResearchViewpointUsage:
-          type: string
-          description: Usage record of the research viewpoint
-          format: string
-        FinancialMarketResearchReportRequest:
-          type: string
-          description: Details of the research request
-          format: string
-        EmployeeBusinessUnitReference:
-          type: string
-          description: The employee/business unit requesting the research
-          format: object
-      description: Capture and maintain reference information about some type of entitity within Financial Market Research.
     RegisterFinancialMarketResearchDirectoryEntryRequest:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ReferencedFinancialMarketResearchRecord:
+              description: '|||'
+              format: String
+          ReferencedFinancialMarketResearchRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeReference:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeReference:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointUsage:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointUsage:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportRequest:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Register or establish a financial market research viewpoint'
+              description: '|||'
+              format: Object
     RegisterFinancialMarketResearchDirectoryEntryResponse:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeDefinition:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Register or establish a financial market research viewpoint'
+              description: '|||'
+              format: String
+    RegisterFinancialMarketResearchDirectoryEntry:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ReferencedFinancialMarketResearchRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeReference:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateFinancialMarketResearchDirectoryEntryRequest:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ReferencedFinancialMarketResearchRecord:
+              description: '|||'
+              format: String
+          ReferencedFinancialMarketResearchRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeReference:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeReference:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update the details or make-up of a financial market research viewpoint'
+              description: '|||'
+              format: String
     UpdateFinancialMarketResearchDirectoryEntryResponse:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ReferencedFinancialMarketResearchRecord:
+              description: '|||'
+              format: String
+          ReferencedFinancialMarketResearchRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeReference:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeReference:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update the details or make-up of a financial market research viewpoint'
+              description: '|||'
+              format: String
+    UpdateFinancialMarketResearchDirectoryEntry:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ReferencedFinancialMarketResearchRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeReference:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ExecuteFinancialMarketResearchDirectoryEntryRequest:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointUsage:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointUsage:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportRequest:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: ExCR Automatically extract details of a maintained financial market research viewpoint'
+              description: '|||'
+              format: Object
     ExecuteFinancialMarketResearchDirectoryEntryResponse:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ReferencedFinancialMarketResearchRecord:
+              description: '|||'
+              format: String
+          ReferencedFinancialMarketResearchRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeDefinition:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointUsage:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointUsage:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportRequest:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ExCR Automatically extract details of a maintained financial market research viewpoint'
+              description: '|||'
+              format: Object
+    ExecuteFinancialMarketResearchDirectoryEntry:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ReferencedFinancialMarketResearchRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeReference:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RequestFinancialMarketResearchDirectoryEntryRequest:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointUsage:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointUsage:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportRequest:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: RqCR Request a viewpoint is refreshed or adjusted in some manner'
+              description: '|||'
+              format: Object
     RequestFinancialMarketResearchDirectoryEntryResponse:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ReferencedFinancialMarketResearchRecord:
+              description: '|||'
+              format: String
+          ReferencedFinancialMarketResearchRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeDefinition:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointUsage:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointUsage:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportRequest:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: RqCR Request a viewpoint is refreshed or adjusted in some manner'
+              description: '|||'
+              format: Object
+    RequestFinancialMarketResearchDirectoryEntry:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ReferencedFinancialMarketResearchRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeReference:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveFinancialMarketResearchDirectoryEntryResponse:
-      type: object
-      properties:
-        FinancialMarketResearchDirectoryEntry:
-          type: object
-          properties:
-            FinancialMarketResearchViewpointType:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointDescription:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ReferencedFinancialMarketResearchRecord:
+              description: '|||'
+              format: String
+          ReferencedFinancialMarketResearchRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeReference:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeReference:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportTypeDefinition:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportVersionPeriod:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchViewpointUsage:
+              description: '|||'
+              format: String
+          FinancialMarketResearchViewpointUsage:
               type: string
-              description: "\r\n"
-              format: string
-            FinancialMarketResearchReportRequest:
+              description: '|||'
+              format: String
+          FinancialMarketResearchReportRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about and the content of a maintained financial market research viewpoint'
+              description: '|||'
+              format: Object
+    RetrieveFinancialMarketResearchDirectoryEntry:
+        type: object
+        properties:
+          FinancialMarketResearchViewpointType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ReferencedFinancialMarketResearchRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeReference:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportTypeDefinition:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportVersionPeriod:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchViewpointUsage:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FinancialMarketResearchReportRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     RegisterFinancialMarketResearchDirectoryEntryResponse:
-      description: RegisterFinancialMarketResearchDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RegisterFinancialMarketResearchDirectoryEntryResponse'
+        description: FinancialMarketResearchDirectoryEntryRegister
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RegisterFinancialMarketResearchDirectoryEntryResponse
     UpdateFinancialMarketResearchDirectoryEntryResponse:
-      description: UpdateFinancialMarketResearchDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFinancialMarketResearchDirectoryEntryResponse'
+        description: FinancialMarketResearchDirectoryEntryUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateFinancialMarketResearchDirectoryEntryResponse
     ExecuteFinancialMarketResearchDirectoryEntryResponse:
-      description: ExecuteFinancialMarketResearchDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteFinancialMarketResearchDirectoryEntryResponse'
+        description: FinancialMarketResearchDirectoryEntryExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecuteFinancialMarketResearchDirectoryEntryResponse
     RequestFinancialMarketResearchDirectoryEntryResponse:
-      description: RequestFinancialMarketResearchDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestFinancialMarketResearchDirectoryEntryResponse'
+        description: FinancialMarketResearchDirectoryEntryRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestFinancialMarketResearchDirectoryEntryResponse
     RetrieveFinancialMarketResearchDirectoryEntryResponse:
-      description: RetrieveFinancialMarketResearchDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFinancialMarketResearchDirectoryEntryResponse'
+        description: FinancialMarketResearchDirectoryEntryRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveFinancialMarketResearchDirectoryEntryResponse
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    financialmarketresearchid:
-      name: financialmarketresearchid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    financialmarketresearchdirectoryentryid:
+        name: financialmarketresearchdirectoryentryid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     RegisterFinancialMarketResearchDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RegisterFinancialMarketResearchDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RegisterFinancialMarketResearchDirectoryEntryRequest
+        required: true
     UpdateFinancialMarketResearchDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFinancialMarketResearchDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateFinancialMarketResearchDirectoryEntryRequest
+        required: true
     ExecuteFinancialMarketResearchDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteFinancialMarketResearchDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecuteFinancialMarketResearchDirectoryEntryRequest
+        required: true
     RequestFinancialMarketResearchDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestFinancialMarketResearchDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestFinancialMarketResearchDirectoryEntryRequest
+        required: true
+    RetrieveFinancialMarketResearchDirectoryEntryRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

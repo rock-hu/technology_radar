@@ -1,1514 +1,1877 @@
 openapi: 3.0.1
 info:
   title: Card Clearing
-  description: 'This service domain orchestrates the capture and consolidation of card financial transactions originating from various sources, such as POS Network, E-Commerce Gateway, ATM Network, or Card Case Management. It also handles the clearing of the transactions from the Acquirers to the Issuers through the Card Networks'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Card Clearing (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CardClearing/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CardClearing/12.0.1'
 paths:
-  /CardClearing/Initiate:
-    post:
-      tags:
-        - CR - CardClearingProcedure
-      summary: InCR Initiate a card clearing process
-      description: InCR Initiate a card clearing process
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateCardClearingProcedureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateCardClearingProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Update':
-    put:
-      tags:
-        - CR - CardClearingProcedure
-      summary: UpCR Update details of a card clearing processing batch
-      description: UpCR Update details of a card clearing processing batch
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-      requestBody:
-        $ref: '#/components/requestBodies/CardClearingProcedure'
-      responses:
-        '200':
-          $ref: '#/components/responses/CardClearingProcedure'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Retrieve':
-    get:
-      tags:
-        - CR - CardClearingProcedure
-      summary: ReCR Retrieve details about a card clearing process
-      description: ReCR Retrieve details about a card clearing process
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCardClearingProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Capture/{captureid}/Update':
-    put:
-      tags:
-        - BQ - Capture
-      summary: UpBQ Update details of a captured card transaction (for repair)
-      description: UpBQ Update details of a captured card transaction (for repair)
-      operationId: UpdateCapture
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/captureid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCaptureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCaptureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Capture/{captureid}/Retrieve':
-    get:
-      tags:
-        - BQ - Capture
-      summary: ReBQ Retrieve details about a captured card transaction
-      description: ReBQ Retrieve details about a captured card transaction
-      operationId: RetrieveCapture
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/captureid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCaptureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Addressing/{addressingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Addressing
-      summary: ReBQ Retrieve details about card transaction addressing
-      description: ReBQ Retrieve details about card transaction addressing
-      operationId: RetrieveAddressing
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/addressingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveAddressingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/FXConversion/{fxconversionid}/Retrieve':
-    get:
-      tags:
-        - BQ - FXConversion
-      summary: ReBQ Retrieve details about card transaction FX conversion|
-      description: ReBQ Retrieve details about card transaction FX conversion|
-      operationId: RetrieveFXConversion
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/fxconversionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFXConversionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Fees/{feesid}/Update':
-    put:
-      tags:
-        - BQ - Fees
-      summary: UpBQ Update details of applied fees
-      description: UpBQ Update details of applied fees
-      operationId: UpdateFees
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/feesid'
-      requestBody:
-        $ref: '#/components/requestBodies/Fees'
-      responses:
-        '200':
-          $ref: '#/components/responses/Fees'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Fees/{feesid}/Retrieve':
-    get:
-      tags:
-        - BQ - Fees
-      summary: ReBQ Retrieve details about card transaction intercharge fees
-      description: ReBQ Retrieve details about card transaction intercharge fees
-      operationId: RetrieveFees
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/feesid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFeesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Matching/{matchingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Matching
-      summary: ReBQ Retrieve details about card transaction matching
-      description: ReBQ Retrieve details about card transaction matching
-      operationId: RetrieveMatching
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/matchingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveMatchingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Reconciliation/{reconciliationid}/Retrieve':
-    get:
-      tags:
-        - BQ - Reconciliation
-      summary: ReBQ Retrieve details about card transaction reconciliation
-      description: ReBQ Retrieve details about card transaction reconciliation
-      operationId: RetrieveReconciliation
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/reconciliationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveReconciliationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardClearing/{cardclearingid}/Routing/{routingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Routing
-      summary: ReBQ Retrieve details about card transaction routing
-      description: ReBQ Retrieve details about card transaction routing
-      operationId: RetrieveRouting
-      parameters:
-        - $ref: '#/components/parameters/cardclearingid'
-        - $ref: '#/components/parameters/routingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveRoutingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CardClearingProcedure/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CardClearingProcedure'
+        summary: (DDD Service) InCR Initiate a card clearing process
+        description: (DDD Service) InCR Initiate a card clearing process
+        operationId: CardClearingProcedure/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateCardClearingProcedureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateCardClearingProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearingProcedure/{cardclearingprocedureid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CardClearingProcedure'
+        summary: (DDD Service) UpCR Update details of a card clearing processing batch
+        description: (DDD Service) UpCR Update details of a card clearing processing batch
+        operationId: CardClearingProcedure/Update
+        parameters:
+          - $ref: '#/components/parameters/cardclearingprocedureid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCardClearingProcedureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCardClearingProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearingProcedure/{cardclearingprocedureid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CardClearingProcedure'
+        summary: (DDD Service) ReCR Retrieve details about a card clearing process
+        description: (DDD Service) ReCR Retrieve details about a card clearing process
+        operationId: CardClearingProcedure/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/cardclearingprocedureid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCardClearingProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{captureid}/Capture/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Capture'
+        summary: >-
+          (DDD Service) UpBQ Update details of a captured card transaction (for
+          repair)
+        description: >-
+          (DDD Service) UpBQ Update details of a captured card transaction (for
+          repair)
+        operationId: Capture/Update
+        parameters:
+          - $ref: '#/components/parameters/captureid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCaptureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCaptureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{captureid}/Capture/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Capture'
+        summary: (DDD Service) ReBQ Retrieve details about a captured card transaction
+        description: (DDD Service) ReBQ Retrieve details about a captured card transaction
+        operationId: Capture/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/captureid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCaptureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{addressingid}/Addressing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Addressing'
+        summary: (DDD Service) ReBQ Retrieve details about card transaction addressing
+        description: (DDD Service) ReBQ Retrieve details about card transaction addressing
+        operationId: Addressing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/addressingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveAddressingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{fxconversionid}/FXConversion/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - FXConversion'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about card transaction FX
+          conversion|
+        description: >-
+          (DDD Service) ReBQ Retrieve details about card transaction FX
+          conversion|
+        operationId: FXConversion/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/fxconversionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFXConversionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{feesid}/Fees/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Fees'
+        summary: (DDD Service) UpBQ Update details of applied fees
+        description: (DDD Service) UpBQ Update details of applied fees
+        operationId: Fees/Update
+        parameters:
+          - $ref: '#/components/parameters/feesid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateFeesRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateFeesResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{feesid}/Fees/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Fees'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about card transaction intercharge
+          fees
+        description: >-
+          (DDD Service) ReBQ Retrieve details about card transaction intercharge
+          fees
+        operationId: Fees/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/feesid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFeesResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{matchingid}/Matching/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Matching'
+        summary: (DDD Service) ReBQ Retrieve details about card transaction matching
+        description: (DDD Service) ReBQ Retrieve details about card transaction matching
+        operationId: Matching/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/matchingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveMatchingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{reconciliationid}/Reconciliation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Reconciliation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about card transaction
+          reconciliation
+        description: >-
+          (DDD Service) ReBQ Retrieve details about card transaction
+          reconciliation
+        operationId: Reconciliation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/reconciliationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveReconciliationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardClearing/{routingid}/Routing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Routing'
+        summary: (DDD Service) ReBQ Retrieve details about card transaction routing
+        description: (DDD Service) ReBQ Retrieve details about card transaction routing
+        operationId: Routing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/routingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveRoutingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    Reconciliation:
-      type: object
-      properties:
-        ReconciliationTaskResult:
-          type: string
-          description: Details of the transaction matching processing
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: The currency that the transaction is made in
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    amounttypevalues:
-      enum:
-        - Principal
-        - Actual
-        - Estimated
-        - Maximum
-        - Default
-        - Replacement
-        - Incremental
-        - Decremental
-        - Reserved
-        - Available
-        - Used
-      type: string
-      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n"
-    amount:
-      type: object
-      properties:
-        AmountValue:
-          $ref: '#/components/schemas/value'
-        AmountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        DecimalPointPosition:
-          type: string
-          description: "Decimal point position starts calulating from the right\n"
-          format: string
-        AmountType:
-          $ref: '#/components/schemas/amounttypevalues'
-      description: The amount corresponding to the type
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The scheduled time for the process - likely initiation time ISODate|ISODate (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022 BM ()
-    Capture:
-      type: object
-      properties:
-        CardTransactionRecordReference:
-          type: string
-          description: Reference to the card transaction as recorded by issuer and/or acquirer - these can be batched for some clearing processes
-          format: object
-        CardTransactionProductInstanceReference:
-          type: string
-          description: The account number associated with the card transaction
-          format: object
-        CardTransactionNetworkReference:
-          type: string
-          description: Reference to the network the card transaction is handled by
-          format: object
-        CardTransactionIssuingBankReference:
-          type: string
-          description: Refers to the card holder's issuing bank
-          format: object
-        CardTransactionMerchantAcquiringBankReference:
-          type: string
-          description: Refers to the merchant's acquiring bank
-          format: object
-        CardTransactionType:
-          type: string
-          description: 'The type of transaction (purchase, cash advance, etc.)'
-          format: string
-        CardTransactionCurrency:
-          $ref: '#/components/schemas/currencycode'
-        CardTransactionAmountType:
-          type: string
-          description: 'Type of amount (e.g. original amount, billing currency amount, conversion rate, FX Mark-up)'
-          format: string
-        CardTransactionAmount:
-          $ref: '#/components/schemas/amount'
-        CardTransactionMerchantReference:
-          type: string
-          description: Refers to the merchant initiating settlement
-          format: object
-        CardTransactionLocationReference:
-          type: string
-          description: Refers to the point of sale location
-          format: object
-        CardTransactionProductandServiceReference:
-          type: string
-          description: 'Details of the transaction (e.g. purchased service/product, purpose)'
-          format: object
-        CardTransactionDateTime:
-          $ref: '#/components/schemas/date'
-        CardTransactionFXConversionCharge:
-          type: string
-          description: The applied currency conversion charge
-          format: string
-        CardTransactionInterchargeFee:
-          type: string
-          description: The applied intercharge fee
-          format: string
-        CardTransactionAuthorizationRecord:
-          type: string
-          description: 'Details the reference, amount, timestamp of the transaction authorization)'
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Routing:
-      type: object
-      properties:
-        RoutingTaskResult:
-          type: string
-          description: Details of the transaction routing processing
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Matching:
-      type: object
-      properties:
-        MatchingTaskResult:
-          type: string
-          description: Details of the transaction matching processing
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Fees:
-      type: object
-      properties:
-        InterchargeFees:
-          type: string
-          description: Defines intercharge rates and fees to be applied to card transactions
-          format: string
-        FeeTaskResult:
-          type: string
-          description: Details of the transaction fee processing
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    text:
-      type: object
-      properties:
-        Text:
-          type: string
-          description: Text is a character string such as a finite set of characters generally in the form of words of a language. (UN/CEFACT)
-          format: datatype
-      description: "The unit of measure like Percentage or BPS\n\nBasis points (BPS) refers to a common unit of measure for interest rates and other percentages in finance."
-    datetime:
-      type: object
-      properties:
-        DateTimeContent:
-          type: string
-          description: ''
-          format: string
-        TimeZoneCode:
-          type: string
-          description: ''
-          format: string
-        DaylightSavingIndicator:
-          type: string
-          description: ''
-          format: string
-      description: Date and time at which the range starts. (ISO20022)
-    datetimeperiod:
-      type: object
-      properties:
-        FromDateTime:
-          $ref: '#/components/schemas/datetime'
-        ToDateTime:
-          $ref: '#/components/schemas/datetime'
-      description: ''
-    rate:
-      type: object
-      properties:
-        RateValue:
-          $ref: '#/components/schemas/value'
-        RateUnit:
-          $ref: '#/components/schemas/text'
-        RatePeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        RateCapitalUnit:
-          $ref: '#/components/schemas/text'
-      description: The FX rates and fees that are applied to the transactions
-    FXConversion:
-      type: object
-      properties:
-        FXConversionRatesandFees:
-          $ref: '#/components/schemas/rate'
-        FXConversionTaskResult:
-          type: string
-          description: Details of the transaction FX conversion
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Addressing:
-      type: object
-      properties:
-        AddressingTaskResult:
-          type: string
-          description: Details of the transaction addressing
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    CardClearingProcedure:
-      type: object
-      properties:
-        NetworkReference:
-          type: string
-          description: Refers to the card network
-          format: object
-        ParticipantAcquirerBankReference:
-          type: string
-          description: Reference to the Acquiring bank for which the Network orchestrates clearing processing
-          format: object
-        ParticipantAcquirerBankClearingandSettlementTerms:
-          type: string
-          description: Defines card clearing fees/terms in force - referenced by Network
-          format: string
-        ParticipantIssuerBankReference:
-          type: string
-          description: Reference to the Issuing bank for which the Network orchestrates clearing processing
-          format: object
-        ParticipantIssuerBankClearingandSettlementTerms:
-          type: string
-          description: Defines card clearing fees/terms in force - referenced by Network
-          format: string
-        CardClearingProcessType:
-          type: string
-          description: 'Defines the type of clearing process - e.g. capture, batch, chargeback between combinations of N,I&A'
-          format: string
-        CardClearingProcessDateTime:
-          $ref: '#/components/schemas/date'
-        CardClearingServiceSchedule:
-          type: string
-          description: The schedule of activities for card clearing
-          format: string
-      description: 'Complete work tasks following a defined procedure in support of general office activities and product and service delivery within Card Clearing. '
     InitiateCardClearingProcedureRequest:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            NetworkReference:
+        type: object
+        properties:
+          NetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardClearingProcessType:
+              description: '|||'
+              format: Object
+          CardClearingProcessType:
               type: string
-              description: "\r\n"
-              format: string
-            CardClearingProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardClearingServiceSchedule:
+              description: '|||'
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate a card clearing process'
+              description: '|||'
+              format: String
     InitiateCardClearingProcedureResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            NetworkReference:
+        type: object
+        properties:
+          NetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankClearingandSettlementTerms:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            CardClearingProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardClearingServiceSchedule:
+              description: '|||'
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate a card clearing process'
+              description: '|||'
+              format: String
+    InitiateCardClearingProcedure:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateCardClearingProcedureRequest:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: '|||'
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+    UpdateCardClearingProcedureResponse:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: '|||'
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+    UpdateCardClearingProcedure:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCardClearingProcedureResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            NetworkReference:
+        type: object
+        properties:
+          NetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            CardClearingProcessType:
+              description: '|||'
+              format: String
+          CardClearingProcessType:
               type: string
-              description: "\r\n"
-              format: string
-            CardClearingProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardClearingServiceSchedule:
+              description: '|||'
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a card clearing process'
+              description: '|||'
+              format: String
+    RetrieveCardClearingProcedure:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateCaptureRequest:
-      type: object
-      properties:
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+        type: object
+        properties:
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details of a captured card transaction (for repair)'
+              description: '|||'
+              format: String
     UpdateCaptureResponse:
-      type: object
-      properties:
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+        type: object
+        properties:
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details of a captured card transaction (for repair)'
+              description: '|||'
+              format: String
+    UpdateCapture:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCaptureResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a captured card transaction'
+              description: '|||'
+              format: String
+    RetrieveCapture:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveAddressingResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Addressing:
-          type: object
-          properties:
-            AddressingTaskResult:
+              description: '|||'
+              format: Object
+          AddressingTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about card transaction addressing'
+              description: '|||'
+              format: String
+    RetrieveAddressing:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveFXConversionResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-        FXConversion:
-          type: object
-          properties:
-            FXConversionRatesandFees:
-              $ref: '#/components/schemas/rate'
-            FXConversionTaskResult:
+              description: '|||'
+              format: String
+          FXConversionRatesandFees:
+              $ref: '#/components/schemas/PercentageRate'
+              description: >-
+                PercentageRate|PercentageRate
+                (https://www.iso20022.org/standardsrepository/type/PercentageRate)|Standard|ISO20022
+                BM ()
+          FXConversionTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about card transaction FX conversion|'
+              description: '|||'
+              format: String
+    RetrieveFXConversion:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateFeesRequest:
+        type: object
+        properties:
+          InterchargeFees:
+              type: string
+              description: '|||'
+              format: String
+          FeeTaskResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateFeesResponse:
+        type: object
+        properties:
+          InterchargeFees:
+              type: string
+              description: '|||'
+              format: String
+          FeeTaskResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateFees:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveFeesResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-        Fees:
-          type: object
-          properties:
-            InterchargeFees:
+              description: '|||'
+              format: String
+          InterchargeFees:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTaskResult:
+              description: '|||'
+              format: String
+          FeeTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about card transaction intercharge fees'
+              description: '|||'
+              format: String
+    RetrieveFees:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveMatchingResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-        Matching:
-          type: object
-          properties:
-            MatchingTaskResult:
+              description: '|||'
+              format: String
+          MatchingTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about card transaction matching'
+              description: '|||'
+              format: String
+    RetrieveMatching:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveReconciliationResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-        Reconciliation:
-          type: object
-          properties:
-            ReconciliationTaskResult:
+              description: '|||'
+              format: String
+          ReconciliationTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about card transaction reconciliation'
+              description: '|||'
+              format: String
+    RetrieveReconciliation:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveRoutingResponse:
-      type: object
-      properties:
-        CardClearingProcedure:
-          type: object
-          properties:
-            ParticipantAcquirerBankReference:
+        type: object
+        properties:
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Capture:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionNetworkReference:
+              description: '|||'
+              format: Object
+          CardTransactionNetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-            CardTransactionFXConversionCharge:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardTransactionFXConversionCharge:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionInterchargeFee:
+              description: '|||'
+              format: String
+          CardTransactionInterchargeFee:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionAuthorizationRecord:
+              description: '|||'
+              format: String
+          CardTransactionAuthorizationRecord:
               type: string
-              description: "\r\n"
-              format: string
-        Routing:
-          type: object
-          properties:
-            RoutingTaskResult:
+              description: '|||'
+              format: String
+          RoutingTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about card transaction routing'
+              description: '|||'
+              format: String
+    RetrieveRouting:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardClearingProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardClearingServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
+    CurrencyCode:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Code allocated to a currency, by a maintenance agency, under an
+          international identification scheme as described in the latest edition
+          of the international standard ISO 4217 "Codes for the representation
+          of currencies and funds". Valid currency codes are registered with the
+          ISO 4217 Maintenance Agency, and consist of three contiguous letters.
+    PercentageRate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Rate expressed as a percentage, that is, in hundredths, for
+          example, 0.7 is 7/10 of a percent, and 7.0 is 7%.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateCardClearingProcedureResponse:
-      description: InitiateCardClearingProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCardClearingProcedureResponse'
-    CardClearingProcedure:
-      description: CardClearingProcedure
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CardClearingProcedure'
+        description: CardClearingProcedureInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCardClearingProcedureResponse'
+    UpdateCardClearingProcedureResponse:
+        description: CardClearingProcedureUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCardClearingProcedureResponse'
     RetrieveCardClearingProcedureResponse:
-      description: RetrieveCardClearingProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCardClearingProcedureResponse'
+        description: CardClearingProcedureRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCardClearingProcedureResponse'
     UpdateCaptureResponse:
-      description: UpdateCaptureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCaptureResponse'
+        description: CaptureUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCaptureResponse'
     RetrieveCaptureResponse:
-      description: RetrieveCaptureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCaptureResponse'
+        description: CaptureRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCaptureResponse'
     RetrieveAddressingResponse:
-      description: RetrieveAddressingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveAddressingResponse'
+        description: AddressingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveAddressingResponse'
     RetrieveFXConversionResponse:
-      description: RetrieveFXConversionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFXConversionResponse'
-    Fees:
-      description: Fees
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Fees'
+        description: FXConversionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFXConversionResponse'
+    UpdateFeesResponse:
+        description: FeesUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFeesResponse'
     RetrieveFeesResponse:
-      description: RetrieveFeesResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFeesResponse'
+        description: FeesRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFeesResponse'
     RetrieveMatchingResponse:
-      description: RetrieveMatchingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveMatchingResponse'
+        description: MatchingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveMatchingResponse'
     RetrieveReconciliationResponse:
-      description: RetrieveReconciliationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveReconciliationResponse'
+        description: ReconciliationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveReconciliationResponse'
     RetrieveRoutingResponse:
-      description: RetrieveRoutingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveRoutingResponse'
+        description: RoutingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveRoutingResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    cardclearingid:
-      name: cardclearingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    cardclearingprocedureid:
+        name: cardclearingprocedureid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     captureid:
-      name: captureid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: captureid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     addressingid:
-      name: addressingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: addressingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     fxconversionid:
-      name: fxconversionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: fxconversionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     feesid:
-      name: feesid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: feesid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     matchingid:
-      name: matchingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: matchingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     reconciliationid:
-      name: reconciliationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: reconciliationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     routingid:
-      name: routingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: routingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateCardClearingProcedureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCardClearingProcedureRequest'
-      required: true
-    CardClearingProcedure:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CardClearingProcedure'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCardClearingProcedureRequest'
+        required: true
+    UpdateCardClearingProcedureRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCardClearingProcedureRequest'
+        required: true
+    RetrieveCardClearingProcedureRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateCaptureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCaptureRequest'
-      required: true
-    Fees:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Fees'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCaptureRequest'
+        required: true
+    RetrieveCaptureRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveAddressingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveFXConversionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateFeesRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFeesRequest'
+        required: true
+    RetrieveFeesRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveMatchingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveReconciliationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveRoutingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

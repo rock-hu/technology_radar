@@ -1,1168 +1,1458 @@
 openapi: 3.0.1
 info:
   title: Card Financial Settlement
-  description: This service domain orchestrates the settlement of the transactions between the Issuers and the Acquirers through the Card Networks.
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Card Financial Settlement (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CardFinancialSettlement/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CardFinancialSettlement/12.0.1'
 paths:
-  /CardFinancialSettlement/Initiate:
-    post:
-      tags:
-        - CR - CardFinancialSettlementProcedure
-      summary: InCR Initiate card financial settlement processing
-      description: InCR Initiate card financial settlement processing
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateCardFinancialSettlementProcedureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateCardFinancialSettlementProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Update':
-    put:
-      tags:
-        - CR - CardFinancialSettlementProcedure
-      summary: UpCR Update the card financial settlement processing
-      description: UpCR Update the card financial settlement processing
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCardFinancialSettlementProcedureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCardFinancialSettlementProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Retrieve':
-    get:
-      tags:
-        - CR - CardFinancialSettlementProcedure
-      summary: ReCR Retrieve details and reports about the card settlement processing
-      description: ReCR Retrieve details and reports about the card settlement processing
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCardFinancialSettlementProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Consolidation/{consolidationid}/Update':
-    put:
-      tags:
-        - BQ - Consolidation
-      summary: UpBQ Update consolidated transaction details for a settlement procedure
-      description: UpBQ Update consolidated transaction details for a settlement procedure
-      operationId: UpdateConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/consolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateConsolidationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateConsolidationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Consolidation/{consolidationid}/Retrieve':
-    get:
-      tags:
-        - BQ - Consolidation
-      summary: ReBQ Retrieve consolidated transaction details for a settlement procedure
-      description: ReBQ Retrieve consolidated transaction details for a settlement procedure
-      operationId: RetrieveConsolidation
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/consolidationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveConsolidationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Processing/{processingid}/Update':
-    put:
-      tags:
-        - BQ - Processing
-      summary: UpBQ Update processing transaction details for a settlement procedure
-      description: UpBQ Update processing transaction details for a settlement procedure
-      operationId: UpdateProcessing
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/processingid'
-      requestBody:
-        $ref: '#/components/requestBodies/Processing'
-      responses:
-        '200':
-          $ref: '#/components/responses/Processing'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Processing/{processingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Processing
-      summary: ReBQ Retrieve processing transaction details for a settlement procedure
-      description: ReBQ Retrieve processing transaction details for a settlement procedure
-      operationId: RetrieveProcessing
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/processingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProcessingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Instruction/{instructionid}/Update':
-    put:
-      tags:
-        - BQ - Instruction
-      summary: UpBQ Update payment instruction details for a settlement procedure
-      description: UpBQ Update payment instruction details for a settlement procedure
-      operationId: UpdateInstruction
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/instructionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Instruction'
-      responses:
-        '200':
-          $ref: '#/components/responses/Instruction'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Instruction/{instructionid}/Retrieve':
-    get:
-      tags:
-        - BQ - Instruction
-      summary: ReBQ Retrieve payment instruction details for a settlement procedure
-      description: ReBQ Retrieve payment instruction details for a settlement procedure
-      operationId: RetrieveInstruction
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/instructionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveInstructionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Payment/{paymentid}/Update':
-    put:
-      tags:
-        - BQ - Payment
-      summary: UpBQ Update payment processing details for a settlement procedure
-      description: UpBQ Update payment processing details for a settlement procedure
-      operationId: UpdatePayment
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/paymentid'
-      requestBody:
-        $ref: '#/components/requestBodies/Payment'
-      responses:
-        '200':
-          $ref: '#/components/responses/Payment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardFinancialSettlement/{cardfinancialsettlementid}/Payment/{paymentid}/Retrieve':
-    get:
-      tags:
-        - BQ - Payment
-      summary: ReBQ Retrieve payment processing details for a settlement procedure
-      description: ReBQ Retrieve payment processing details for a settlement procedure
-      operationId: RetrievePayment
-      parameters:
-        - $ref: '#/components/parameters/cardfinancialsettlementid'
-        - $ref: '#/components/parameters/paymentid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievePaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlementProcedure/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CardFinancialSettlementProcedure'
+        summary: (DDD Service) InCR Initiate card financial settlement processing
+        description: (DDD Service) InCR Initiate card financial settlement processing
+        operationId: CardFinancialSettlementProcedure/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateCardFinancialSettlementProcedureRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateCardFinancialSettlementProcedureResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlementProcedure/{cardfinancialsettlementprocedureid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CardFinancialSettlementProcedure'
+        summary: (DDD Service) UpCR Update the card financial settlement processing
+        description: (DDD Service) UpCR Update the card financial settlement processing
+        operationId: CardFinancialSettlementProcedure/Update
+        parameters:
+          - $ref: '#/components/parameters/cardfinancialsettlementprocedureid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateCardFinancialSettlementProcedureRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateCardFinancialSettlementProcedureResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlementProcedure/{cardfinancialsettlementprocedureid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CardFinancialSettlementProcedure'
+        summary: >-
+          (DDD Service) ReCR Retrieve details and reports about the card
+          settlement processing
+        description: >-
+          (DDD Service) ReCR Retrieve details and reports about the card
+          settlement processing
+        operationId: CardFinancialSettlementProcedure/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/cardfinancialsettlementprocedureid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveCardFinancialSettlementProcedureResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{consolidationid}/Consolidation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Consolidation'
+        summary: >-
+          (DDD Service) UpBQ Update consolidated transaction details for a
+          settlement procedure
+        description: >-
+          (DDD Service) UpBQ Update consolidated transaction details for a
+          settlement procedure
+        operationId: Consolidation/Update
+        parameters:
+          - $ref: '#/components/parameters/consolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{consolidationid}/Consolidation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Consolidation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve consolidated transaction details for a
+          settlement procedure
+        description: >-
+          (DDD Service) ReBQ Retrieve consolidated transaction details for a
+          settlement procedure
+        operationId: Consolidation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/consolidationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{processingid}/Processing/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Processing'
+        summary: >-
+          (DDD Service) UpBQ Update processing transaction details for a
+          settlement procedure
+        description: >-
+          (DDD Service) UpBQ Update processing transaction details for a
+          settlement procedure
+        operationId: Processing/Update
+        parameters:
+          - $ref: '#/components/parameters/processingid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateProcessingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateProcessingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{processingid}/Processing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Processing'
+        summary: >-
+          (DDD Service) ReBQ Retrieve processing transaction details for a
+          settlement procedure
+        description: >-
+          (DDD Service) ReBQ Retrieve processing transaction details for a
+          settlement procedure
+        operationId: Processing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/processingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProcessingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{instructionid}/Instruction/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Instruction'
+        summary: >-
+          (DDD Service) UpBQ Update payment instruction details for a settlement
+          procedure
+        description: >-
+          (DDD Service) UpBQ Update payment instruction details for a settlement
+          procedure
+        operationId: Instruction/Update
+        parameters:
+          - $ref: '#/components/parameters/instructionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateInstructionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateInstructionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{instructionid}/Instruction/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Instruction'
+        summary: >-
+          (DDD Service) ReBQ Retrieve payment instruction details for a
+          settlement procedure
+        description: >-
+          (DDD Service) ReBQ Retrieve payment instruction details for a
+          settlement procedure
+        operationId: Instruction/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/instructionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveInstructionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{paymentid}/Payment/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Payment'
+        summary: >-
+          (DDD Service) UpBQ Update payment processing details for a settlement
+          procedure
+        description: >-
+          (DDD Service) UpBQ Update payment processing details for a settlement
+          procedure
+        operationId: Payment/Update
+        parameters:
+          - $ref: '#/components/parameters/paymentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdatePaymentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdatePaymentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardFinancialSettlement/{paymentid}/Payment/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Payment'
+        summary: >-
+          (DDD Service) ReBQ Retrieve payment processing details for a
+          settlement procedure
+        description: >-
+          (DDD Service) ReBQ Retrieve payment processing details for a
+          settlement procedure
+        operationId: Payment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/paymentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrievePaymentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    Payment:
-      type: object
-      properties:
-        ParticipantPaymentTransaction:
-          type: string
-          description: Transaction details
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Instruction:
-      type: object
-      properties:
-        ParticipantAcquirerBankSettlementAccountStatement:
-          type: string
-          description: Settlement account statement for processing window - used to confirm payments
-          format: string
-        ParticipantIssuerBankSettlementAccountStatement:
-          type: string
-          description: Settlement account statement for processing window - used to confirm payments
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Processing:
-      type: object
-      properties:
-        ParticipantAcquirerBankSettlementTerms:
-          type: string
-          description: Defines the card settlement fees/terms in force
-          format: string
-        ParticipantIssuerBankSettlementTerms:
-          type: string
-          description: Defines card settlement fees/terms in force
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: The currency that the transaction is made in
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    amounttypevalues:
-      enum:
-        - Principal
-        - Actual
-        - Estimated
-        - Maximum
-        - Default
-        - Replacement
-        - Incremental
-        - Decremental
-        - Reserved
-        - Available
-        - Used
-      type: string
-      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n"
-    amount:
-      type: object
-      properties:
-        AmountValue:
-          $ref: '#/components/schemas/value'
-        AmountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        DecimalPointPosition:
-          type: string
-          description: "Decimal point position starts calulating from the right\n"
-          format: string
-        AmountType:
-          $ref: '#/components/schemas/amounttypevalues'
-      description: The amount corresponding to the type
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The scheduled time for the process - likely initiation time ISODate|ISODate (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022 BM ()
-    Consolidation:
-      type: object
-      properties:
-        CardTransactionRecordReference:
-          type: string
-          description: Refers to the card transaction as recorded by issuer and/or acquirer - these are consolidated for the settlement period/window
-          format: object
-        CardTransactionRecord:
-          type: string
-          description: Card transaction details referenced in settlement processing
-          format: string
-        CardTransactionProductInstanceReference:
-          type: string
-          description: The account number associated with the card transaction
-          format: object
-        CardTransactionIssuingBankReference:
-          type: string
-          description: Refers to the card holder's issuing bank
-          format: object
-        CardTransactionMerchantAcquiringBankReference:
-          type: string
-          description: Refers to the merchant's acquiring bank
-          format: object
-        CardTransactionType:
-          type: string
-          description: 'The type of transaction (purchase, cash advance, etc.)'
-          format: string
-        CardTransactionCurrency:
-          $ref: '#/components/schemas/currencycode'
-        CardTransactionAmountType:
-          type: string
-          description: 'Type of amount (e.g. original amount, billing currency amount, conversion rate, FX Mark-up)'
-          format: string
-        CardTransactionAmount:
-          $ref: '#/components/schemas/amount'
-        CardTransactionMerchantReference:
-          type: string
-          description: Refers to the merchant initiating settlement
-          format: object
-        CardTransactionLocationReference:
-          type: string
-          description: Refers to the point of sale location
-          format: object
-        CardTransactionProductandServiceReference:
-          type: string
-          description: 'Details of the transaction (e.g. purchased service/product, purpose)'
-          format: object
-        CardTransactionDateTime:
-          $ref: '#/components/schemas/date'
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    CardFinancialSettlementProcedure:
-      type: object
-      properties:
-        NetworkReference:
-          type: string
-          description: Refers to the card network
-          format: object
-        CardFinancialSettlementProcessType:
-          type: string
-          description: 'Defines the type of settlement process (e.g. scheduled processing, ad-hoc processing)'
-          format: string
-        CardFinancialSettlementProcessDateTime:
-          $ref: '#/components/schemas/date'
-        CardFinancialSettlementServiceSchedule:
-          type: string
-          description: 'Defines the type and scheduling of card settlement processing, includes Issuer and Acquirer involvement/scheduling details as necessary'
-          format: string
-        ParticipantAcquirerBankReference:
-          type: string
-          description: Refers to the Acquiring bank for which the Network orchestrates settlement processing
-          format: object
-        ParticipantIssuerBankReference:
-          type: string
-          description: Refers to the Issuing bank for which the Network orchestrates settlement processing
-          format: object
-      description: 'Complete work tasks following a defined procedure in support of general office activities and product and service delivery within Card Financial Settlement. '
     InitiateCardFinancialSettlementProcedureRequest:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            NetworkReference:
+        type: object
+        properties:
+          NetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardFinancialSettlementProcessType:
+              description: '|||'
+              format: Object
+          CardFinancialSettlementProcessType:
               type: string
-              description: "\r\n"
-              format: string
-            CardFinancialSettlementServiceSchedule:
+              description: '|||'
+              format: String
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Initiate card financial settlement processing'
+              description: '|||'
+              format: Object
     InitiateCardFinancialSettlementProcedureResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardFinancialSettlementServiceSchedule:
+        type: object
+        properties:
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate card financial settlement processing'
+              description: '|||'
+              format: String
+    InitiateCardFinancialSettlementProcedure:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateCardFinancialSettlementProcedureRequest:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementProcessType:
+        type: object
+        properties:
+          CardFinancialSettlementProcessType:
               type: string
-              description: "\r\n"
-              format: string
-            CardFinancialSettlementProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardFinancialSettlementServiceSchedule:
+              description: '|||'
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpCR Update the card financial settlement processing'
+              description: '|||'
+              format: Object
     UpdateCardFinancialSettlementProcedureResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementProcessType:
+        type: object
+        properties:
+          CardFinancialSettlementProcessType:
               type: string
-              description: "\r\n"
-              format: string
-            CardFinancialSettlementProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardFinancialSettlementServiceSchedule:
+              description: '|||'
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: UpCR Update the card financial settlement processing'
+              description: '|||'
+              format: Object
+    UpdateCardFinancialSettlementProcedure:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveCardFinancialSettlementProcedureResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            NetworkReference:
+        type: object
+        properties:
+          NetworkReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardFinancialSettlementProcessType:
+              description: '|||'
+              format: Object
+          CardFinancialSettlementProcessType:
               type: string
-              description: "\r\n"
-              format: string
-            CardFinancialSettlementProcessDateTime:
-              $ref: '#/components/schemas/date'
-            CardFinancialSettlementServiceSchedule:
+              description: '|||'
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details and reports about the card settlement processing'
+              description: '|||'
+              format: Object
+    RetrieveCardFinancialSettlementProcedure:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateConsolidationRequest:
-      type: object
-      properties:
-        Consolidation:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+        type: object
+        properties:
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Input: UpBQ Update consolidated transaction details for a settlement procedure'
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     UpdateConsolidationResponse:
-      type: object
-      properties:
-        Consolidation:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+        type: object
+        properties:
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Output: UpBQ Update consolidated transaction details for a settlement procedure'
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    UpdateConsolidation:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveConsolidationResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementServiceSchedule:
+        type: object
+        properties:
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Consolidation:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Output: ReBQ Retrieve consolidated transaction details for a settlement procedure'
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    RetrieveConsolidation:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateProcessingRequest:
+        type: object
+        properties:
+          ParticipantAcquirerBankSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProcessingResponse:
+        type: object
+        properties:
+          ParticipantAcquirerBankSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProcessing:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveProcessingResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementServiceSchedule:
+        type: object
+        properties:
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Consolidation:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-        Processing:
-          type: object
-          properties:
-            ParticipantAcquirerBankSettlementTerms:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ParticipantAcquirerBankSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankSettlementTerms:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve processing transaction details for a settlement procedure'
+              description: '|||'
+              format: String
+    RetrieveProcessing:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateInstructionRequest:
+        type: object
+        properties:
+          ParticipantAcquirerBankSettlementAccountStatement:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementAccountStatement:
+              type: string
+              description: '|||'
+              format: String
+    UpdateInstructionResponse:
+        type: object
+        properties:
+          ParticipantAcquirerBankSettlementAccountStatement:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementAccountStatement:
+              type: string
+              description: '|||'
+              format: String
+    UpdateInstruction:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveInstructionResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementServiceSchedule:
+        type: object
+        properties:
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Consolidation:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-        Processing:
-          type: object
-          properties:
-            ParticipantAcquirerBankSettlementTerms:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ParticipantAcquirerBankSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankSettlementTerms:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-        Instruction:
-          type: object
-          properties:
-            ParticipantAcquirerBankSettlementAccountStatement:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankSettlementAccountStatement:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankSettlementAccountStatement:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementAccountStatement:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve payment instruction details for a settlement procedure'
+              description: '|||'
+              format: String
+    RetrieveInstruction:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdatePaymentRequest:
+        type: object
+        properties:
+          ParticipantPaymentTransaction:
+              type: string
+              description: '|||'
+              format: String
+    UpdatePaymentResponse:
+        type: object
+        properties:
+          ParticipantPaymentTransaction:
+              type: string
+              description: '|||'
+              format: String
+    UpdatePayment:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrievePaymentResponse:
-      type: object
-      properties:
-        CardFinancialSettlementProcedure:
-          type: object
-          properties:
-            CardFinancialSettlementServiceSchedule:
+        type: object
+        properties:
+          CardFinancialSettlementServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-        Consolidation:
-          type: object
-          properties:
-            CardTransactionRecordReference:
+              description: '|||'
+              format: Object
+          CardTransactionRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductInstanceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionIssuingBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionIssuingBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionMerchantAcquiringBankReference:
+              description: '|||'
+              format: Object
+          CardTransactionMerchantAcquiringBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionType:
+              description: '|||'
+              format: Object
+          CardTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CardTransactionAmountType:
+              description: '|||'
+              format: String
+          CardTransactionCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CardTransactionAmountType:
               type: string
-              description: "\r\n"
-              format: string
-            CardTransactionMerchantReference:
+              description: '|||'
+              format: String
+          CardTransactionMerchantReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionLocationReference:
+              description: '|||'
+              format: Object
+          CardTransactionLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionProductandServiceReference:
+              description: '|||'
+              format: Object
+          CardTransactionProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CardTransactionDateTime:
-              $ref: '#/components/schemas/date'
-        Processing:
-          type: object
-          properties:
-            ParticipantAcquirerBankSettlementTerms:
+              description: '|||'
+              format: Object
+          CardTransactionDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ParticipantAcquirerBankSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankSettlementTerms:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-        Instruction:
-          type: object
-          properties:
-            ParticipantAcquirerBankSettlementAccountStatement:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankSettlementAccountStatement:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankSettlementAccountStatement:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankSettlementAccountStatement:
               type: string
-              description: "\r\n"
-              format: string
-        Payment:
-          type: object
-          properties:
-            ParticipantPaymentTransaction:
+              description: '|||'
+              format: String
+          ParticipantPaymentTransaction:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve payment processing details for a settlement procedure'
+              description: '|||'
+              format: String
+    RetrievePayment:
+        type: object
+        properties:
+          NetworkReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CardFinancialSettlementProcessType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CardFinancialSettlementProcessDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CardFinancialSettlementServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
+    CurrencyCode:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Code allocated to a currency, by a maintenance agency, under an
+          international identification scheme as described in the latest edition
+          of the international standard ISO 4217 "Codes for the representation
+          of currencies and funds". Valid currency codes are registered with the
+          ISO 4217 Maintenance Agency, and consist of three contiguous letters.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateCardFinancialSettlementProcedureResponse:
-      description: InitiateCardFinancialSettlementProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCardFinancialSettlementProcedureResponse'
+        description: CardFinancialSettlementProcedureInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCardFinancialSettlementProcedureResponse
     UpdateCardFinancialSettlementProcedureResponse:
-      description: UpdateCardFinancialSettlementProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCardFinancialSettlementProcedureResponse'
+        description: CardFinancialSettlementProcedureUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateCardFinancialSettlementProcedureResponse
     RetrieveCardFinancialSettlementProcedureResponse:
-      description: RetrieveCardFinancialSettlementProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCardFinancialSettlementProcedureResponse'
+        description: CardFinancialSettlementProcedureRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveCardFinancialSettlementProcedureResponse
     UpdateConsolidationResponse:
-      description: UpdateConsolidationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateConsolidationResponse'
+        description: ConsolidationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateConsolidationResponse'
     RetrieveConsolidationResponse:
-      description: RetrieveConsolidationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveConsolidationResponse'
-    Processing:
-      description: Processing
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Processing'
+        description: ConsolidationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveConsolidationResponse'
+    UpdateProcessingResponse:
+        description: ProcessingUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProcessingResponse'
     RetrieveProcessingResponse:
-      description: RetrieveProcessingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProcessingResponse'
-    Instruction:
-      description: Instruction
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Instruction'
+        description: ProcessingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProcessingResponse'
+    UpdateInstructionResponse:
+        description: InstructionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateInstructionResponse'
     RetrieveInstructionResponse:
-      description: RetrieveInstructionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveInstructionResponse'
-    Payment:
-      description: Payment
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Payment'
+        description: InstructionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveInstructionResponse'
+    UpdatePaymentResponse:
+        description: PaymentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentResponse'
     RetrievePaymentResponse:
-      description: RetrievePaymentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrievePaymentResponse'
+        description: PaymentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrievePaymentResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    cardfinancialsettlementid:
-      name: cardfinancialsettlementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    cardfinancialsettlementprocedureid:
+        name: cardfinancialsettlementprocedureid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     consolidationid:
-      name: consolidationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: consolidationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     processingid:
-      name: processingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: processingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     instructionid:
-      name: instructionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: instructionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     paymentid:
-      name: paymentid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: paymentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateCardFinancialSettlementProcedureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCardFinancialSettlementProcedureRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCardFinancialSettlementProcedureRequest
+        required: true
     UpdateCardFinancialSettlementProcedureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCardFinancialSettlementProcedureRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateCardFinancialSettlementProcedureRequest
+        required: true
+    RetrieveCardFinancialSettlementProcedureRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateConsolidationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateConsolidationRequest'
-      required: true
-    Processing:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Processing'
-      required: true
-    Instruction:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Instruction'
-      required: true
-    Payment:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Payment'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateConsolidationRequest'
+        required: true
+    RetrieveConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateProcessingRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProcessingRequest'
+        required: true
+    RetrieveProcessingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateInstructionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateInstructionRequest'
+        required: true
+    RetrieveInstructionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdatePaymentRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentRequest'
+        required: true
+    RetrievePaymentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

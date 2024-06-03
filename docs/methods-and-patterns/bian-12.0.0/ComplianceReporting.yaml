@@ -1,1181 +1,2374 @@
 openapi: 3.0.1
 info:
   title: Compliance Reporting
-  description: This service domain administers and orchestrates the tasks required to apply and report on internal audit control and reporting activity
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Compliance Reporting (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/ComplianceReporting/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/ComplianceReporting/12.0.1'
 paths:
-  '/ComplianceReporting/{compliancereportingid}/Capture':
-    put:
-      tags:
-        - CR - ComplianceReportingAdministrativePlan
-      summary: CaCR Capture Compliance Reporting Administrative Plan activity or event related information
-      description: CaCR Capture Compliance Reporting Administrative Plan activity or event related information
-      operationId: Capture
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureComplianceReportingAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureComplianceReportingAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /ComplianceReporting/Initiate:
-    post:
-      tags:
-        - CR - ComplianceReportingAdministrativePlan
-      summary: InCR Instantiate a new Compliance Reporting Administrative Plan
-      description: InCR Instantiate a new Compliance Reporting Administrative Plan
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateComplianceReportingAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateComplianceReportingAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Retrieve':
-    get:
-      tags:
-        - CR - ComplianceReportingAdministrativePlan
-      summary: ReCR Retrieve details about any aspect of Compliance Reporting Administrative Plan
-      description: ReCR Retrieve details about any aspect of Compliance Reporting Administrative Plan
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveComplianceReportingAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Request':
-    put:
-      tags:
-        - CR - ComplianceReportingAdministrativePlan
-      summary: RqCR Request manual intervention or a decision with respect to Compliance Reporting Administrative Plan
-      description: RqCR Request manual intervention or a decision with respect to Compliance Reporting Administrative Plan
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestComplianceReportingAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestComplianceReportingAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Update':
-    put:
-      tags:
-        - CR - ComplianceReportingAdministrativePlan
-      summary: UpCR Update details relating to Compliance Reporting Administrative Plan
-      description: UpCR Update details relating to Compliance Reporting Administrative Plan
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateComplianceReportingAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateComplianceReportingAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/ComplianceAssessment/{complianceassessmentid}/Capture':
-    put:
-      tags:
-        - BQ - ComplianceAssessment
-      summary: CaBQ Capture Compliance Assessment activity or event related information
-      description: CaBQ Capture Compliance Assessment activity or event related information
-      operationId: CaptureComplianceAssessment
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/complianceassessmentid'
-      requestBody:
-        $ref: '#/components/requestBodies/ComplianceAssessment'
-      responses:
-        '200':
-          $ref: '#/components/responses/ComplianceAssessment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Consolidation/{consolidationid}/Capture':
-    put:
-      tags:
-        - BQ - Consolidation
-      summary: CaBQ Capture Consolidation activity or event related information
-      description: CaBQ Capture Consolidation activity or event related information
-      operationId: CaptureConsolidation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/consolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Consolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Consolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Remediation/{remediationid}/Capture':
-    put:
-      tags:
-        - BQ - Remediation
-      summary: CaBQ Capture Remediation activity or event related information
-      description: CaBQ Capture Remediation activity or event related information
-      operationId: CaptureRemediation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/remediationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Remediation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Remediation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Remediation/Initiate':
-    post:
-      tags:
-        - BQ - Remediation
-      summary: InBQ Instantiate a new Remediation
-      description: InBQ Instantiate a new Remediation
-      operationId: InitiateRemediation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-      requestBody:
-        $ref: '#/components/requestBodies/Remediation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Remediation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/ComplianceAssessment/{complianceassessmentid}/Retrieve':
-    get:
-      tags:
-        - BQ - ComplianceAssessment
-      summary: ReBQ Retrieve details about any aspect of Compliance Assessment
-      description: ReBQ Retrieve details about any aspect of Compliance Assessment
-      operationId: RetrieveComplianceAssessment
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/complianceassessmentid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveComplianceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Consolidation/{consolidationid}/Retrieve':
-    get:
-      tags:
-        - BQ - Consolidation
-      summary: ReBQ Retrieve details about any aspect of Consolidation
-      description: ReBQ Retrieve details about any aspect of Consolidation
-      operationId: RetrieveConsolidation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/consolidationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveConsolidationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Remediation/{remediationid}/Retrieve':
-    get:
-      tags:
-        - BQ - Remediation
-      summary: ReBQ Retrieve details about any aspect of Remediation
-      description: ReBQ Retrieve details about any aspect of Remediation
-      operationId: RetrieveRemediation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/remediationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveRemediationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/ComplianceAssessment/{complianceassessmentid}/Request':
-    put:
-      tags:
-        - BQ - ComplianceAssessment
-      summary: RqBQ Request manual intervention or a decision with respect to Compliance Assessment
-      description: RqBQ Request manual intervention or a decision with respect to Compliance Assessment
-      operationId: RequestComplianceAssessment
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/complianceassessmentid'
-      requestBody:
-        $ref: '#/components/requestBodies/ComplianceAssessment'
-      responses:
-        '200':
-          $ref: '#/components/responses/ComplianceAssessment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Consolidation/{consolidationid}/Request':
-    put:
-      tags:
-        - BQ - Consolidation
-      summary: RqBQ Request manual intervention or a decision with respect to Consolidation
-      description: RqBQ Request manual intervention or a decision with respect to Consolidation
-      operationId: RequestConsolidation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/consolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Consolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Consolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Remediation/{remediationid}/Request':
-    put:
-      tags:
-        - BQ - Remediation
-      summary: RqBQ Request manual intervention or a decision with respect to Remediation
-      description: RqBQ Request manual intervention or a decision with respect to Remediation
-      operationId: RequestRemediation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/remediationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Remediation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Remediation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/ComplianceAssessment/{complianceassessmentid}/Update':
-    put:
-      tags:
-        - BQ - ComplianceAssessment
-      summary: UpBQ Update details relating to Compliance Assessment
-      description: UpBQ Update details relating to Compliance Assessment
-      operationId: UpdateComplianceAssessment
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/complianceassessmentid'
-      requestBody:
-        $ref: '#/components/requestBodies/ComplianceAssessment'
-      responses:
-        '200':
-          $ref: '#/components/responses/ComplianceAssessment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Consolidation/{consolidationid}/Update':
-    put:
-      tags:
-        - BQ - Consolidation
-      summary: UpBQ Update details relating to Consolidation
-      description: UpBQ Update details relating to Consolidation
-      operationId: UpdateConsolidation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/consolidationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Consolidation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Consolidation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ComplianceReporting/{compliancereportingid}/Remediation/{remediationid}/Update':
-    put:
-      tags:
-        - BQ - Remediation
-      summary: UpBQ Update details relating to Remediation
-      description: UpBQ Update details relating to Remediation
-      operationId: UpdateRemediation
-      parameters:
-        - $ref: '#/components/parameters/compliancereportingid'
-        - $ref: '#/components/parameters/remediationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Remediation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Remediation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReportingAdministrativePlan/{compliancereportingadministrativeplanid}/Capture':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ComplianceReportingAdministrativePlan'
+        summary: >-
+          (DDD Service) CaCR Capture Compliance Reporting Administrative Plan
+          activity or event related information
+        description: >-
+          (DDD Service) CaCR Capture Compliance Reporting Administrative Plan
+          activity or event related information
+        operationId: ComplianceReportingAdministrativePlan/Capture
+        parameters:
+          - $ref: '#/components/parameters/compliancereportingadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/CaptureComplianceReportingAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/CaptureComplianceReportingAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReportingAdministrativePlan/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - ComplianceReportingAdministrativePlan'
+        summary: >-
+          (DDD Service) InCR Instantiate a new Compliance Reporting
+          Administrative Plan
+        description: >-
+          (DDD Service) InCR Instantiate a new Compliance Reporting
+          Administrative Plan
+        operationId: ComplianceReportingAdministrativePlan/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateComplianceReportingAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateComplianceReportingAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReportingAdministrativePlan/{compliancereportingadministrativeplanid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ComplianceReportingAdministrativePlan'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Compliance
+          Reporting Administrative Plan
+        description: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Compliance
+          Reporting Administrative Plan
+        operationId: ComplianceReportingAdministrativePlan/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/compliancereportingadministrativeplanid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveComplianceReportingAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReportingAdministrativePlan/{compliancereportingadministrativeplanid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ComplianceReportingAdministrativePlan'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Compliance Reporting Administrative Plan
+        description: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Compliance Reporting Administrative Plan
+        operationId: ComplianceReportingAdministrativePlan/Request
+        parameters:
+          - $ref: '#/components/parameters/compliancereportingadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestComplianceReportingAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestComplianceReportingAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReportingAdministrativePlan/{compliancereportingadministrativeplanid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ComplianceReportingAdministrativePlan'
+        summary: >-
+          (DDD Service) UpCR Update details relating to Compliance Reporting
+          Administrative Plan
+        description: >-
+          (DDD Service) UpCR Update details relating to Compliance Reporting
+          Administrative Plan
+        operationId: ComplianceReportingAdministrativePlan/Update
+        parameters:
+          - $ref: '#/components/parameters/compliancereportingadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateComplianceReportingAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateComplianceReportingAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{complianceassessmentid}/ComplianceAssessment/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ComplianceAssessment'
+        summary: >-
+          (DDD Service) CaBQ Capture Compliance Assessment activity or event
+          related information
+        description: >-
+          (DDD Service) CaBQ Capture Compliance Assessment activity or event
+          related information
+        operationId: ComplianceAssessment/Capture
+        parameters:
+          - $ref: '#/components/parameters/complianceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureComplianceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureComplianceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{consolidationid}/Consolidation/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Consolidation'
+        summary: >-
+          (DDD Service) CaBQ Capture Consolidation activity or event related
+          information
+        description: >-
+          (DDD Service) CaBQ Capture Consolidation activity or event related
+          information
+        operationId: Consolidation/Capture
+        parameters:
+          - $ref: '#/components/parameters/consolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{remediationid}/Remediation/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Remediation'
+        summary: >-
+          (DDD Service) CaBQ Capture Remediation activity or event related
+          information
+        description: >-
+          (DDD Service) CaBQ Capture Remediation activity or event related
+          information
+        operationId: Remediation/Capture
+        parameters:
+          - $ref: '#/components/parameters/remediationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureRemediationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureRemediationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Remediation/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Remediation'
+        summary: (DDD Service) InBQ Instantiate a new Remediation
+        description: (DDD Service) InBQ Instantiate a new Remediation
+        operationId: Remediation/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateRemediationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateRemediationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{complianceassessmentid}/ComplianceAssessment/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ComplianceAssessment'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Compliance
+          Assessment
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Compliance
+          Assessment
+        operationId: ComplianceAssessment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/complianceassessmentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveComplianceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{consolidationid}/Consolidation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Consolidation'
+        summary: (DDD Service) ReBQ Retrieve details about any aspect of Consolidation
+        description: (DDD Service) ReBQ Retrieve details about any aspect of Consolidation
+        operationId: Consolidation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/consolidationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{remediationid}/Remediation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Remediation'
+        summary: (DDD Service) ReBQ Retrieve details about any aspect of Remediation
+        description: (DDD Service) ReBQ Retrieve details about any aspect of Remediation
+        operationId: Remediation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/remediationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveRemediationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{complianceassessmentid}/ComplianceAssessment/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ComplianceAssessment'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Compliance Assessment
+        description: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Compliance Assessment
+        operationId: ComplianceAssessment/Request
+        parameters:
+          - $ref: '#/components/parameters/complianceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestComplianceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestComplianceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{consolidationid}/Consolidation/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Consolidation'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Consolidation
+        description: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Consolidation
+        operationId: Consolidation/Request
+        parameters:
+          - $ref: '#/components/parameters/consolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{remediationid}/Remediation/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Remediation'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Remediation
+        description: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Remediation
+        operationId: Remediation/Request
+        parameters:
+          - $ref: '#/components/parameters/remediationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestRemediationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestRemediationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{complianceassessmentid}/ComplianceAssessment/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ComplianceAssessment'
+        summary: (DDD Service) UpBQ Update details relating to Compliance Assessment
+        description: (DDD Service) UpBQ Update details relating to Compliance Assessment
+        operationId: ComplianceAssessment/Update
+        parameters:
+          - $ref: '#/components/parameters/complianceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateComplianceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateComplianceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{consolidationid}/Consolidation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Consolidation'
+        summary: (DDD Service) UpBQ Update details relating to Consolidation
+        description: (DDD Service) UpBQ Update details relating to Consolidation
+        operationId: Consolidation/Update
+        parameters:
+          - $ref: '#/components/parameters/consolidationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateConsolidationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateConsolidationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ComplianceReporting/{remediationid}/Remediation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Remediation'
+        summary: (DDD Service) UpBQ Update details relating to Remediation
+        description: (DDD Service) UpBQ Update details relating to Remediation
+        operationId: Remediation/Update
+        parameters:
+          - $ref: '#/components/parameters/remediationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateRemediationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateRemediationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    ComplianceReportingOutcome:
-      type: object
-      properties:
-        ComplianceReportingPerformanceAnalysis:
-          type: string
-          description: ''
-          format: string
-        ComplianceReportingActivityAnalysis:
-          type: string
-          description: ''
-          format: string
-        ComplianceReportingAdministrativePlan:
-          type: string
-          description: ''
-          format: string
-        ComplianceReportingAdministrationTask:
-          type: string
-          description: ''
-          format: string
-      description: "A collection of one or more clerical routines that are to be followed to administer the operational unit/function\n\nExamples: Time-sheet recording"
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: The Compliance Reporting Administrative Plan specific Business Service
-    Consolidation:
-      type: object
-      properties:
-        ConsolidationPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        ConsolidationBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        ConsolidationWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        ConsolidationPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        ConsolidationServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        ConsolidationServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        ConsolidationServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        ConsolidationServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        ConsolidationServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "A collection of one or more clerical routines that are to be followed to administer the operational unit/function\n\nExamples: Time-sheet recording"
-    Remediation:
-      type: object
-      properties:
-        RemediationPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        RemediationBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        RemediationWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        RemediationAssurance:
-          $ref: '#/components/schemas/businessservice'
-        RemediationPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        RemediationRemediationAssuranceServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        RemediationRemediationAssuranceServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        RemediationRemediationAssuranceServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        RemediationRemediationAssuranceServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        RemediationRemediationAssuranceServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "A collection of one or more clerical routines that are to be followed to administer the operational unit/function\n\nExamples: Time-sheet recording"
-    ComplianceAssessment:
-      type: object
-      properties:
-        ComplianceAssessmentPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        ComplianceAssessmentBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        ComplianceAssessmentWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        AuditandReporting:
-          $ref: '#/components/schemas/businessservice'
-        ComplianceAssessmentPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        ComplianceAssessmentAuditandReportingServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        ComplianceAssessmentAuditandReportingServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        ComplianceAssessmentAuditandReportingServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        ComplianceAssessmentAuditandReportingServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "A collection of one or more clerical routines that are to be followed to administer the operational unit/function\n\nExamples: Time-sheet recording"
-    ComplianceReportingAdministrativePlan:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlanBudgetType:
-          type: string
-          description: A Classification value that distinguishes between Budgets within Compliance Reporting Administrative Plan according to the type of resource and/or activity that is budgetted
-          format: string
-        ComplianceReportingAdministrativePlanBudget:
-          type: string
-          description: 'An estimate of costs, revenues, and resources  over a specified period which is defined for Compliance Reporting Administrative Plan'
-          format: string
-        ComplianceReportingAdministrativePlanAssignment:
-          type: string
-          description: The allocation of someone or something which is specified for Compliance Reporting Administrative Plan
-          format: string
-        ComplianceReportingAdministrativePlanPlan:
-          type: string
-          description: A plan that defines clerical support for ComplianceReporting
-          format: string
-        ComplianceReportingAdministrativePlanReference:
-          type: string
-          description: Party who is involved in  Compliance Reporting Administrative Plan
-          format: object
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Compliance Reporting. \nExample: Administer the time reporting and billing for the specialist sales support team."
     CaptureComplianceReportingAdministrativePlanRequest:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaCR Capture Compliance Reporting Administrative Plan activity or event related information'
+              description: '|||'
+              format: Object
     CaptureComplianceReportingAdministrativePlanResponse:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CaCR Capture Compliance Reporting Administrative Plan activity or event related information'
+              description: '|||'
+              format: String
+    CaptureComplianceReportingAdministrativePlan:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateComplianceReportingAdministrativePlanRequest:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Instantiate a new Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: Object
     InitiateComplianceReportingAdministrativePlanResponse:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Instantiate a new Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: String
+    InitiateComplianceReportingAdministrativePlan:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveComplianceReportingAdministrativePlanResponse:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about any aspect of Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: Object
+    RetrieveComplianceReportingAdministrativePlan:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RequestComplianceReportingAdministrativePlanRequest:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: RqCR Request manual intervention or a decision with respect to Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: Object
     RequestComplianceReportingAdministrativePlanResponse:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention or a decision with respect to Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: String
+    RequestComplianceReportingAdministrativePlan:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateComplianceReportingAdministrativePlanRequest:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpCR Update details relating to Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: Object
     UpdateComplianceReportingAdministrativePlanResponse:
-      type: object
-      properties:
-        ComplianceReportingAdministrativePlan:
-          type: object
-          properties:
-            ComplianceReportingAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceReportingAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details relating to Compliance Reporting Administrative Plan'
+              description: '|||'
+              format: String
+    UpdateComplianceReportingAdministrativePlan:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    CaptureComplianceAssessmentRequest:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
+              type: string
+              description: '|||'
+              format: String
+    BusinessService:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BusinessServiceType:
+              enum:
+                  -  Businessservicetypevalues
+              type: string
+              description: ">\r\n* `Businessservicetypevalues` \r\n* "
+    CaptureComplianceAssessmentResponse:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureComplianceAssessment:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    CaptureConsolidationRequest:
+        type: object
+        properties:
+          ConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureConsolidationResponse:
+        type: object
+        properties:
+          ConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureConsolidation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    CaptureRemediationRequest:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureRemediationResponse:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureRemediation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    InitiateRemediationRequest:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateRemediationResponse:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateRemediation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveComplianceAssessmentResponse:
-      type: object
-      properties:
-        ComplianceAssessment:
-          type: object
-          properties:
-            ComplianceAssessmentPreconditions:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceAssessmentBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            ComplianceAssessmentWorkSchedule:
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            AuditandReporting:
-              $ref: '#/components/schemas/businessservice'
-            ComplianceAssessmentPostconditions:
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceAssessmentAuditandReportingServiceType:
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceAssessmentAuditandReportingServiceDescription:
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ComplianceAssessmentAuditandReportingServiceName:
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Compliance Assessment'
+              description: '|||'
+              format: String
+    RetrieveComplianceAssessment:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveConsolidationResponse:
-      type: object
-      properties:
-        Consolidation:
-          type: object
-          properties:
-            ConsolidationPreconditions:
+        type: object
+        properties:
+          ConsolidationPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ConsolidationBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            ConsolidationWorkSchedule:
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessService:
-              $ref: '#/components/schemas/businessservice'
-            ConsolidationPostconditions:
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ConsolidationServiceType:
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            ConsolidationServiceDescription:
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ConsolidationServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            ConsolidationServiceWorkProduct:
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ConsolidationServiceName:
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Consolidation'
+              description: '|||'
+              format: String
+    RetrieveConsolidation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveRemediationResponse:
-      type: object
-      properties:
-        Remediation:
-          type: object
-          properties:
-            RemediationPreconditions:
+        type: object
+        properties:
+          RemediationPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            RemediationWorkSchedule:
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationAssurance:
-              $ref: '#/components/schemas/businessservice'
-            RemediationPostconditions:
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationRemediationAssuranceServiceType:
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationRemediationAssuranceServiceDescription:
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationRemediationAssuranceServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationRemediationAssuranceServiceWorkProduct:
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            RemediationRemediationAssuranceServiceName:
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Remediation'
+              description: '|||'
+              format: String
+    RetrieveRemediation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    RequestComplianceAssessmentRequest:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
+              type: string
+              description: '|||'
+              format: String
+    RequestComplianceAssessmentResponse:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
+              type: string
+              description: '|||'
+              format: String
+    RequestComplianceAssessment:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    RequestConsolidationRequest:
+        type: object
+        properties:
+          ConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    RequestConsolidationResponse:
+        type: object
+        properties:
+          ConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    RequestConsolidation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    RequestRemediationRequest:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    RequestRemediationResponse:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    RequestRemediation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateComplianceAssessmentRequest:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateComplianceAssessmentResponse:
+        type: object
+        properties:
+          ComplianceAssessmentPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ComplianceAssessmentWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AuditandReporting:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ComplianceAssessmentPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ComplianceAssessmentAuditandReportingServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateComplianceAssessment:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateConsolidationRequest:
+        type: object
+        properties:
+          ConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateConsolidationResponse:
+        type: object
+        properties:
+          ConsolidationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ConsolidationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ConsolidationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ConsolidationServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateConsolidation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateRemediationRequest:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateRemediationResponse:
+        type: object
+        properties:
+          RemediationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          RemediationWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          RemediationAssurance:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          RemediationPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceType:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          RemediationRemediationAssuranceServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateRemediation:
+        type: object
+        properties:
+          ComplianceReportingAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ComplianceReportingAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     CaptureComplianceReportingAdministrativePlanResponse:
-      description: CaptureComplianceReportingAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureComplianceReportingAdministrativePlanResponse'
+        description: ComplianceReportingAdministrativePlanCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CaptureComplianceReportingAdministrativePlanResponse
     InitiateComplianceReportingAdministrativePlanResponse:
-      description: InitiateComplianceReportingAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateComplianceReportingAdministrativePlanResponse'
+        description: ComplianceReportingAdministrativePlanInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateComplianceReportingAdministrativePlanResponse
     RetrieveComplianceReportingAdministrativePlanResponse:
-      description: RetrieveComplianceReportingAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveComplianceReportingAdministrativePlanResponse'
+        description: ComplianceReportingAdministrativePlanRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveComplianceReportingAdministrativePlanResponse
     RequestComplianceReportingAdministrativePlanResponse:
-      description: RequestComplianceReportingAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestComplianceReportingAdministrativePlanResponse'
+        description: ComplianceReportingAdministrativePlanRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestComplianceReportingAdministrativePlanResponse
     UpdateComplianceReportingAdministrativePlanResponse:
-      description: UpdateComplianceReportingAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateComplianceReportingAdministrativePlanResponse'
-    ComplianceAssessment:
-      description: ComplianceAssessment
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ComplianceAssessment'
-    Consolidation:
-      description: Consolidation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Consolidation'
-    Remediation:
-      description: Remediation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Remediation'
+        description: ComplianceReportingAdministrativePlanUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateComplianceReportingAdministrativePlanResponse
+    CaptureComplianceAssessmentResponse:
+        description: ComplianceAssessmentCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureComplianceAssessmentResponse'
+    CaptureConsolidationResponse:
+        description: ConsolidationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureConsolidationResponse'
+    CaptureRemediationResponse:
+        description: RemediationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureRemediationResponse'
+    InitiateRemediationResponse:
+        description: RemediationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateRemediationResponse'
     RetrieveComplianceAssessmentResponse:
-      description: RetrieveComplianceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveComplianceAssessmentResponse'
+        description: ComplianceAssessmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveComplianceAssessmentResponse'
     RetrieveConsolidationResponse:
-      description: RetrieveConsolidationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveConsolidationResponse'
+        description: ConsolidationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveConsolidationResponse'
     RetrieveRemediationResponse:
-      description: RetrieveRemediationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveRemediationResponse'
+        description: RemediationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveRemediationResponse'
+    RequestComplianceAssessmentResponse:
+        description: ComplianceAssessmentRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestComplianceAssessmentResponse'
+    RequestConsolidationResponse:
+        description: ConsolidationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestConsolidationResponse'
+    RequestRemediationResponse:
+        description: RemediationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestRemediationResponse'
+    UpdateComplianceAssessmentResponse:
+        description: ComplianceAssessmentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateComplianceAssessmentResponse'
+    UpdateConsolidationResponse:
+        description: ConsolidationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateConsolidationResponse'
+    UpdateRemediationResponse:
+        description: RemediationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateRemediationResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    compliancereportingid:
-      name: compliancereportingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    compliancereportingadministrativeplanid:
+        name: compliancereportingadministrativeplanid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     complianceassessmentid:
-      name: complianceassessmentid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: complianceassessmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     consolidationid:
-      name: consolidationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: consolidationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     remediationid:
-      name: remediationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: remediationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     CaptureComplianceReportingAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureComplianceReportingAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CaptureComplianceReportingAdministrativePlanRequest
+        required: true
     InitiateComplianceReportingAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateComplianceReportingAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateComplianceReportingAdministrativePlanRequest
+        required: true
+    RetrieveComplianceReportingAdministrativePlanRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     RequestComplianceReportingAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestComplianceReportingAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestComplianceReportingAdministrativePlanRequest
+        required: true
     UpdateComplianceReportingAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateComplianceReportingAdministrativePlanRequest'
-      required: true
-    ComplianceAssessment:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ComplianceAssessment'
-      required: true
-    Consolidation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Consolidation'
-      required: true
-    Remediation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Remediation'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateComplianceReportingAdministrativePlanRequest
+        required: true
+    CaptureComplianceAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureComplianceAssessmentRequest'
+        required: true
+    CaptureConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureConsolidationRequest'
+        required: true
+    CaptureRemediationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureRemediationRequest'
+        required: true
+    InitiateRemediationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateRemediationRequest'
+        required: true
+    RetrieveComplianceAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveRemediationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RequestComplianceAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestComplianceAssessmentRequest'
+        required: true
+    RequestConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestConsolidationRequest'
+        required: true
+    RequestRemediationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestRemediationRequest'
+        required: true
+    UpdateComplianceAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateComplianceAssessmentRequest'
+        required: true
+    UpdateConsolidationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateConsolidationRequest'
+        required: true
+    UpdateRemediationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateRemediationRequest'
+        required: true

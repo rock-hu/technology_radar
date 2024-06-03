@@ -1,816 +1,1244 @@
 openapi: 3.0.1
 info:
   title: Collateral Allocation Management
-  description: The Service Domain manages the allocation of party owned assets to bank issued lending and other asset products.
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Collateral Allocation Management (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CollateralAllocationManagement/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CollateralAllocationManagement/12.0.1'
 paths:
-  /CollateralAllocationManagement/Provide:
-    post:
-      tags:
-        - CR - CollateralAssetAllocation
-      summary: PrCR Record an asset provided for collateralization
-      description: PrCR Record an asset provided for collateralization
-      operationId: Provide
-      requestBody:
-        $ref: '#/components/requestBodies/ProvideCollateralAssetAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProvideCollateralAssetAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CollateralAllocationManagement/{collateralallocationmanagementid}/Update':
-    put:
-      tags:
-        - CR - CollateralAssetAllocation
-      summary: UpCR Update details and status of a collateral asset and its allocation
-      description: UpCR Update details and status of a collateral asset and its allocation
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/collateralallocationmanagementid'
-      requestBody:
-        $ref: '#/components/requestBodies/CollateralAssetAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/CollateralAssetAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CollateralAllocationManagement/{collateralallocationmanagementid}/Retrieve':
-    get:
-      tags:
-        - CR - CollateralAssetAllocation
-      summary: ReCR Retrieve details and status of a collateral asset and its allocation
-      description: ReCR Retrieve details and status of a collateral asset and its allocation
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/collateralallocationmanagementid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCollateralAssetAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CollateralAllocationManagement/{collateralallocationmanagementid}/Allocation/Provide':
-    post:
-      tags:
-        - BQ - Allocation
-      summary: PrBQ Allocate a collateral asset to a lending product
-      description: PrBQ Allocate a collateral asset to a lending product
-      operationId: ProvideAllocation
-      parameters:
-        - $ref: '#/components/parameters/collateralallocationmanagementid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProvideAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProvideAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CollateralAllocationManagement/{collateralallocationmanagementid}/Allocation/{allocationid}/Update':
-    put:
-      tags:
-        - BQ - Allocation
-      summary: UpBQ Update details about an allocation request and in force
-      description: UpBQ Update details about an allocation request and in force
-      operationId: UpdateAllocation
-      parameters:
-        - $ref: '#/components/parameters/collateralallocationmanagementid'
-        - $ref: '#/components/parameters/allocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/Allocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/Allocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CollateralAllocationManagement/{collateralallocationmanagementid}/Allocation/{allocationid}/Capture':
-    put:
-      tags:
-        - BQ - Allocation
-      summary: CaBQ Record usage details for a collateral allocation
-      description: CaBQ Record usage details for a collateral allocation
-      operationId: CaptureAllocation
-      parameters:
-        - $ref: '#/components/parameters/collateralallocationmanagementid'
-        - $ref: '#/components/parameters/allocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CollateralAllocationManagement/{collateralallocationmanagementid}/Allocation/{allocationid}/Retrieve':
-    get:
-      tags:
-        - BQ - Allocation
-      summary: ReBQ Retrieve details about a collateral allocation
-      description: ReBQ Retrieve details about a collateral allocation
-      operationId: RetrieveAllocation
-      parameters:
-        - $ref: '#/components/parameters/collateralallocationmanagementid'
-        - $ref: '#/components/parameters/allocationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CollateralAssetAllocation/Provide':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CollateralAssetAllocation'
+        summary: (DDD Service) PrCR Record an asset provided for collateralization
+        description: (DDD Service) PrCR Record an asset provided for collateralization
+        operationId: CollateralAssetAllocation/Provide
+        requestBody:
+          $ref: '#/components/requestBodies/ProvideCollateralAssetAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ProvideCollateralAssetAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CollateralAssetAllocation/{collateralassetallocationid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CollateralAssetAllocation'
+        summary: >-
+          (DDD Service) UpCR Update details and status of a collateral asset and
+          its allocation
+        description: >-
+          (DDD Service) UpCR Update details and status of a collateral asset and
+          its allocation
+        operationId: CollateralAssetAllocation/Update
+        parameters:
+          - $ref: '#/components/parameters/collateralassetallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCollateralAssetAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCollateralAssetAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CollateralAssetAllocation/{collateralassetallocationid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CollateralAssetAllocation'
+        summary: >-
+          (DDD Service) ReCR Retrieve details and status of a collateral asset
+          and its allocation
+        description: >-
+          (DDD Service) ReCR Retrieve details and status of a collateral asset
+          and its allocation
+        operationId: CollateralAssetAllocation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/collateralassetallocationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCollateralAssetAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Allocation/Provide':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Allocation'
+        summary: (DDD Service) PrBQ Allocate a collateral asset to a lending product
+        description: (DDD Service) PrBQ Allocate a collateral asset to a lending product
+        operationId: Allocation/Provide
+        requestBody:
+          $ref: '#/components/requestBodies/ProvideAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ProvideAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CollateralAllocationManagement/{allocationid}/Allocation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Allocation'
+        summary: >-
+          (DDD Service) UpBQ Update details about an allocation request and in
+          force
+        description: >-
+          (DDD Service) UpBQ Update details about an allocation request and in
+          force
+        operationId: Allocation/Update
+        parameters:
+          - $ref: '#/components/parameters/allocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CollateralAllocationManagement/{allocationid}/Allocation/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Allocation'
+        summary: (DDD Service) CaBQ Record usage details for a collateral allocation
+        description: (DDD Service) CaBQ Record usage details for a collateral allocation
+        operationId: Allocation/Capture
+        parameters:
+          - $ref: '#/components/parameters/allocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CollateralAllocationManagement/{allocationid}/Allocation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Allocation'
+        summary: (DDD Service) ReBQ Retrieve details about a collateral allocation
+        description: (DDD Service) ReBQ Retrieve details about a collateral allocation
+        operationId: Allocation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/allocationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: ''
-    amounttypevalues:
-      enum:
-        - Principal
-        - Actual
-        - Estimated
-        - Maximum
-        - Default
-        - Replacement
-        - Incremental
-        - Decremental
-        - Reserved
-        - Available
-        - Used
-      type: string
-      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n"
-    amount:
-      type: object
-      properties:
-        AmountValue:
-          $ref: '#/components/schemas/value'
-        AmountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        DecimalPointPosition:
-          type: string
-          description: "Decimal point position starts calulating from the right\n"
-          format: string
-        AmountType:
-          $ref: '#/components/schemas/amounttypevalues'
-      description: Applies for initial earmarking of collateral during an offer process
-    Allocation:
-      type: object
-      properties:
-        RequestedAllocationRequestType:
-          type: string
-          description: 'Defines  the requested action (e.g. earmark for future allocation, allocate or recall an allocation of a collateral asset)'
-          format: string
-        ProductInstanceReference:
-          type: string
-          description: Reference to the product to which the collateral is allocated
-          format: object
-        CustomerOfferReference:
-          type: string
-          description: Reference to a offer process during which the collateral allocation is defined and agreed
-          format: object
-        CollateralEarmarkAmount:
-          $ref: '#/components/schemas/amount'
-        CollateralEarmarkDuration:
-          type: string
-          description: Time for which the earmarking is enforced
-          format: string
-        CollateralAllocationAmount:
-          $ref: '#/components/schemas/amount'
-        CollateralAllocationDuration:
-          type: string
-          description: The intended duration of the allocation (can be finite or open ended)
-          format: string
-        CollateralAllocationRecallAmount:
-          $ref: '#/components/schemas/amount'
-        CollateralAllocationRecallTimetable:
-          type: string
-          description: The schedule for processing allocation recall
-          format: string
-        CollateralAllocationRecallResult:
-          type: string
-          description: The result of the allocation recall
-          format: string
-        CollateralAssetAllocationState:
-          type: string
-          description: State of the allocation as there can be different states for the allocation of a single asset to several products
-          format: string
-        CollateralAllocationRequestResult:
-          type: string
-          description: Record of the workstep and result of the allocation process
-          format: string
-      description: "Set of rules for the purpose of deciding if or if not something is applicable\n\nExamples: Staff assignment, Facility allocation."
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The date of the last valuation (and next planned valuation) ISODate|ISODate (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022 BM ()
-    CollateralAssetAllocation:
-      type: object
-      properties:
-        CustomerReference:
-          type: string
-          description: Reference to the title owner of the collateral asset
-          format: object
-        CollateralAssetType:
-          type: string
-          description: 'The type of asset (e.g. building, machinery, inventory, financial instrument, art)'
-          format: string
-        CollateralAssetReference:
-          type: string
-          description: 'Reference to the collateral item (e.g. address, account reference)'
-          format: object
-        CollateralAssetDescription:
-          type: string
-          description: Description of significant details and properties of the asset
-          format: string
-        CollateralAssetAdministrationInstanceReference:
-          type: string
-          description: Reference to the administration record of the asset item
-          format: object
-        CollateralAssetStatus:
-          type: string
-          description: A general status indicator for the asset (can cover multiple properties as needed)
-          format: string
-        CollateralAssetValuation:
-          type: string
-          description: The current and historical valuation of the asset
-          format: string
-        CollateralAssetAllocationProfile:
-          type: string
-          description: A record of past and current allocations of the collateral asset
-          format: string
-        CollateralAssetValuationDate:
-          $ref: '#/components/schemas/date'
-        CollateralAssetLoantoValueRatio:
-          type: string
-          description: 'The ratio of the valuation that can be used as collateral (depends on liquidity, title, etc.)'
-          format: string
-      description: "Maintain an inventory or holding of some resource and make assignments/allocations as requested  within Collateral Allocation Management. \nExample: Track the inventory and administer the distribution of central cash holdings throughout the branch & ATM network."
     ProvideCollateralAssetAllocationRequest:
-      type: object
-      properties:
-        CollateralAssetAllocation:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetType:
+              description: '|||'
+              format: Object
+          CollateralAssetType:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetReference:
+              description: '|||'
+              format: String
+          CollateralAssetReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetDescription:
+              description: '|||'
+              format: Object
+          CollateralAssetDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetStatus:
+              description: '|||'
+              format: String
+          CollateralAssetStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuation:
+              description: '|||'
+              format: String
+          CollateralAssetValuation:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuationDate:
-              $ref: '#/components/schemas/date'
-            CollateralAssetLoantoValueRatio:
+              description: '|||'
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: PrCR Record an asset provided for collateralization'
+              description: '|||'
+              format: String
     ProvideCollateralAssetAllocationResponse:
-      type: object
-      properties:
-        CollateralAssetAllocation:
-          type: object
-          properties:
-            CollateralAssetAdministrationInstanceReference:
+        type: object
+        properties:
+          CollateralAssetAdministrationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: PrCR Record an asset provided for collateralization'
+              description: '|||'
+              format: Object
+    ProvideCollateralAssetAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateCollateralAssetAllocationRequest:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: '|||'
+              format: String
+    UpdateCollateralAssetAllocationResponse:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: '|||'
+              format: String
+    UpdateCollateralAssetAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCollateralAssetAllocationResponse:
-      type: object
-      properties:
-        CollateralAssetAllocation:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetType:
+              description: '|||'
+              format: Object
+          CollateralAssetType:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetReference:
+              description: '|||'
+              format: String
+          CollateralAssetReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetDescription:
+              description: '|||'
+              format: Object
+          CollateralAssetDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAdministrationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAdministrationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetStatus:
+              description: '|||'
+              format: Object
+          CollateralAssetStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuation:
+              description: '|||'
+              format: String
+          CollateralAssetValuation:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuationDate:
-              $ref: '#/components/schemas/date'
-            CollateralAssetLoantoValueRatio:
+              description: '|||'
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details and status of a collateral asset and its allocation'
+              description: '|||'
+              format: String
+    RetrieveCollateralAssetAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
     ProvideAllocationRequest:
-      type: object
-      properties:
-        CollateralAssetAllocation:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetType:
+              description: '|||'
+              format: Object
+          CollateralAssetType:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetReference:
+              description: '|||'
+              format: String
+          CollateralAssetReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetDescription:
+              description: '|||'
+              format: Object
+          CollateralAssetDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetStatus:
+              description: '|||'
+              format: String
+          CollateralAssetStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuation:
+              description: '|||'
+              format: String
+          CollateralAssetValuation:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuationDate:
-              $ref: '#/components/schemas/date'
-            CollateralAssetLoantoValueRatio:
+              description: '|||'
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
               type: string
-              description: "\r\n"
-              format: string
-        Allocation:
-          type: object
-          properties:
-            RequestedAllocationRequestType:
+              description: '|||'
+              format: String
+          RequestedAllocationRequestType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInstanceReference:
+              description: '|||'
+              format: String
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerOfferReference:
+              description: '|||'
+              format: Object
+          CustomerOfferReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralEarmarkAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralEarmarkDuration:
+              description: '|||'
+              format: Object
+          CollateralEarmarkAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralEarmarkDuration:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationDuration:
+              description: '|||'
+              format: String
+          CollateralAllocationAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationDuration:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationRecallTimetable:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationRecallTimetable:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationState:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: PrBQ Allocate a collateral asset to a lending product'
+              description: '|||'
+              format: String
     ProvideAllocationResponse:
-      type: object
-      properties:
-        CollateralAssetAllocation:
-          type: object
-          properties:
-            CollateralAssetAdministrationInstanceReference:
+        type: object
+        properties:
+          CollateralAssetAdministrationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        Allocation:
-          type: object
-          properties:
-            CollateralAllocationRecallResult:
+              description: '|||'
+              format: Object
+          CollateralAllocationRecallResult:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationState:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRequestResult:
+              description: '|||'
+              format: String
+          CollateralAllocationRequestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: PrBQ Allocate a collateral asset to a lending product'
+              description: '|||'
+              format: String
+    ProvideAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateAllocationRequest:
+        type: object
+        properties:
+          RequestedAllocationRequestType:
+              type: string
+              description: '|||'
+              format: String
+          ProductInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerOfferReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralEarmarkAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralEarmarkDuration:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationDuration:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationRecallAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationRecallTimetable:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationRecallResult:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationRequestResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateAllocationResponse:
+        type: object
+        properties:
+          RequestedAllocationRequestType:
+              type: string
+              description: '|||'
+              format: String
+          ProductInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerOfferReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralEarmarkAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralEarmarkDuration:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationDuration:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationRecallAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationRecallTimetable:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationRecallResult:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAllocationRequestResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
     CaptureAllocationRequest:
-      type: object
-      properties:
-        Allocation:
-          type: object
-          properties:
-            CollateralAllocationAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationDuration:
+        type: object
+        properties:
+          CollateralAllocationAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationDuration:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationRecallTimetable:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationRecallTimetable:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallResult:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallResult:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationState:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CaBQ Record usage details for a collateral allocation'
+              description: '|||'
+              format: String
     CaptureAllocationResponse:
-      type: object
-      properties:
-        Allocation:
-          type: object
-          properties:
-            CollateralAllocationAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationDuration:
+        type: object
+        properties:
+          CollateralAllocationAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationDuration:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationRecallTimetable:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationRecallTimetable:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallResult:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallResult:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationState:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CaBQ Record usage details for a collateral allocation'
+              description: '|||'
+              format: String
+    CaptureAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveAllocationResponse:
-      type: object
-      properties:
-        CollateralAssetAllocation:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetType:
+              description: '|||'
+              format: Object
+          CollateralAssetType:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetReference:
+              description: '|||'
+              format: String
+          CollateralAssetReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetDescription:
+              description: '|||'
+              format: Object
+          CollateralAssetDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAdministrationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAdministrationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetStatus:
+              description: '|||'
+              format: Object
+          CollateralAssetStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuation:
+              description: '|||'
+              format: String
+          CollateralAssetValuation:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetValuationDate:
-              $ref: '#/components/schemas/date'
-            CollateralAssetLoantoValueRatio:
+              description: '|||'
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
               type: string
-              description: "\r\n"
-              format: string
-        Allocation:
-          type: object
-          properties:
-            RequestedAllocationRequestType:
+              description: '|||'
+              format: String
+          RequestedAllocationRequestType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInstanceReference:
+              description: '|||'
+              format: String
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerOfferReference:
+              description: '|||'
+              format: Object
+          CustomerOfferReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralEarmarkAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralEarmarkDuration:
+              description: '|||'
+              format: Object
+          CollateralEarmarkAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralEarmarkDuration:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationDuration:
+              description: '|||'
+              format: String
+          CollateralAllocationAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationDuration:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallAmount:
-              $ref: '#/components/schemas/amount'
-            CollateralAllocationRecallTimetable:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          CollateralAllocationRecallTimetable:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRecallResult:
+              description: '|||'
+              format: String
+          CollateralAllocationRecallResult:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationState:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationState:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAllocationRequestResult:
+              description: '|||'
+              format: String
+          CollateralAllocationRequestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a collateral allocation'
+              description: '|||'
+              format: String
+    RetrieveAllocation:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAdministrationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetValuationDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          CollateralAssetLoantoValueRatio:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
+    CurrencyAndAmount:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Number of monetary units specified in a currency, where the unit
+          of currency is explicit and compliant with ISO 4217. The decimal
+          separator is a dot.
+
+          Note: A zero amount is considered a positive amount.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     ProvideCollateralAssetAllocationResponse:
-      description: ProvideCollateralAssetAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProvideCollateralAssetAllocationResponse'
-    CollateralAssetAllocation:
-      description: CollateralAssetAllocation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CollateralAssetAllocation'
+        description: CollateralAssetAllocationProvide
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ProvideCollateralAssetAllocationResponse'
+    UpdateCollateralAssetAllocationResponse:
+        description: CollateralAssetAllocationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCollateralAssetAllocationResponse'
     RetrieveCollateralAssetAllocationResponse:
-      description: RetrieveCollateralAssetAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCollateralAssetAllocationResponse'
+        description: CollateralAssetAllocationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCollateralAssetAllocationResponse'
     ProvideAllocationResponse:
-      description: ProvideAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProvideAllocationResponse'
-    Allocation:
-      description: Allocation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Allocation'
+        description: AllocationProvide
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ProvideAllocationResponse'
+    UpdateAllocationResponse:
+        description: AllocationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateAllocationResponse'
     CaptureAllocationResponse:
-      description: CaptureAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureAllocationResponse'
+        description: AllocationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureAllocationResponse'
     RetrieveAllocationResponse:
-      description: RetrieveAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveAllocationResponse'
+        description: AllocationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveAllocationResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    collateralallocationmanagementid:
-      name: collateralallocationmanagementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    collateralassetallocationid:
+        name: collateralassetallocationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     allocationid:
-      name: allocationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: allocationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     ProvideCollateralAssetAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProvideCollateralAssetAllocationRequest'
-      required: true
-    CollateralAssetAllocation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CollateralAssetAllocation'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ProvideCollateralAssetAllocationRequest'
+        required: true
+    UpdateCollateralAssetAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCollateralAssetAllocationRequest'
+        required: true
+    RetrieveCollateralAssetAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     ProvideAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProvideAllocationRequest'
-      required: true
-    Allocation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Allocation'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ProvideAllocationRequest'
+        required: true
+    UpdateAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateAllocationRequest'
+        required: true
     CaptureAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureAllocationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureAllocationRequest'
+        required: true
+    RetrieveAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

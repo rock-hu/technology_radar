@@ -1,1047 +1,1674 @@
 openapi: 3.0.1
 info:
   title: Corporate Tax Advisory
-  description: 'A fee or commission based product providing tax specific assessments, advice and guidance for corporate customers'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Corporate Tax Advisory (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CorporateTaxAdvisory/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CorporateTaxAdvisory/12.0.1'
 paths:
-  /CorporateTaxAdvisory/Initiate:
-    post:
-      tags:
-        - CR - CorporateTaxAdvisoryFacility
-      summary: InCR Initiate a corporate tax advisory service
-      description: InCR Initiate a corporate tax advisory service
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateCorporateTaxAdvisoryFacilityRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateCorporateTaxAdvisoryFacilityResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/Update':
-    put:
-      tags:
-        - CR - CorporateTaxAdvisoryFacility
-      summary: UpCR Update details for a corporate tax advisory service
-      description: UpCR Update details for a corporate tax advisory service
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCorporateTaxAdvisoryFacilityRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCorporateTaxAdvisoryFacilityResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/Request':
-    put:
-      tags:
-        - CR - CorporateTaxAdvisoryFacility
-      summary: RqCR Request manual intervention during the advisory service
-      description: RqCR Request manual intervention during the advisory service
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestCorporateTaxAdvisoryFacilityRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestCorporateTaxAdvisoryFacilityResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/Retrieve':
-    get:
-      tags:
-        - CR - CorporateTaxAdvisoryFacility
-      summary: ReCR Retrieve details about a corporate tax advisory service arrangement
-      description: ReCR Retrieve details about a corporate tax advisory service arrangement
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCorporateTaxAdvisoryFacilityResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/TaxOptimization/Initiate':
-    post:
-      tags:
-        - BQ - TaxOptimization
-      summary: InBQ Initiate a corporate tax optimization advisory session
-      description: InBQ Initiate a corporate tax optimization advisory session
-      operationId: InitiateTaxOptimization
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateTaxOptimizationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateTaxOptimizationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/TaxOptimization/{taxoptimizationid}/Update':
-    put:
-      tags:
-        - BQ - TaxOptimization
-      summary: UpBQ Update details about a corporate tax optimization advisory session
-      description: UpBQ Update details about a corporate tax optimization advisory session
-      operationId: UpdateTaxOptimization
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-        - $ref: '#/components/parameters/taxoptimizationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TaxOptimization'
-      responses:
-        '200':
-          $ref: '#/components/responses/TaxOptimization'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/TaxOptimization/{taxoptimizationid}/Request':
-    put:
-      tags:
-        - BQ - TaxOptimization
-      summary: RqBQ Request manual intervention in a session
-      description: RqBQ Request manual intervention in a session
-      operationId: RequestTaxOptimization
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-        - $ref: '#/components/parameters/taxoptimizationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TaxOptimization'
-      responses:
-        '200':
-          $ref: '#/components/responses/TaxOptimization'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/TaxOptimization/{taxoptimizationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TaxOptimization
-      summary: ReBQ Retrieve details about a corporate tax optimization advisory session
-      description: ReBQ Retrieve details about a corporate tax optimization advisory session
-      operationId: RetrieveTaxOptimization
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-        - $ref: '#/components/parameters/taxoptimizationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTaxOptimizationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/ServiceFees/Initiate':
-    post:
-      tags:
-        - BQ - ServiceFees
-      summary: InBQ Initialize service fee processing for corporate tax advisory services
-      description: InBQ Initialize service fee processing for corporate tax advisory services
-      operationId: InitiateServiceFees
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateServiceFeesRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateServiceFeesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/ServiceFees/{servicefeesid}/Update':
-    put:
-      tags:
-        - BQ - ServiceFees
-      summary: UpBQ Update details of service fees for corporate tax advisory services
-      description: UpBQ Update details of service fees for corporate tax advisory services
-      operationId: UpdateServiceFees
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-        - $ref: '#/components/parameters/servicefeesid'
-      requestBody:
-        $ref: '#/components/requestBodies/ServiceFees'
-      responses:
-        '200':
-          $ref: '#/components/responses/ServiceFees'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/ServiceFees/{servicefeesid}/Execute':
-    put:
-      tags:
-        - BQ - ServiceFees
-      summary: ExBQ Execute/apply a fee for a corporate tax advisory session
-      description: ExBQ Execute/apply a fee for a corporate tax advisory session
-      operationId: ExecuteServiceFees
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-        - $ref: '#/components/parameters/servicefeesid'
-      requestBody:
-        $ref: '#/components/requestBodies/ServiceFees'
-      responses:
-        '200':
-          $ref: '#/components/responses/ServiceFees'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CorporateTaxAdvisory/{corporatetaxadvisoryid}/ServiceFees/{servicefeesid}/Retrieve':
-    get:
-      tags:
-        - BQ - ServiceFees
-      summary: ReBQ Retrieve details about service fees for a corporate tax advisory service
-      description: ReBQ Retrieve details about service fees for a corporate tax advisory service
-      operationId: RetrieveServiceFees
-      parameters:
-        - $ref: '#/components/parameters/corporatetaxadvisoryid'
-        - $ref: '#/components/parameters/servicefeesid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveServiceFeesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisoryFacility/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CorporateTaxAdvisoryFacility'
+        summary: (DDD Service) InCR Initiate a corporate tax advisory service
+        description: (DDD Service) InCR Initiate a corporate tax advisory service
+        operationId: CorporateTaxAdvisoryFacility/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateCorporateTaxAdvisoryFacilityRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateCorporateTaxAdvisoryFacilityResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisoryFacility/{corporatetaxadvisoryfacilityid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CorporateTaxAdvisoryFacility'
+        summary: (DDD Service) UpCR Update details for a corporate tax advisory service
+        description: (DDD Service) UpCR Update details for a corporate tax advisory service
+        operationId: CorporateTaxAdvisoryFacility/Update
+        parameters:
+          - $ref: '#/components/parameters/corporatetaxadvisoryfacilityid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCorporateTaxAdvisoryFacilityRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCorporateTaxAdvisoryFacilityResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisoryFacility/{corporatetaxadvisoryfacilityid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CorporateTaxAdvisoryFacility'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention during the advisory
+          service
+        description: >-
+          (DDD Service) RqCR Request manual intervention during the advisory
+          service
+        operationId: CorporateTaxAdvisoryFacility/Request
+        parameters:
+          - $ref: '#/components/parameters/corporatetaxadvisoryfacilityid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestCorporateTaxAdvisoryFacilityRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestCorporateTaxAdvisoryFacilityResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisoryFacility/{corporatetaxadvisoryfacilityid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CorporateTaxAdvisoryFacility'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about a corporate tax advisory
+          service arrangement
+        description: >-
+          (DDD Service) ReCR Retrieve details about a corporate tax advisory
+          service arrangement
+        operationId: CorporateTaxAdvisoryFacility/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/corporatetaxadvisoryfacilityid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveCorporateTaxAdvisoryFacilityResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/TaxOptimization/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - TaxOptimization'
+        summary: >-
+          (DDD Service) InBQ Initiate a corporate tax optimization advisory
+          session
+        description: >-
+          (DDD Service) InBQ Initiate a corporate tax optimization advisory
+          session
+        operationId: TaxOptimization/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateTaxOptimizationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateTaxOptimizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisory/{taxoptimizationid}/TaxOptimization/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TaxOptimization'
+        summary: >-
+          (DDD Service) UpBQ Update details about a corporate tax optimization
+          advisory session
+        description: >-
+          (DDD Service) UpBQ Update details about a corporate tax optimization
+          advisory session
+        operationId: TaxOptimization/Update
+        parameters:
+          - $ref: '#/components/parameters/taxoptimizationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTaxOptimizationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTaxOptimizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisory/{taxoptimizationid}/TaxOptimization/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TaxOptimization'
+        summary: (DDD Service) RqBQ Request manual intervention in a session
+        description: (DDD Service) RqBQ Request manual intervention in a session
+        operationId: TaxOptimization/Request
+        parameters:
+          - $ref: '#/components/parameters/taxoptimizationid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestTaxOptimizationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestTaxOptimizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisory/{taxoptimizationid}/TaxOptimization/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TaxOptimization'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a corporate tax optimization
+          advisory session
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a corporate tax optimization
+          advisory session
+        operationId: TaxOptimization/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/taxoptimizationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTaxOptimizationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ServiceFees/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - ServiceFees'
+        summary: >-
+          (DDD Service) InBQ Initialize service fee processing for corporate tax
+          advisory services
+        description: >-
+          (DDD Service) InBQ Initialize service fee processing for corporate tax
+          advisory services
+        operationId: ServiceFees/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateServiceFeesRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateServiceFeesResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisory/{servicefeesid}/ServiceFees/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ServiceFees'
+        summary: >-
+          (DDD Service) UpBQ Update details of service fees for corporate tax
+          advisory services
+        description: >-
+          (DDD Service) UpBQ Update details of service fees for corporate tax
+          advisory services
+        operationId: ServiceFees/Update
+        parameters:
+          - $ref: '#/components/parameters/servicefeesid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateServiceFeesRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateServiceFeesResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisory/{servicefeesid}/ServiceFees/Execute':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ServiceFees'
+        summary: >-
+          (DDD Service) ExBQ Execute/apply a fee for a corporate tax advisory
+          session
+        description: >-
+          (DDD Service) ExBQ Execute/apply a fee for a corporate tax advisory
+          session
+        operationId: ServiceFees/Execute
+        parameters:
+          - $ref: '#/components/parameters/servicefeesid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteServiceFeesRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteServiceFeesResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CorporateTaxAdvisory/{servicefeesid}/ServiceFees/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ServiceFees'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about service fees for a corporate
+          tax advisory service
+        description: >-
+          (DDD Service) ReBQ Retrieve details about service fees for a corporate
+          tax advisory service
+        operationId: ServiceFees/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/servicefeesid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveServiceFeesResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    TaxOptimization:
-      type: object
-      properties:
-        ProductandServiceReference:
-          type: string
-          description: Reference to the corporate tax advisory service (used to access guidance materials)
-          format: object
-        SpecialistSupportTask:
-          type: string
-          description: A record of engaging a product tax specialist to liaise with the customer
-          format: string
-        SpecialistEmployeeBusinessUnitReference:
-          type: string
-          description: Business unit and or employee reference for the product specialist engaged
-          format: object
-        SpecialistAdviceDescription:
-          type: string
-          description: General description of the product specialist advice provided
-          format: string
-        SpecialistAdviceCharge:
-          type: string
-          description: The service charge to be made to the customer for the specialist support
-          format: string
-        TaxOptimizationGuidanceAdviceResult:
-          type: string
-          description: Summary recommendations arising from the advice that is added to the consolidated tax advice record
-          format: string
-      description: The product features/services available with a financical facility
-    ServiceFees:
-      type: object
-      properties:
-        FeeApplicationRecord:
-          type: string
-          description: The record of applied fees for the specialist advice
-          format: string
-        FeeTransaction:
-          type: string
-          description: A record of an applied fee
-          format: string
-        FeeTransactionDescription:
-          type: string
-          description: General description of the fee
-          format: string
-        FeeTransactionType:
-          type: string
-          description: The fee type applied
-          format: string
-        FeeTransactionCharge:
-          type: string
-          description: The derived fee amount to be charged
-          format: string
-      description: The product features/services available with a financical facility
-    CorporateTaxAdvisoryFacility:
-      type: object
-      properties:
-        ProductInstanceReference:
-          type: string
-          description: Reference to the collection of advisory service sessions underlying the service
-          format: object
-        CustomerReference:
-          type: string
-          description: Reference to the customer receiving the financial advice
-          format: object
-        BankBranchLocationReference:
-          type: string
-          description: Bank branch associated with the customer account/relationship for booking purposes
-          format: object
-        EmployeeBusinessUnitReference:
-          type: string
-          description: Business unit and or employee reference to the source of the financial advice
-          format: object
-        CorporateTaxAdvisoryWorkProducts:
-          type: string
-          description: 'File of consolidated notes, forms and documents for the advisory sessions'
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: The document reference for associated documents such as disclosures and acceptance records
-          format: object
-        CorporateTaxAdviceSessionSchedule:
-          type: string
-          description: Target and actual dates for tasks performed (includes any specialist sessions)
-          format: string
-        CorporateTaxAdviceConsolidationRecord:
-          type: string
-          description: The combination of the different tax advisory sessions and assessments provided to the customer
-          format: string
-        DateType:
-          type: string
-          description: 'Key dates and times associated with the advisory sessions (e.g. booking date, start date/time)'
-          format: string
-        Date:
-          type: string
-          description: Value of the date type
-          format: string
-      description: 'Fulfill any scheduled and ad-hoc obligations under a service arrangement, most typically for a financial product or facility within Corporate Tax Advisory. '
     InitiateCorporateTaxAdvisoryFacilityRequest:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: Object
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate a corporate tax advisory service'
+              description: '|||'
+              format: String
     InitiateCorporateTaxAdvisoryFacilityResponse:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CorporateTaxAdviceConsolidationRecord:
+              description: '|||'
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate a corporate tax advisory service'
+              description: '|||'
+              format: String
+    InitiateCorporateTaxAdvisoryFacility:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateCorporateTaxAdvisoryFacilityRequest:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CorporateTaxAdviceConsolidationRecord:
+              description: '|||'
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update details for a corporate tax advisory service'
+              description: '|||'
+              format: String
     UpdateCorporateTaxAdvisoryFacilityResponse:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CorporateTaxAdviceConsolidationRecord:
+              description: '|||'
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details for a corporate tax advisory service'
+              description: '|||'
+              format: String
+    UpdateCorporateTaxAdvisoryFacility:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestCorporateTaxAdvisoryFacilityRequest:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Request manual intervention during the advisory service'
+              description: '|||'
+              format: String
     RequestCorporateTaxAdvisoryFacilityResponse:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            BankBranchLocationReference:
+        type: object
+        properties:
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CorporateTaxAdviceConsolidationRecord:
+              description: '|||'
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention during the advisory service'
+              description: '|||'
+              format: String
+    RequestCorporateTaxAdvisoryFacility:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCorporateTaxAdvisoryFacilityResponse:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CorporateTaxAdviceConsolidationRecord:
+              description: '|||'
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a corporate tax advisory service arrangement'
+              description: '|||'
+              format: String
+    RetrieveCorporateTaxAdvisoryFacility:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateTaxOptimizationRequest:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        TaxOptimization:
-          type: object
-          properties:
-            ProductandServiceReference:
+              description: '|||'
+              format: String
+          ProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialistSupportTask:
+              description: '|||'
+              format: Object
+          SpecialistSupportTask:
               type: string
-              description: "\r\n"
-              format: string
-            SpecialistEmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InBQ Initiate a corporate tax optimization advisory session'
+              description: '|||'
+              format: Object
     InitiateTaxOptimizationResponse:
-      type: object
-      properties:
-        CorporateTaxAdvisoryFacility:
-          type: object
-          properties:
-            BankBranchLocationReference:
+        type: object
+        properties:
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdvisoryWorkProducts:
+              description: '|||'
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorporateTaxAdviceSessionSchedule:
+              description: '|||'
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CorporateTaxAdviceConsolidationRecord:
+              description: '|||'
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        TaxOptimization:
-          type: object
-          properties:
-            SpecialistSupportTask:
+              description: '|||'
+              format: String
+          SpecialistSupportTask:
               type: string
-              description: "\r\n"
-              format: string
-            SpecialistEmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialistAdviceDescription:
+              description: '|||'
+              format: Object
+          SpecialistAdviceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SpecialistAdviceCharge:
+              description: '|||'
+              format: String
+          SpecialistAdviceCharge:
               type: string
-              description: "\r\n"
-              format: string
-            TaxOptimizationGuidanceAdviceResult:
+              description: '|||'
+              format: String
+          TaxOptimizationGuidanceAdviceResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate a corporate tax optimization advisory session'
+              description: '|||'
+              format: String
+    InitiateTaxOptimization:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTaxOptimizationRequest:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistSupportTask:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistAdviceDescription:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistAdviceCharge:
+              type: string
+              description: '|||'
+              format: String
+          TaxOptimizationGuidanceAdviceResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTaxOptimizationResponse:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistSupportTask:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistAdviceDescription:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistAdviceCharge:
+              type: string
+              description: '|||'
+              format: String
+          TaxOptimizationGuidanceAdviceResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTaxOptimization:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    RequestTaxOptimizationRequest:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistSupportTask:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistAdviceDescription:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistAdviceCharge:
+              type: string
+              description: '|||'
+              format: String
+          TaxOptimizationGuidanceAdviceResult:
+              type: string
+              description: '|||'
+              format: String
+    RequestTaxOptimizationResponse:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistSupportTask:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
+              type: string
+              description: '|||'
+              format: Object
+          SpecialistAdviceDescription:
+              type: string
+              description: '|||'
+              format: String
+          SpecialistAdviceCharge:
+              type: string
+              description: '|||'
+              format: String
+          TaxOptimizationGuidanceAdviceResult:
+              type: string
+              description: '|||'
+              format: String
+    RequestTaxOptimization:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTaxOptimizationResponse:
-      type: object
-      properties:
-        TaxOptimization:
-          type: object
-          properties:
-            ProductandServiceReference:
+        type: object
+        properties:
+          ProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialistSupportTask:
+              description: '|||'
+              format: Object
+          SpecialistSupportTask:
               type: string
-              description: "\r\n"
-              format: string
-            SpecialistEmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          SpecialistEmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            SpecialistAdviceDescription:
+              description: '|||'
+              format: Object
+          SpecialistAdviceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            SpecialistAdviceCharge:
+              description: '|||'
+              format: String
+          SpecialistAdviceCharge:
               type: string
-              description: "\r\n"
-              format: string
-            TaxOptimizationGuidanceAdviceResult:
+              description: '|||'
+              format: String
+          TaxOptimizationGuidanceAdviceResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a corporate tax optimization advisory session'
+              description: '|||'
+              format: String
+    RetrieveTaxOptimization:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateServiceFeesRequest:
-      type: object
-      properties:
-        ServiceFees:
-          type: object
-          properties:
-            FeeApplicationRecord:
+        type: object
+        properties:
+          FeeApplicationRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initialize service fee processing for corporate tax advisory services'
+              description: '|||'
+              format: String
     InitiateServiceFeesResponse:
-      type: object
-      properties:
-        ServiceFees:
-          type: object
-          properties:
-            FeeApplicationRecord:
+        type: object
+        properties:
+          FeeApplicationRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initialize service fee processing for corporate tax advisory services'
+              description: '|||'
+              format: String
+    InitiateServiceFees:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateServiceFeesRequest:
+        type: object
+        properties:
+          FeeApplicationRecord:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransaction:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionDescription:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionType:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionCharge:
+              type: string
+              description: '|||'
+              format: String
+    UpdateServiceFeesResponse:
+        type: object
+        properties:
+          FeeApplicationRecord:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransaction:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionDescription:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionType:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionCharge:
+              type: string
+              description: '|||'
+              format: String
+    UpdateServiceFees:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ExecuteServiceFeesRequest:
+        type: object
+        properties:
+          FeeApplicationRecord:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransaction:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionDescription:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionType:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionCharge:
+              type: string
+              description: '|||'
+              format: String
+    ExecuteServiceFeesResponse:
+        type: object
+        properties:
+          FeeApplicationRecord:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransaction:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionType:
+              type: string
+              description: '|||'
+              format: String
+    ExecuteServiceFees:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveServiceFeesResponse:
-      type: object
-      properties:
-        ServiceFees:
-          type: object
-          properties:
-            FeeApplicationRecord:
+        type: object
+        properties:
+          FeeApplicationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransaction:
+              description: '|||'
+              format: String
+          FeeTransaction:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionDescription:
+              description: '|||'
+              format: String
+          FeeTransactionDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionType:
+              description: '|||'
+              format: String
+          FeeTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionCharge:
+              description: '|||'
+              format: String
+          FeeTransactionCharge:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about service fees for a corporate tax advisory service'
+              description: '|||'
+              format: String
+    RetrieveServiceFees:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdvisoryWorkProducts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorporateTaxAdviceSessionSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CorporateTaxAdviceConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateCorporateTaxAdvisoryFacilityResponse:
-      description: InitiateCorporateTaxAdvisoryFacilityResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCorporateTaxAdvisoryFacilityResponse'
+        description: CorporateTaxAdvisoryFacilityInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCorporateTaxAdvisoryFacilityResponse
     UpdateCorporateTaxAdvisoryFacilityResponse:
-      description: UpdateCorporateTaxAdvisoryFacilityResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCorporateTaxAdvisoryFacilityResponse'
+        description: CorporateTaxAdvisoryFacilityUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCorporateTaxAdvisoryFacilityResponse'
     RequestCorporateTaxAdvisoryFacilityResponse:
-      description: RequestCorporateTaxAdvisoryFacilityResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCorporateTaxAdvisoryFacilityResponse'
+        description: CorporateTaxAdvisoryFacilityRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestCorporateTaxAdvisoryFacilityResponse'
     RetrieveCorporateTaxAdvisoryFacilityResponse:
-      description: RetrieveCorporateTaxAdvisoryFacilityResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCorporateTaxAdvisoryFacilityResponse'
+        description: CorporateTaxAdvisoryFacilityRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveCorporateTaxAdvisoryFacilityResponse
     InitiateTaxOptimizationResponse:
-      description: InitiateTaxOptimizationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateTaxOptimizationResponse'
-    TaxOptimization:
-      description: TaxOptimization
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaxOptimization'
+        description: TaxOptimizationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTaxOptimizationResponse'
+    UpdateTaxOptimizationResponse:
+        description: TaxOptimizationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTaxOptimizationResponse'
+    RequestTaxOptimizationResponse:
+        description: TaxOptimizationRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestTaxOptimizationResponse'
     RetrieveTaxOptimizationResponse:
-      description: RetrieveTaxOptimizationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTaxOptimizationResponse'
+        description: TaxOptimizationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTaxOptimizationResponse'
     InitiateServiceFeesResponse:
-      description: InitiateServiceFeesResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateServiceFeesResponse'
-    ServiceFees:
-      description: ServiceFees
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ServiceFees'
+        description: ServiceFeesInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateServiceFeesResponse'
+    UpdateServiceFeesResponse:
+        description: ServiceFeesUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateServiceFeesResponse'
+    ExecuteServiceFeesResponse:
+        description: ServiceFeesExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteServiceFeesResponse'
     RetrieveServiceFeesResponse:
-      description: RetrieveServiceFeesResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveServiceFeesResponse'
+        description: ServiceFeesRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveServiceFeesResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    corporatetaxadvisoryid:
-      name: corporatetaxadvisoryid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    corporatetaxadvisoryfacilityid:
+        name: corporatetaxadvisoryfacilityid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     taxoptimizationid:
-      name: taxoptimizationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: taxoptimizationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     servicefeesid:
-      name: servicefeesid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: servicefeesid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateCorporateTaxAdvisoryFacilityRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCorporateTaxAdvisoryFacilityRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCorporateTaxAdvisoryFacilityRequest'
+        required: true
     UpdateCorporateTaxAdvisoryFacilityRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCorporateTaxAdvisoryFacilityRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCorporateTaxAdvisoryFacilityRequest'
+        required: true
     RequestCorporateTaxAdvisoryFacilityRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCorporateTaxAdvisoryFacilityRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestCorporateTaxAdvisoryFacilityRequest'
+        required: true
+    RetrieveCorporateTaxAdvisoryFacilityRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateTaxOptimizationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateTaxOptimizationRequest'
-      required: true
-    TaxOptimization:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaxOptimization'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTaxOptimizationRequest'
+        required: true
+    UpdateTaxOptimizationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTaxOptimizationRequest'
+        required: true
+    RequestTaxOptimizationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestTaxOptimizationRequest'
+        required: true
+    RetrieveTaxOptimizationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateServiceFeesRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateServiceFeesRequest'
-      required: true
-    ServiceFees:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ServiceFees'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateServiceFeesRequest'
+        required: true
+    UpdateServiceFeesRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateServiceFeesRequest'
+        required: true
+    ExecuteServiceFeesRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteServiceFeesRequest'
+        required: true
+    RetrieveServiceFeesRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

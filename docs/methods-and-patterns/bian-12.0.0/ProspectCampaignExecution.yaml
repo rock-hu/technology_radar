@@ -1,1644 +1,2254 @@
 openapi: 3.0.1
 info:
   title: Prospect Campaign Execution
-  description: Execute a prospect campaign (version) and track and respond to impact
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Prospect Campaign Execution (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/ProspectCampaignExecution/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/ProspectCampaignExecution/12.0.1'
 paths:
-  /ProspectCampaignExecution/Initiate:
-    post:
-      tags:
-        - CR - ProspectCampaignProcedure
-      summary: InCR Initiate prospect campaign processing
-      description: InCR Initiate prospect campaign processing
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateProspectCampaignProcedureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateProspectCampaignProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/Retrieve':
-    get:
-      tags:
-        - CR - ProspectCampaignProcedure
-      summary: ReCR Retrieve details about an active prospect campaign
-      description: ReCR Retrieve details about an active prospect campaign
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProspectCampaignProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/CandidateSelection/{candidateselectionid}/Update':
-    put:
-      tags:
-        - BQ - CandidateSelection
-      summary: UpBQ Update a campaign candidate list
-      description: UpBQ Update a campaign candidate list
-      operationId: UpdateCandidateSelection
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/candidateselectionid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCandidateSelectionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCandidateSelectionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/CandidateSelection/{candidateselectionid}/Retrieve':
-    get:
-      tags:
-        - BQ - CandidateSelection
-      summary: ReBQ Retrieve details about a campaign candidate list
-      description: ReBQ Retrieve details about a campaign candidate list
-      operationId: RetrieveCandidateSelection
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/candidateselectionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCandidateSelectionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/Execution/Initiate':
-    post:
-      tags:
-        - BQ - Execution
-      summary: InBQ Initiate a campaign execution task
-      description: InBQ Initiate a campaign execution task
-      operationId: InitiateExecution
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateExecutionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateExecutionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/Execution/{executionid}/Update':
-    put:
-      tags:
-        - BQ - Execution
-      summary: UpBQ Update details of a campaign execution task
-      description: UpBQ Update details of a campaign execution task
-      operationId: UpdateExecution
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/executionid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateExecutionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateExecutionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/Execution/{executionid}/Request':
-    put:
-      tags:
-        - BQ - Execution
-      summary: RqBQ Request manual intervention in a campaign execution task
-      description: RqBQ Request manual intervention in a campaign execution task
-      operationId: RequestExecution
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/executionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Execution'
-      responses:
-        '200':
-          $ref: '#/components/responses/Execution'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/Execution/{executionid}/Retrieve':
-    get:
-      tags:
-        - BQ - Execution
-      summary: ReBQ Retrieve details about a campaign execution task
-      description: ReBQ Retrieve details about a campaign execution task
-      operationId: RetrieveExecution
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/executionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveExecutionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/AnalysisFeedback/Initiate':
-    post:
-      tags:
-        - BQ - AnalysisFeedback
-      summary: InBQ Initiate campaign execution analysis
-      description: InBQ Initiate campaign execution analysis
-      operationId: InitiateAnalysisFeedback
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateAnalysisFeedbackRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateAnalysisFeedbackResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/AnalysisFeedback/{analysisfeedbackid}/Update':
-    put:
-      tags:
-        - BQ - AnalysisFeedback
-      summary: UpBQ Update details of campaign execution activity/performance analysis
-      description: UpBQ Update details of campaign execution activity/performance analysis
-      operationId: UpdateAnalysisFeedback
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/analysisfeedbackid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateAnalysisFeedbackRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateAnalysisFeedbackResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/AnalysisFeedback/{analysisfeedbackid}/Request':
-    put:
-      tags:
-        - BQ - AnalysisFeedback
-      summary: ReBQ Request manual intervention in campaign analysis
-      description: ReBQ Request manual intervention in campaign analysis
-      operationId: RequestAnalysisFeedback
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/analysisfeedbackid'
-      requestBody:
-        $ref: '#/components/requestBodies/AnalysisFeedback'
-      responses:
-        '200':
-          $ref: '#/components/responses/AnalysisFeedback'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProspectCampaignExecution/{prospectcampaignexecutionid}/AnalysisFeedback/{analysisfeedbackid}/Retrieve':
-    get:
-      tags:
-        - BQ - AnalysisFeedback
-      summary: ReBQ Retrieve details about prospect campaign analysis activity
-      description: ReBQ Retrieve details about prospect campaign analysis activity
-      operationId: RetrieveAnalysisFeedback
-      parameters:
-        - $ref: '#/components/parameters/prospectcampaignexecutionid'
-        - $ref: '#/components/parameters/analysisfeedbackid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveAnalysisFeedbackResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignProcedure/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - ProspectCampaignProcedure'
+        summary: (DDD Service) InCR Initiate prospect campaign processing
+        description: (DDD Service) InCR Initiate prospect campaign processing
+        operationId: ProspectCampaignProcedure/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateProspectCampaignProcedureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateProspectCampaignProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignProcedure/{prospectcampaignprocedureid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ProspectCampaignProcedure'
+        summary: (DDD Service) ReCR Retrieve details about an active prospect campaign
+        description: (DDD Service) ReCR Retrieve details about an active prospect campaign
+        operationId: ProspectCampaignProcedure/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/prospectcampaignprocedureid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProspectCampaignProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{candidateselectionid}/CandidateSelection/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - CandidateSelection'
+        summary: (DDD Service) UpBQ Update a campaign candidate list
+        description: (DDD Service) UpBQ Update a campaign candidate list
+        operationId: CandidateSelection/Update
+        parameters:
+          - $ref: '#/components/parameters/candidateselectionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCandidateSelectionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCandidateSelectionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{candidateselectionid}/CandidateSelection/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - CandidateSelection'
+        summary: (DDD Service) ReBQ Retrieve details about a campaign candidate list
+        description: (DDD Service) ReBQ Retrieve details about a campaign candidate list
+        operationId: CandidateSelection/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/candidateselectionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCandidateSelectionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Execution/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Execution'
+        summary: (DDD Service) InBQ Initiate a campaign execution task
+        description: (DDD Service) InBQ Initiate a campaign execution task
+        operationId: Execution/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateExecutionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateExecutionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{executionid}/Execution/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Execution'
+        summary: (DDD Service) UpBQ Update details of a campaign execution task
+        description: (DDD Service) UpBQ Update details of a campaign execution task
+        operationId: Execution/Update
+        parameters:
+          - $ref: '#/components/parameters/executionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateExecutionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateExecutionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{executionid}/Execution/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Execution'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention in a campaign execution
+          task
+        description: >-
+          (DDD Service) RqBQ Request manual intervention in a campaign execution
+          task
+        operationId: Execution/Request
+        parameters:
+          - $ref: '#/components/parameters/executionid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestExecutionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestExecutionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{executionid}/Execution/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Execution'
+        summary: (DDD Service) ReBQ Retrieve details about a campaign execution task
+        description: (DDD Service) ReBQ Retrieve details about a campaign execution task
+        operationId: Execution/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/executionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveExecutionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/AnalysisFeedback/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - AnalysisFeedback'
+        summary: (DDD Service) InBQ Initiate campaign execution analysis
+        description: (DDD Service) InBQ Initiate campaign execution analysis
+        operationId: AnalysisFeedback/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateAnalysisFeedbackRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateAnalysisFeedbackResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{analysisfeedbackid}/AnalysisFeedback/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - AnalysisFeedback'
+        summary: >-
+          (DDD Service) UpBQ Update details of campaign execution
+          activity/performance analysis
+        description: >-
+          (DDD Service) UpBQ Update details of campaign execution
+          activity/performance analysis
+        operationId: AnalysisFeedback/Update
+        parameters:
+          - $ref: '#/components/parameters/analysisfeedbackid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateAnalysisFeedbackRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateAnalysisFeedbackResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{analysisfeedbackid}/AnalysisFeedback/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - AnalysisFeedback'
+        summary: (DDD Service) ReBQ Request manual intervention in campaign analysis
+        description: (DDD Service) ReBQ Request manual intervention in campaign analysis
+        operationId: AnalysisFeedback/Request
+        parameters:
+          - $ref: '#/components/parameters/analysisfeedbackid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestAnalysisFeedbackRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestAnalysisFeedbackResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProspectCampaignExecution/{analysisfeedbackid}/AnalysisFeedback/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - AnalysisFeedback'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about prospect campaign analysis
+          activity
+        description: >-
+          (DDD Service) ReBQ Retrieve details about prospect campaign analysis
+          activity
+        operationId: AnalysisFeedback/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/analysisfeedbackid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveAnalysisFeedbackResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The date-time the prospect campaign execution task is processed
-    Execution:
-      type: object
-      properties:
-        ProspectCampaignProcedureWorkTaskType:
-          type: string
-          description: The type of work task (e.g. execute campaign through mailshot)
-          format: string
-        ProspectCampaignProcedureWorkTaskDescription:
-          type: string
-          description: 'Description of the task performed, includes summary of activities as necessary for reference'
-          format: string
-        ProspectCampaignProcedureWorkTaskWorkProducts:
-          type: string
-          description: 'File of consolidated notes, forms and documents for the work task'
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated documents
-          format: object
-        ProspectCampaignProcedureWorkTaskResult:
-          type: string
-          description: Details of the outcome or result of the work task - can be the identification of prospects that have expressed an interest in becoming a customer
-          format: string
-        ProspectCampaignProcedureWorkTaskDate-Time:
-          $ref: '#/components/schemas/date'
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    AnalysisFeedback:
-      type: object
-      properties:
-        ProspectCampaignProcedureAnalysisResult:
-          type: string
-          description: The result of the analysis of the performance of the campaign for the current cycle
-          format: string
-        ProspectCampaignProcedureAnalysisFeedbackResult:
-          type: string
-          description: Description of the feedback provided to the campaign design team
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    CandidateSelection:
-      type: object
-      properties:
-        ProspectCampaignSelectionCriteria:
-          type: string
-          description: Details the selection criteria used to identify candidate prospects
-          format: string
-        ProspectCampaignCandidateEmployeeBusinessUnitReference:
-          type: string
-          description: Reference to the employee or business unit that confirms eligibility of the prospect list (e.g. confirming not current customer checks)
-          format: object
-        ProspectCampaignCandidateReference:
-          type: string
-          description: Reference to the prospects selected as a candidate
-          format: object
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    ProspectCampaignProcedure:
-      type: object
-      properties:
-        ProspectCampaignType:
-          type: string
-          description: 'The type or category of prospect campaign (e.g. acquisition, product discount incentive)'
-          format: string
-        ProspectCampaignDescription:
-          type: string
-          description: 'A description of the campaign that clarifies the intended context/use of the campaign, the mechanisms employed and the intended/anticipated response/impact'
-          format: string
-        EmployeeBusinessUnitReference:
-          type: string
-          description: Reference to the business unit responsible for the campaign execution
-          format: object
-        ProspectCampaignProcedureSet-up:
-          type: string
-          description: Details of the deployment set-up/configuration of the campaign for reference
-          format: string
-        ProspectCampaignProcedureVersionNumber:
-          type: string
-          description: The prospect campaign version number used in the event
-          format: string
-        ProspectCampaignSchedule:
-          type: string
-          description: 'The campaign processing schedule, covering prospect list selection/verification, execution, follow-up and analysis activities. Note this can be an ongoing campaign where worksteps continue in parallel'
-          format: string
-        ProspectCampaignConsumablesInventory:
-          type: string
-          description: Inventory record of any consumables that are to be used in the execution of the campaign (e.g. brochures)
-          format: string
-        ProspectCampaignConsumableType:
-          type: string
-          description: 'The type of consumable item associated with the campaign (e.g. gift, brochure)'
-          format: string
-        ProspectCampaignConsumableHolding:
-          type: string
-          description: The tracked inventory of the consumable item
-          format: string
-        DateType:
-          type: string
-          description: 'Key dates associated with the campaign process (e.g. initiation date, version revision date, completion date)'
-          format: string
-        Date:
-          type: string
-          description: Value of the date type
-          format: string
-        ProspectCampaignProcedureResult:
-          type: string
-          description: The result/impact of the overall prospect campaign event (that can include multiple identified prospects for on-boarding)
-          format: string
-        ProspectCampaignProcedureProspectIdentification:
-          type: string
-          description: A reference to prospects generated by the prospect campaign
-          format: string
-        PartyLifecycleManagementProcedureInstanceReference:
-          type: string
-          description: Reference to the prospect on-boarding task as handled by the Party Lifecycle Management Service Domain
-          format: object
-      description: 'Complete work tasks following a defined procedure in support of general office activities and product and service delivery within Prospect Campaign Execution. '
     InitiateProspectCampaignProcedureRequest:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate prospect campaign processing'
+              description: '|||'
+              format: String
     InitiateProspectCampaignProcedureResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: InCR Initiate prospect campaign processing'
+              description: '|||'
+              format: Object
+    InitiateProspectCampaignProcedure:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveProspectCampaignProcedureResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about an active prospect campaign'
+              description: '|||'
+              format: Object
+    RetrieveProspectCampaignProcedure:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateCandidateSelectionRequest:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        CandidateSelection:
-          type: object
-          properties:
-            ProspectCampaignSelectionCriteria:
+              description: '|||'
+              format: String
+          ProspectCampaignSelectionCriteria:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignCandidateEmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          ProspectCampaignCandidateEmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignCandidateReference:
+              description: '|||'
+              format: Object
+          ProspectCampaignCandidateReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpBQ Update a campaign candidate list'
+              description: '|||'
+              format: Object
     UpdateCandidateSelectionResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        CandidateSelection:
-          type: object
-          properties:
-            ProspectCampaignSelectionCriteria:
+              description: '|||'
+              format: String
+          ProspectCampaignSelectionCriteria:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignCandidateEmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          ProspectCampaignCandidateEmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignCandidateReference:
+              description: '|||'
+              format: Object
+          ProspectCampaignCandidateReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: UpBQ Update a campaign candidate list'
+              description: '|||'
+              format: Object
+    UpdateCandidateSelection:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveCandidateSelectionResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        CandidateSelection:
-          type: object
-          properties:
-            ProspectCampaignSelectionCriteria:
+              description: '|||'
+              format: String
+          ProspectCampaignSelectionCriteria:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignCandidateEmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          ProspectCampaignCandidateEmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignCandidateReference:
+              description: '|||'
+              format: Object
+          ProspectCampaignCandidateReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReBQ Retrieve details about a campaign candidate list'
+              description: '|||'
+              format: Object
+    RetrieveCandidateSelection:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateExecutionRequest:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        Execution:
-          type: object
-          properties:
-            ProspectCampaignProcedureWorkTaskType:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskType:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InBQ Initiate a campaign execution task'
+              description: '|||'
+              format: Object
     InitiateExecutionResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        Execution:
-          type: object
-          properties:
-            ProspectCampaignProcedureWorkTaskType:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskWorkProducts:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureWorkTaskResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDate-Time:
-              $ref: '#/components/schemas/date'
-      description: 'Output: InBQ Initiate a campaign execution task'
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDate-Time:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    InitiateExecution:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateExecutionRequest:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        Execution:
-          type: object
-          properties:
-            ProspectCampaignProcedureWorkTaskType:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskWorkProducts:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureWorkTaskResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDate-Time:
-              $ref: '#/components/schemas/date'
-      description: 'Input: UpBQ Update details of a campaign execution task'
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDate-Time:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     UpdateExecutionResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        Execution:
-          type: object
-          properties:
-            ProspectCampaignProcedureWorkTaskType:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskWorkProducts:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureWorkTaskResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDate-Time:
-              $ref: '#/components/schemas/date'
-      description: 'Output: UpBQ Update details of a campaign execution task'
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDate-Time:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    UpdateExecution:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    RequestExecutionRequest:
+        type: object
+        properties:
+          ProspectCampaignProcedureWorkTaskType:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskResult:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDate-Time:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    RequestExecutionResponse:
+        type: object
+        properties:
+          ProspectCampaignProcedureWorkTaskType:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskWorkProducts:
+              type: string
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskResult:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDate-Time:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    RequestExecution:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveExecutionResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        Execution:
-          type: object
-          properties:
-            ProspectCampaignProcedureWorkTaskType:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskWorkProducts:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskWorkProducts:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureWorkTaskResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureWorkTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureWorkTaskDate-Time:
-              $ref: '#/components/schemas/date'
-      description: 'Output: ReBQ Retrieve details about a campaign execution task'
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureWorkTaskDate-Time:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+    RetrieveExecution:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateAnalysisFeedbackRequest:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        AnalysisFeedback:
-          type: object
-          properties:
-            ProspectCampaignProcedureAnalysisFeedbackResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate campaign execution analysis'
+              description: '|||'
+              format: String
     InitiateAnalysisFeedbackResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        AnalysisFeedback:
-          type: object
-          properties:
-            ProspectCampaignProcedureAnalysisResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureAnalysisResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureAnalysisFeedbackResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate campaign execution analysis'
+              description: '|||'
+              format: String
+    InitiateAnalysisFeedback:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateAnalysisFeedbackRequest:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        AnalysisFeedback:
-          type: object
-          properties:
-            ProspectCampaignProcedureAnalysisResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureAnalysisFeedbackResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details of campaign execution activity/performance analysis'
+              description: '|||'
+              format: String
     UpdateAnalysisFeedbackResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        AnalysisFeedback:
-          type: object
-          properties:
-            ProspectCampaignProcedureAnalysisResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureAnalysisResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureAnalysisFeedbackResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details of campaign execution activity/performance analysis'
+              description: '|||'
+              format: String
+    UpdateAnalysisFeedback:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    RequestAnalysisFeedbackRequest:
+        type: object
+        properties:
+          ProspectCampaignProcedureAnalysisResult:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
+              type: string
+              description: '|||'
+              format: String
+    RequestAnalysisFeedbackResponse:
+        type: object
+        properties:
+          ProspectCampaignProcedureAnalysisResult:
+              type: string
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
+              type: string
+              description: '|||'
+              format: String
+    RequestAnalysisFeedback:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveAnalysisFeedbackResponse:
-      type: object
-      properties:
-        ProspectCampaignProcedure:
-          type: object
-          properties:
-            ProspectCampaignType:
+        type: object
+        properties:
+          ProspectCampaignType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignDescription:
+              description: '|||'
+              format: String
+          ProspectCampaignDescription:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProspectCampaignProcedureSet-up:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureSet-up:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureVersionNumber:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignSchedule:
+              description: '|||'
+              format: String
+          ProspectCampaignSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumablesInventory:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumablesInventory:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableType:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignConsumableHolding:
+              description: '|||'
+              format: String
+          ProspectCampaignConsumableHolding:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureProspectIdentification:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
               type: string
-              description: "\r\n"
-              format: string
-            PartyLifecycleManagementProcedureInstanceReference:
+              description: '|||'
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-        AnalysisFeedback:
-          type: object
-          properties:
-            ProspectCampaignProcedureAnalysisResult:
+              description: '|||'
+              format: Object
+          ProspectCampaignProcedureAnalysisResult:
               type: string
-              description: "\r\n"
-              format: string
-            ProspectCampaignProcedureAnalysisFeedbackResult:
+              description: '|||'
+              format: String
+          ProspectCampaignProcedureAnalysisFeedbackResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about prospect campaign analysis activity'
+              description: '|||'
+              format: String
+    RetrieveAnalysisFeedback:
+        type: object
+        properties:
+          ProspectCampaignType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProspectCampaignProcedureSet-up:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureVersionNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumablesInventory:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignConsumableHolding:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureResult:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProspectCampaignProcedureProspectIdentification:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyLifecycleManagementProcedureInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateProspectCampaignProcedureResponse:
-      description: InitiateProspectCampaignProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateProspectCampaignProcedureResponse'
+        description: ProspectCampaignProcedureInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProspectCampaignProcedureResponse'
     RetrieveProspectCampaignProcedureResponse:
-      description: RetrieveProspectCampaignProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProspectCampaignProcedureResponse'
+        description: ProspectCampaignProcedureRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProspectCampaignProcedureResponse'
     UpdateCandidateSelectionResponse:
-      description: UpdateCandidateSelectionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCandidateSelectionResponse'
+        description: CandidateSelectionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCandidateSelectionResponse'
     RetrieveCandidateSelectionResponse:
-      description: RetrieveCandidateSelectionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCandidateSelectionResponse'
+        description: CandidateSelectionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCandidateSelectionResponse'
     InitiateExecutionResponse:
-      description: InitiateExecutionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateExecutionResponse'
+        description: ExecutionInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateExecutionResponse'
     UpdateExecutionResponse:
-      description: UpdateExecutionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateExecutionResponse'
-    Execution:
-      description: Execution
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Execution'
+        description: ExecutionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateExecutionResponse'
+    RequestExecutionResponse:
+        description: ExecutionRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestExecutionResponse'
     RetrieveExecutionResponse:
-      description: RetrieveExecutionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveExecutionResponse'
+        description: ExecutionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveExecutionResponse'
     InitiateAnalysisFeedbackResponse:
-      description: InitiateAnalysisFeedbackResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateAnalysisFeedbackResponse'
+        description: AnalysisFeedbackInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateAnalysisFeedbackResponse'
     UpdateAnalysisFeedbackResponse:
-      description: UpdateAnalysisFeedbackResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateAnalysisFeedbackResponse'
-    AnalysisFeedback:
-      description: AnalysisFeedback
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AnalysisFeedback'
+        description: AnalysisFeedbackUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateAnalysisFeedbackResponse'
+    RequestAnalysisFeedbackResponse:
+        description: AnalysisFeedbackRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestAnalysisFeedbackResponse'
     RetrieveAnalysisFeedbackResponse:
-      description: RetrieveAnalysisFeedbackResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveAnalysisFeedbackResponse'
+        description: AnalysisFeedbackRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveAnalysisFeedbackResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    prospectcampaignexecutionid:
-      name: prospectcampaignexecutionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    prospectcampaignprocedureid:
+        name: prospectcampaignprocedureid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     candidateselectionid:
-      name: candidateselectionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: candidateselectionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     executionid:
-      name: executionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: executionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     analysisfeedbackid:
-      name: analysisfeedbackid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: analysisfeedbackid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateProspectCampaignProcedureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateProspectCampaignProcedureRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProspectCampaignProcedureRequest'
+        required: true
+    RetrieveProspectCampaignProcedureRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateCandidateSelectionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCandidateSelectionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCandidateSelectionRequest'
+        required: true
+    RetrieveCandidateSelectionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateExecutionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateExecutionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateExecutionRequest'
+        required: true
     UpdateExecutionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateExecutionRequest'
-      required: true
-    Execution:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Execution'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateExecutionRequest'
+        required: true
+    RequestExecutionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestExecutionRequest'
+        required: true
+    RetrieveExecutionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateAnalysisFeedbackRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateAnalysisFeedbackRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateAnalysisFeedbackRequest'
+        required: true
     UpdateAnalysisFeedbackRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateAnalysisFeedbackRequest'
-      required: true
-    AnalysisFeedback:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AnalysisFeedback'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateAnalysisFeedbackRequest'
+        required: true
+    RequestAnalysisFeedbackRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestAnalysisFeedbackRequest'
+        required: true
+    RetrieveAnalysisFeedbackRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

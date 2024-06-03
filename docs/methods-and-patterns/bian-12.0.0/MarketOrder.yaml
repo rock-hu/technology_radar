@@ -1,995 +1,1313 @@
 openapi: 3.0.1
 info:
   title: Market Order
-  description: Market Order records an instruction from a customer or his or her representative to buy or sell securities. It follows the order during its lifetime and reports back to the requestor on the execution.
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Market Order (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/MarketOrder/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/MarketOrder/12.0.1'
 paths:
-  /MarketOrder/Initiate:
-    post:
-      tags:
-        - CR - MarketOrderTransaction
-      summary: InCR Initiate a market order
-      description: InCR Initiate a market order
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateMarketOrderTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateMarketOrderTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/MarketOrder/{marketorderid}/Update':
-    put:
-      tags:
-        - CR - MarketOrderTransaction
-      summary: UpCR Update details on an active market order
-      description: UpCR Update details on an active market order
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/marketorderid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateMarketOrderTransactionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateMarketOrderTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/MarketOrder/{marketorderid}/Retrieve':
-    get:
-      tags:
-        - CR - MarketOrderTransaction
-      summary: ReCR Retrieve details about a market order
-      description: ReCR Retrieve details about a market order
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/marketorderid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveMarketOrderTransactionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/MarketOrder/{marketorderid}/Compliance/{complianceid}/Retrieve':
-    get:
-      tags:
-        - BQ - Compliance
-      summary: ReBQ Retrieve details about a market order compliance check
-      description: ReBQ Retrieve details about a market order compliance check
-      operationId: RetrieveCompliance
-      parameters:
-        - $ref: '#/components/parameters/marketorderid'
-        - $ref: '#/components/parameters/complianceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveComplianceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/MarketOrder/{marketorderid}/FundingCheck/{fundingcheckid}/Retrieve':
-    get:
-      tags:
-        - BQ - FundingCheck
-      summary: ReBQ Retrieve details about a market order funding check
-      description: ReBQ Retrieve details about a market order funding check
-      operationId: RetrieveFundingCheck
-      parameters:
-        - $ref: '#/components/parameters/marketorderid'
-        - $ref: '#/components/parameters/fundingcheckid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFundingCheckResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/MarketOrder/{marketorderid}/CustomerProcessing/{customerprocessingid}/Retrieve':
-    get:
-      tags:
-        - BQ - CustomerProcessing
-      summary: ReBQ Retrieve details about customer specific processing for a market order
-      description: ReBQ Retrieve details about customer specific processing for a market order
-      operationId: RetrieveCustomerProcessing
-      parameters:
-        - $ref: '#/components/parameters/marketorderid'
-        - $ref: '#/components/parameters/customerprocessingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCustomerProcessingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/MarketOrder/{marketorderid}/TradeInitiation/{tradeinitiationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TradeInitiation
-      summary: ReBQ Retrieve details about a market order's market trade
-      description: ReBQ Retrieve details about a market order's market trade
-      operationId: RetrieveTradeInitiation
-      parameters:
-        - $ref: '#/components/parameters/marketorderid'
-        - $ref: '#/components/parameters/tradeinitiationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTradeInitiationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/MarketOrderTransaction/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - MarketOrderTransaction'
+        summary: (DDD Service) InCR Initiate a market order
+        description: (DDD Service) InCR Initiate a market order
+        operationId: MarketOrderTransaction/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateMarketOrderTransactionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateMarketOrderTransactionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/MarketOrderTransaction/{marketordertransactionid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - MarketOrderTransaction'
+        summary: (DDD Service) UpCR Update details on an active market order
+        description: (DDD Service) UpCR Update details on an active market order
+        operationId: MarketOrderTransaction/Update
+        parameters:
+          - $ref: '#/components/parameters/marketordertransactionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateMarketOrderTransactionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateMarketOrderTransactionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/MarketOrderTransaction/{marketordertransactionid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - MarketOrderTransaction'
+        summary: (DDD Service) ReCR Retrieve details about a market order
+        description: (DDD Service) ReCR Retrieve details about a market order
+        operationId: MarketOrderTransaction/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/marketordertransactionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveMarketOrderTransactionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/MarketOrder/{complianceid}/Compliance/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Compliance'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a market order compliance
+          check
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a market order compliance
+          check
+        operationId: Compliance/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/complianceid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveComplianceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/MarketOrder/{fundingcheckid}/FundingCheck/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - FundingCheck'
+        summary: (DDD Service) ReBQ Retrieve details about a market order funding check
+        description: (DDD Service) ReBQ Retrieve details about a market order funding check
+        operationId: FundingCheck/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/fundingcheckid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFundingCheckResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/MarketOrder/{customerprocessingid}/CustomerProcessing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - CustomerProcessing'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about customer specific processing
+          for a market order
+        description: >-
+          (DDD Service) ReBQ Retrieve details about customer specific processing
+          for a market order
+        operationId: CustomerProcessing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/customerprocessingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCustomerProcessingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/MarketOrder/{tradeinitiationid}/TradeInitiation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TradeInitiation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a market order's market
+          trade
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a market order's market
+          trade
+        operationId: TradeInitiation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/tradeinitiationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTradeInitiationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    FundingCheck:
-      type: object
-      properties:
-        MarketOrderTransactionFundingCheckResult:
-          type: string
-          description: The outcome of the funds available check
-          format: string
-      description: The sub-tasks involved in the execution of the financial transaction
-    CustomerProcessing:
-      type: object
-      properties:
-        MarketOrderCustomerProcessingCheckResult:
-          type: string
-          description: Details of any customer specific processing requirements applied to the market order
-          format: string
-      description: The sub-tasks involved in the execution of the financial transaction
-    Compliance:
-      type: object
-      properties:
-        MarketOrderTransactionComplianceCheckType:
-          type: string
-          description: 'The type of compliance check performed (e.g. AML, Watch lists)'
-          format: string
-        MarketOrderTransactionComplianceCheckResult:
-          type: string
-          description: The outcome of the compliance check
-          format: string
-        MarketOrderTransactionComplianceTaskResult:
-          type: string
-          description: Details of the overall compliance checking process
-          format: string
-      description: The sub-tasks involved in the execution of the financial transaction
-    TradeInitiation:
-      type: object
-      properties:
-        MarketTradeTransactionInstanceReference:
-          type: string
-          description: The reference to the market trade. Note this can be the internal bank 'trade' against the bank's managed position and may not result in a matched trade in the wholesale markets
-          format: object
-        MarketTradeTransactionInstanceStatus:
-          type: string
-          description: The returned status of the market trade
-          format: string
-        MarketTradeInitiationTaskResult:
-          type: string
-          description: Details of the market trade initiation task
-          format: string
-      description: The sub-tasks involved in the execution of the financial transaction
-    MarketOrderTransaction:
-      type: object
-      properties:
-        MarketOrderInstructionType:
-          type: string
-          description: 'The type of market order request (e.g. Managed Investment, Corporate Finance)'
-          format: string
-        CustomerReference:
-          type: string
-          description: Reference to the account primary party/owner for the market order
-          format: object
-        EmployeeBusinessUnitReference:
-          type: string
-          description: The employee/business unit placing the market order
-          format: object
-        InvestmentPortfolioInstanceReference:
-          type: string
-          description: Reference to the associated investment portfolio record of all holdings (referenced to check securities availability if necessary)
-          format: object
-        CustomerMarketOrderProcessingInstruction:
-          type: string
-          description: Any customer specific processing preferences or requirements
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: The document reference for the order confirmation notice
-          format: object
-        CorrespondenceInstanceReference:
-          type: string
-          description: Reference to the correspondence generated for the order confirmation
-          format: object
-        MarketOrderTransaction:
-          type: string
-          description: The details of the market order transaction
-          format: string
-        InvestmentAccountArrangementInstanceReference:
-          type: string
-          description: Reference to the underlying investment account supporting the transaction
-          format: object
-        CurrentAccountArrangementInstanceReference:
-          type: string
-          description: Reference to the underlying cash account supporting the transaction
-          format: object
-        MarketOrderType:
-          type: string
-          description: 'The type of market order (e.g. Day Order. Order on Open/Close, Fill or Kill, Limit Order)'
-          format: string
-        SecurityType:
-          type: string
-          description: The security to be traded
-          format: string
-        Amount:
-          type: string
-          description: The volume of shares to be bought or sold
-          format: string
-        DateType:
-          type: string
-          description: 'Key dates associated with the transaction (e.g. order capture, trade execution, order completion)'
-          format: string
-        Date:
-          type: string
-          description: Value of the specific date type
-          format: string
-      description: 'Execute a well-bounded financial transaction/task, typically involving largely automated/structured fulfillment processing within Market Order. '
     InitiateMarketOrderTransactionRequest:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: String
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate a market order'
+              description: '|||'
+              format: String
     InitiateMarketOrderTransactionResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: String
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate a market order'
+              description: '|||'
+              format: String
+    InitiateMarketOrderTransaction:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateMarketOrderTransactionRequest:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update details on an active market order'
+              description: '|||'
+              format: String
     UpdateMarketOrderTransactionResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details on an active market order'
+              description: '|||'
+              format: String
+    UpdateMarketOrderTransaction:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveMarketOrderTransactionResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a market order'
+              description: '|||'
+              format: String
+    RetrieveMarketOrderTransaction:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveComplianceResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        Compliance:
-          type: object
-          properties:
-            MarketOrderTransactionComplianceCheckType:
+              description: '|||'
+              format: String
+          MarketOrderTransactionComplianceCheckType:
               type: string
-              description: "\r\n"
-              format: string
-            MarketOrderTransactionComplianceCheckResult:
+              description: '|||'
+              format: String
+          MarketOrderTransactionComplianceCheckResult:
               type: string
-              description: "\r\n"
-              format: string
-            MarketOrderTransactionComplianceTaskResult:
+              description: '|||'
+              format: String
+          MarketOrderTransactionComplianceTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a market order compliance check'
+              description: '|||'
+              format: String
+    RetrieveCompliance:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveFundingCheckResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        FundingCheck:
-          type: object
-          properties:
-            MarketOrderTransactionFundingCheckResult:
+              description: '|||'
+              format: String
+          MarketOrderTransactionFundingCheckResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a market order funding check'
+              description: '|||'
+              format: String
+    RetrieveFundingCheck:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCustomerProcessingResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        CustomerProcessing:
-          type: object
-          properties:
-            MarketOrderCustomerProcessingCheckResult:
+              description: '|||'
+              format: String
+          MarketOrderCustomerProcessingCheckResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about customer specific processing for a market order'
+              description: '|||'
+              format: String
+    RetrieveCustomerProcessing:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTradeInitiationResponse:
-      type: object
-      properties:
-        MarketOrderTransaction:
-          type: object
-          properties:
-            MarketOrderInstructionType:
+        type: object
+        properties:
+          MarketOrderInstructionType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: Object
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentPortfolioInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentPortfolioInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerMarketOrderProcessingInstruction:
+              description: '|||'
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: Object
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            InvestmentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          InvestmentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CurrentAccountArrangementInstanceReference:
+              description: '|||'
+              format: Object
+          CurrentAccountArrangementInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketOrderType:
+              description: '|||'
+              format: Object
+          MarketOrderType:
               type: string
-              description: "\r\n"
-              format: string
-            SecurityType:
+              description: '|||'
+              format: String
+          SecurityType:
               type: string
-              description: "\r\n"
-              format: string
-            Amount:
+              description: '|||'
+              format: String
+          Amount:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        TradeInitiation:
-          type: object
-          properties:
-            MarketTradeTransactionInstanceReference:
+              description: '|||'
+              format: String
+          MarketTradeTransactionInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            MarketTradeTransactionInstanceStatus:
+              description: '|||'
+              format: Object
+          MarketTradeTransactionInstanceStatus:
               type: string
-              description: "\r\n"
-              format: string
-            MarketTradeInitiationTaskResult:
+              description: '|||'
+              format: String
+          MarketTradeInitiationTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a market order''s market trade'
+              description: '|||'
+              format: String
+    RetrieveTradeInitiation:
+        type: object
+        properties:
+          MarketOrderInstructionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InvestmentPortfolioInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerMarketOrderProcessingInstruction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CorrespondenceInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderTransaction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InvestmentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CurrentAccountArrangementInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          MarketOrderType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          SecurityType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Amount:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateMarketOrderTransactionResponse:
-      description: InitiateMarketOrderTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateMarketOrderTransactionResponse'
+        description: MarketOrderTransactionInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateMarketOrderTransactionResponse'
     UpdateMarketOrderTransactionResponse:
-      description: UpdateMarketOrderTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateMarketOrderTransactionResponse'
+        description: MarketOrderTransactionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateMarketOrderTransactionResponse'
     RetrieveMarketOrderTransactionResponse:
-      description: RetrieveMarketOrderTransactionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveMarketOrderTransactionResponse'
+        description: MarketOrderTransactionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveMarketOrderTransactionResponse'
     RetrieveComplianceResponse:
-      description: RetrieveComplianceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveComplianceResponse'
+        description: ComplianceRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveComplianceResponse'
     RetrieveFundingCheckResponse:
-      description: RetrieveFundingCheckResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFundingCheckResponse'
+        description: FundingCheckRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFundingCheckResponse'
     RetrieveCustomerProcessingResponse:
-      description: RetrieveCustomerProcessingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCustomerProcessingResponse'
+        description: CustomerProcessingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCustomerProcessingResponse'
     RetrieveTradeInitiationResponse:
-      description: RetrieveTradeInitiationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTradeInitiationResponse'
+        description: TradeInitiationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTradeInitiationResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    marketorderid:
-      name: marketorderid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    marketordertransactionid:
+        name: marketordertransactionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     complianceid:
-      name: complianceid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: complianceid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     fundingcheckid:
-      name: fundingcheckid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: fundingcheckid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     customerprocessingid:
-      name: customerprocessingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: customerprocessingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     tradeinitiationid:
-      name: tradeinitiationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: tradeinitiationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateMarketOrderTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateMarketOrderTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateMarketOrderTransactionRequest'
+        required: true
     UpdateMarketOrderTransactionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateMarketOrderTransactionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateMarketOrderTransactionRequest'
+        required: true
+    RetrieveMarketOrderTransactionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveComplianceRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveFundingCheckRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveCustomerProcessingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveTradeInitiationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

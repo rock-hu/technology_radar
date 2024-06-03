@@ -1,1015 +1,1220 @@
 openapi: 3.0.1
 info:
   title: Production Release
-  description: Maintain and apply production release tests for new and updated systems
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Production Release (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/ProductionRelease/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/ProductionRelease/12.0.1'
 paths:
-  /ProductionRelease/Evaluate:
-    post:
-      tags:
-        - CR - ProductionSystemAssessment
-      summary: EvCR Evaluate various risk exposures for a production release
-      description: EvCR Evaluate various risk exposures for a production release
-      operationId: Evaluate
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateProductionSystemAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateProductionSystemAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/Update':
-    put:
-      tags:
-        - CR - ProductionSystemAssessment
-      summary: UpCR Update aspects of an active production release evaluation
-      description: UpCR Update aspects of an active production release evaluation
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateProductionSystemAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateProductionSystemAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/Request':
-    put:
-      tags:
-        - CR - ProductionSystemAssessment
-      summary: RqCR Request manual intervention in an evaluation
-      description: RqCR Request manual intervention in an evaluation
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestProductionSystemAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestProductionSystemAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/Retrieve':
-    get:
-      tags:
-        - CR - ProductionSystemAssessment
-      summary: ReCR Retrieve details about a production release evaluation
-      description: ReCR Retrieve details about a production release evaluation
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProductionSystemAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/FunctionalRisk/{functionalriskid}/Retrieve':
-    get:
-      tags:
-        - BQ - FunctionalRisk
-      summary: ReBQ Retrieve details about a functional risk assessment
-      description: ReBQ Retrieve details about a functional risk assessment
-      operationId: RetrieveFunctionalRisk
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-        - $ref: '#/components/parameters/functionalriskid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFunctionalRiskResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/ProductionRisk/{productionriskid}/Retrieve':
-    get:
-      tags:
-        - BQ - ProductionRisk
-      summary: ReBQ Retrieve details about a production risk assessment
-      description: ReBQ Retrieve details about a production risk assessment
-      operationId: RetrieveProductionRisk
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-        - $ref: '#/components/parameters/productionriskid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProductionRiskResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/BusinessRisk/{businessriskid}/Retrieve':
-    get:
-      tags:
-        - BQ - BusinessRisk
-      summary: ReBQ Retrieve details about a business risk assessment
-      description: ReBQ Retrieve details about a business risk assessment
-      operationId: RetrieveBusinessRisk
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-        - $ref: '#/components/parameters/businessriskid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveBusinessRiskResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductionRelease/{productionreleaseid}/OperationalRisk/{operationalriskid}/Retrieve':
-    get:
-      tags:
-        - BQ - OperationalRisk
-      summary: ReBQ Retrieve details about a operational risk assessment
-      description: ReBQ Retrieve details about a operational risk assessment
-      operationId: RetrieveOperationalRisk
-      parameters:
-        - $ref: '#/components/parameters/productionreleaseid'
-        - $ref: '#/components/parameters/operationalriskid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveOperationalRiskResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ProductionSystemAssessment/Evaluate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - ProductionSystemAssessment'
+        summary: >-
+          (DDD Service) EvCR Evaluate various risk exposures for a production
+          release
+        description: >-
+          (DDD Service) EvCR Evaluate various risk exposures for a production
+          release
+        operationId: ProductionSystemAssessment/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateProductionSystemAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateProductionSystemAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionSystemAssessment/{productionsystemassessmentid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductionSystemAssessment'
+        summary: >-
+          (DDD Service) UpCR Update aspects of an active production release
+          evaluation
+        description: >-
+          (DDD Service) UpCR Update aspects of an active production release
+          evaluation
+        operationId: ProductionSystemAssessment/Update
+        parameters:
+          - $ref: '#/components/parameters/productionsystemassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateProductionSystemAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateProductionSystemAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionSystemAssessment/{productionsystemassessmentid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductionSystemAssessment'
+        summary: (DDD Service) RqCR Request manual intervention in an evaluation
+        description: (DDD Service) RqCR Request manual intervention in an evaluation
+        operationId: ProductionSystemAssessment/Request
+        parameters:
+          - $ref: '#/components/parameters/productionsystemassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestProductionSystemAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestProductionSystemAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionSystemAssessment/{productionsystemassessmentid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ProductionSystemAssessment'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about a production release
+          evaluation
+        description: >-
+          (DDD Service) ReCR Retrieve details about a production release
+          evaluation
+        operationId: ProductionSystemAssessment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/productionsystemassessmentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProductionSystemAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionRelease/{functionalriskid}/FunctionalRisk/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - FunctionalRisk'
+        summary: (DDD Service) ReBQ Retrieve details about a functional risk assessment
+        description: (DDD Service) ReBQ Retrieve details about a functional risk assessment
+        operationId: FunctionalRisk/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/functionalriskid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFunctionalRiskResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionRelease/{productionriskid}/ProductionRisk/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ProductionRisk'
+        summary: (DDD Service) ReBQ Retrieve details about a production risk assessment
+        description: (DDD Service) ReBQ Retrieve details about a production risk assessment
+        operationId: ProductionRisk/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/productionriskid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProductionRiskResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionRelease/{businessriskid}/BusinessRisk/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - BusinessRisk'
+        summary: (DDD Service) ReBQ Retrieve details about a business risk assessment
+        description: (DDD Service) ReBQ Retrieve details about a business risk assessment
+        operationId: BusinessRisk/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/businessriskid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveBusinessRiskResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductionRelease/{operationalriskid}/OperationalRisk/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - OperationalRisk'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a operational risk
+          assessment
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a operational risk
+          assessment
+        operationId: OperationalRisk/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/operationalriskid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveOperationalRiskResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    OperationalRisk:
-      type: object
-      properties:
-        OperationalRiskSystemTestType:
-          type: string
-          description: 'The type of operational risk test being performed (e.g. operator error recovery, major IT component failure recovery/continuity)'
-          format: string
-        OperationalRiskSystemTestDescription:
-          type: string
-          description: 'Detailed description of the test, including expected results'
-          format: string
-        OperationalRiskSystemTestWorkProduct:
-          type: string
-          description: 'Reference to testing materials, results, assessments and other documents'
-          format: string
-        OperationalRiskSystemTestResult:
-          type: string
-          description: The result of the operational risk test (including required remedial actions/fixes where appropriate)
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    BusinessRisk:
-      type: object
-      properties:
-        BusinessRiskSystemTestType:
-          type: string
-          description: 'The type of business risk test being performed (e.g. compliance, pricing, exposure)'
-          format: string
-        BusinessRiskSystemTestDescription:
-          type: string
-          description: 'Detailed description of the test, including expected results'
-          format: string
-        BusinessRiskTestWorkProduct:
-          type: string
-          description: 'Reference to testing materials, results, assessments and other documents'
-          format: string
-        BusinessRiskTestResult:
-          type: string
-          description: The result of the business risk test (including required remedial actions/fixes where appropriate)
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    ProductionRisk:
-      type: object
-      properties:
-        ProductionRiskSystemTestType:
-          type: string
-          description: 'The type of production test being performed (e.g. division of responsibilities, access control, audit trail, back-up and recovery)'
-          format: string
-        ProductionRiskSystemTestDescription:
-          type: string
-          description: 'Detailed description of the test, including expected results'
-          format: string
-        ProductionRiskSystemTestWorkProduct:
-          type: string
-          description: 'Reference to testing materials, results, assessments and other documents'
-          format: string
-        ProductionRiskSystemTestResult:
-          type: string
-          description: The result of the production risk test (including required remedial actions/fixes where appropriate)
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    FunctionalRisk:
-      type: object
-      properties:
-        FunctionalRiskSystemTestType:
-          type: string
-          description: 'The type of functional test being performed (e.g. functional coverage/integrity, usability, application integration)'
-          format: string
-        FunctionalRiskSystemTestDescription:
-          type: string
-          description: 'Detailed description of the test, including expected results'
-          format: string
-        FunctionalRiskSystemTestWorkProduct:
-          type: string
-          description: 'Reference to testing materials, results, assessments and other documents'
-          format: string
-        FunctionalRiskSystemTestResult:
-          type: string
-          description: The result of the functional risk test (including required remedial actions/fixes where appropriate)
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    ProductionSystemAssessment:
-      type: object
-      properties:
-        ProductionReleaseName:
-          type: string
-          description: The reference to and descriptive name of the production release system
-          format: string
-        EmployeeBusinessUnitReference:
-          type: string
-          description: Reference to the business units responsible for the testing and deployment
-          format: object
-        ProductionReleaseType:
-          type: string
-          description: 'The type of production release (e.g. production service update, new production system)'
-          format: string
-        ProductionReleaseDescription:
-          type: string
-          description: 'A description of the scope, goal and make-up of the production release'
-          format: string
-        ProductionReleaseTestProfile:
-          type: string
-          description: Details the types of production release tests to be and actually applied
-          format: string
-        ProductionReleaseTestSchedule:
-          type: string
-          description: The schedule for performing the range of release tests (planned and actual)
-          format: string
-        ProductionReleaseConsolidationRecord:
-          type: string
-          description: The consolidated release evaluation combining the results of all underlying tests
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: Reference to associated documents
-          format: object
-        DateType:
-          type: string
-          description: 'Key dates associated with the assessment (e.g. notification date, commencement  date, completion date)'
-          format: string
-        Date:
-          type: string
-          description: Value of the specific date type
-          format: string
-      description: 'To test or assess an entity, possibly against some formal qualification or certification requirement within Production Release. '
     EvaluateProductionSystemAssessmentRequest:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EvCR Evaluate various risk exposures for a production release'
+              description: '|||'
+              format: String
     EvaluateProductionSystemAssessmentResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseType:
+              description: '|||'
+              format: String
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvCR Evaluate various risk exposures for a production release'
+              description: '|||'
+              format: String
+    EvaluateProductionSystemAssessment:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateProductionSystemAssessmentRequest:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update aspects of an active production release evaluation'
+              description: '|||'
+              format: String
     UpdateProductionSystemAssessmentResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update aspects of an active production release evaluation'
+              description: '|||'
+              format: String
+    UpdateProductionSystemAssessment:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestProductionSystemAssessmentRequest:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Request manual intervention in an evaluation'
+              description: '|||'
+              format: String
     RequestProductionSystemAssessmentResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseType:
+              description: '|||'
+              format: String
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention in an evaluation'
+              description: '|||'
+              format: String
+    RequestProductionSystemAssessment:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveProductionSystemAssessmentResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a production release evaluation'
+              description: '|||'
+              format: String
+    RetrieveProductionSystemAssessment:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveFunctionalRiskResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        FunctionalRisk:
-          type: object
-          properties:
-            FunctionalRiskSystemTestType:
+              description: '|||'
+              format: String
+          FunctionalRiskSystemTestType:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalRiskSystemTestDescription:
+              description: '|||'
+              format: String
+          FunctionalRiskSystemTestDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalRiskSystemTestWorkProduct:
+              description: '|||'
+              format: String
+          FunctionalRiskSystemTestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalRiskSystemTestResult:
+              description: '|||'
+              format: String
+          FunctionalRiskSystemTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a functional risk assessment'
+              description: '|||'
+              format: String
+    RetrieveFunctionalRisk:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveProductionRiskResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        ProductionRisk:
-          type: object
-          properties:
-            ProductionRiskSystemTestType:
+              description: '|||'
+              format: String
+          ProductionRiskSystemTestType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionRiskSystemTestDescription:
+              description: '|||'
+              format: String
+          ProductionRiskSystemTestDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionRiskSystemTestWorkProduct:
+              description: '|||'
+              format: String
+          ProductionRiskSystemTestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionRiskSystemTestResult:
+              description: '|||'
+              format: String
+          ProductionRiskSystemTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a production risk assessment'
+              description: '|||'
+              format: String
+    RetrieveProductionRisk:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveBusinessRiskResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        BusinessRisk:
-          type: object
-          properties:
-            BusinessRiskSystemTestType:
+              description: '|||'
+              format: String
+          BusinessRiskSystemTestType:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessRiskSystemTestDescription:
+              description: '|||'
+              format: String
+          BusinessRiskSystemTestDescription:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessRiskTestWorkProduct:
+              description: '|||'
+              format: String
+          BusinessRiskTestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessRiskTestResult:
+              description: '|||'
+              format: String
+          BusinessRiskTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a business risk assessment'
+              description: '|||'
+              format: String
+    RetrieveBusinessRisk:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveOperationalRiskResponse:
-      type: object
-      properties:
-        ProductionSystemAssessment:
-          type: object
-          properties:
-            ProductionReleaseName:
+        type: object
+        properties:
+          ProductionReleaseName:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionReleaseType:
+              description: '|||'
+              format: Object
+          ProductionReleaseType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseDescription:
+              description: '|||'
+              format: String
+          ProductionReleaseDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestProfile:
+              description: '|||'
+              format: String
+          ProductionReleaseTestProfile:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseTestSchedule:
+              description: '|||'
+              format: String
+          ProductionReleaseTestSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionReleaseConsolidationRecord:
+              description: '|||'
+              format: String
+          ProductionReleaseConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DateType:
+              description: '|||'
+              format: Object
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-        OperationalRisk:
-          type: object
-          properties:
-            OperationalRiskSystemTestType:
+              description: '|||'
+              format: String
+          OperationalRiskSystemTestType:
               type: string
-              description: "\r\n"
-              format: string
-            OperationalRiskSystemTestDescription:
+              description: '|||'
+              format: String
+          OperationalRiskSystemTestDescription:
               type: string
-              description: "\r\n"
-              format: string
-            OperationalRiskSystemTestWorkProduct:
+              description: '|||'
+              format: String
+          OperationalRiskSystemTestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            OperationalRiskSystemTestResult:
+              description: '|||'
+              format: String
+          OperationalRiskSystemTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a operational risk assessment'
+              description: '|||'
+              format: String
+    RetrieveOperationalRisk:
+        type: object
+        properties:
+          ProductionReleaseName:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionReleaseType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseTestSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionReleaseConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DocumentDirectoryEntryInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     EvaluateProductionSystemAssessmentResponse:
-      description: EvaluateProductionSystemAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateProductionSystemAssessmentResponse'
+        description: ProductionSystemAssessmentEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateProductionSystemAssessmentResponse'
     UpdateProductionSystemAssessmentResponse:
-      description: UpdateProductionSystemAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProductionSystemAssessmentResponse'
+        description: ProductionSystemAssessmentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProductionSystemAssessmentResponse'
     RequestProductionSystemAssessmentResponse:
-      description: RequestProductionSystemAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductionSystemAssessmentResponse'
+        description: ProductionSystemAssessmentRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestProductionSystemAssessmentResponse'
     RetrieveProductionSystemAssessmentResponse:
-      description: RetrieveProductionSystemAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProductionSystemAssessmentResponse'
+        description: ProductionSystemAssessmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProductionSystemAssessmentResponse'
     RetrieveFunctionalRiskResponse:
-      description: RetrieveFunctionalRiskResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFunctionalRiskResponse'
+        description: FunctionalRiskRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFunctionalRiskResponse'
     RetrieveProductionRiskResponse:
-      description: RetrieveProductionRiskResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProductionRiskResponse'
+        description: ProductionRiskRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProductionRiskResponse'
     RetrieveBusinessRiskResponse:
-      description: RetrieveBusinessRiskResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveBusinessRiskResponse'
+        description: BusinessRiskRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveBusinessRiskResponse'
     RetrieveOperationalRiskResponse:
-      description: RetrieveOperationalRiskResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveOperationalRiskResponse'
+        description: OperationalRiskRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveOperationalRiskResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    productionreleaseid:
-      name: productionreleaseid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    productionsystemassessmentid:
+        name: productionsystemassessmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     functionalriskid:
-      name: functionalriskid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: functionalriskid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     productionriskid:
-      name: productionriskid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: productionriskid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     businessriskid:
-      name: businessriskid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: businessriskid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     operationalriskid:
-      name: operationalriskid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: operationalriskid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     EvaluateProductionSystemAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateProductionSystemAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateProductionSystemAssessmentRequest'
+        required: true
     UpdateProductionSystemAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProductionSystemAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProductionSystemAssessmentRequest'
+        required: true
     RequestProductionSystemAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductionSystemAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestProductionSystemAssessmentRequest'
+        required: true
+    RetrieveProductionSystemAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveFunctionalRiskRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveProductionRiskRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveBusinessRiskRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveOperationalRiskRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

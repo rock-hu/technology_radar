@@ -1,1358 +1,1421 @@
 openapi: 3.0.1
 info:
   title: Legal Entity Directory
-  description: This service domain maintains details of the legal entity structure of the party including dependents and associations for individuals and ownership/subsidiary structures for corporations. Some financial indicators and product coverage/activity details can be included where this defines the nature of the legal entity relationship in particular for corporate entities
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Legal Entity Directory (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/LegalEntityDirectory/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/LegalEntityDirectory/12.0.1'
 paths:
-  /LegalEntityDirectory/Register:
-    post:
-      tags:
-        - CR - LegalEntityDirectoryEntry
-      summary: InCR Register a new legal entity in the catalog
-      description: InCR Register a new legal entity in the catalog
-      operationId: Register
-      requestBody:
-        $ref: '#/components/requestBodies/RegisterLegalEntityDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RegisterLegalEntityDirectoryEntryRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Update':
-    put:
-      tags:
-        - CR - LegalEntityDirectoryEntry
-      summary: UpCR Update details about the legal entity directory entry
-      description: UpCR Update details about the legal entity directory entry
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateLegalEntityDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateLegalEntityDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Request':
-    put:
-      tags:
-        - CR - LegalEntityDirectoryEntry
-      summary: RqCR Request manual intervention with an entry (e.g. refresh content)
-      description: RqCR Request manual intervention with an entry (e.g. refresh content)
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestLegalEntityDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestLegalEntityDirectoryEntryRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Retrieve':
-    get:
-      tags:
-        - CR - LegalEntityDirectoryEntry
-      summary: ReCR Retrieve details about a legal entity directory entry
-      description: ReCR Retrieve details about a legal entity directory entry
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveLegalEntityDirectoryEntryResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Execute':
-    put:
-      tags:
-        - CR - LegalEntityDirectoryEntry
-      summary: ExCR Execute an automated action against an entry
-      description: ExCR Execute an automated action against an entry
-      operationId: Execute
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteLegalEntityDirectoryEntryRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteLegalEntityDirectoryEntryRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Reference/{referenceid}/Update':
-    put:
-      tags:
-        - BQ - Reference
-      summary: UpBQ Update details about a reference entry for the legal entity
-      description: UpBQ Update details about a reference entry for the legal entity
-      operationId: UpdateReference
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-        - $ref: '#/components/parameters/referenceid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateReferenceRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateReferenceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Reference/{referenceid}/Retrieve':
-    get:
-      tags:
-        - BQ - Reference
-      summary: ReBQ Retrieve details about reference entries in the directory record
-      description: ReBQ Retrieve details about reference entries in the directory record
-      operationId: RetrieveReference
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-        - $ref: '#/components/parameters/referenceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveReferenceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Profile/{profileid}/Update':
-    put:
-      tags:
-        - BQ - Profile
-      summary: UpBQ Update details about a profile entry for the legal entity
-      description: UpBQ Update details about a profile entry for the legal entity
-      operationId: UpdateProfile
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-        - $ref: '#/components/parameters/profileid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateProfileRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateProfileResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Profile/{profileid}/Retrieve':
-    get:
-      tags:
-        - BQ - Profile
-      summary: ReBQ Retrieve details about profile entries in the directory record
-      description: ReBQ Retrieve details about profile entries in the directory record
-      operationId: RetrieveProfile
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-        - $ref: '#/components/parameters/profileid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProfileResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Associations/{associationsid}/Update':
-    put:
-      tags:
-        - BQ - Associations
-      summary: UpBQ Update details about an association entry for the legal entity
-      description: UpBQ Update details about an association entry for the legal entity
-      operationId: UpdateAssociations
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-        - $ref: '#/components/parameters/associationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateAssociationsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateAssociationsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/LegalEntityDirectory/{legalentitydirectoryid}/Associations/{associationsid}/Retrieve':
-    get:
-      tags:
-        - BQ - Associations
-      summary: ReBQ Retrieve details about association entries in the directory record
-      description: ReBQ Retrieve details about association entries in the directory record
-      operationId: RetrieveAssociations
-      parameters:
-        - $ref: '#/components/parameters/legalentitydirectoryid'
-        - $ref: '#/components/parameters/associationsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveAssociationsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectoryEntry/Register':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - LegalEntityDirectoryEntry'
+        summary: (DDD Service) InCR Register a new legal entity in the catalog
+        description: (DDD Service) InCR Register a new legal entity in the catalog
+        operationId: LegalEntityDirectoryEntry/Register
+        requestBody:
+          $ref: '#/components/requestBodies/RegisterLegalEntityDirectoryEntryRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RegisterLegalEntityDirectoryEntryResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectoryEntry/{legalentitydirectoryentryid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - LegalEntityDirectoryEntry'
+        summary: >-
+          (DDD Service) UpCR Update details about the legal entity directory
+          entry
+        description: >-
+          (DDD Service) UpCR Update details about the legal entity directory
+          entry
+        operationId: LegalEntityDirectoryEntry/Update
+        parameters:
+          - $ref: '#/components/parameters/legalentitydirectoryentryid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateLegalEntityDirectoryEntryRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateLegalEntityDirectoryEntryResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectoryEntry/{legalentitydirectoryentryid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - LegalEntityDirectoryEntry'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention with an entry (e.g.
+          refresh content)
+        description: >-
+          (DDD Service) RqCR Request manual intervention with an entry (e.g.
+          refresh content)
+        operationId: LegalEntityDirectoryEntry/Request
+        parameters:
+          - $ref: '#/components/parameters/legalentitydirectoryentryid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestLegalEntityDirectoryEntryRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestLegalEntityDirectoryEntryResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectoryEntry/{legalentitydirectoryentryid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - LegalEntityDirectoryEntry'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about a legal entity directory
+          entry
+        description: >-
+          (DDD Service) ReCR Retrieve details about a legal entity directory
+          entry
+        operationId: LegalEntityDirectoryEntry/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/legalentitydirectoryentryid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveLegalEntityDirectoryEntryResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectoryEntry/{legalentitydirectoryentryid}/Execute':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - LegalEntityDirectoryEntry'
+        summary: (DDD Service) ExCR Execute an automated action against an entry
+        description: (DDD Service) ExCR Execute an automated action against an entry
+        operationId: LegalEntityDirectoryEntry/Execute
+        parameters:
+          - $ref: '#/components/parameters/legalentitydirectoryentryid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteLegalEntityDirectoryEntryRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteLegalEntityDirectoryEntryResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectory/{referenceid}/Reference/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Reference'
+        summary: >-
+          (DDD Service) UpBQ Update details about a reference entry for the
+          legal entity
+        description: >-
+          (DDD Service) UpBQ Update details about a reference entry for the
+          legal entity
+        operationId: Reference/Update
+        parameters:
+          - $ref: '#/components/parameters/referenceid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateReferenceRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateReferenceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectory/{referenceid}/Reference/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Reference'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about reference entries in the
+          directory record
+        description: >-
+          (DDD Service) ReBQ Retrieve details about reference entries in the
+          directory record
+        operationId: Reference/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/referenceid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveReferenceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectory/{profileid}/Profile/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Profile'
+        summary: >-
+          (DDD Service) UpBQ Update details about a profile entry for the legal
+          entity
+        description: >-
+          (DDD Service) UpBQ Update details about a profile entry for the legal
+          entity
+        operationId: Profile/Update
+        parameters:
+          - $ref: '#/components/parameters/profileid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateProfileRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateProfileResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectory/{profileid}/Profile/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Profile'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about profile entries in the
+          directory record
+        description: >-
+          (DDD Service) ReBQ Retrieve details about profile entries in the
+          directory record
+        operationId: Profile/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/profileid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProfileResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectory/{associationsid}/Associations/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Associations'
+        summary: >-
+          (DDD Service) UpBQ Update details about an association entry for the
+          legal entity
+        description: >-
+          (DDD Service) UpBQ Update details about an association entry for the
+          legal entity
+        operationId: Associations/Update
+        parameters:
+          - $ref: '#/components/parameters/associationsid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateAssociationsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateAssociationsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/LegalEntityDirectory/{associationsid}/Associations/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Associations'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about association entries in the
+          directory record
+        description: >-
+          (DDD Service) ReBQ Retrieve details about association entries in the
+          directory record
+        operationId: Associations/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/associationsid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveAssociationsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    text:
-      type: object
-      properties:
-        Text:
-          type: string
-          description: Text is a character string such as a finite set of characters generally in the form of words of a language. (UN/CEFACT)
-          format: datatype
-      description: "The unit of measure like Percentage or BPS\n\nBasis points (BPS) refers to a common unit of measure for interest rates and other percentages in finance."
-    datetime:
-      type: object
-      properties:
-        DateTimeContent:
-          type: string
-          description: ''
-          format: string
-        TimeZoneCode:
-          type: string
-          description: ''
-          format: string
-        DaylightSavingIndicator:
-          type: string
-          description: ''
-          format: string
-      description: Value of the date type ISODateTime|ISODateTime (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022 BM ()
-    datetimeperiod:
-      type: object
-      properties:
-        FromDateTime:
-          $ref: '#/components/schemas/datetime'
-        ToDateTime:
-          $ref: '#/components/schemas/datetime'
-      description: ''
-    rate:
-      type: object
-      properties:
-        RateValue:
-          $ref: '#/components/schemas/value'
-        RateUnit:
-          $ref: '#/components/schemas/text'
-        RatePeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        RateCapitalUnit:
-          $ref: '#/components/schemas/text'
-      description: Past and projected growth rates
-    Profile:
-      type: object
-      properties:
-        OrganizationCapitalization:
-          type: string
-          description: The estimated capitalization of the entity
-          format: string
-        OrganizationDebtLevel:
-          type: string
-          description: The estimated debt level for the entity
-          format: string
-        OrganizationEconomicIntent:
-          type: string
-          description: The projected economic performance for the entity
-          format: string
-        OrganizationGrowthRate:
-          $ref: '#/components/schemas/rate'
-        OrganizationProfitabilityStocks:
-          type: string
-          description: Analysis of past performance  (a summary description)
-          format: string
-        OrganizationRevenueTurnover:
-          type: string
-          description: 'Description of revenues, production volumes and staff turnover  a summary description)'
-          format: string
-      description: "\"An assertion or statement with regard to a concept, a characteristic.\n\nExamples: Product pricing rules, Customer reference details\n\nA descriptor can be atomic or composed.\"\nProspect Management"
-    Associations:
-      type: object
-      properties:
-        LegalEntityAssociationReference:
-          type: string
-          description: Reference to the associated entity (e.g. company or individual)
-          format: object
-        LegalEntityAssociationType:
-          type: string
-          description: Nature or type of association (e.g. corporate or familial)
-          format: string
-        LegalEntityAssociationObligation:
-          type: string
-          description: 'Description of the association and applicable obligations  (e.g. shareholder, director, guardian, guarantor)'
-          format: string
-        ParentLegalEntityReference:
-          type: string
-          description: Reference the parent entity if applicable
-          format: object
-        SubsidiaryLegalEntityReference:
-          type: string
-          description: Reference the subsidiary entity if applicable
-          format: object
-        ShareholdingProfile:
-          type: string
-          description: List of major shareholders and shareholdings of significance
-          format: string
-      description: "\"An assertion or statement with regard to a concept, a characteristic.\n\nExamples: Product pricing rules, Customer reference details\n\nA descriptor can be atomic or composed.\"\nProspect Management"
-    Reference:
-      type: object
-      properties:
-        LegalEntityOfficialName:
-          type: string
-          description: The registered name of the entity
-          format: string
-        LegalEntityType:
-          type: string
-          description: 'The type of legal entity (e.g. individual, Inc, Plc)'
-          format: string
-        SectorsofOperation:
-          type: string
-          description: 'The sectors of operation (e.g. finance, Asia)'
-          format: string
-        RegisteredAddress:
-          type: string
-          description: The registered address for the legal entity
-          format: string
-        HeadquartersLocation:
-          type: string
-          description: The location of the head office (and regional offices if appropriate)
-          format: string
-        DateofIncorporation:
-          type: string
-          description: The date of incorporation (or dates when subsidiaries involved)
-          format: string
-        JurisdictionofIncorporation:
-          type: string
-          description: The jurisdiction governing the company
-          format: string
-        RegistrationAuthority:
-          type: string
-          description: The associated legal or registration authority
-          format: string
-        PrimaryRegulator:
-          type: string
-          description: 'The primary, and additional regulators as appropriate'
-          format: string
-        TaxReference:
-          type: string
-          description: Reference identifier linking the entity to appropriate tax authority
-          format: object
-        ContactRole:
-          type: string
-          description: The bank's contact role or roles established to maintain the relationship with the bank (e.g. CEO)
-          format: string
-        ContactAddressDetails:
-          type: string
-          description: The address of the bank's contact's within the entity
-          format: string
-      description: "\"An assertion or statement with regard to a concept, a characteristic.\n\nExamples: Product pricing rules, Customer reference details\n\nA descriptor can be atomic or composed.\"\nProspect Management"
-    name:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: 'A name is a word or phrase that constitutes the distinctive designation of a person, place, thing or concept. (UN/CEFAT)'
-          format: datatype
-      description: "Name by which a party is known and which is usually used to identify that party. (ISO20022)\n"
-    partytypevalues:
-      enum:
-        - Person
-        - Organisation
-      type: string
-      description: ">\r\n* `Person` - Human entity, as distinguished from a corporate entity (which is sometimes referred to as an 'artificial person'). ISO20022\r\n* `Organisation` - Organised structure that is set up for a particular purpose. For example, a business, government body, department, charity, or financial institution. ISO20022\r\n"
-    partyidentificationtypevalues:
-      enum:
-        - Taxidentificationnumber
-        - Nationalregistrationnumber
-        - Registrationauthorityidentification
-        - LEI(LegalEntityIdentifier)
-        - Alienregistrationnumber
-        - Passportnumber
-        - Taxexemptidentificationnumber
-        - Corporateidentification
-        - Driverlicensenumber
-        - Foreigninvestmentidentitynumber
-        - Socialsecuritynumber
-        - Identitycardnumber
-        - Concat
-        - Nationalregistrationidentificationnumber
-      type: string
-      description: ">\r\n* `Taxidentificationnumber` - Number assigned by a tax authority to an entity.\r\n* `Nationalregistrationnumber` - Number assigned by a national registration authority to an entity. In Singapore this is known as the NRIC. (ISO20022)\r\n* `Registrationauthorityidentification` - An identifier for the Legal Entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority. (ISO20022)\r\n* `LEI(LegalEntityIdentifier)` - \r\n* `Alienregistrationnumber` - Number assigned by a government agency to identify foreign nationals.\r\n* `Passportnumber` - Number assigned by a passport authority.\r\n* `Taxexemptidentificationnumber` - Number assigned to a tax exempt entity.\r\n* `Corporateidentification` - Number assigned to a corporate entity.\r\n* `Driverlicensenumber` - Number assigned to a driver's license.\r\n* `Foreigninvestmentidentitynumber` - Number assigned to a foreign investor (other than the alien number).\r\n* `Socialsecuritynumber` - Number assigned by a social security agency.\r\n* `Identitycardnumber` - Number assigned by a national authority to an identity card.\r\n* `Concat` - Number assigned by an issuer to identify a customer via the concatenation of the birthdate and characters of the first name and surname.\r\n* `Nationalregistrationidentificationnumber` - National registration identification number. In Singapore this is known as the NRIC.\r\n"
-    partyinvolvementtypevalues:
-      enum:
-        - Agreementinvolvement
-        - Partyinvolvement
-        - Arrangementinvolvement
-        - Designspecificationinvolvement
-        - Relationshipinvolvement
-        - Locationinvolvement
-        - Bankguaranteeinvolvement
-      type: string
-      description: ">\r\n* `Agreementinvolvement` - \r\n* `Partyinvolvement` - \r\n* `Arrangementinvolvement` - \r\n* `Designspecificationinvolvement` - \r\n* `Relationshipinvolvement` - \r\n* `Locationinvolvement` - \r\n* `Bankguaranteeinvolvement` - \r\n"
-    partyrole:
-      type: object
-      properties:
-        PartyRoleType:
-          $ref: '#/components/schemas/text'
-        PartyRoleName:
-          $ref: '#/components/schemas/name'
-        PartyRoleValidityPeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        PartyInvolvementType:
-          $ref: '#/components/schemas/partyinvolvementtypevalues'
-      description: ''
-    involvedparty:
-      type: object
-      properties:
-        PartyReference:
-          $ref: '#/components/schemas/party'
-        PartyInvolvement:
-          $ref: '#/components/schemas/partyrole'
-      description: Entity that assigns and manages the identification.
-    identifier:
-      type: object
-      properties:
-        IdentifierValue:
-          $ref: '#/components/schemas/value'
-        IdentifierIssuingAuthority:
-          $ref: '#/components/schemas/involvedparty'
-        IdentifierStartDate:
-          $ref: '#/components/schemas/datetime'
-        IdentifierEndDate:
-          $ref: '#/components/schemas/datetime'
-      description: ''
-    partyidentification:
-      type: object
-      properties:
-        PartyIdentificationType:
-          $ref: '#/components/schemas/partyidentificationtypevalues'
-        PartyIdentification:
-          $ref: '#/components/schemas/identifier'
-      description: ''
-    partylegalstructuretypevalues:
-      enum:
-        - Individual
-        - CommunityInterestCompany
-        - CharitableIncorporatedOrganisation
-        - Co-Operative
-        - Charity
-        - GeneralPartnership
-        - LimitedLiabilityPartnership
-        - ScottishLimitedPartnership
-        - LimitedPartnership
-        - PrivateLimitedCompany
-        - PublicLimitedCompany
-        - Sole(SoleTrader)
-      type: string
-      description: ">\r\n* `Individual` - \r\n* `CommunityInterestCompany` - \r\n* `CharitableIncorporatedOrganisation` - \r\n* `Co-Operative` - \r\n* `Charity` - \r\n* `GeneralPartnership` - \r\n* `LimitedLiabilityPartnership` - \r\n* `ScottishLimitedPartnership` - \r\n* `LimitedPartnership` - \r\n* `PrivateLimitedCompany` - \r\n* `PublicLimitedCompany` - \r\n* `Sole(SoleTrader)` - \r\n"
-    party:
-      type: object
-      properties:
-        PartyName:
-          $ref: '#/components/schemas/name'
-        PartyType:
-          $ref: '#/components/schemas/partytypevalues'
-        PartyDateTime:
-          $ref: '#/components/schemas/datetime'
-        PartyIdentification:
-          $ref: '#/components/schemas/partyidentification'
-        PartyLegalStructureType:
-          $ref: '#/components/schemas/partylegalstructuretypevalues'
-      description: Reference to the associated party (one or more linked by role to the legal entity) Party|Party (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM ()
-    directoryentrydatetypevalues:
-      enum:
-        - OpenDate
-        - RefreshDate
-      type: string
-      description: "Key dates associated with the directory entry (e.g. open date, refresh date) ||\r\n|"
-    LegalEntityDirectoryEntry:
-      type: object
-      properties:
-        LegalEntityReference:
-          type: string
-          description: Reference to the legal entity that is the subject of the entry
-          format: object
-        PartyReference:
-          $ref: '#/components/schemas/party'
-        DirectoryEntryDateType:
-          $ref: '#/components/schemas/directoryentrydatetypevalues'
-        DirectoryEntryDate:
-          $ref: '#/components/schemas/datetime'
-      description: Capture and maintain reference information about some type of entitity within Legal Entity Directory.
     RegisterLegalEntityDirectoryEntryRequest:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-      description: 'Input: InCR Register a new legal entity in the catalog'
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
     UpdateLegalEntityDirectoryEntryRequest:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-      description: 'Input: UpCR Update details about the legal entity directory entry'
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
     UpdateLegalEntityDirectoryEntryResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-      description: 'Output: UpCR Update details about the legal entity directory entry'
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+    UpdateLegalEntityDirectoryEntry:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     RequestLegalEntityDirectoryEntryRequest:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-      description: 'Input: RqCR Request manual intervention with an entry (e.g. refresh content)'
+        type: object
+        properties:
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
     RetrieveLegalEntityDirectoryEntryResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-      description: 'Output: ReCR Retrieve details about a legal entity directory entry'
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+    RetrieveLegalEntityDirectoryEntry:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     ExecuteLegalEntityDirectoryEntryRequest:
-      type: object
-      properties:
-        Reference:
-          type: object
-          properties:
-            LegalEntityOfficialName:
+        type: object
+        properties:
+          LegalEntityOfficialName:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityType:
+              description: '|||'
+              format: String
+          LegalEntityType:
               type: string
-              description: "\r\n"
-              format: string
-            SectorsofOperation:
+              description: '|||'
+              format: String
+          SectorsofOperation:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredAddress:
+              description: '|||'
+              format: String
+          RegisteredAddress:
               type: string
-              description: "\r\n"
-              format: string
-            HeadquartersLocation:
+              description: '|||'
+              format: String
+          HeadquartersLocation:
               type: string
-              description: "\r\n"
-              format: string
-            DateofIncorporation:
+              description: '|||'
+              format: String
+          DateofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            JurisdictionofIncorporation:
+              description: '|||'
+              format: String
+          JurisdictionofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            RegistrationAuthority:
+              description: '|||'
+              format: String
+          RegistrationAuthority:
               type: string
-              description: "\r\n"
-              format: string
-            PrimaryRegulator:
+              description: '|||'
+              format: String
+          PrimaryRegulator:
               type: string
-              description: "\r\n"
-              format: string
-            TaxReference:
+              description: '|||'
+              format: String
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            ContactRole:
+              description: '|||'
+              format: Object
+          ContactRole:
               type: string
-              description: "\r\n"
-              format: string
-            ContactAddressDetails:
+              description: '|||'
+              format: String
+          ContactAddressDetails:
               type: string
-              description: "\r\n"
-              format: string
-        Profile:
-          type: object
-          properties:
-            OrganizationCapitalization:
+              description: '|||'
+              format: String
+          OrganizationCapitalization:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationDebtLevel:
+              description: '|||'
+              format: String
+          OrganizationDebtLevel:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationEconomicIntent:
+              description: '|||'
+              format: String
+          OrganizationEconomicIntent:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationGrowthRate:
-              $ref: '#/components/schemas/rate'
-            OrganizationProfitabilityStocks:
+              description: '|||'
+              format: String
+          OrganizationGrowthRate:
+              $ref: '#/components/schemas/PercentageRate'
+              description: >-
+                PercentageRate|PercentageRate
+                (https://www.iso20022.org/standardsrepository/type/PercentageRate)|Standard|ISO20022
+                BM ()
+          OrganizationProfitabilityStocks:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationRevenueTurnover:
+              description: '|||'
+              format: String
+          OrganizationRevenueTurnover:
               type: string
-              description: "\r\n"
-              format: string
-        Associations:
-          type: object
-          properties:
-            LegalEntityAssociationReference:
+              description: '|||'
+              format: String
+          LegalEntityAssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LegalEntityAssociationType:
+              description: '|||'
+              format: Object
+          LegalEntityAssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityAssociationObligation:
+              description: '|||'
+              format: String
+          LegalEntityAssociationObligation:
               type: string
-              description: "\r\n"
-              format: string
-            ParentLegalEntityReference:
+              description: '|||'
+              format: String
+          ParentLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            SubsidiaryLegalEntityReference:
+              description: '|||'
+              format: Object
+          SubsidiaryLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            ShareholdingProfile:
+              description: '|||'
+              format: Object
+          ShareholdingProfile:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: ExCR Execute an automated action against an entry'
+              description: '|||'
+              format: String
     UpdateReferenceRequest:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDate:
-              $ref: '#/components/schemas/datetime'
-        Reference:
-          type: object
-          properties:
-            LegalEntityOfficialName:
+        type: object
+        properties:
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+          LegalEntityOfficialName:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityType:
+              description: '|||'
+              format: String
+          LegalEntityType:
               type: string
-              description: "\r\n"
-              format: string
-            SectorsofOperation:
+              description: '|||'
+              format: String
+          SectorsofOperation:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredAddress:
+              description: '|||'
+              format: String
+          RegisteredAddress:
               type: string
-              description: "\r\n"
-              format: string
-            HeadquartersLocation:
+              description: '|||'
+              format: String
+          HeadquartersLocation:
               type: string
-              description: "\r\n"
-              format: string
-            DateofIncorporation:
+              description: '|||'
+              format: String
+          DateofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            JurisdictionofIncorporation:
+              description: '|||'
+              format: String
+          JurisdictionofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            RegistrationAuthority:
+              description: '|||'
+              format: String
+          RegistrationAuthority:
               type: string
-              description: "\r\n"
-              format: string
-            PrimaryRegulator:
+              description: '|||'
+              format: String
+          PrimaryRegulator:
               type: string
-              description: "\r\n"
-              format: string
-            TaxReference:
+              description: '|||'
+              format: String
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            ContactRole:
+              description: '|||'
+              format: Object
+          ContactRole:
               type: string
-              description: "\r\n"
-              format: string
-            ContactAddressDetails:
+              description: '|||'
+              format: String
+          ContactAddressDetails:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details about a reference entry for the legal entity'
+              description: '|||'
+              format: String
     UpdateReferenceResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDate:
-              $ref: '#/components/schemas/datetime'
-        Reference:
-          type: object
-          properties:
-            LegalEntityOfficialName:
+        type: object
+        properties:
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+          LegalEntityOfficialName:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityType:
+              description: '|||'
+              format: String
+          LegalEntityType:
               type: string
-              description: "\r\n"
-              format: string
-            SectorsofOperation:
+              description: '|||'
+              format: String
+          SectorsofOperation:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredAddress:
+              description: '|||'
+              format: String
+          RegisteredAddress:
               type: string
-              description: "\r\n"
-              format: string
-            HeadquartersLocation:
+              description: '|||'
+              format: String
+          HeadquartersLocation:
               type: string
-              description: "\r\n"
-              format: string
-            DateofIncorporation:
+              description: '|||'
+              format: String
+          DateofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            JurisdictionofIncorporation:
+              description: '|||'
+              format: String
+          JurisdictionofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            RegistrationAuthority:
+              description: '|||'
+              format: String
+          RegistrationAuthority:
               type: string
-              description: "\r\n"
-              format: string
-            PrimaryRegulator:
+              description: '|||'
+              format: String
+          PrimaryRegulator:
               type: string
-              description: "\r\n"
-              format: string
-            TaxReference:
+              description: '|||'
+              format: String
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            ContactRole:
+              description: '|||'
+              format: Object
+          ContactRole:
               type: string
-              description: "\r\n"
-              format: string
-            ContactAddressDetails:
+              description: '|||'
+              format: String
+          ContactAddressDetails:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details about a reference entry for the legal entity'
+              description: '|||'
+              format: String
+    UpdateReference:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     RetrieveReferenceResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-        Reference:
-          type: object
-          properties:
-            LegalEntityOfficialName:
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityType:
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          LegalEntityOfficialName:
               type: string
-              description: "\r\n"
-              format: string
-            SectorsofOperation:
+              description: '|||'
+              format: String
+          LegalEntityType:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredAddress:
+              description: '|||'
+              format: String
+          SectorsofOperation:
               type: string
-              description: "\r\n"
-              format: string
-            HeadquartersLocation:
+              description: '|||'
+              format: String
+          RegisteredAddress:
               type: string
-              description: "\r\n"
-              format: string
-            DateofIncorporation:
+              description: '|||'
+              format: String
+          HeadquartersLocation:
               type: string
-              description: "\r\n"
-              format: string
-            JurisdictionofIncorporation:
+              description: '|||'
+              format: String
+          DateofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            RegistrationAuthority:
+              description: '|||'
+              format: String
+          JurisdictionofIncorporation:
               type: string
-              description: "\r\n"
-              format: string
-            PrimaryRegulator:
+              description: '|||'
+              format: String
+          RegistrationAuthority:
               type: string
-              description: "\r\n"
-              format: string
-            TaxReference:
+              description: '|||'
+              format: String
+          PrimaryRegulator:
               type: string
-              description: "\r\n"
-              format: object
-            ContactRole:
+              description: '|||'
+              format: String
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: string
-            ContactAddressDetails:
+              description: '|||'
+              format: Object
+          ContactRole:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about reference entries in the directory record'
+              description: '|||'
+              format: String
+          ContactAddressDetails:
+              type: string
+              description: '|||'
+              format: String
+    RetrieveReference:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     UpdateProfileRequest:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDate:
-              $ref: '#/components/schemas/datetime'
-        Profile:
-          type: object
-          properties:
-            OrganizationCapitalization:
+        type: object
+        properties:
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+          OrganizationCapitalization:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationDebtLevel:
+              description: '|||'
+              format: String
+          OrganizationDebtLevel:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationEconomicIntent:
+              description: '|||'
+              format: String
+          OrganizationEconomicIntent:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationGrowthRate:
-              $ref: '#/components/schemas/rate'
-            OrganizationProfitabilityStocks:
+              description: '|||'
+              format: String
+          OrganizationGrowthRate:
+              $ref: '#/components/schemas/PercentageRate'
+              description: >-
+                PercentageRate|PercentageRate
+                (https://www.iso20022.org/standardsrepository/type/PercentageRate)|Standard|ISO20022
+                BM ()
+          OrganizationProfitabilityStocks:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationRevenueTurnover:
+              description: '|||'
+              format: String
+          OrganizationRevenueTurnover:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details about a profile entry for the legal entity'
+              description: '|||'
+              format: String
     UpdateProfileResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDate:
-              $ref: '#/components/schemas/datetime'
-        Profile:
-          type: object
-          properties:
-            OrganizationCapitalization:
+        type: object
+        properties:
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+          OrganizationCapitalization:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationDebtLevel:
+              description: '|||'
+              format: String
+          OrganizationDebtLevel:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationEconomicIntent:
+              description: '|||'
+              format: String
+          OrganizationEconomicIntent:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationGrowthRate:
-              $ref: '#/components/schemas/rate'
-            OrganizationProfitabilityStocks:
+              description: '|||'
+              format: String
+          OrganizationGrowthRate:
+              $ref: '#/components/schemas/PercentageRate'
+              description: >-
+                PercentageRate|PercentageRate
+                (https://www.iso20022.org/standardsrepository/type/PercentageRate)|Standard|ISO20022
+                BM ()
+          OrganizationProfitabilityStocks:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationRevenueTurnover:
+              description: '|||'
+              format: String
+          OrganizationRevenueTurnover:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details about a profile entry for the legal entity'
+              description: '|||'
+              format: String
+    UpdateProfile:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     RetrieveProfileResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-        Profile:
-          type: object
-          properties:
-            OrganizationCapitalization:
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationDebtLevel:
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          OrganizationCapitalization:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationEconomicIntent:
+              description: '|||'
+              format: String
+          OrganizationDebtLevel:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationGrowthRate:
-              $ref: '#/components/schemas/rate'
-            OrganizationProfitabilityStocks:
+              description: '|||'
+              format: String
+          OrganizationEconomicIntent:
               type: string
-              description: "\r\n"
-              format: string
-            OrganizationRevenueTurnover:
+              description: '|||'
+              format: String
+          OrganizationGrowthRate:
+              $ref: '#/components/schemas/PercentageRate'
+              description: >-
+                PercentageRate|PercentageRate
+                (https://www.iso20022.org/standardsrepository/type/PercentageRate)|Standard|ISO20022
+                BM ()
+          OrganizationProfitabilityStocks:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about profile entries in the directory record'
+              description: '|||'
+              format: String
+          OrganizationRevenueTurnover:
+              type: string
+              description: '|||'
+              format: String
+    RetrieveProfile:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     UpdateAssociationsRequest:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDate:
-              $ref: '#/components/schemas/datetime'
-        Associations:
-          type: object
-          properties:
-            LegalEntityAssociationReference:
+        type: object
+        properties:
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+          LegalEntityAssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LegalEntityAssociationType:
+              description: '|||'
+              format: Object
+          LegalEntityAssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityAssociationObligation:
+              description: '|||'
+              format: String
+          LegalEntityAssociationObligation:
               type: string
-              description: "\r\n"
-              format: string
-            ParentLegalEntityReference:
+              description: '|||'
+              format: String
+          ParentLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            SubsidiaryLegalEntityReference:
+              description: '|||'
+              format: Object
+          SubsidiaryLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            ShareholdingProfile:
+              description: '|||'
+              format: Object
+          ShareholdingProfile:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details about an association entry for the legal entity'
+              description: '|||'
+              format: String
     UpdateAssociationsResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            DirectoryEntryDate:
-              $ref: '#/components/schemas/datetime'
-        Associations:
-          type: object
-          properties:
-            LegalEntityAssociationReference:
+        type: object
+        properties:
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+          LegalEntityAssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LegalEntityAssociationType:
+              description: '|||'
+              format: Object
+          LegalEntityAssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityAssociationObligation:
+              description: '|||'
+              format: String
+          LegalEntityAssociationObligation:
               type: string
-              description: "\r\n"
-              format: string
-            ParentLegalEntityReference:
+              description: '|||'
+              format: String
+          ParentLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            SubsidiaryLegalEntityReference:
+              description: '|||'
+              format: Object
+          SubsidiaryLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            ShareholdingProfile:
+              description: '|||'
+              format: Object
+          ShareholdingProfile:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details about an association entry for the legal entity'
+              description: '|||'
+              format: String
+    UpdateAssociations:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
     RetrieveAssociationsResponse:
-      type: object
-      properties:
-        LegalEntityDirectoryEntry:
-          type: object
-          properties:
-            LegalEntityReference:
+        type: object
+        properties:
+          LegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
-              $ref: '#/components/schemas/party'
-            DirectoryEntryDateType:
-              $ref: '#/components/schemas/directoryentrydatetypevalues'
-        Associations:
-          type: object
-          properties:
-            LegalEntityAssociationReference:
+              description: '|||'
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
               type: string
-              description: "\r\n"
-              format: object
-            LegalEntityAssociationType:
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          LegalEntityAssociationReference:
               type: string
-              description: "\r\n"
-              format: string
-            LegalEntityAssociationObligation:
+              description: '|||'
+              format: Object
+          LegalEntityAssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            ParentLegalEntityReference:
+              description: '|||'
+              format: String
+          LegalEntityAssociationObligation:
               type: string
-              description: "\r\n"
-              format: object
-            SubsidiaryLegalEntityReference:
+              description: '|||'
+              format: String
+          ParentLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: object
-            ShareholdingProfile:
+              description: '|||'
+              format: Object
+          SubsidiaryLegalEntityReference:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about association entries in the directory record'
+              description: '|||'
+              format: Object
+          ShareholdingProfile:
+              type: string
+              description: '|||'
+              format: String
+    RetrieveAssociations:
+        type: object
+        properties:
+          LegalEntityReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: >-
+                Party|Party
+                (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+                ()
+          DirectoryEntryDateType:
+              enum:
+                  -  OpenDate
+                  -  RefreshDate
+              type: string
+              description: ">\r\n* `OpenDate` \r\n* `RefreshDate` \r\n* "
+          DirectoryEntryDate:
+              $ref: '#/components/schemas/ISODateTime'
+              description: >-
+                ISODateTime|ISODateTime
+                (https://www.iso20022.org/standardsrepository/type/ISODateTime)|Standard|ISO20022
+                BM ()
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    Party:
+        type: object
+        description: >-
+          (DDD Entity) - Reference to the associated party (one or more linked by role to
+          the legal entity) Party|Party
+          (https://www.iso20022.org/standardsrepository/type/Party)|Standard|ISO20022BM
+          ()
+        properties:
+          ContactPoint:
+              type: string
+              format: ContactPoint
+              description: >-
+                (DDD Entity) - Number, physical or virtual address, used for
+                communication. 
+          Identification:
+              type: string
+              format: PartyIdentificationInformation
+              description: '(DDD Entity) - Specific identification assigned to a party. '
+          MoneyLaunderingCheck:
+              type: string
+              format: MoneyLaunderingCheckCode
+              description: >-
+                (DDD Entity) - Status of an identity check to prevent money laundering.
+                This includes the counter-terrorism check. 
+          TaxationConditions:
+              type: string
+              format: Tax
+              description: >-
+                (DDD Entity) - Taxation parameters which apply to an individual person or
+                to an organisation. 
+          Domicile:
+              type: string
+              format: Location
+              description: >-
+                (DDD Entity) - Location in which a person is permanently domiciled (the
+                place of a person's permanent home). 
+          Residence:
+              type: string
+              format: Location
+              description: >-
+                (DDD Entity) - Location from which the affairs of a company are directed or
+                location in which a person resides (the place of a person's
+                home). 
+          PowerOfAttorney:
+              type: string
+              format: PowerOfAttorney
+              description: '(DDD Entity) - Power of attorney which is held by the party. '
+          Location:
+              type: string
+              format: Location
+              description: '(DDD Entity) - Location of the taxable party. '
+          CloseLinkSecurity:
+              type: string
+              format: Security
+              description: '(DDD Entity) - Security for which a close link with a party is identified. '
+          CreditQuality:
+              type: string
+              format: CreditQualityCode
+              description: '(DDD Entity) - Credit quality for the clearing member. '
+          ShareholdingType:
+              type: string
+              format: ShareholdingTypeCode
+              description: '(DDD Entity) - Specifies the type of shareholding. '
+    ISODateTime:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time defined by a
+          mandatory date and a mandatory time component, expressed in either UTC
+          time format (YYYY-MM-DDThh:mm:ss.sssZ), local time with UTC offset
+          format (YYYY-MM-DDThh:mm:ss.sss+/-hh:mm), or local time format
+          (YYYY-MM-DDThh:mm:ss.sss). These representations are defined in "XML
+          Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
+
+          Note on the time format:
+
+          1) beginning / end of calendar day
+
+          00:00:00  -  the beginning of a calendar day
+
+          24:00:00  -  the end of a calendar day
+
+          2) fractions of second in time format
+
+          Decimal fractions of seconds may be included. In this case, the
+          involved parties shall agree on the maximum number of digits that are
+          allowed.
+    PercentageRate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Rate expressed as a percentage, that is, in hundredths, for
+          example, 0.7 is 7/10 of a percent, and 7.0 is 7%.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    RegisterLegalEntityDirectoryEntryRequest:
-      description: RegisterLegalEntityDirectoryEntryRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RegisterLegalEntityDirectoryEntryRequest'
+    RegisterLegalEntityDirectoryEntryResponse:
+        description: LegalEntityDirectoryEntryRegister
+        content:
+          'application/json:':
+            schema:
+              type: string
     UpdateLegalEntityDirectoryEntryResponse:
-      description: UpdateLegalEntityDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateLegalEntityDirectoryEntryResponse'
-    RequestLegalEntityDirectoryEntryRequest:
-      description: RequestLegalEntityDirectoryEntryRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestLegalEntityDirectoryEntryRequest'
+        description: LegalEntityDirectoryEntryUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateLegalEntityDirectoryEntryResponse'
+    RequestLegalEntityDirectoryEntryResponse:
+        description: LegalEntityDirectoryEntryRequest
+        content:
+          'application/json:':
+            schema:
+              type: string
     RetrieveLegalEntityDirectoryEntryResponse:
-      description: RetrieveLegalEntityDirectoryEntryResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveLegalEntityDirectoryEntryResponse'
-    ExecuteLegalEntityDirectoryEntryRequest:
-      description: ExecuteLegalEntityDirectoryEntryRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteLegalEntityDirectoryEntryRequest'
+        description: LegalEntityDirectoryEntryRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveLegalEntityDirectoryEntryResponse'
+    ExecuteLegalEntityDirectoryEntryResponse:
+        description: LegalEntityDirectoryEntryExecute
+        content:
+          'application/json:':
+            schema:
+              type: string
     UpdateReferenceResponse:
-      description: UpdateReferenceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateReferenceResponse'
+        description: ReferenceUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateReferenceResponse'
     RetrieveReferenceResponse:
-      description: RetrieveReferenceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveReferenceResponse'
+        description: ReferenceRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveReferenceResponse'
     UpdateProfileResponse:
-      description: UpdateProfileResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProfileResponse'
+        description: ProfileUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProfileResponse'
     RetrieveProfileResponse:
-      description: RetrieveProfileResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProfileResponse'
+        description: ProfileRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProfileResponse'
     UpdateAssociationsResponse:
-      description: UpdateAssociationsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateAssociationsResponse'
+        description: AssociationsUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateAssociationsResponse'
     RetrieveAssociationsResponse:
-      description: RetrieveAssociationsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveAssociationsResponse'
+        description: AssociationsRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveAssociationsResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    legalentitydirectoryid:
-      name: legalentitydirectoryid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    legalentitydirectoryentryid:
+        name: legalentitydirectoryentryid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     referenceid:
-      name: referenceid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: referenceid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     profileid:
-      name: profileid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: profileid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     associationsid:
-      name: associationsid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: associationsid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     RegisterLegalEntityDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RegisterLegalEntityDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RegisterLegalEntityDirectoryEntryRequest'
+        required: true
     UpdateLegalEntityDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateLegalEntityDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateLegalEntityDirectoryEntryRequest'
+        required: true
     RequestLegalEntityDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestLegalEntityDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestLegalEntityDirectoryEntryRequest'
+        required: true
+    RetrieveLegalEntityDirectoryEntryRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     ExecuteLegalEntityDirectoryEntryRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteLegalEntityDirectoryEntryRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteLegalEntityDirectoryEntryRequest'
+        required: true
     UpdateReferenceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateReferenceRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateReferenceRequest'
+        required: true
+    RetrieveReferenceRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateProfileRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProfileRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProfileRequest'
+        required: true
+    RetrieveProfileRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateAssociationsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateAssociationsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateAssociationsRequest'
+        required: true
+    RetrieveAssociationsRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

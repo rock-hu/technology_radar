@@ -1,883 +1,1504 @@
 openapi: 3.0.1
 info:
   title: Card Network Participant Facility
-  description: 'This service domain orchestrates the activities related to the inclusion of new Acquirers and Issuers in the Card Network, their terms and conditions and their status.'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Card Network Participant Facility (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CardNetworkParticipantFacility/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CardNetworkParticipantFacility/12.0.1'
 paths:
-  /CardNetworkParticipantFacility/Initiate:
-    post:
-      tags:
-        - CR - CardNetworkParticipantFacility
-      summary: InCR Initiate a new network participant facility
-      description: InCR Initiate a new network participant facility
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/CardNetworkParticipantFacility'
-      responses:
-        '200':
-          $ref: '#/components/responses/CardNetworkParticipantFacility'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CardNetworkParticipantFacility'
+        summary: (DDD Service) InCR Initiate a new network participant facility
+        description: (DDD Service) InCR Initiate a new network participant facility
+        operationId: CardNetworkParticipantFacility/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateCardNetworkParticipantFacilityRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateCardNetworkParticipantFacilityResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
   '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/Update':
-    put:
-      tags:
-        - CR - CardNetworkParticipantFacility
-      summary: UpCR Update details for an active network participant facility
-      description: UpCR Update details for an active network participant facility
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-      requestBody:
-        $ref: '#/components/requestBodies/CardNetworkParticipantFacility'
-      responses:
-        '200':
-          $ref: '#/components/responses/CardNetworkParticipantFacility'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CardNetworkParticipantFacility'
+        summary: >-
+          (DDD Service) UpCR Update details for an active network participant
+          facility
+        description: >-
+          (DDD Service) UpCR Update details for an active network participant
+          facility
+        operationId: CardNetworkParticipantFacility/Update
+        parameters:
+          - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateCardNetworkParticipantFacilityRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateCardNetworkParticipantFacilityResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
   '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/Retrieve':
-    get:
-      tags:
-        - CR - CardNetworkParticipantFacility
-      summary: ReCR Retrieve details about a network participant facility
-      description: ReCR Retrieve details about a network participant facility
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCardNetworkParticipantFacilityResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantAccount/{participantaccountid}/Update':
-    put:
-      tags:
-        - BQ - ParticipantAccount
-      summary: UpBQ Update an account posting made to the network participant
-      description: UpBQ Update an account posting made to the network participant
-      operationId: UpdateParticipantAccount
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantaccountid'
-      requestBody:
-        $ref: '#/components/requestBodies/ParticipantAccount'
-      responses:
-        '200':
-          $ref: '#/components/responses/ParticipantAccount'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantAccount/{participantaccountid}/Execute':
-    put:
-      tags:
-        - BQ - ParticipantAccount
-      summary: ExBQ Execute a posting against the participant's account
-      description: ExBQ Execute a posting against the participant's account
-      operationId: ExecuteParticipantAccount
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantaccountid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteParticipantAccountRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteParticipantAccountResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantAccount/{participantaccountid}/Retrieve':
-    get:
-      tags:
-        - BQ - ParticipantAccount
-      summary: ReBQ Retrieve details about an account posting or account
-      description: ReBQ Retrieve details about an account posting or account
-      operationId: RetrieveParticipantAccount
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantaccountid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveParticipantAccountResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantService/{participantserviceid}/Update':
-    put:
-      tags:
-        - BQ - ParticipantService
-      summary: UpBQ Update details about a participant service request
-      description: UpBQ Update details about a participant service request
-      operationId: UpdateParticipantService
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantserviceid'
-      requestBody:
-        $ref: '#/components/requestBodies/ParticipantService'
-      responses:
-        '200':
-          $ref: '#/components/responses/ParticipantService'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantService/{participantserviceid}/Execute':
-    put:
-      tags:
-        - BQ - ParticipantService
-      summary: ExBQ Execute an automated participant service request (e.g. merchant alert)
-      description: ExBQ Execute an automated participant service request (e.g. merchant alert)
-      operationId: ExecuteParticipantService
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantserviceid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteParticipantServiceRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteParticipantServiceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantService/{participantserviceid}/Request':
-    put:
-      tags:
-        - BQ - ParticipantService
-      summary: RqBQ Request manual intervention with a service request (e.g. arbitration)
-      description: RqBQ Request manual intervention with a service request (e.g. arbitration)
-      operationId: RequestParticipantService
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantserviceid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestParticipantServiceRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestParticipantServiceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CardNetworkParticipantFacility/{cardnetworkparticipantfacilityid}/ParticipantService/{participantserviceid}/Retrieve':
-    get:
-      tags:
-        - BQ - ParticipantService
-      summary: ReBQ Retrieve details about participant service requests
-      description: ReBQ Retrieve details about participant service requests
-      operationId: RetrieveParticipantService
-      parameters:
-        - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
-        - $ref: '#/components/parameters/participantserviceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveParticipantServiceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+      get:
+        tags:
+          - CR (DDD Aggregate) - CardNetworkParticipantFacility'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about a network participant
+          facility
+        description: >-
+          (DDD Service) ReCR Retrieve details about a network participant
+          facility
+        operationId: CardNetworkParticipantFacility/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/cardnetworkparticipantfacilityid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveCardNetworkParticipantFacilityResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantaccountid}/ParticipantAccount/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ParticipantAccount'
+        summary: >-
+          (DDD Service) UpBQ Update an account posting made to the network
+          participant
+        description: >-
+          (DDD Service) UpBQ Update an account posting made to the network
+          participant
+        operationId: ParticipantAccount/Update
+        parameters:
+          - $ref: '#/components/parameters/participantaccountid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateParticipantAccountRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateParticipantAccountResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantaccountid}/ParticipantAccount/Execute':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ParticipantAccount'
+        summary: (DDD Service) ExBQ Execute a posting against the participant's account
+        description: (DDD Service) ExBQ Execute a posting against the participant's account
+        operationId: ParticipantAccount/Execute
+        parameters:
+          - $ref: '#/components/parameters/participantaccountid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteParticipantAccountRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteParticipantAccountResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantaccountid}/ParticipantAccount/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ParticipantAccount'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about an account posting or
+          account
+        description: >-
+          (DDD Service) ReBQ Retrieve details about an account posting or
+          account
+        operationId: ParticipantAccount/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/participantaccountid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveParticipantAccountResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantserviceid}/ParticipantService/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ParticipantService'
+        summary: (DDD Service) UpBQ Update details about a participant service request
+        description: (DDD Service) UpBQ Update details about a participant service request
+        operationId: ParticipantService/Update
+        parameters:
+          - $ref: '#/components/parameters/participantserviceid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateParticipantServiceRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateParticipantServiceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantserviceid}/ParticipantService/Execute':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ParticipantService'
+        summary: >-
+          (DDD Service) ExBQ Execute an automated participant service request
+          (e.g. merchant alert)
+        description: >-
+          (DDD Service) ExBQ Execute an automated participant service request
+          (e.g. merchant alert)
+        operationId: ParticipantService/Execute
+        parameters:
+          - $ref: '#/components/parameters/participantserviceid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteParticipantServiceRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteParticipantServiceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantserviceid}/ParticipantService/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ParticipantService'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention with a service request
+          (e.g. arbitration)
+        description: >-
+          (DDD Service) RqBQ Request manual intervention with a service request
+          (e.g. arbitration)
+        operationId: ParticipantService/Request
+        parameters:
+          - $ref: '#/components/parameters/participantserviceid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestParticipantServiceRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestParticipantServiceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CardNetworkParticipantFacility/{participantserviceid}/ParticipantService/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ParticipantService'
+        summary: (DDD Service) ReBQ Retrieve details about participant service requests
+        description: (DDD Service) ReBQ Retrieve details about participant service requests
+        operationId: ParticipantService/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/participantserviceid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveParticipantServiceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: Key dates and times associated with the provision of the service (e.g. initiation of service fulfillment)
-    ParticipantService:
-      type: object
-      properties:
-        ParticipantServiceRecord:
-          type: string
-          description: Reference to the service request made by the network participant
-          format: string
-        NetworkParticipantServiceType:
-          type: string
-          description: 'The type of request  (e.g. merchant alert, chargeback arbitration, chargeback reduction)'
-          format: string
-        NetworkParticipantServiceCharge:
-          type: string
-          description: Details of service charge levied against the Network Participant Facility
-          format: string
-        NetworkParticipantServiceDateTime:
-          $ref: '#/components/schemas/date'
-        NetworkParticipantNetworkServiceRequestWorkProduct:
-          type: string
-          description: 'Work documentation, forms and schedules produced and referenced during the network service delivery (includes charges, service activity log and results etc.)'
-          format: string
-        NetworkParticipantNetworkServiceRequestResult:
-          type: string
-          description: The result of the request in whatever form appropriate
-          format: string
-      description: The product features/services available with a financical facility
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: ''
-    amounttypevalues:
-      enum:
-        - Principal
-        - Actual
-        - Estimated
-        - Maximum
-        - Default
-        - Replacement
-        - Incremental
-        - Decremental
-        - Reserved
-        - Available
-        - Used
-      type: string
-      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n"
-    amount:
-      type: object
-      properties:
-        AmountValue:
-          $ref: '#/components/schemas/value'
-        AmountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        DecimalPointPosition:
-          type: string
-          description: "Decimal point position starts calulating from the right\n"
-          format: string
-        AmountType:
-          $ref: '#/components/schemas/amounttypevalues'
-      description: Posted amount  (probably captured as a credit/debit pair)
-    ParticipantAccount:
-      type: object
-      properties:
-        ParticipantAccountPostingTransaction:
-          type: string
-          description: Reference to the posting transaction against the network participant account
-          format: string
-        NetworkParticipantFacilityAccountPostingPurpose:
-          type: string
-          description: 'Annotation of the reason for the positing (e.g. posting for fees, chargebacks, settlement)'
-          format: string
-        NetworkParticipantFacilityAccountPostingAmount:
-          $ref: '#/components/schemas/amount'
-        NetworkParticipantFacilityAccountPostingValueDate:
-          $ref: '#/components/schemas/date'
-        NetworkParticipantFacilityAccountPostingResult:
-          type: string
-          description: Confirmation of the posting action
-          format: string
-      description: The product features/services available with a financical facility
-    CardNetworkParticipantFacility:
-      type: object
-      properties:
-        ProductandServiceReference:
-          type: string
-          description: Reference to the participant facility product instance
-          format: object
-        CustomerReference:
-          type: string
-          description: Reference to the participant primary party/owner
-          format: object
-        PartyReference:
-          type: string
-          description: Reference to the legal entity (typically the customer)
-          format: object
-        FacilityTerms:
-          type: string
-          description: The operational configuration terms/options that govern the participant facility arrangement
-          format: string
-        ParticipantAcquirerBankReference:
-          type: string
-          description: Reference to the Acquiring bank for which the Network orchestrates clearing and settlement processing
-          format: object
-        ParticipantAcquirerBankClearingandSettlementTerms:
-          type: string
-          description: Defines the card clearing fees/terms in force
-          format: string
-        ParticipantAcquirerBankServiceSchedule:
-          type: string
-          description: Defines the tasks and processing schedule for the participant
-          format: string
-        ParticipantIssuerBankReference:
-          type: string
-          description: Reference to the Issuing bank for which the Network orchestrates clearing and settlement processing
-          format: object
-        ParticipantIssuerBankClearingandSettlementTerms:
-          type: string
-          description: Defines the card clearing fees/terms in force
-          format: string
-        ParticipantIssuerBankServiceSchedule:
-          type: string
-          description: Defines the tasks and processing schedule for the participant)
-          format: string
-      description: 'Fulfill any scheduled and ad-hoc obligations under a service arrangement, most typically for a financial product or facility within Card Network Participant Facility. '
+    InitiateCardNetworkParticipantFacilityRequest:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyReference:
+              type: string
+              description: '|||'
+              format: Object
+          FacilityTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+    InitiateCardNetworkParticipantFacilityResponse:
+        type: object
+        properties:
+          FacilityTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+    InitiateCardNetworkParticipantFacility:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateCardNetworkParticipantFacilityRequest:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyReference:
+              type: string
+              description: '|||'
+              format: Object
+          FacilityTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+    UpdateCardNetworkParticipantFacilityResponse:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyReference:
+              type: string
+              description: '|||'
+              format: Object
+          FacilityTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: '|||'
+              format: String
+    UpdateCardNetworkParticipantFacility:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCardNetworkParticipantFacilityResponse:
-      type: object
-      properties:
-        CardNetworkParticipantFacility:
-          type: object
-          properties:
-            ProductandServiceReference:
+        type: object
+        properties:
+          ProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            FacilityTerms:
+              description: '|||'
+              format: Object
+          FacilityTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankServiceSchedule:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankServiceSchedule:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a network participant facility'
+              description: '|||'
+              format: String
+    RetrieveCardNetworkParticipantFacility:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateParticipantAccountRequest:
+        type: object
+        properties:
+          ParticipantAccountPostingTransaction:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingPurpose:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          NetworkParticipantFacilityAccountPostingValueDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantFacilityAccountPostingResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateParticipantAccountResponse:
+        type: object
+        properties:
+          ParticipantAccountPostingTransaction:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingPurpose:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          NetworkParticipantFacilityAccountPostingValueDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantFacilityAccountPostingResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateParticipantAccount:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExecuteParticipantAccountRequest:
-      type: object
-      properties:
-        ParticipantAccount:
-          type: object
-          properties:
-            ParticipantAccountPostingTransaction:
+        type: object
+        properties:
+          ParticipantAccountPostingTransaction:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantFacilityAccountPostingPurpose:
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantFacilityAccountPostingAmount:
-              $ref: '#/components/schemas/amount'
-            NetworkParticipantFacilityAccountPostingValueDate:
-              $ref: '#/components/schemas/date'
-      description: 'Input: ExBQ Execute a posting against the participant''s account'
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          NetworkParticipantFacilityAccountPostingValueDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     ExecuteParticipantAccountResponse:
-      type: object
-      properties:
-        ParticipantAccount:
-          type: object
-          properties:
-            ParticipantAccountPostingTransaction:
+        type: object
+        properties:
+          ParticipantAccountPostingTransaction:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantFacilityAccountPostingValueDate:
-              $ref: '#/components/schemas/date'
-            NetworkParticipantFacilityAccountPostingResult:
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingValueDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantFacilityAccountPostingResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExBQ Execute a posting against the participant''s account'
+              description: '|||'
+              format: String
+    ExecuteParticipantAccount:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveParticipantAccountResponse:
-      type: object
-      properties:
-        CardNetworkParticipantFacility:
-          type: object
-          properties:
-            ProductandServiceReference:
+        type: object
+        properties:
+          ProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            FacilityTerms:
+              description: '|||'
+              format: Object
+          FacilityTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankServiceSchedule:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankServiceSchedule:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        ParticipantAccount:
-          type: object
-          properties:
-            ParticipantAccountPostingTransaction:
+              description: '|||'
+              format: String
+          ParticipantAccountPostingTransaction:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantFacilityAccountPostingPurpose:
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingPurpose:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantFacilityAccountPostingAmount:
-              $ref: '#/components/schemas/amount'
-            NetworkParticipantFacilityAccountPostingValueDate:
-              $ref: '#/components/schemas/date'
-            NetworkParticipantFacilityAccountPostingResult:
+              description: '|||'
+              format: String
+          NetworkParticipantFacilityAccountPostingAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          NetworkParticipantFacilityAccountPostingValueDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantFacilityAccountPostingResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about an account posting or account'
+              description: '|||'
+              format: String
+    RetrieveParticipantAccount:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateParticipantServiceRequest:
+        type: object
+        properties:
+          ParticipantServiceRecord:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantServiceType:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantServiceCharge:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantNetworkServiceRequestWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantNetworkServiceRequestResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateParticipantServiceResponse:
+        type: object
+        properties:
+          ParticipantServiceRecord:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantServiceType:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantServiceCharge:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantNetworkServiceRequestWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          NetworkParticipantNetworkServiceRequestResult:
+              type: string
+              description: '|||'
+              format: String
+    UpdateParticipantService:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExecuteParticipantServiceRequest:
-      type: object
-      properties:
-        ParticipantService:
-          type: object
-          properties:
-            ParticipantServiceRecord:
+        type: object
+        properties:
+          ParticipantServiceRecord:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceType:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Input: ExBQ Execute an automated participant service request (e.g. merchant alert)'
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     ExecuteParticipantServiceResponse:
-      type: object
-      properties:
-        ParticipantService:
-          type: object
-          properties:
-            ParticipantServiceRecord:
+        type: object
+        properties:
+          ParticipantServiceRecord:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceCharge:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceCharge:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceDateTime:
-              $ref: '#/components/schemas/date'
-            NetworkParticipantNetworkServiceRequestWorkProduct:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantNetworkServiceRequestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantNetworkServiceRequestResult:
+              description: '|||'
+              format: String
+          NetworkParticipantNetworkServiceRequestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExBQ Execute an automated participant service request (e.g. merchant alert)'
+              description: '|||'
+              format: String
+    ExecuteParticipantService:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestParticipantServiceRequest:
-      type: object
-      properties:
-        ParticipantService:
-          type: object
-          properties:
-            ParticipantServiceRecord:
+        type: object
+        properties:
+          ParticipantServiceRecord:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceType:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceDateTime:
-              $ref: '#/components/schemas/date'
-      description: 'Input: RqBQ Request manual intervention with a service request (e.g. arbitration)'
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
     RequestParticipantServiceResponse:
-      type: object
-      properties:
-        ParticipantService:
-          type: object
-          properties:
-            ParticipantServiceRecord:
+        type: object
+        properties:
+          ParticipantServiceRecord:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceCharge:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceCharge:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceDateTime:
-              $ref: '#/components/schemas/date'
-            NetworkParticipantNetworkServiceRequestWorkProduct:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantNetworkServiceRequestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantNetworkServiceRequestResult:
+              description: '|||'
+              format: String
+          NetworkParticipantNetworkServiceRequestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqBQ Request manual intervention with a service request (e.g. arbitration)'
+              description: '|||'
+              format: String
+    RequestParticipantService:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveParticipantServiceResponse:
-      type: object
-      properties:
-        CardNetworkParticipantFacility:
-          type: object
-          properties:
-            ProductandServiceReference:
+        type: object
+        properties:
+          ProductandServiceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            FacilityTerms:
+              description: '|||'
+              format: Object
+          FacilityTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankReference:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantAcquirerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantAcquirerBankServiceSchedule:
+              description: '|||'
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankReference:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankReference:
               type: string
-              description: "\r\n"
-              format: object
-            ParticipantIssuerBankClearingandSettlementTerms:
+              description: '|||'
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
               type: string
-              description: "\r\n"
-              format: string
-            ParticipantIssuerBankServiceSchedule:
+              description: '|||'
+              format: String
+          ParticipantIssuerBankServiceSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        ParticipantService:
-          type: object
-          properties:
-            ParticipantServiceRecord:
+              description: '|||'
+              format: String
+          ParticipantServiceRecord:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceType:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceCharge:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceCharge:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantServiceDateTime:
-              $ref: '#/components/schemas/date'
-            NetworkParticipantNetworkServiceRequestWorkProduct:
+              description: '|||'
+              format: String
+          NetworkParticipantServiceDateTime:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          NetworkParticipantNetworkServiceRequestWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            NetworkParticipantNetworkServiceRequestResult:
+              description: '|||'
+              format: String
+          NetworkParticipantNetworkServiceRequestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about participant service requests'
+              description: '|||'
+              format: String
+    RetrieveParticipantService:
+        type: object
+        properties:
+          ProductandServiceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FacilityTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantAcquirerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantAcquirerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ParticipantIssuerBankClearingandSettlementTerms:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ParticipantIssuerBankServiceSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    CurrencyAndAmount:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Number of monetary units specified in a currency, where the unit
+          of currency is explicit and compliant with ISO 4217. The decimal
+          separator is a dot.
+
+          Note: A zero amount is considered a positive amount.
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    CardNetworkParticipantFacility:
-      description: CardNetworkParticipantFacility
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CardNetworkParticipantFacility'
+    InitiateCardNetworkParticipantFacilityResponse:
+        description: CardNetworkParticipantFacilityInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCardNetworkParticipantFacilityResponse
+    UpdateCardNetworkParticipantFacilityResponse:
+        description: CardNetworkParticipantFacilityUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateCardNetworkParticipantFacilityResponse
     RetrieveCardNetworkParticipantFacilityResponse:
-      description: RetrieveCardNetworkParticipantFacilityResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCardNetworkParticipantFacilityResponse'
-    ParticipantAccount:
-      description: ParticipantAccount
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ParticipantAccount'
+        description: CardNetworkParticipantFacilityRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveCardNetworkParticipantFacilityResponse
+    UpdateParticipantAccountResponse:
+        description: ParticipantAccountUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateParticipantAccountResponse'
     ExecuteParticipantAccountResponse:
-      description: ExecuteParticipantAccountResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteParticipantAccountResponse'
+        description: ParticipantAccountExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteParticipantAccountResponse'
     RetrieveParticipantAccountResponse:
-      description: RetrieveParticipantAccountResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveParticipantAccountResponse'
-    ParticipantService:
-      description: ParticipantService
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ParticipantService'
+        description: ParticipantAccountRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveParticipantAccountResponse'
+    UpdateParticipantServiceResponse:
+        description: ParticipantServiceUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateParticipantServiceResponse'
     ExecuteParticipantServiceResponse:
-      description: ExecuteParticipantServiceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteParticipantServiceResponse'
+        description: ParticipantServiceExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteParticipantServiceResponse'
     RequestParticipantServiceResponse:
-      description: RequestParticipantServiceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestParticipantServiceResponse'
+        description: ParticipantServiceRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestParticipantServiceResponse'
     RetrieveParticipantServiceResponse:
-      description: RetrieveParticipantServiceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveParticipantServiceResponse'
+        description: ParticipantServiceRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveParticipantServiceResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
     cardnetworkparticipantfacilityid:
-      name: cardnetworkparticipantfacilityid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: cardnetworkparticipantfacilityid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     participantaccountid:
-      name: participantaccountid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: participantaccountid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     participantserviceid:
-      name: participantserviceid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: participantserviceid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
-    CardNetworkParticipantFacility:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CardNetworkParticipantFacility'
-      required: true
-    ParticipantAccount:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ParticipantAccount'
-      required: true
+    InitiateCardNetworkParticipantFacilityRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateCardNetworkParticipantFacilityRequest
+        required: true
+    UpdateCardNetworkParticipantFacilityRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCardNetworkParticipantFacilityRequest'
+        required: true
+    RetrieveCardNetworkParticipantFacilityRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateParticipantAccountRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateParticipantAccountRequest'
+        required: true
     ExecuteParticipantAccountRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteParticipantAccountRequest'
-      required: true
-    ParticipantService:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ParticipantService'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteParticipantAccountRequest'
+        required: true
+    RetrieveParticipantAccountRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateParticipantServiceRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateParticipantServiceRequest'
+        required: true
     ExecuteParticipantServiceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteParticipantServiceRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteParticipantServiceRequest'
+        required: true
     RequestParticipantServiceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestParticipantServiceRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestParticipantServiceRequest'
+        required: true
+    RetrieveParticipantServiceRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

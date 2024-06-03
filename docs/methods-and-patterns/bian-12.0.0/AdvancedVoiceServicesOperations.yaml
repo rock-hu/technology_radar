@@ -1,939 +1,1198 @@
 openapi: 3.0.1
 info:
   title: Advanced Voice Services Operations
-  description: 'This service domain operates the telephone channel infrastructure, including the IVR and any other automated devices as appropriate. This includes handling default routing rules and intra-day/session adjustments to deal with peak load or other operational variations'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Advanced Voice Services Operations (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/AdvancedVoiceServicesOperations/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/AdvancedVoiceServicesOperations/12.0.1'
 paths:
-  /AdvancedVoiceServicesOperations/Initiate:
-    post:
-      tags:
-        - CR - VoiceChannelOperatingSession
-      summary: InCR Initiate the voice channel service
-      description: InCR Initiate the voice channel service
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateVoiceChannelOperatingSessionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateVoiceChannelOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Update':
-    put:
-      tags:
-        - CR - VoiceChannelOperatingSession
-      summary: UpCR Update the voice access service menu during the session
-      description: UpCR Update the voice access service menu during the session
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateVoiceChannelOperatingSessionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateVoiceChannelOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Request':
-    put:
-      tags:
-        - CR - VoiceChannelOperatingSession
-      summary: RqCR Report an issue with the production service
-      description: RqCR Report an issue with the production service
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestVoiceChannelOperatingSessionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestVoiceChannelOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Retrieve':
-    get:
-      tags:
-        - CR - VoiceChannelOperatingSession
-      summary: ReCR Retrieve details and statistics relating to a session
-      description: ReCR Retrieve details and statistics relating to a session
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveVoiceChannelOperatingSessionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Inbound/Initiate':
-    post:
-      tags:
-        - BQ - Inbound
-      summary: InBQ Execute an inbound voice connection
-      description: InBQ Execute an inbound voice connection
-      operationId: InitiateInbound
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateInboundRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateInboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Inbound/{inboundid}/Retrieve':
-    get:
-      tags:
-        - BQ - Inbound
-      summary: ReBQ Retrieve details about an inbound voice connection
-      description: ReBQ Retrieve details about an inbound voice connection
-      operationId: RetrieveInbound
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-        - $ref: '#/components/parameters/inboundid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveInboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Outbound/Initiate':
-    post:
-      tags:
-        - BQ - Outbound
-      summary: InBQ Execute an outbound voice connection
-      description: InBQ Execute an outbound voice connection
-      operationId: InitiateOutbound
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateOutboundRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateOutboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/AdvancedVoiceServicesOperations/{advancedvoiceservicesoperationsid}/Outbound/{outboundid}/Retrieve':
-    get:
-      tags:
-        - BQ - Outbound
-      summary: ReBQ Retrieve details about an outbound voice connection
-      description: ReBQ Retrieve details about an outbound voice connection
-      operationId: RetrieveOutbound
-      parameters:
-        - $ref: '#/components/parameters/advancedvoiceservicesoperationsid'
-        - $ref: '#/components/parameters/outboundid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveOutboundResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/VoiceChannelOperatingSession/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - VoiceChannelOperatingSession'
+        summary: (DDD Service) InCR Initiate the voice channel service
+        description: (DDD Service) InCR Initiate the voice channel service
+        operationId: VoiceChannelOperatingSession/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateVoiceChannelOperatingSessionRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateVoiceChannelOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/VoiceChannelOperatingSession/{voicechanneloperatingsessionid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - VoiceChannelOperatingSession'
+        summary: >-
+          (DDD Service) UpCR Update the voice access service menu during the
+          session
+        description: >-
+          (DDD Service) UpCR Update the voice access service menu during the
+          session
+        operationId: VoiceChannelOperatingSession/Update
+        parameters:
+          - $ref: '#/components/parameters/voicechanneloperatingsessionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateVoiceChannelOperatingSessionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateVoiceChannelOperatingSessionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/VoiceChannelOperatingSession/{voicechanneloperatingsessionid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - VoiceChannelOperatingSession'
+        summary: (DDD Service) RqCR Report an issue with the production service
+        description: (DDD Service) RqCR Report an issue with the production service
+        operationId: VoiceChannelOperatingSession/Request
+        parameters:
+          - $ref: '#/components/parameters/voicechanneloperatingsessionid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestVoiceChannelOperatingSessionRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestVoiceChannelOperatingSessionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/VoiceChannelOperatingSession/{voicechanneloperatingsessionid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - VoiceChannelOperatingSession'
+        summary: >-
+          (DDD Service) ReCR Retrieve details and statistics relating to a
+          session
+        description: >-
+          (DDD Service) ReCR Retrieve details and statistics relating to a
+          session
+        operationId: VoiceChannelOperatingSession/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/voicechanneloperatingsessionid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveVoiceChannelOperatingSessionResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Inbound/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Inbound'
+        summary: (DDD Service) InBQ Execute an inbound voice connection
+        description: (DDD Service) InBQ Execute an inbound voice connection
+        operationId: Inbound/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateInboundRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateInboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/AdvancedVoiceServicesOperations/{inboundid}/Inbound/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Inbound'
+        summary: (DDD Service) ReBQ Retrieve details about an inbound voice connection
+        description: (DDD Service) ReBQ Retrieve details about an inbound voice connection
+        operationId: Inbound/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/inboundid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveInboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Outbound/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Outbound'
+        summary: (DDD Service) InBQ Execute an outbound voice connection
+        description: (DDD Service) InBQ Execute an outbound voice connection
+        operationId: Outbound/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateOutboundRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateOutboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/AdvancedVoiceServicesOperations/{outboundid}/Outbound/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Outbound'
+        summary: (DDD Service) ReBQ Retrieve details about an outbound voice connection
+        description: (DDD Service) ReBQ Retrieve details about an outbound voice connection
+        operationId: Outbound/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/outboundid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveOutboundResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    Inbound:
-      type: object
-      properties:
-        VChannelDeviceReference:
-          type: string
-          description: Details of the device being used for access
-          format: object
-        VChannelDevicePropertyValue:
-          type: string
-          description: Property of the device that can be used in identification ( e.g. ANI phone number)
-          format: string
-        VChannelInboundConnectionStartTime:
-          type: string
-          description: Detail used for statistics
-          format: string
-        VChannelInboundConnectionDuration:
-          type: string
-          description: Detain used for statistics
-          format: string
-        VChannelInboundConnectionContactReference:
-          type: string
-          description: Internal reference retuned by Service Domain-Contact Handler for routing
-          format: object
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    Outbound:
-      type: object
-      properties:
-        EmployeeBusinessUnitReference:
-          type: string
-          description: The source of the outbound connection request
-          format: object
-        CustomerContactRecordReference:
-          type: string
-          description: Reference to the customer contact record used accessing outbound channel
-          format: object
-        CustomerSessionDialogueRecord:
-          type: string
-          description: The record used to handle the contact (see Service Domain-Contact Handler for complete definition)
-          format: string
-        VChannelCustomerDeviceReference:
-          type: string
-          description: The target device being accessed
-          format: object
-        VChannelOutboundConnectionStartTime:
-          type: string
-          description: Detail used for statistics
-          format: string
-        VChannelOutboundConnectionDuration:
-          type: string
-          description: Detail used for statistics
-          format: string
-      description: "The collection of operational serivces/functions offered by the operational facility\n\nExamples: messages, capture, routines"
-    VoiceChannelOperatingSession:
-      type: object
-      properties:
-        AdvancedVoiceServicesOperationsServiceMenu:
-          type: string
-          description: Service Domain attribute referenced during the session covering the menu options
-          format: string
-        VChannelServiceSessionStatistics:
-          type: string
-          description: Service activity statistics that are maintained during the session
-          format: string
-        VChannelServiceSessionReportType:
-          type: string
-          description: 'Session reports that can be accessed during the session (e.g. real-time status, session statistics)'
-          format: string
-        VChannelServiceSessionReport:
-          type: string
-          description: The session activity report
-          format: string
-        VChannelProductionIssueRecord:
-          type: string
-          description: A record of any production issues arising during the session
-          format: string
-        EmployeeBusinessUnitReference:
-          type: string
-          description: The source of the issue report if appropriate
-          format: object
-        CustomerContactRecordReference:
-          type: string
-          description: Reference to the specific customer contact where the issue occurred if appropriate
-          format: object
-        ProductionIssueType:
-          type: string
-          description: The type of network event or error being recorded (e.g. device failure)
-          format: string
-        ProductionIssueDescription:
-          type: string
-          description: The description of the event error
-          format: string
-        ProductionIssueDiagnosis:
-          type: string
-          description: Evaluation of the event cause and impact assessment
-          format: string
-        ProductionIssueResolutionTask:
-          type: string
-          description: Description of corrective action proposed and taken
-          format: string
-        ProductionIssueStatus:
-          type: string
-          description: Tracking the state of resolution of a reported issue during the session
-          format: string
-      description: 'Operate equipment and/or a largely automated facility within Advanced Voice Services Operations. '
     InitiateVoiceChannelOperatingSessionRequest:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionReportType:
+              description: '|||'
+              format: String
+          VChannelServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelProductionIssueRecord:
+              description: '|||'
+              format: String
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate the voice channel service'
+              description: '|||'
+              format: String
     InitiateVoiceChannelOperatingSessionResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionStatistics:
+              description: '|||'
+              format: String
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionReportType:
+              description: '|||'
+              format: String
+          VChannelServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelProductionIssueRecord:
+              description: '|||'
+              format: String
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate the voice channel service'
+              description: '|||'
+              format: String
+    InitiateVoiceChannelOperatingSession:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateVoiceChannelOperatingSessionRequest:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionStatistics:
+              description: '|||'
+              format: String
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionReportType:
+              description: '|||'
+              format: String
+          VChannelServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelProductionIssueRecord:
+              description: '|||'
+              format: String
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update the voice access service menu during the session'
+              description: '|||'
+              format: String
     UpdateVoiceChannelOperatingSessionResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionStatistics:
+              description: '|||'
+              format: String
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionReportType:
+              description: '|||'
+              format: String
+          VChannelServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelProductionIssueRecord:
+              description: '|||'
+              format: String
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update the voice access service menu during the session'
+              description: '|||'
+              format: String
+    UpdateVoiceChannelOperatingSession:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestVoiceChannelOperatingSessionRequest:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            VChannelProductionIssueRecord:
+        type: object
+        properties:
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Report an issue with the production service'
+              description: '|||'
+              format: String
     RequestVoiceChannelOperatingSessionResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            VChannelProductionIssueRecord:
+        type: object
+        properties:
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Report an issue with the production service'
+              description: '|||'
+              format: String
+    RequestVoiceChannelOperatingSession:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveVoiceChannelOperatingSessionResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionStatistics:
+              description: '|||'
+              format: String
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionReportType:
+              description: '|||'
+              format: String
+          VChannelServiceSessionReportType:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelProductionIssueRecord:
+              description: '|||'
+              format: String
+          VChannelProductionIssueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductionIssueType:
+              description: '|||'
+              format: Object
+          ProductionIssueType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDescription:
+              description: '|||'
+              format: String
+          ProductionIssueDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueDiagnosis:
+              description: '|||'
+              format: String
+          ProductionIssueDiagnosis:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueResolutionTask:
+              description: '|||'
+              format: String
+          ProductionIssueResolutionTask:
               type: string
-              description: "\r\n"
-              format: string
-            ProductionIssueStatus:
+              description: '|||'
+              format: String
+          ProductionIssueStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details and statistics relating to a session'
+              description: '|||'
+              format: String
+    RetrieveVoiceChannelOperatingSession:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateInboundRequest:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-        Inbound:
-          type: object
-          properties:
-            VChannelDeviceReference:
+              description: '|||'
+              format: String
+          VChannelDeviceReference:
               type: string
-              description: "\r\n"
-              format: object
-            VChannelDevicePropertyValue:
+              description: '|||'
+              format: Object
+          VChannelDevicePropertyValue:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelInboundConnectionContactReference:
+              description: '|||'
+              format: String
+          VChannelInboundConnectionContactReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InBQ Execute an inbound voice connection'
+              description: '|||'
+              format: Object
     InitiateInboundResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            VChannelServiceSessionStatistics:
+        type: object
+        properties:
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Inbound:
-          type: object
-          properties:
-            VChannelInboundConnectionStartTime:
+              description: '|||'
+              format: String
+          VChannelInboundConnectionStartTime:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelInboundConnectionDuration:
+              description: '|||'
+              format: String
+          VChannelInboundConnectionDuration:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Execute an inbound voice connection'
+              description: '|||'
+              format: String
+    InitiateInbound:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveInboundResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            AdvancedVoiceServicesOperationsServiceMenu:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelServiceSessionStatistics:
+              description: '|||'
+              format: String
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Inbound:
-          type: object
-          properties:
-            VChannelDeviceReference:
+              description: '|||'
+              format: String
+          VChannelDeviceReference:
               type: string
-              description: "\r\n"
-              format: object
-            VChannelDevicePropertyValue:
+              description: '|||'
+              format: Object
+          VChannelDevicePropertyValue:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelInboundConnectionStartTime:
+              description: '|||'
+              format: String
+          VChannelInboundConnectionStartTime:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelInboundConnectionDuration:
+              description: '|||'
+              format: String
+          VChannelInboundConnectionDuration:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelInboundConnectionContactReference:
+              description: '|||'
+              format: String
+          VChannelInboundConnectionContactReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReBQ Retrieve details about an inbound voice connection'
+              description: '|||'
+              format: Object
+    RetrieveInbound:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateOutboundRequest:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            VChannelServiceSessionStatistics:
+        type: object
+        properties:
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Outbound:
-          type: object
-          properties:
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerSessionDialogueRecord:
+              description: '|||'
+              format: Object
+          CustomerSessionDialogueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelCustomerDeviceReference:
+              description: '|||'
+              format: String
+          VChannelCustomerDeviceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InBQ Execute an outbound voice connection'
+              description: '|||'
+              format: Object
     InitiateOutboundResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            VChannelServiceSessionStatistics:
+        type: object
+        properties:
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Outbound:
-          type: object
-          properties:
-            CustomerSessionDialogueRecord:
+              description: '|||'
+              format: String
+          CustomerSessionDialogueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelOutboundConnectionStartTime:
+              description: '|||'
+              format: String
+          VChannelOutboundConnectionStartTime:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelOutboundConnectionDuration:
+              description: '|||'
+              format: String
+          VChannelOutboundConnectionDuration:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Execute an outbound voice connection'
+              description: '|||'
+              format: String
+    InitiateOutbound:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveOutboundResponse:
-      type: object
-      properties:
-        VoiceChannelOperatingSession:
-          type: object
-          properties:
-            VChannelServiceSessionStatistics:
+        type: object
+        properties:
+          VChannelServiceSessionStatistics:
               type: string
-              description: "\r\n"
-              format: string
-        Outbound:
-          type: object
-          properties:
-            EmployeeBusinessUnitReference:
+              description: '|||'
+              format: String
+          EmployeeBusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerContactRecordReference:
+              description: '|||'
+              format: Object
+          CustomerContactRecordReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerSessionDialogueRecord:
+              description: '|||'
+              format: Object
+          CustomerSessionDialogueRecord:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelCustomerDeviceReference:
+              description: '|||'
+              format: String
+          VChannelCustomerDeviceReference:
               type: string
-              description: "\r\n"
-              format: object
-            VChannelOutboundConnectionStartTime:
+              description: '|||'
+              format: Object
+          VChannelOutboundConnectionStartTime:
               type: string
-              description: "\r\n"
-              format: string
-            VChannelOutboundConnectionDuration:
+              description: '|||'
+              format: String
+          VChannelOutboundConnectionDuration:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about an outbound voice connection'
+              description: '|||'
+              format: String
+    RetrieveOutbound:
+        type: object
+        properties:
+          AdvancedVoiceServicesOperationsServiceMenu:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionStatistics:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReportType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelServiceSessionReport:
+              type: string
+              description: "||\r\n|"
+              format: String
+          VChannelProductionIssueRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeBusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerContactRecordReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductionIssueType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueDiagnosis:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueResolutionTask:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductionIssueStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateVoiceChannelOperatingSessionResponse:
-      description: InitiateVoiceChannelOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateVoiceChannelOperatingSessionResponse'
+        description: VoiceChannelOperatingSessionInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateVoiceChannelOperatingSessionResponse
     UpdateVoiceChannelOperatingSessionResponse:
-      description: UpdateVoiceChannelOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateVoiceChannelOperatingSessionResponse'
+        description: VoiceChannelOperatingSessionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateVoiceChannelOperatingSessionResponse'
     RequestVoiceChannelOperatingSessionResponse:
-      description: RequestVoiceChannelOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestVoiceChannelOperatingSessionResponse'
+        description: VoiceChannelOperatingSessionRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestVoiceChannelOperatingSessionResponse'
     RetrieveVoiceChannelOperatingSessionResponse:
-      description: RetrieveVoiceChannelOperatingSessionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveVoiceChannelOperatingSessionResponse'
+        description: VoiceChannelOperatingSessionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveVoiceChannelOperatingSessionResponse
     InitiateInboundResponse:
-      description: InitiateInboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateInboundResponse'
+        description: InboundInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateInboundResponse'
     RetrieveInboundResponse:
-      description: RetrieveInboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveInboundResponse'
+        description: InboundRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveInboundResponse'
     InitiateOutboundResponse:
-      description: InitiateOutboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateOutboundResponse'
+        description: OutboundInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOutboundResponse'
     RetrieveOutboundResponse:
-      description: RetrieveOutboundResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveOutboundResponse'
+        description: OutboundRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveOutboundResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    advancedvoiceservicesoperationsid:
-      name: advancedvoiceservicesoperationsid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    voicechanneloperatingsessionid:
+        name: voicechanneloperatingsessionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     inboundid:
-      name: inboundid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: inboundid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     outboundid:
-      name: outboundid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: outboundid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateVoiceChannelOperatingSessionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateVoiceChannelOperatingSessionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateVoiceChannelOperatingSessionRequest'
+        required: true
     UpdateVoiceChannelOperatingSessionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateVoiceChannelOperatingSessionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateVoiceChannelOperatingSessionRequest'
+        required: true
     RequestVoiceChannelOperatingSessionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestVoiceChannelOperatingSessionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestVoiceChannelOperatingSessionRequest'
+        required: true
+    RetrieveVoiceChannelOperatingSessionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateInboundRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateInboundRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateInboundRequest'
+        required: true
+    RetrieveInboundRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateOutboundRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateOutboundRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOutboundRequest'
+        required: true
+    RetrieveOutboundRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

@@ -1,1473 +1,3426 @@
 openapi: 3.0.1
 info:
   title: Central Cash Handling
-  description: 'Track cash inventory, project demand and allocate inventory across the branch/ATM network'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Central Cash Handling (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CentralCashHandling/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CentralCashHandling/12.0.1'
 paths:
-  '/CentralCashHandling/{centralcashhandlingid}/Capture':
-    put:
-      tags:
-        - CR - CentralCashAllocation
-      summary: CaCR Capture Central Cash Allocation activity or event related information
-      description: CaCR Capture Central Cash Allocation activity or event related information
-      operationId: Capture
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureCentralCashAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureCentralCashAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/Control':
-    put:
-      tags:
-        - CR - CentralCashAllocation
-      summary: CoCR Control the processing of Central Cash Allocation
-      description: CoCR Control the processing of Central Cash Allocation
-      operationId: Control
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/ControlCentralCashAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ControlCentralCashAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/Exchange':
-    put:
-      tags:
-        - CR - CentralCashAllocation
-      summary: 'EcCR Accept, verify, etc. aspects of Central Cash Allocation processing'
-      description: 'EcCR Accept, verify, etc. aspects of Central Cash Allocation processing'
-      operationId: Exchange
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeCentralCashAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeCentralCashAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /CentralCashHandling/Initiate:
-    post:
-      tags:
-        - CR - CentralCashAllocation
-      summary: InCR Instantiate a new Central Cash Allocation
-      description: InCR Instantiate a new Central Cash Allocation
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateCentralCashAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateCentralCashAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/Retrieve':
-    get:
-      tags:
-        - CR - CentralCashAllocation
-      summary: ReCR Retrieve details about any aspect of Central Cash Allocation
-      description: ReCR Retrieve details about any aspect of Central Cash Allocation
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCentralCashAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/Update':
-    put:
-      tags:
-        - CR - CentralCashAllocation
-      summary: UpCR Update details relating to Central Cash Allocation
-      description: UpCR Update details relating to Central Cash Allocation
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCentralCashAllocationRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCentralCashAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/ProjectionandAllocation/{projectionandallocationid}/Capture':
-    put:
-      tags:
-        - BQ - ProjectionandAllocation
-      summary: CaBQ Capture Projection and Allocation activity or event related information
-      description: CaBQ Capture Projection and Allocation activity or event related information
-      operationId: CaptureProjectionandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/projectionandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProjectionandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProjectionandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/TrackingandAllocation/{trackingandallocationid}/Capture':
-    put:
-      tags:
-        - BQ - TrackingandAllocation
-      summary: CaBQ Capture Tracking and Allocation activity or event related information
-      description: CaBQ Capture Tracking and Allocation activity or event related information
-      operationId: CaptureTrackingandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/trackingandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TrackingandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TrackingandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/ProjectionandAllocation/{projectionandallocationid}/Control':
-    put:
-      tags:
-        - BQ - ProjectionandAllocation
-      summary: CoBQ Control the processing of Projection and Allocation
-      description: CoBQ Control the processing of Projection and Allocation
-      operationId: ControlProjectionandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/projectionandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProjectionandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProjectionandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/TrackingandAllocation/{trackingandallocationid}/Control':
-    put:
-      tags:
-        - BQ - TrackingandAllocation
-      summary: CoBQ Control the processing of Tracking and Allocation
-      description: CoBQ Control the processing of Tracking and Allocation
-      operationId: ControlTrackingandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/trackingandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TrackingandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TrackingandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/ProjectionandAllocation/{projectionandallocationid}/Exchange':
-    put:
-      tags:
-        - BQ - ProjectionandAllocation
-      summary: 'EcBQ Accept, verify, etc. aspects of Projection and Allocation processing'
-      description: 'EcBQ Accept, verify, etc. aspects of Projection and Allocation processing'
-      operationId: ExchangeProjectionandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/projectionandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProjectionandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProjectionandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/TrackingandAllocation/{trackingandallocationid}/Exchange':
-    put:
-      tags:
-        - BQ - TrackingandAllocation
-      summary: 'EcBQ Accept, verify, etc. aspects of Tracking and Allocation processing'
-      description: 'EcBQ Accept, verify, etc. aspects of Tracking and Allocation processing'
-      operationId: ExchangeTrackingandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/trackingandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TrackingandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TrackingandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/ProjectionandAllocation/Initiate':
-    post:
-      tags:
-        - BQ - ProjectionandAllocation
-      summary: InBQ Instantiate a new Projection and Allocation
-      description: InBQ Instantiate a new Projection and Allocation
-      operationId: InitiateProjectionandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProjectionandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProjectionandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/TrackingandAllocation/Initiate':
-    post:
-      tags:
-        - BQ - TrackingandAllocation
-      summary: InBQ Instantiate a new Tracking and Allocation
-      description: InBQ Instantiate a new Tracking and Allocation
-      operationId: InitiateTrackingandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/TrackingandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TrackingandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/ProjectionandAllocation/{projectionandallocationid}/Retrieve':
-    get:
-      tags:
-        - BQ - ProjectionandAllocation
-      summary: ReBQ Retrieve details about any aspect of Projection and Allocation
-      description: ReBQ Retrieve details about any aspect of Projection and Allocation
-      operationId: RetrieveProjectionandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/projectionandallocationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProjectionandAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/TrackingandAllocation/{trackingandallocationid}/Retrieve':
-    get:
-      tags:
-        - BQ - TrackingandAllocation
-      summary: ReBQ Retrieve details about any aspect of Tracking and Allocation
-      description: ReBQ Retrieve details about any aspect of Tracking and Allocation
-      operationId: RetrieveTrackingandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/trackingandallocationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveTrackingandAllocationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/ProjectionandAllocation/{projectionandallocationid}/Update':
-    put:
-      tags:
-        - BQ - ProjectionandAllocation
-      summary: UpBQ Update details relating to Projection and Allocation
-      description: UpBQ Update details relating to Projection and Allocation
-      operationId: UpdateProjectionandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/projectionandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProjectionandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProjectionandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CentralCashHandling/{centralcashhandlingid}/TrackingandAllocation/{trackingandallocationid}/Update':
-    put:
-      tags:
-        - BQ - TrackingandAllocation
-      summary: UpBQ Update details relating to Tracking and Allocation
-      description: UpBQ Update details relating to Tracking and Allocation
-      operationId: UpdateTrackingandAllocation
-      parameters:
-        - $ref: '#/components/parameters/centralcashhandlingid'
-        - $ref: '#/components/parameters/trackingandallocationid'
-      requestBody:
-        $ref: '#/components/requestBodies/TrackingandAllocation'
-      responses:
-        '200':
-          $ref: '#/components/responses/TrackingandAllocation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CentralCashAllocation/{centralcashallocationid}/Capture':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CentralCashAllocation'
+        summary: >-
+          (DDD Service) CaCR Capture Central Cash Allocation activity or event
+          related information
+        description: >-
+          (DDD Service) CaCR Capture Central Cash Allocation activity or event
+          related information
+        operationId: CentralCashAllocation/Capture
+        parameters:
+          - $ref: '#/components/parameters/centralcashallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureCentralCashAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureCentralCashAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashAllocation/{centralcashallocationid}/Control':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CentralCashAllocation'
+        summary: (DDD Service) CoCR Control the processing of Central Cash Allocation
+        description: (DDD Service) CoCR Control the processing of Central Cash Allocation
+        operationId: CentralCashAllocation/Control
+        parameters:
+          - $ref: '#/components/parameters/centralcashallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ControlCentralCashAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ControlCentralCashAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashAllocation/{centralcashallocationid}/Exchange':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CentralCashAllocation'
+        summary: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Central Cash
+          Allocation processing
+        description: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Central Cash
+          Allocation processing
+        operationId: CentralCashAllocation/Exchange
+        parameters:
+          - $ref: '#/components/parameters/centralcashallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExchangeCentralCashAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeCentralCashAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashAllocation/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CentralCashAllocation'
+        summary: (DDD Service) InCR Instantiate a new Central Cash Allocation
+        description: (DDD Service) InCR Instantiate a new Central Cash Allocation
+        operationId: CentralCashAllocation/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateCentralCashAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateCentralCashAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashAllocation/{centralcashallocationid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CentralCashAllocation'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Central Cash
+          Allocation
+        description: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Central Cash
+          Allocation
+        operationId: CentralCashAllocation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/centralcashallocationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCentralCashAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashAllocation/{centralcashallocationid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CentralCashAllocation'
+        summary: (DDD Service) UpCR Update details relating to Central Cash Allocation
+        description: (DDD Service) UpCR Update details relating to Central Cash Allocation
+        operationId: CentralCashAllocation/Update
+        parameters:
+          - $ref: '#/components/parameters/centralcashallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCentralCashAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCentralCashAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{projectionandallocationid}/ProjectionandAllocation/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ProjectionandAllocation'
+        summary: >-
+          (DDD Service) CaBQ Capture Projection and Allocation activity or event
+          related information
+        description: >-
+          (DDD Service) CaBQ Capture Projection and Allocation activity or event
+          related information
+        operationId: ProjectionandAllocation/Capture
+        parameters:
+          - $ref: '#/components/parameters/projectionandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureProjectionandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureProjectionandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{trackingandallocationid}/TrackingandAllocation/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TrackingandAllocation'
+        summary: >-
+          (DDD Service) CaBQ Capture Tracking and Allocation activity or event
+          related information
+        description: >-
+          (DDD Service) CaBQ Capture Tracking and Allocation activity or event
+          related information
+        operationId: TrackingandAllocation/Capture
+        parameters:
+          - $ref: '#/components/parameters/trackingandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureTrackingandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureTrackingandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{projectionandallocationid}/ProjectionandAllocation/Control':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ProjectionandAllocation'
+        summary: (DDD Service) CoBQ Control the processing of Projection and Allocation
+        description: (DDD Service) CoBQ Control the processing of Projection and Allocation
+        operationId: ProjectionandAllocation/Control
+        parameters:
+          - $ref: '#/components/parameters/projectionandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ControlProjectionandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ControlProjectionandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{trackingandallocationid}/TrackingandAllocation/Control':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TrackingandAllocation'
+        summary: (DDD Service) CoBQ Control the processing of Tracking and Allocation
+        description: (DDD Service) CoBQ Control the processing of Tracking and Allocation
+        operationId: TrackingandAllocation/Control
+        parameters:
+          - $ref: '#/components/parameters/trackingandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ControlTrackingandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ControlTrackingandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{projectionandallocationid}/ProjectionandAllocation/Exchange':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ProjectionandAllocation'
+        summary: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Projection and
+          Allocation processing
+        description: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Projection and
+          Allocation processing
+        operationId: ProjectionandAllocation/Exchange
+        parameters:
+          - $ref: '#/components/parameters/projectionandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExchangeProjectionandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeProjectionandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{trackingandallocationid}/TrackingandAllocation/Exchange':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TrackingandAllocation'
+        summary: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Tracking and
+          Allocation processing
+        description: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Tracking and
+          Allocation processing
+        operationId: TrackingandAllocation/Exchange
+        parameters:
+          - $ref: '#/components/parameters/trackingandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExchangeTrackingandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeTrackingandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProjectionandAllocation/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - ProjectionandAllocation'
+        summary: (DDD Service) InBQ Instantiate a new Projection and Allocation
+        description: (DDD Service) InBQ Instantiate a new Projection and Allocation
+        operationId: ProjectionandAllocation/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateProjectionandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateProjectionandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/TrackingandAllocation/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - TrackingandAllocation'
+        summary: (DDD Service) InBQ Instantiate a new Tracking and Allocation
+        description: (DDD Service) InBQ Instantiate a new Tracking and Allocation
+        operationId: TrackingandAllocation/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateTrackingandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateTrackingandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{projectionandallocationid}/ProjectionandAllocation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ProjectionandAllocation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Projection and
+          Allocation
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Projection and
+          Allocation
+        operationId: ProjectionandAllocation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/projectionandallocationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProjectionandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{trackingandallocationid}/TrackingandAllocation/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - TrackingandAllocation'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Tracking and
+          Allocation
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Tracking and
+          Allocation
+        operationId: TrackingandAllocation/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/trackingandallocationid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveTrackingandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{projectionandallocationid}/ProjectionandAllocation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ProjectionandAllocation'
+        summary: >-
+          (DDD Service) UpBQ Update details relating to Projection and
+          Allocation
+        description: >-
+          (DDD Service) UpBQ Update details relating to Projection and
+          Allocation
+        operationId: ProjectionandAllocation/Update
+        parameters:
+          - $ref: '#/components/parameters/projectionandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateProjectionandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateProjectionandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CentralCashHandling/{trackingandallocationid}/TrackingandAllocation/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - TrackingandAllocation'
+        summary: (DDD Service) UpBQ Update details relating to Tracking and Allocation
+        description: (DDD Service) UpBQ Update details relating to Tracking and Allocation
+        operationId: TrackingandAllocation/Update
+        parameters:
+          - $ref: '#/components/parameters/trackingandallocationid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateTrackingandAllocationRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateTrackingandAllocationResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: The Central Cash Allocation specific  Business Service
-    ProjectionandAllocation:
-      type: object
-      properties:
-        ProjectionandAllocationPreconditions:
-          type: string
-          description: The required status/situation before the allocation can be made
-          format: string
-        ProjectionandAllocationAllocationSchedule:
-          type: string
-          description: The schedule and timing of allocation decisions
-          format: string
-        CashInventoryProjection:
-          $ref: '#/components/schemas/businessservice'
-        CashInventoryProjectionServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        CashInventoryProjectionServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        CashInventoryProjectionServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        CashInventoryProjectionServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        CashInventoryProjectionServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Maintain an inventory or holding of some resource and make assignments/allocations as requested  within Central Cash Handling. \nExample: Track the inventory and administer the distribution of central cash holdings throughout the branch & ATM network."
-    CentralCashHandlingOutcome:
-      type: object
-      properties:
-        CentralCashHandlingAllocation:
-          type: string
-          description: ''
-          format: string
-        CentralCashHandlingWorkProduct:
-          type: string
-          description: ''
-          format: string
-      description: "Maintain an inventory or holding of some resource and make assignments/allocations as requested  within Central Cash Handling. \nExample: Track the inventory and administer the distribution of central cash holdings throughout the branch & ATM network."
-    TrackingandAllocation:
-      type: object
-      properties:
-        TrackingandAllocationPreconditions:
-          type: string
-          description: The required status/situation before the allocation can be made
-          format: string
-        TrackingandAllocationAllocationSchedule:
-          type: string
-          description: The schedule and timing of allocation decisions
-          format: string
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        ServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        ServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        ServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        ServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        ServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Maintain an inventory or holding of some resource and make assignments/allocations as requested  within Central Cash Handling. \nExample: Track the inventory and administer the distribution of central cash holdings throughout the branch & ATM network."
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: The curreny which is arranged/used for Central Cash Allocation CurrencyCode|CurrencyCode (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022 BM ()
-    CentralCashAllocation:
-      type: object
-      properties:
-        CentralCashAllocationParameterType:
-          type: string
-          description: A Classification value that distinguishes between allocation Options according to the optional business services defined within Central Cash Allocation
-          format: string
-        CentralCashAllocationSelectedOption:
-          type: string
-          description: A selected optional business service for which resources are allocated
-          format: string
-        CentralCashAllocation<SubjectArea>Type:
-          type: string
-          description: 'A Classification value, that distinguishes between the the type of resource allocated withing the Central Cash Allocation'
-          format: string
-        CentralCashAllocationDescription:
-          type: string
-          description: Documentation of Central Cash Allocation
-          format: string
-        CentralCashAllocationRequest:
-          type: string
-          description: Request to allocate CentralCash
-          format: string
-        CentralCashAllocationSchedule:
-          type: string
-          description: Timetable to allocate CentralCash
-          format: string
-        CentralCashAllocationStatus:
-          type: string
-          description: The status of Central Cash Allocation
-          format: string
-        CentralCashAllocationReference:
-          type: string
-          description: Reference to the party who is involved in Central Cash Allocation
-          format: object
-        CentralCashAllocationCustomerReference:
-          type: string
-          description: Reference to the customer who is involved in Central Cash Allocation
-          format: object
-        CentralCashAllocationCurrency:
-          $ref: '#/components/schemas/currencycode'
-        CentralCashAllocationRegulationReference:
-          type: string
-          description: Reference to the regulation which is defined for Central Cash Allocation
-          format: object
-        CentralCashAllocationRegulationType:
-          type: string
-          description: A Classification that distinguishes between the regularity domains of Central Cash Allocation
-          format: string
-        CentralCashAllocationJurisdiction:
-          type: string
-          description: Reference to the jurisdiction that is assigned to Central Cash Allocation in case of legal dispute.
-          format: string
-        CentralCashAllocationBookingLocation:
-          type: string
-          description: 'The financial accounting unit into which the financial events, with regard to the origination and fulfillment of the agreement, are entered.'
-          format: string
-        CentralCashAllocationAccountType:
-          type: string
-          description: The type of account which is linked to Central Cash Allocation
-          format: string
-        CentralCashAllocationAccountReference:
-          type: string
-          description: Reference to the account which is linked to Central Cash Allocation
-          format: object
-        CentralCashAllocationInstance:
-          type: string
-          description: Reference to Central Cash Allocation Instance
-          format: string
-      description: "Maintain an inventory or holding of some resource and make assignments/allocations as requested  within Central Cash Handling. \nExample: Track the inventory and administer the distribution of central cash holdings throughout the branch & ATM network."
     CaptureCentralCashAllocationRequest:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocation<SubjectArea>Type:
+              description: '|||'
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationDescription:
+              description: '|||'
+              format: String
+          CentralCashAllocationDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CentralCashAllocationRegulationReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationRegulationType:
+              description: '|||'
+              format: Object
+          CentralCashAllocationRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationJurisdiction:
+              description: '|||'
+              format: String
+          CentralCashAllocationJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationBookingLocation:
+              description: '|||'
+              format: String
+          CentralCashAllocationBookingLocation:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountType:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaCR Capture Central Cash Allocation activity or event related information'
+              description: '|||'
+              format: Object
     CaptureCentralCashAllocationResponse:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CaCR Capture Central Cash Allocation activity or event related information'
+              description: '|||'
+              format: Object
+    CaptureCentralCashAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     ControlCentralCashAllocationRequest:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocation<SubjectArea>Type:
+              description: '|||'
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationDescription:
+              description: '|||'
+              format: String
+          CentralCashAllocationDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CentralCashAllocationRegulationReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationRegulationType:
+              description: '|||'
+              format: Object
+          CentralCashAllocationRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationJurisdiction:
+              description: '|||'
+              format: String
+          CentralCashAllocationJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationBookingLocation:
+              description: '|||'
+              format: String
+          CentralCashAllocationBookingLocation:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountType:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CoCR Control the processing of Central Cash Allocation'
+              description: '|||'
+              format: Object
     ControlCentralCashAllocationResponse:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: CoCR Control the processing of Central Cash Allocation'
+              description: '|||'
+              format: Object
+    ControlCentralCashAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExchangeCentralCashAllocationRequest:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocation<SubjectArea>Type:
+              description: '|||'
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationDescription:
+              description: '|||'
+              format: String
+          CentralCashAllocationDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CentralCashAllocationRegulationReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationRegulationType:
+              description: '|||'
+              format: Object
+          CentralCashAllocationRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationJurisdiction:
+              description: '|||'
+              format: String
+          CentralCashAllocationJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationBookingLocation:
+              description: '|||'
+              format: String
+          CentralCashAllocationBookingLocation:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountType:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EcCR Accept, verify, etc. aspects of Central Cash Allocation processing'
+              description: '|||'
+              format: Object
     ExchangeCentralCashAllocationResponse:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: EcCR Accept, verify, etc. aspects of Central Cash Allocation processing'
+              description: '|||'
+              format: Object
+    ExchangeCentralCashAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiateCentralCashAllocationRequest:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocation<SubjectArea>Type:
+              description: '|||'
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationDescription:
+              description: '|||'
+              format: String
+          CentralCashAllocationDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CentralCashAllocationRegulationReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationRegulationType:
+              description: '|||'
+              format: Object
+          CentralCashAllocationRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationJurisdiction:
+              description: '|||'
+              format: String
+          CentralCashAllocationJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationBookingLocation:
+              description: '|||'
+              format: String
+          CentralCashAllocationBookingLocation:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountType:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Instantiate a new Central Cash Allocation'
+              description: '|||'
+              format: Object
     InitiateCentralCashAllocationResponse:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: InCR Instantiate a new Central Cash Allocation'
+              description: '|||'
+              format: Object
+    InitiateCentralCashAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCentralCashAllocationResponse:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocation<SubjectArea>Type:
+              description: '|||'
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationDescription:
+              description: '|||'
+              format: String
+          CentralCashAllocationDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CentralCashAllocationRegulationReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationRegulationType:
+              description: '|||'
+              format: Object
+          CentralCashAllocationRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationJurisdiction:
+              description: '|||'
+              format: String
+          CentralCashAllocationJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationBookingLocation:
+              description: '|||'
+              format: String
+          CentralCashAllocationBookingLocation:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountType:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about any aspect of Central Cash Allocation'
+              description: '|||'
+              format: Object
+    RetrieveCentralCashAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateCentralCashAllocationRequest:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocation<SubjectArea>Type:
+              description: '|||'
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationDescription:
+              description: '|||'
+              format: String
+          CentralCashAllocationDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationCurrency:
-              $ref: '#/components/schemas/currencycode'
-            CentralCashAllocationRegulationReference:
+              description: '|||'
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            CentralCashAllocationRegulationType:
+              description: '|||'
+              format: Object
+          CentralCashAllocationRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationJurisdiction:
+              description: '|||'
+              format: String
+          CentralCashAllocationJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationBookingLocation:
+              description: '|||'
+              format: String
+          CentralCashAllocationBookingLocation:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountType:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationAccountReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpCR Update details relating to Central Cash Allocation'
+              description: '|||'
+              format: Object
     UpdateCentralCashAllocationResponse:
-      type: object
-      properties:
-        CentralCashAllocation:
-          type: object
-          properties:
-            CentralCashAllocationParameterType:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSelectedOption:
+              description: '|||'
+              format: String
+          CentralCashAllocationSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationRequest:
+              description: '|||'
+              format: String
+          CentralCashAllocationRequest:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationSchedule:
+              description: '|||'
+              format: String
+          CentralCashAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationStatus:
+              description: '|||'
+              format: String
+          CentralCashAllocationStatus:
               type: string
-              description: "\r\n"
-              format: string
-            CentralCashAllocationCustomerReference:
+              description: '|||'
+              format: String
+          CentralCashAllocationCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: UpCR Update details relating to Central Cash Allocation'
+              description: '|||'
+              format: Object
+    UpdateCentralCashAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    CaptureProjectionandAllocationRequest:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    BusinessService:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BusinessServiceType:
+              enum:
+                  -  Businessservicetypevalues
+              type: string
+              description: ">\r\n* `Businessservicetypevalues` \r\n* "
+    CaptureProjectionandAllocationResponse:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureProjectionandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    CaptureTrackingandAllocationRequest:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureTrackingandAllocationResponse:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureTrackingandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ControlProjectionandAllocationRequest:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ControlProjectionandAllocationResponse:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ControlProjectionandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ControlTrackingandAllocationRequest:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ControlTrackingandAllocationResponse:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ControlTrackingandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ExchangeProjectionandAllocationRequest:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExchangeProjectionandAllocationResponse:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExchangeProjectionandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    ExchangeTrackingandAllocationRequest:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExchangeTrackingandAllocationResponse:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    ExchangeTrackingandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateProjectionandAllocationRequest:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateProjectionandAllocationResponse:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateProjectionandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateTrackingandAllocationRequest:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTrackingandAllocationResponse:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateTrackingandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveProjectionandAllocationResponse:
-      type: object
-      properties:
-        ProjectionandAllocation:
-          type: object
-          properties:
-            ProjectionandAllocationPreconditions:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ProjectionandAllocationAllocationSchedule:
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CashInventoryProjection:
-              $ref: '#/components/schemas/businessservice'
-            CashInventoryProjectionServiceType:
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CashInventoryProjectionServiceDescription:
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CashInventoryProjectionServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CashInventoryProjectionServiceWorkProduct:
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CashInventoryProjectionServiceName:
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Projection and Allocation'
+              description: '|||'
+              format: String
+    RetrieveProjectionandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveTrackingandAllocationResponse:
-      type: object
-      properties:
-        TrackingandAllocation:
-          type: object
-          properties:
-            TrackingandAllocationPreconditions:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            TrackingandAllocationAllocationSchedule:
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessService:
-              $ref: '#/components/schemas/businessservice'
-            ServiceType:
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            ServiceDescription:
+              description: '|||'
+              format: String
+          ServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            ServiceWorkProduct:
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ServiceName:
+              description: '|||'
+              format: String
+          ServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Tracking and Allocation'
+              description: '|||'
+              format: String
+    RetrieveTrackingandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateProjectionandAllocationRequest:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProjectionandAllocationResponse:
+        type: object
+        properties:
+          ProjectionandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProjectionandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjection:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          CashInventoryProjectionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          CashInventoryProjectionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProjectionandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateTrackingandAllocationRequest:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTrackingandAllocationResponse:
+        type: object
+        properties:
+          TrackingandAllocationPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          TrackingandAllocationAllocationSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateTrackingandAllocation:
+        type: object
+        properties:
+          CentralCashAllocationParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocation<SubjectArea>Type:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationDescription:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          CentralCashAllocationRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationBookingLocation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CentralCashAllocationAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CentralCashAllocationInstance:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    CurrencyCode:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Code allocated to a currency, by a maintenance agency, under an
+          international identification scheme as described in the latest edition
+          of the international standard ISO 4217 "Codes for the representation
+          of currencies and funds". Valid currency codes are registered with the
+          ISO 4217 Maintenance Agency, and consist of three contiguous letters.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     CaptureCentralCashAllocationResponse:
-      description: CaptureCentralCashAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureCentralCashAllocationResponse'
+        description: CentralCashAllocationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureCentralCashAllocationResponse'
     ControlCentralCashAllocationResponse:
-      description: ControlCentralCashAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlCentralCashAllocationResponse'
+        description: CentralCashAllocationControl
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlCentralCashAllocationResponse'
     ExchangeCentralCashAllocationResponse:
-      description: ExchangeCentralCashAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeCentralCashAllocationResponse'
+        description: CentralCashAllocationExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeCentralCashAllocationResponse'
     InitiateCentralCashAllocationResponse:
-      description: InitiateCentralCashAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCentralCashAllocationResponse'
+        description: CentralCashAllocationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCentralCashAllocationResponse'
     RetrieveCentralCashAllocationResponse:
-      description: RetrieveCentralCashAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCentralCashAllocationResponse'
+        description: CentralCashAllocationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCentralCashAllocationResponse'
     UpdateCentralCashAllocationResponse:
-      description: UpdateCentralCashAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCentralCashAllocationResponse'
-    ProjectionandAllocation:
-      description: ProjectionandAllocation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProjectionandAllocation'
-    TrackingandAllocation:
-      description: TrackingandAllocation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TrackingandAllocation'
+        description: CentralCashAllocationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCentralCashAllocationResponse'
+    CaptureProjectionandAllocationResponse:
+        description: ProjectionandAllocationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureProjectionandAllocationResponse'
+    CaptureTrackingandAllocationResponse:
+        description: TrackingandAllocationCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureTrackingandAllocationResponse'
+    ControlProjectionandAllocationResponse:
+        description: ProjectionandAllocationControl
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlProjectionandAllocationResponse'
+    ControlTrackingandAllocationResponse:
+        description: TrackingandAllocationControl
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlTrackingandAllocationResponse'
+    ExchangeProjectionandAllocationResponse:
+        description: ProjectionandAllocationExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeProjectionandAllocationResponse'
+    ExchangeTrackingandAllocationResponse:
+        description: TrackingandAllocationExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeTrackingandAllocationResponse'
+    InitiateProjectionandAllocationResponse:
+        description: ProjectionandAllocationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProjectionandAllocationResponse'
+    InitiateTrackingandAllocationResponse:
+        description: TrackingandAllocationInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTrackingandAllocationResponse'
     RetrieveProjectionandAllocationResponse:
-      description: RetrieveProjectionandAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProjectionandAllocationResponse'
+        description: ProjectionandAllocationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProjectionandAllocationResponse'
     RetrieveTrackingandAllocationResponse:
-      description: RetrieveTrackingandAllocationResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveTrackingandAllocationResponse'
+        description: TrackingandAllocationRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveTrackingandAllocationResponse'
+    UpdateProjectionandAllocationResponse:
+        description: ProjectionandAllocationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProjectionandAllocationResponse'
+    UpdateTrackingandAllocationResponse:
+        description: TrackingandAllocationUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTrackingandAllocationResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    centralcashhandlingid:
-      name: centralcashhandlingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    centralcashallocationid:
+        name: centralcashallocationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     projectionandallocationid:
-      name: projectionandallocationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: projectionandallocationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     trackingandallocationid:
-      name: trackingandallocationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: trackingandallocationid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     CaptureCentralCashAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureCentralCashAllocationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureCentralCashAllocationRequest'
+        required: true
     ControlCentralCashAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlCentralCashAllocationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlCentralCashAllocationRequest'
+        required: true
     ExchangeCentralCashAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeCentralCashAllocationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeCentralCashAllocationRequest'
+        required: true
     InitiateCentralCashAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCentralCashAllocationRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCentralCashAllocationRequest'
+        required: true
+    RetrieveCentralCashAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateCentralCashAllocationRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCentralCashAllocationRequest'
-      required: true
-    ProjectionandAllocation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProjectionandAllocation'
-      required: true
-    TrackingandAllocation:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TrackingandAllocation'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCentralCashAllocationRequest'
+        required: true
+    CaptureProjectionandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureProjectionandAllocationRequest'
+        required: true
+    CaptureTrackingandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureTrackingandAllocationRequest'
+        required: true
+    ControlProjectionandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlProjectionandAllocationRequest'
+        required: true
+    ControlTrackingandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlTrackingandAllocationRequest'
+        required: true
+    ExchangeProjectionandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeProjectionandAllocationRequest'
+        required: true
+    ExchangeTrackingandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeTrackingandAllocationRequest'
+        required: true
+    InitiateProjectionandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProjectionandAllocationRequest'
+        required: true
+    InitiateTrackingandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateTrackingandAllocationRequest'
+        required: true
+    RetrieveProjectionandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveTrackingandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateProjectionandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProjectionandAllocationRequest'
+        required: true
+    UpdateTrackingandAllocationRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateTrackingandAllocationRequest'
+        required: true

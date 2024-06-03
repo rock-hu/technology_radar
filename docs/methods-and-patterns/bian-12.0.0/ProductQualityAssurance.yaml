@@ -1,1905 +1,2902 @@
 openapi: 3.0.1
 info:
   title: Product Quality Assurance
-  description: Maintain and execute a portfolio of product quality assurance tests and certifications that can be applied to evaluate any aspect of production activity for quality assurance
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Product Quality Assurance (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/ProductQualityAssurance/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/ProductQualityAssurance/12.0.1'
 paths:
-  '/ProductQualityAssurance/{productqualityassuranceid}/Exchange':
-    put:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: 'EcCR Accept, verify, etc. aspects of Product and Service Assessment processing'
-      description: 'EcCR Accept, verify, etc. aspects of Product and Service Assessment processing'
-      operationId: Exchange
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeProductandServiceAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/Execute':
-    put:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: ExCR Execute an available automated action for Product and Service Assessment
-      description: ExCR Execute an available automated action for Product and Service Assessment
-      operationId: Execute
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecuteProductandServiceAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecuteProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/Grant':
-    put:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: GrCR Obtain permission to act in relation to Product and Service Assessment
-      description: GrCR Obtain permission to act in relation to Product and Service Assessment
-      operationId: Grant
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/GrantProductandServiceAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/GrantProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /ProductQualityAssurance/Initiate:
-    post:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: InCR Instantiate a new Product and Service Assessment
-      description: InCR Instantiate a new Product and Service Assessment
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateProductandServiceAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/Retrieve':
-    get:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: ReCR Retrieve details about any aspect of Product and Service Assessment
-      description: ReCR Retrieve details about any aspect of Product and Service Assessment
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/Request':
-    put:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: RqCR Request manual intervention or a decision with respect to Product and Service Assessment
-      description: RqCR Request manual intervention or a decision with respect to Product and Service Assessment
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestProductandServiceAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/Update':
-    put:
-      tags:
-        - CR - ProductandServiceAssessment
-      summary: UpCR Update details relating to Product and Service Assessment
-      description: UpCR Update details relating to Product and Service Assessment
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateProductandServiceAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateProductandServiceAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/FunctionalConsistencyChecks/Initiate':
-    post:
-      tags:
-        - BQ - FunctionalConsistencyChecks
-      summary: InBQ Instantiate a new Functional Consistency Checks
-      description: InBQ Instantiate a new Functional Consistency Checks
-      operationId: InitiateFunctionalConsistencyChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateFunctionalConsistencyChecksRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateFunctionalConsistencyChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/ProcessingErrorandIntegrityChecks/Initiate':
-    post:
-      tags:
-        - BQ - ProcessingErrorandIntegrityChecks
-      summary: InBQ Instantiate a new Processing Error and Integrity Checks
-      description: InBQ Instantiate a new Processing Error and Integrity Checks
-      operationId: InitiateProcessingErrorandIntegrityChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProcessingErrorandIntegrityChecks'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProcessingErrorandIntegrityChecks'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/ResiliencyandPerformanceChecks/Initiate':
-    post:
-      tags:
-        - BQ - ResiliencyandPerformanceChecks
-      summary: InBQ Instantiate a new Resiliency and Performance Checks
-      description: InBQ Instantiate a new Resiliency and Performance Checks
-      operationId: InitiateResiliencyandPerformanceChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/ResiliencyandPerformanceChecks'
-      responses:
-        '200':
-          $ref: '#/components/responses/ResiliencyandPerformanceChecks'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/UsabilityChecks/Initiate':
-    post:
-      tags:
-        - BQ - UsabilityChecks
-      summary: InBQ Instantiate a new Usability Checks
-      description: InBQ Instantiate a new Usability Checks
-      operationId: InitiateUsabilityChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateUsabilityChecksRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateUsabilityChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/FunctionalConsistencyChecks/{functionalconsistencychecksid}/Retrieve':
-    get:
-      tags:
-        - BQ - FunctionalConsistencyChecks
-      summary: ReBQ Retrieve details about any aspect of Functional Consistency Checks
-      description: ReBQ Retrieve details about any aspect of Functional Consistency Checks
-      operationId: RetrieveFunctionalConsistencyChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/functionalconsistencychecksid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveFunctionalConsistencyChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/ProcessingErrorandIntegrityChecks/{processingerrorandintegritychecksid}/Retrieve':
-    get:
-      tags:
-        - BQ - ProcessingErrorandIntegrityChecks
-      summary: ReBQ Retrieve details about any aspect of Processing Error and Integrity Checks
-      description: ReBQ Retrieve details about any aspect of Processing Error and Integrity Checks
-      operationId: RetrieveProcessingErrorandIntegrityChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/processingerrorandintegritychecksid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProcessingErrorandIntegrityChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/ResiliencyandPerformanceChecks/{resiliencyandperformancechecksid}/Retrieve':
-    get:
-      tags:
-        - BQ - ResiliencyandPerformanceChecks
-      summary: ReBQ Retrieve details about any aspect of Resiliency and Performance Checks
-      description: ReBQ Retrieve details about any aspect of Resiliency and Performance Checks
-      operationId: RetrieveResiliencyandPerformanceChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/resiliencyandperformancechecksid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveResiliencyandPerformanceChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/UsabilityChecks/{usabilitychecksid}/Retrieve':
-    get:
-      tags:
-        - BQ - UsabilityChecks
-      summary: ReBQ Retrieve details about any aspect of Usability Checks
-      description: ReBQ Retrieve details about any aspect of Usability Checks
-      operationId: RetrieveUsabilityChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/usabilitychecksid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveUsabilityChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/FunctionalConsistencyChecks/{functionalconsistencychecksid}/Update':
-    put:
-      tags:
-        - BQ - FunctionalConsistencyChecks
-      summary: UpBQ Update details relating to Functional Consistency Checks
-      description: UpBQ Update details relating to Functional Consistency Checks
-      operationId: UpdateFunctionalConsistencyChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/functionalconsistencychecksid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateFunctionalConsistencyChecksRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateFunctionalConsistencyChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/ProcessingErrorandIntegrityChecks/{processingerrorandintegritychecksid}/Update':
-    put:
-      tags:
-        - BQ - ProcessingErrorandIntegrityChecks
-      summary: UpBQ Update details relating to Processing Error and Integrity Checks
-      description: UpBQ Update details relating to Processing Error and Integrity Checks
-      operationId: UpdateProcessingErrorandIntegrityChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/processingerrorandintegritychecksid'
-      requestBody:
-        $ref: '#/components/requestBodies/ProcessingErrorandIntegrityChecks'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProcessingErrorandIntegrityChecks'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/ResiliencyandPerformanceChecks/{resiliencyandperformancechecksid}/Update':
-    put:
-      tags:
-        - BQ - ResiliencyandPerformanceChecks
-      summary: UpBQ Update details relating to Resiliency and Performance Checks
-      description: UpBQ Update details relating to Resiliency and Performance Checks
-      operationId: UpdateResiliencyandPerformanceChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/resiliencyandperformancechecksid'
-      requestBody:
-        $ref: '#/components/requestBodies/ResiliencyandPerformanceChecks'
-      responses:
-        '200':
-          $ref: '#/components/responses/ResiliencyandPerformanceChecks'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductQualityAssurance/{productqualityassuranceid}/UsabilityChecks/{usabilitychecksid}/Update':
-    put:
-      tags:
-        - BQ - UsabilityChecks
-      summary: UpBQ Update details relating to Usability Checks
-      description: UpBQ Update details relating to Usability Checks
-      operationId: UpdateUsabilityChecks
-      parameters:
-        - $ref: '#/components/parameters/productqualityassuranceid'
-        - $ref: '#/components/parameters/usabilitychecksid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateUsabilityChecksRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateUsabilityChecksResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/{productandserviceassessmentid}/Exchange':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductandServiceAssessment'
+        summary: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Product and Service
+          Assessment processing
+        description: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Product and Service
+          Assessment processing
+        operationId: ProductandServiceAssessment/Exchange
+        parameters:
+          - $ref: '#/components/parameters/productandserviceassessmentid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExchangeProductandServiceAssessmentRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/{productandserviceassessmentid}/Execute':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductandServiceAssessment'
+        summary: >-
+          (DDD Service) ExCR Execute an available automated action for Product
+          and Service Assessment
+        description: >-
+          (DDD Service) ExCR Execute an available automated action for Product
+          and Service Assessment
+        operationId: ProductandServiceAssessment/Execute
+        parameters:
+          - $ref: '#/components/parameters/productandserviceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExecuteProductandServiceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExecuteProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/{productandserviceassessmentid}/Grant':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductandServiceAssessment'
+        summary: >-
+          (DDD Service) GrCR Obtain permission to act in relation to Product and
+          Service Assessment
+        description: >-
+          (DDD Service) GrCR Obtain permission to act in relation to Product and
+          Service Assessment
+        operationId: ProductandServiceAssessment/Grant
+        parameters:
+          - $ref: '#/components/parameters/productandserviceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/GrantProductandServiceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/GrantProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - ProductandServiceAssessment'
+        summary: (DDD Service) InCR Instantiate a new Product and Service Assessment
+        description: (DDD Service) InCR Instantiate a new Product and Service Assessment
+        operationId: ProductandServiceAssessment/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateProductandServiceAssessmentRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/{productandserviceassessmentid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ProductandServiceAssessment'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Product and
+          Service Assessment
+        description: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Product and
+          Service Assessment
+        operationId: ProductandServiceAssessment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/productandserviceassessmentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/{productandserviceassessmentid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductandServiceAssessment'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Product and Service Assessment
+        description: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Product and Service Assessment
+        operationId: ProductandServiceAssessment/Request
+        parameters:
+          - $ref: '#/components/parameters/productandserviceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestProductandServiceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductandServiceAssessment/{productandserviceassessmentid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductandServiceAssessment'
+        summary: >-
+          (DDD Service) UpCR Update details relating to Product and Service
+          Assessment
+        description: >-
+          (DDD Service) UpCR Update details relating to Product and Service
+          Assessment
+        operationId: ProductandServiceAssessment/Update
+        parameters:
+          - $ref: '#/components/parameters/productandserviceassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateProductandServiceAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateProductandServiceAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/FunctionalConsistencyChecks/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalConsistencyChecks'
+        summary: (DDD Service) InBQ Instantiate a new Functional Consistency Checks
+        description: (DDD Service) InBQ Instantiate a new Functional Consistency Checks
+        operationId: FunctionalConsistencyChecks/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateFunctionalConsistencyChecksRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateFunctionalConsistencyChecksResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProcessingErrorandIntegrityChecks/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - ProcessingErrorandIntegrityChecks'
+        summary: >-
+          (DDD Service) InBQ Instantiate a new Processing Error and Integrity
+          Checks
+        description: >-
+          (DDD Service) InBQ Instantiate a new Processing Error and Integrity
+          Checks
+        operationId: ProcessingErrorandIntegrityChecks/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateProcessingErrorandIntegrityChecksRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateProcessingErrorandIntegrityChecksResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ResiliencyandPerformanceChecks/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - ResiliencyandPerformanceChecks'
+        summary: (DDD Service) InBQ Instantiate a new Resiliency and Performance Checks
+        description: (DDD Service) InBQ Instantiate a new Resiliency and Performance Checks
+        operationId: ResiliencyandPerformanceChecks/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateResiliencyandPerformanceChecksRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateResiliencyandPerformanceChecksResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/UsabilityChecks/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - UsabilityChecks'
+        summary: (DDD Service) InBQ Instantiate a new Usability Checks
+        description: (DDD Service) InBQ Instantiate a new Usability Checks
+        operationId: UsabilityChecks/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateUsabilityChecksRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateUsabilityChecksResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{functionalconsistencychecksid}/FunctionalConsistencyChecks/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - FunctionalConsistencyChecks'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Functional
+          Consistency Checks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Functional
+          Consistency Checks
+        operationId: FunctionalConsistencyChecks/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/functionalconsistencychecksid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveFunctionalConsistencyChecksResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{processingerrorandintegritychecksid}/ProcessingErrorandIntegrityChecks/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ProcessingErrorandIntegrityChecks'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Processing
+          Error and Integrity Checks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Processing
+          Error and Integrity Checks
+        operationId: ProcessingErrorandIntegrityChecks/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/processingerrorandintegritychecksid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveProcessingErrorandIntegrityChecksResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{resiliencyandperformancechecksid}/ResiliencyandPerformanceChecks/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - ResiliencyandPerformanceChecks'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Resiliency and
+          Performance Checks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Resiliency and
+          Performance Checks
+        operationId: ResiliencyandPerformanceChecks/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/resiliencyandperformancechecksid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveResiliencyandPerformanceChecksResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{usabilitychecksid}/UsabilityChecks/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - UsabilityChecks'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Usability
+          Checks
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Usability
+          Checks
+        operationId: UsabilityChecks/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/usabilitychecksid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveUsabilityChecksResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{functionalconsistencychecksid}/FunctionalConsistencyChecks/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - FunctionalConsistencyChecks'
+        summary: >-
+          (DDD Service) UpBQ Update details relating to Functional Consistency
+          Checks
+        description: >-
+          (DDD Service) UpBQ Update details relating to Functional Consistency
+          Checks
+        operationId: FunctionalConsistencyChecks/Update
+        parameters:
+          - $ref: '#/components/parameters/functionalconsistencychecksid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateFunctionalConsistencyChecksRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateFunctionalConsistencyChecksResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{processingerrorandintegritychecksid}/ProcessingErrorandIntegrityChecks/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ProcessingErrorandIntegrityChecks'
+        summary: >-
+          (DDD Service) UpBQ Update details relating to Processing Error and
+          Integrity Checks
+        description: >-
+          (DDD Service) UpBQ Update details relating to Processing Error and
+          Integrity Checks
+        operationId: ProcessingErrorandIntegrityChecks/Update
+        parameters:
+          - $ref: '#/components/parameters/processingerrorandintegritychecksid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateProcessingErrorandIntegrityChecksRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateProcessingErrorandIntegrityChecksResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{resiliencyandperformancechecksid}/ResiliencyandPerformanceChecks/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - ResiliencyandPerformanceChecks'
+        summary: >-
+          (DDD Service) UpBQ Update details relating to Resiliency and
+          Performance Checks
+        description: >-
+          (DDD Service) UpBQ Update details relating to Resiliency and
+          Performance Checks
+        operationId: ResiliencyandPerformanceChecks/Update
+        parameters:
+          - $ref: '#/components/parameters/resiliencyandperformancechecksid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateResiliencyandPerformanceChecksRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateResiliencyandPerformanceChecksResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductQualityAssurance/{usabilitychecksid}/UsabilityChecks/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - UsabilityChecks'
+        summary: (DDD Service) UpBQ Update details relating to Usability Checks
+        description: (DDD Service) UpBQ Update details relating to Usability Checks
+        operationId: UsabilityChecks/Update
+        parameters:
+          - $ref: '#/components/parameters/usabilitychecksid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateUsabilityChecksRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateUsabilityChecksResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    ProductQualityAssuranceOutcome:
-      type: object
-      properties:
-        ProductQualityAssuranceWorkProduct:
-          type: string
-          description: ''
-          format: string
-        ProductQualityAssuranceAssessmentType:
-          type: string
-          description: ''
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: The Product and  Service Assessment specific  Business Service
-    UsabilityChecks:
-      type: object
-      properties:
-        UsabilityChecksPreconditions:
-          type: string
-          description: The required status/situation before the test can be applied
-          format: string
-        UsabilityChecksAnalysisSchedule:
-          type: string
-          description: The schedule and timing of the testing performed
-          format: string
-        UsabilityChecksVersionNumber:
-          type: string
-          description: The test version employed
-          format: string
-        UsabilityChecks:
-          $ref: '#/components/schemas/businessservice'
-        UsabilityChecksServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        UsabilityChecksServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        UsabilityChecksServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        UsabilityChecksServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        UsabilityChecksServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    ResiliencyandPerformanceChecks:
-      type: object
-      properties:
-        ResiliencyandPerformanceChecksPreconditions:
-          type: string
-          description: The required status/situation before the test can be applied
-          format: string
-        ResiliencyandPerformanceChecksAnalysisSchedule:
-          type: string
-          description: The schedule and timing of the testing performed
-          format: string
-        ResiliencyandPerformanceChecksVersionNumber:
-          type: string
-          description: The test version employed
-          format: string
-        ResiliencyandPerformanceChecks:
-          $ref: '#/components/schemas/businessservice'
-        ResiliencyandPerformanceChecksServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        ResiliencyandPerformanceChecksServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        ResiliencyandPerformanceChecksServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        ResiliencyandPerformanceChecksServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        ResiliencyandPerformanceChecksServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    ProcessingErrorandIntegrityChecks:
-      type: object
-      properties:
-        ProcessingErrorandIntegrityChecksPreconditions:
-          type: string
-          description: The required status/situation before the test can be applied
-          format: string
-        ProcessingErrorandIntegrityChecksAnalysisSchedule:
-          type: string
-          description: The schedule and timing of the testing performed
-          format: string
-        ProcessingErrorandIntegrityChecksVersionNumber:
-          type: string
-          description: The test version employed
-          format: string
-        ProcessingErrorandIntegrityChecks:
-          $ref: '#/components/schemas/businessservice'
-        ProcessingErrorandIntegrityChecksServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        ProcessingErrorandIntegrityChecksServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        ProcessingErrorandIntegrityChecksServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        ProcessingErrorandIntegrityChecksServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    FunctionalConsistencyChecks:
-      type: object
-      properties:
-        FunctionalConsistencyChecksPreconditions:
-          type: string
-          description: The required status/situation before the test can be applied
-          format: string
-        FunctionalConsistencyChecksAnalysisSchedule:
-          type: string
-          description: The schedule and timing of the testing performed
-          format: string
-        FunctionalConsistencyChecksVersionNumber:
-          type: string
-          description: The test version employed
-          format: string
-        FunctionalConsistencyChecks:
-          $ref: '#/components/schemas/businessservice'
-        FunctionalConsistencyChecksServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        FunctionalConsistencyChecksServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        FunctionalConsistencyChecksServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        FunctionalConsistencyChecksServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        FunctionalConsistencyChecksServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    ProductandServiceAssessment:
-      type: object
-      properties:
-        ProductandServiceAssessmentParameterType:
-          type: string
-          description: 'A Classification value that distinguishes between Assessments according to type of concern defined within Product and  Service Assessment . Eg Market Analysis, Risk Analysis, Perfomance Analysis, etc.'
-          format: string
-        ProductandServiceAssessmentSelectedOption:
-          type: string
-          description: A selected optional business service as subject matter of assessment
-          format: string
-        ProductandServiceAssessmentType:
-          type: string
-          description: The type of Product and  Service Assessment
-          format: string
-        ProductandServiceAssessmentReference:
-          type: string
-          description: Reference to Product and  Service Assessment
-          format: object
-        ProductandServiceAssessmentRequest:
-          type: string
-          description: Request to assess ProductandService
-          format: string
-        ProductandServiceAssessmentSchedule:
-          type: string
-          description: Timetable to assess ProductandService
-          format: string
-        ProductandServiceAssessmentStatus:
-          type: string
-          description: The status of Product and  Service Assessment
-          format: string
-        ProductandServiceAssessmentUsageLog:
-          type: string
-          description: Reference to the log of (usage) ativities/events of Product and  Service Assessment
-          format: string
-        ProductandServiceAssessmentAssociatedParty:
-          type: string
-          description: Party who is involved in Product and  Service Assessment
-          format: string
-        ProductandServiceAssessmentServiceProviderReference:
-          type: string
-          description: Reference to the party who has provided Product and  Service Assessment
-          format: object
-        ProductandServiceAssessmentRequesterReference:
-          type: string
-          description: Reference to the party who has requested Product and  Service Assessment
-          format: object
-      description: "To test or assess an entity, possibly against some formal qualification or certification requirement  within Product Quality Assurance. \n\nExamples: Perform regulatory tests on a proposed financial transaction and check a new offer conforms to an existing contractual agreement."
     ExchangeProductandServiceAssessmentRequest:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EcCR Accept, verify, etc. aspects of Product and Service Assessment processing'
+              description: '|||'
+              format: Object
     ExchangeProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EcCR Accept, verify, etc. aspects of Product and Service Assessment processing'
+              description: '|||'
+              format: String
+    ExchangeProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ExecuteProductandServiceAssessmentRequest:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: ExCR Execute an available automated action for Product and Service Assessment'
+              description: '|||'
+              format: Object
     ExecuteProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExCR Execute an available automated action for Product and Service Assessment'
+              description: '|||'
+              format: String
+    ExecuteProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     GrantProductandServiceAssessmentRequest:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: GrCR Obtain permission to act in relation to Product and Service Assessment'
+              description: '|||'
+              format: Object
     GrantProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: GrCR Obtain permission to act in relation to Product and Service Assessment'
+              description: '|||'
+              format: String
+    GrantProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateProductandServiceAssessmentRequest:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Instantiate a new Product and Service Assessment'
+              description: '|||'
+              format: Object
     InitiateProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Instantiate a new Product and Service Assessment'
+              description: '|||'
+              format: String
+    InitiateProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about any aspect of Product and Service Assessment'
+              description: '|||'
+              format: Object
+    RetrieveProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RequestProductandServiceAssessmentRequest:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: RqCR Request manual intervention or a decision with respect to Product and Service Assessment'
+              description: '|||'
+              format: Object
     RequestProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention or a decision with respect to Product and Service Assessment'
+              description: '|||'
+              format: String
+    RequestProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateProductandServiceAssessmentRequest:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentType:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSchedule:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentStatus:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentStatus:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentUsageLog:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentUsageLog:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentServiceProviderReference:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductandServiceAssessmentRequesterReference:
+              description: '|||'
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpCR Update details relating to Product and Service Assessment'
+              description: '|||'
+              format: Object
     UpdateProductandServiceAssessmentResponse:
-      type: object
-      properties:
-        ProductandServiceAssessment:
-          type: object
-          properties:
-            ProductandServiceAssessmentParameterType:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentSelectedOption:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceAssessmentRequest:
+              description: '|||'
+              format: String
+          ProductandServiceAssessmentRequest:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details relating to Product and Service Assessment'
+              description: '|||'
+              format: String
+    UpdateProductandServiceAssessment:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateFunctionalConsistencyChecksRequest:
-      type: object
-      properties:
-        FunctionalConsistencyChecks:
-          type: object
-          properties:
-            FunctionalConsistencyChecksPreconditions:
+        type: object
+        properties:
+          FunctionalConsistencyChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksVersionNumber:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceType:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceDescription:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceName:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Instantiate a new Functional Consistency Checks'
+              description: '|||'
+              format: String
     InitiateFunctionalConsistencyChecksResponse:
-      type: object
-      properties:
-        FunctionalConsistencyChecks:
-          type: object
-          properties:
-            FunctionalConsistencyChecksPreconditions:
+        type: object
+        properties:
+          FunctionalConsistencyChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksVersionNumber:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceType:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceDescription:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceName:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Instantiate a new Functional Consistency Checks'
+              description: '|||'
+              format: String
+    InitiateFunctionalConsistencyChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    InitiateProcessingErrorandIntegrityChecksRequest:
+        type: object
+        properties:
+          ProcessingErrorandIntegrityChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProcessingErrorandIntegrityChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    BusinessService:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BusinessServiceType:
+              enum:
+                  -  Businessservicetypevalues
+              type: string
+              description: ">\r\n* `Businessservicetypevalues` \r\n* "
+    InitiateProcessingErrorandIntegrityChecksResponse:
+        type: object
+        properties:
+          ProcessingErrorandIntegrityChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProcessingErrorandIntegrityChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateProcessingErrorandIntegrityChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    InitiateResiliencyandPerformanceChecksRequest:
+        type: object
+        properties:
+          ResiliencyandPerformanceChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ResiliencyandPerformanceChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateResiliencyandPerformanceChecksResponse:
+        type: object
+        properties:
+          ResiliencyandPerformanceChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ResiliencyandPerformanceChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateResiliencyandPerformanceChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateUsabilityChecksRequest:
-      type: object
-      properties:
-        UsabilityChecks:
-          type: object
-          properties:
-            UsabilityChecksPreconditions:
+        type: object
+        properties:
+          UsabilityChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          UsabilityChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksVersionNumber:
+              description: '|||'
+              format: String
+          UsabilityChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceType:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceDescription:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceName:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Instantiate a new Usability Checks'
+              description: '|||'
+              format: String
     InitiateUsabilityChecksResponse:
-      type: object
-      properties:
-        UsabilityChecks:
-          type: object
-          properties:
-            UsabilityChecksPreconditions:
+        type: object
+        properties:
+          UsabilityChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          UsabilityChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksVersionNumber:
+              description: '|||'
+              format: String
+          UsabilityChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceType:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceDescription:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceName:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Instantiate a new Usability Checks'
+              description: '|||'
+              format: String
+    InitiateUsabilityChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveFunctionalConsistencyChecksResponse:
-      type: object
-      properties:
-        FunctionalConsistencyChecks:
-          type: object
-          properties:
-            FunctionalConsistencyChecksPreconditions:
+        type: object
+        properties:
+          FunctionalConsistencyChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksVersionNumber:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceType:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceDescription:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceName:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Functional Consistency Checks'
+              description: '|||'
+              format: String
+    RetrieveFunctionalConsistencyChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveProcessingErrorandIntegrityChecksResponse:
-      type: object
-      properties:
-        ProcessingErrorandIntegrityChecks:
-          type: object
-          properties:
-            ProcessingErrorandIntegrityChecksPreconditions:
+        type: object
+        properties:
+          ProcessingErrorandIntegrityChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecksVersionNumber:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecks:
-              $ref: '#/components/schemas/businessservice'
-            ProcessingErrorandIntegrityChecksServiceType:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProcessingErrorandIntegrityChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecksServiceDescription:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ProcessingErrorandIntegrityChecksServiceName:
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Processing Error and Integrity Checks'
+              description: '|||'
+              format: String
+    RetrieveProcessingErrorandIntegrityChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveResiliencyandPerformanceChecksResponse:
-      type: object
-      properties:
-        ResiliencyandPerformanceChecks:
-          type: object
-          properties:
-            ResiliencyandPerformanceChecksPreconditions:
+        type: object
+        properties:
+          ResiliencyandPerformanceChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecksVersionNumber:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecks:
-              $ref: '#/components/schemas/businessservice'
-            ResiliencyandPerformanceChecksServiceType:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ResiliencyandPerformanceChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecksServiceDescription:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ResiliencyandPerformanceChecksServiceName:
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Resiliency and Performance Checks'
+              description: '|||'
+              format: String
+    RetrieveResiliencyandPerformanceChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveUsabilityChecksResponse:
-      type: object
-      properties:
-        UsabilityChecks:
-          type: object
-          properties:
-            UsabilityChecksPreconditions:
+        type: object
+        properties:
+          UsabilityChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          UsabilityChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksVersionNumber:
+              description: '|||'
+              format: String
+          UsabilityChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceType:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceDescription:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceName:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Usability Checks'
+              description: '|||'
+              format: String
+    RetrieveUsabilityChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateFunctionalConsistencyChecksRequest:
-      type: object
-      properties:
-        FunctionalConsistencyChecks:
-          type: object
-          properties:
-            FunctionalConsistencyChecksPreconditions:
+        type: object
+        properties:
+          FunctionalConsistencyChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksVersionNumber:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceType:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceDescription:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceName:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details relating to Functional Consistency Checks'
+              description: '|||'
+              format: String
     UpdateFunctionalConsistencyChecksResponse:
-      type: object
-      properties:
-        FunctionalConsistencyChecks:
-          type: object
-          properties:
-            FunctionalConsistencyChecksPreconditions:
+        type: object
+        properties:
+          FunctionalConsistencyChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksVersionNumber:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceType:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceDescription:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            FunctionalConsistencyChecksServiceName:
+              description: '|||'
+              format: String
+          FunctionalConsistencyChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details relating to Functional Consistency Checks'
+              description: '|||'
+              format: String
+    UpdateFunctionalConsistencyChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateProcessingErrorandIntegrityChecksRequest:
+        type: object
+        properties:
+          ProcessingErrorandIntegrityChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProcessingErrorandIntegrityChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProcessingErrorandIntegrityChecksResponse:
+        type: object
+        properties:
+          ProcessingErrorandIntegrityChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProcessingErrorandIntegrityChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProcessingErrorandIntegrityChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProcessingErrorandIntegrityChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateResiliencyandPerformanceChecksRequest:
+        type: object
+        properties:
+          ResiliencyandPerformanceChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ResiliencyandPerformanceChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateResiliencyandPerformanceChecksResponse:
+        type: object
+        properties:
+          ResiliencyandPerformanceChecksPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksAnalysisSchedule:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksVersionNumber:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecks:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ResiliencyandPerformanceChecksServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ResiliencyandPerformanceChecksServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateResiliencyandPerformanceChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateUsabilityChecksRequest:
-      type: object
-      properties:
-        UsabilityChecks:
-          type: object
-          properties:
-            UsabilityChecksPreconditions:
+        type: object
+        properties:
+          UsabilityChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          UsabilityChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksVersionNumber:
+              description: '|||'
+              format: String
+          UsabilityChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceType:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceDescription:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceName:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details relating to Usability Checks'
+              description: '|||'
+              format: String
     UpdateUsabilityChecksResponse:
-      type: object
-      properties:
-        UsabilityChecks:
-          type: object
-          properties:
-            UsabilityChecksPreconditions:
+        type: object
+        properties:
+          UsabilityChecksPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksAnalysisSchedule:
+              description: '|||'
+              format: String
+          UsabilityChecksAnalysisSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksVersionNumber:
+              description: '|||'
+              format: String
+          UsabilityChecksVersionNumber:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceType:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceDescription:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceWorkProduct:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            UsabilityChecksServiceName:
+              description: '|||'
+              format: String
+          UsabilityChecksServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details relating to Usability Checks'
+              description: '|||'
+              format: String
+    UpdateUsabilityChecks:
+        type: object
+        properties:
+          ProductandServiceAssessmentParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentUsageLog:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceAssessmentServiceProviderReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductandServiceAssessmentRequesterReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     ExchangeProductandServiceAssessmentResponse:
-      description: ExchangeProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeProductandServiceAssessmentResponse'
     ExecuteProductandServiceAssessmentResponse:
-      description: ExecuteProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteProductandServiceAssessmentResponse'
     GrantProductandServiceAssessmentResponse:
-      description: GrantProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentGrant
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/GrantProductandServiceAssessmentResponse'
     InitiateProductandServiceAssessmentResponse:
-      description: InitiateProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProductandServiceAssessmentResponse'
     RetrieveProductandServiceAssessmentResponse:
-      description: RetrieveProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProductandServiceAssessmentResponse'
     RequestProductandServiceAssessmentResponse:
-      description: RequestProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestProductandServiceAssessmentResponse'
     UpdateProductandServiceAssessmentResponse:
-      description: UpdateProductandServiceAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProductandServiceAssessmentResponse'
+        description: ProductandServiceAssessmentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProductandServiceAssessmentResponse'
     InitiateFunctionalConsistencyChecksResponse:
-      description: InitiateFunctionalConsistencyChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateFunctionalConsistencyChecksResponse'
-    ProcessingErrorandIntegrityChecks:
-      description: ProcessingErrorandIntegrityChecks
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProcessingErrorandIntegrityChecks'
-    ResiliencyandPerformanceChecks:
-      description: ResiliencyandPerformanceChecks
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ResiliencyandPerformanceChecks'
+        description: FunctionalConsistencyChecksInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateFunctionalConsistencyChecksResponse'
+    InitiateProcessingErrorandIntegrityChecksResponse:
+        description: ProcessingErrorandIntegrityChecksInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateProcessingErrorandIntegrityChecksResponse
+    InitiateResiliencyandPerformanceChecksResponse:
+        description: ResiliencyandPerformanceChecksInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateResiliencyandPerformanceChecksResponse
     InitiateUsabilityChecksResponse:
-      description: InitiateUsabilityChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUsabilityChecksResponse'
+        description: UsabilityChecksInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateUsabilityChecksResponse'
     RetrieveFunctionalConsistencyChecksResponse:
-      description: RetrieveFunctionalConsistencyChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveFunctionalConsistencyChecksResponse'
+        description: FunctionalConsistencyChecksRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveFunctionalConsistencyChecksResponse'
     RetrieveProcessingErrorandIntegrityChecksResponse:
-      description: RetrieveProcessingErrorandIntegrityChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProcessingErrorandIntegrityChecksResponse'
+        description: ProcessingErrorandIntegrityChecksRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveProcessingErrorandIntegrityChecksResponse
     RetrieveResiliencyandPerformanceChecksResponse:
-      description: RetrieveResiliencyandPerformanceChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveResiliencyandPerformanceChecksResponse'
+        description: ResiliencyandPerformanceChecksRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveResiliencyandPerformanceChecksResponse
     RetrieveUsabilityChecksResponse:
-      description: RetrieveUsabilityChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveUsabilityChecksResponse'
+        description: UsabilityChecksRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveUsabilityChecksResponse'
     UpdateFunctionalConsistencyChecksResponse:
-      description: UpdateFunctionalConsistencyChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFunctionalConsistencyChecksResponse'
+        description: FunctionalConsistencyChecksUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFunctionalConsistencyChecksResponse'
+    UpdateProcessingErrorandIntegrityChecksResponse:
+        description: ProcessingErrorandIntegrityChecksUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateProcessingErrorandIntegrityChecksResponse
+    UpdateResiliencyandPerformanceChecksResponse:
+        description: ResiliencyandPerformanceChecksUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateResiliencyandPerformanceChecksResponse
     UpdateUsabilityChecksResponse:
-      description: UpdateUsabilityChecksResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateUsabilityChecksResponse'
+        description: UsabilityChecksUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateUsabilityChecksResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    productqualityassuranceid:
-      name: productqualityassuranceid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    productandserviceassessmentid:
+        name: productandserviceassessmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     functionalconsistencychecksid:
-      name: functionalconsistencychecksid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: functionalconsistencychecksid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     processingerrorandintegritychecksid:
-      name: processingerrorandintegritychecksid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: processingerrorandintegritychecksid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     resiliencyandperformancechecksid:
-      name: resiliencyandperformancechecksid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: resiliencyandperformancechecksid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     usabilitychecksid:
-      name: usabilitychecksid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: usabilitychecksid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     ExchangeProductandServiceAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeProductandServiceAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeProductandServiceAssessmentRequest'
+        required: true
     ExecuteProductandServiceAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecuteProductandServiceAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecuteProductandServiceAssessmentRequest'
+        required: true
     GrantProductandServiceAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantProductandServiceAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/GrantProductandServiceAssessmentRequest'
+        required: true
     InitiateProductandServiceAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateProductandServiceAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProductandServiceAssessmentRequest'
+        required: true
+    RetrieveProductandServiceAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     RequestProductandServiceAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductandServiceAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestProductandServiceAssessmentRequest'
+        required: true
     UpdateProductandServiceAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProductandServiceAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProductandServiceAssessmentRequest'
+        required: true
     InitiateFunctionalConsistencyChecksRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateFunctionalConsistencyChecksRequest'
-      required: true
-    ProcessingErrorandIntegrityChecks:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProcessingErrorandIntegrityChecks'
-      required: true
-    ResiliencyandPerformanceChecks:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ResiliencyandPerformanceChecks'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateFunctionalConsistencyChecksRequest'
+        required: true
+    InitiateProcessingErrorandIntegrityChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateProcessingErrorandIntegrityChecksRequest
+        required: true
+    InitiateResiliencyandPerformanceChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateResiliencyandPerformanceChecksRequest
+        required: true
     InitiateUsabilityChecksRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUsabilityChecksRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateUsabilityChecksRequest'
+        required: true
+    RetrieveFunctionalConsistencyChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveProcessingErrorandIntegrityChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveResiliencyandPerformanceChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveUsabilityChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     UpdateFunctionalConsistencyChecksRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateFunctionalConsistencyChecksRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateFunctionalConsistencyChecksRequest'
+        required: true
+    UpdateProcessingErrorandIntegrityChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateProcessingErrorandIntegrityChecksRequest
+        required: true
+    UpdateResiliencyandPerformanceChecksRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateResiliencyandPerformanceChecksRequest'
+        required: true
     UpdateUsabilityChecksRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateUsabilityChecksRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateUsabilityChecksRequest'
+        required: true

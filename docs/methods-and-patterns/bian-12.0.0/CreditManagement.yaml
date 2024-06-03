@@ -1,460 +1,558 @@
 openapi: 3.0.1
 info:
   title: Credit Management
-  description: This service domain provides a bank-wide/oversight function to qualify credit pricing for offered products and services to reflect the bank's appetite to write the business. This decision can override the standard product pricing procedure
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Credit Management (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CreditManagement/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CreditManagement/12.0.1'
 paths:
-  /CreditManagement/Evaluate:
-    post:
-      tags:
-        - CR - CreditPricingAssessment
-      summary: EvCR Evaluate a proposed transaction pricing against group credit policy
-      description: EvCR Evaluate a proposed transaction pricing against group credit policy
-      operationId: Evaluate
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateCreditPricingAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateCreditPricingAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CreditManagement/{creditmanagementid}/Update':
-    put:
-      tags:
-        - CR - CreditPricingAssessment
-      summary: UpCR Update details of an active credit pricing assessment
-      description: UpCR Update details of an active credit pricing assessment
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/creditmanagementid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCreditPricingAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCreditPricingAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CreditManagement/{creditmanagementid}/Retrieve':
-    get:
-      tags:
-        - CR - CreditPricingAssessment
-      summary: ReCR Retrieve details about a credit pricing assessment
-      description: ReCR Retrieve details about a credit pricing assessment
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/creditmanagementid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCreditPricingAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/CreditPricingAssessment/Evaluate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - CreditPricingAssessment'
+        summary: >-
+          (DDD Service) EvCR Evaluate a proposed transaction pricing against
+          group credit policy
+        description: >-
+          (DDD Service) EvCR Evaluate a proposed transaction pricing against
+          group credit policy
+        operationId: CreditPricingAssessment/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateCreditPricingAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateCreditPricingAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditPricingAssessment/{creditpricingassessmentid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - CreditPricingAssessment'
+        summary: >-
+          (DDD Service) UpCR Update details of an active credit pricing
+          assessment
+        description: >-
+          (DDD Service) UpCR Update details of an active credit pricing
+          assessment
+        operationId: CreditPricingAssessment/Update
+        parameters:
+          - $ref: '#/components/parameters/creditpricingassessmentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCreditPricingAssessmentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCreditPricingAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CreditPricingAssessment/{creditpricingassessmentid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - CreditPricingAssessment'
+        summary: (DDD Service) ReCR Retrieve details about a credit pricing assessment
+        description: (DDD Service) ReCR Retrieve details about a credit pricing assessment
+        operationId: CreditPricingAssessment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/creditpricingassessmentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCreditPricingAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: ''
-    amounttypevalues:
-      enum:
-        - Principal
-        - Actual
-        - Estimated
-        - Maximum
-        - Default
-        - Replacement
-        - Incremental
-        - Decremental
-        - Reserved
-        - Available
-        - Used
-      type: string
-      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n"
-    amount:
-      type: object
-      properties:
-        AmountValue:
-          $ref: '#/components/schemas/value'
-        AmountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        DecimalPointPosition:
-          type: string
-          description: "Decimal point position starts calulating from the right\n"
-          format: string
-        AmountType:
-          $ref: '#/components/schemas/amounttypevalues'
-      description: The financial structure of the proposed transaction CurrencyAndAmount|CurrencyAndAmount (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022  ()
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: One or more key dates associated with the transaction ISODate|ISODate (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022 BM ()
-    CreditPricingAssessment:
-      type: object
-      properties:
-        BusinessUnitReference:
-          type: string
-          description: Business unit submitting the proposed transaction for review
-          format: object
-        CustomerReference:
-          type: string
-          description: Reference to the customer related to the proposed transaction
-          format: object
-        SectorReference:
-          type: string
-          description: The sector where the proposed transaction would be booked
-          format: object
-        ProductType:
-          type: string
-          description: The product type/category of the proposed transaction for the credit pricing assessment
-          format: string
-        ProposedTransactionReference:
-          type: string
-          description: Reference to proposed transaction submitted for assessment
-          format: object
-        ProposedTransactionRecord:
-          type: string
-          description: Key details of the proposed transaction
-          format: string
-        ProposedTransactionType:
-          type: string
-          description: The type of credit instrument being considered
-          format: string
-        ProposedTransactionAmount:
-          $ref: '#/components/schemas/amount'
-        ProposedTransactionRecordDate:
-          $ref: '#/components/schemas/date'
-        ProposedTransactionBookingEntity:
-          type: string
-          description: The booking entity within the bank that the proposed transaction would impact
-          format: string
-        ProposedTransactionCreditPricingAssessment:
-          type: string
-          description: 'Details of the credit pricing assessment, permitting or adjusting terms as necessary'
-          format: string
-      description: 'To test or assess an entity, possibly against some formal qualification or certification requirement within Credit Management. '
     EvaluateCreditPricingAssessmentRequest:
-      type: object
-      properties:
-        CreditPricingAssessment:
-          type: object
-          properties:
-            BusinessUnitReference:
+        type: object
+        properties:
+          BusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            SectorReference:
+              description: '|||'
+              format: Object
+          SectorReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductType:
+              description: '|||'
+              format: Object
+          ProductType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionReference:
+              description: '|||'
+              format: String
+          ProposedTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProposedTransactionRecord:
+              description: '|||'
+              format: Object
+          ProposedTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionType:
+              description: '|||'
+              format: String
+          ProposedTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionAmount:
-              $ref: '#/components/schemas/amount'
-            ProposedTransactionRecordDate:
-              $ref: '#/components/schemas/date'
-            ProposedTransactionBookingEntity:
+              description: '|||'
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EvCR Evaluate a proposed transaction pricing against group credit policy'
+              description: '|||'
+              format: String
     EvaluateCreditPricingAssessmentResponse:
-      type: object
-      properties:
-        CreditPricingAssessment:
-          type: object
-          properties:
-            ProposedTransactionCreditPricingAssessment:
+        type: object
+        properties:
+          ProposedTransactionCreditPricingAssessment:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvCR Evaluate a proposed transaction pricing against group credit policy'
+              description: '|||'
+              format: String
+    EvaluateCreditPricingAssessment:
+        type: object
+        properties:
+          BusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          SectorReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProposedTransactionRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionCreditPricingAssessment:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateCreditPricingAssessmentRequest:
-      type: object
-      properties:
-        CreditPricingAssessment:
-          type: object
-          properties:
-            BusinessUnitReference:
+        type: object
+        properties:
+          BusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            SectorReference:
+              description: '|||'
+              format: Object
+          SectorReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductType:
+              description: '|||'
+              format: Object
+          ProductType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionReference:
+              description: '|||'
+              format: String
+          ProposedTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProposedTransactionRecord:
+              description: '|||'
+              format: Object
+          ProposedTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionType:
+              description: '|||'
+              format: String
+          ProposedTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionAmount:
-              $ref: '#/components/schemas/amount'
-            ProposedTransactionRecordDate:
-              $ref: '#/components/schemas/date'
-            ProposedTransactionBookingEntity:
+              description: '|||'
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update details of an active credit pricing assessment'
+              description: '|||'
+              format: String
     UpdateCreditPricingAssessmentResponse:
-      type: object
-      properties:
-        CreditPricingAssessment:
-          type: object
-          properties:
-            BusinessUnitReference:
+        type: object
+        properties:
+          BusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            SectorReference:
+              description: '|||'
+              format: Object
+          SectorReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductType:
+              description: '|||'
+              format: Object
+          ProductType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionReference:
+              description: '|||'
+              format: String
+          ProposedTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProposedTransactionRecord:
+              description: '|||'
+              format: Object
+          ProposedTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionType:
+              description: '|||'
+              format: String
+          ProposedTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionAmount:
-              $ref: '#/components/schemas/amount'
-            ProposedTransactionRecordDate:
-              $ref: '#/components/schemas/date'
-            ProposedTransactionBookingEntity:
+              description: '|||'
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details of an active credit pricing assessment'
+              description: '|||'
+              format: String
+    UpdateCreditPricingAssessment:
+        type: object
+        properties:
+          BusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          SectorReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProposedTransactionRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionCreditPricingAssessment:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveCreditPricingAssessmentResponse:
-      type: object
-      properties:
-        CreditPricingAssessment:
-          type: object
-          properties:
-            BusinessUnitReference:
+        type: object
+        properties:
+          BusinessUnitReference:
               type: string
-              description: "\r\n"
-              format: object
-            CustomerReference:
+              description: '|||'
+              format: Object
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            SectorReference:
+              description: '|||'
+              format: Object
+          SectorReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductType:
+              description: '|||'
+              format: Object
+          ProductType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionReference:
+              description: '|||'
+              format: String
+          ProposedTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProposedTransactionRecord:
+              description: '|||'
+              format: Object
+          ProposedTransactionRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionType:
+              description: '|||'
+              format: String
+          ProposedTransactionType:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionAmount:
-              $ref: '#/components/schemas/amount'
-            ProposedTransactionRecordDate:
-              $ref: '#/components/schemas/date'
-            ProposedTransactionBookingEntity:
+              description: '|||'
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
               type: string
-              description: "\r\n"
-              format: string
-            ProposedTransactionCreditPricingAssessment:
+              description: '|||'
+              format: String
+          ProposedTransactionCreditPricingAssessment:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a credit pricing assessment'
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    EvaluateCreditPricingAssessmentResponse:
-      description: EvaluateCreditPricingAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateCreditPricingAssessmentResponse'
-    UpdateCreditPricingAssessmentResponse:
-      description: UpdateCreditPricingAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCreditPricingAssessmentResponse'
-    RetrieveCreditPricingAssessmentResponse:
-      description: RetrieveCreditPricingAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCreditPricingAssessmentResponse'
-  parameters:
-    creditmanagementid:
-      name: creditmanagementid
-      in: path
-      required: true
-      style: simple
-      schema:
+              description: '|||'
+              format: String
+    RetrieveCreditPricingAssessment:
+        type: object
+        properties:
+          BusinessUnitReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          SectorReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProposedTransactionRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionAmount:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          ProposedTransactionRecordDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ProposedTransactionBookingEntity:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProposedTransactionCreditPricingAssessment:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    CurrencyAndAmount:
         type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Number of monetary units specified in a currency, where the unit
+          of currency is explicit and compliant with ISO 4217. The decimal
+          separator is a dot.
+
+          Note: A zero amount is considered a positive amount.
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
+  responses:
+    EvaluateCreditPricingAssessmentResponse:
+        description: CreditPricingAssessmentEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateCreditPricingAssessmentResponse'
+    UpdateCreditPricingAssessmentResponse:
+        description: CreditPricingAssessmentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCreditPricingAssessmentResponse'
+    RetrieveCreditPricingAssessmentResponse:
+        description: CreditPricingAssessmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCreditPricingAssessmentResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+  parameters:
+    creditpricingassessmentid:
+        name: creditpricingassessmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     EvaluateCreditPricingAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateCreditPricingAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateCreditPricingAssessmentRequest'
+        required: true
     UpdateCreditPricingAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCreditPricingAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCreditPricingAssessmentRequest'
+        required: true
+    RetrieveCreditPricingAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

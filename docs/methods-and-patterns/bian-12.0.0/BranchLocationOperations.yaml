@@ -1,1538 +1,1914 @@
 openapi: 3.0.1
 info:
   title: Branch Location Operations
-  description: 'The day to day administration of branch activity, including teller assignment and cash handling oversight'
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Branch Location Operations (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/BranchLocationOperations/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/BranchLocationOperations/12.0.1'
 paths:
-  '/BranchLocationOperations/{branchlocationoperationsid}/Control':
-    put:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Control Branch Location Administrative Plan
-      description: Control Branch Location Administrative Plan
-      operationId: Control
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/ControlBranchLocationAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ControlBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /BranchLocationOperations/Create:
-    post:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Create Branch Location Administrative Plan
-      description: Create Branch Location Administrative Plan
-      operationId: Create
-      requestBody:
-        $ref: '#/components/requestBodies/CreateBranchLocationAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CreateBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/BranchLocationOperations/{branchlocationoperationsid}/Exchange':
-    put:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Exchange Branch Location Administrative Plan
-      description: Exchange Branch Location Administrative Plan
-      operationId: Exchange
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeBranchLocationAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/BranchLocationOperations/{branchlocationoperationsid}/Grant':
-    put:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Grant Branch Location Administrative Plan
-      description: Grant Branch Location Administrative Plan
-      operationId: Grant
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/GrantBranchLocationAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/GrantBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/BranchLocationOperations/{branchlocationoperationsid}/Notify':
-    get:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Notify Branch Location Administrative Plan
-      description: Notify Branch Location Administrative Plan
-      operationId: Notify
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/NotifyBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/BranchLocationOperations/{branchlocationoperationsid}/Request':
-    put:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Request Branch Location Administrative Plan
-      description: Request Branch Location Administrative Plan
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestBranchLocationAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/BranchLocationOperations/{branchlocationoperationsid}/Retrieve':
-    get:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Retrieve Branch Location Administrative Plan
-      description: Retrieve Branch Location Administrative Plan
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/BranchLocationOperations/{branchlocationoperationsid}/Update':
-    put:
-      tags:
-        - CR - BranchLocationAdministrativePlan
-      summary: Update Branch Location Administrative Plan
-      description: Update Branch Location Administrative Plan
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/branchlocationoperationsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateBranchLocationAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateBranchLocationAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Control':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Control Branch Location Administrative Plan
+        description: (DDD Service) Control Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Control
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ControlBranchLocationAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ControlBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/Create':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Create Branch Location Administrative Plan
+        description: (DDD Service) Create Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Create
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/CreateBranchLocationAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/CreateBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Exchange':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Exchange Branch Location Administrative Plan
+        description: (DDD Service) Exchange Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Exchange
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExchangeBranchLocationAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExchangeBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Grant':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Grant Branch Location Administrative Plan
+        description: (DDD Service) Grant Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Grant
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/GrantBranchLocationAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/GrantBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Notify':
+      get:
+        tags:
+          - CR (DDD Aggregate) - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Notify Branch Location Administrative Plan
+        description: (DDD Service) Notify Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Notify
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/NotifyBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Request Branch Location Administrative Plan
+        description: (DDD Service) Request Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Request
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestBranchLocationAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Retrieve Branch Location Administrative Plan
+        description: (DDD Service) Retrieve Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationAdministrativePlan/{branchlocationadministrativeplanid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - BranchLocationAdministrativePlan'
+        summary: (DDD Service) Update Branch Location Administrative Plan
+        description: (DDD Service) Update Branch Location Administrative Plan
+        operationId: BranchLocationAdministrativePlan/Update
+        parameters:
+          - $ref: '#/components/parameters/branchlocationadministrativeplanid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateBranchLocationAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateBranchLocationAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    condition:
-      type: object
-      properties:
-        Condition:
-          type: string
-          description: "Condition is a premise upon which the fulfillment of an agreement depends \n\nGeneral and special arrangements, provisions, requirements, rules, specifications, and standards that form an integral part of an agreement or contract.\n\nRead more: http://www.businessdictionary.com/definition/terms-and-conditions.html\n\n"
-          format: class
-      description: The required status/situation before the routine can be undertaken
-    name:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: 'A name is a word or phrase that constitutes the distinctive designation of a person, place, thing or concept. (UN/CEFAT)'
-          format: datatype
-      description: "Name by which a party is known and which is usually used to identify that party. (ISO20022)\n"
-    partytypevalues:
-      enum:
-        - Person
-        - Organisation
-      type: string
-      description: ">\r\n* `Person` - Human entity, as distinguished from a corporate entity (which is sometimes referred to as an 'artificial person'). ISO20022\r\n* `Organisation` - Organised structure that is set up for a particular purpose. For example, a business, government body, department, charity, or financial institution. ISO20022\r\n"
-    datetime:
-      type: object
-      properties:
-        DateTimeContent:
-          type: string
-          description: ''
-          format: string
-        TimeZoneCode:
-          type: string
-          description: ''
-          format: string
-        DaylightSavingIndicator:
-          type: string
-          description: ''
-          format: string
-      description: ''
-    partyidentificationtypevalues:
-      enum:
-        - Taxidentificationnumber
-        - Nationalregistrationnumber
-        - Registrationauthorityidentification
-        - LEI(LegalEntityIdentifier)
-        - Alienregistrationnumber
-        - Passportnumber
-        - Taxexemptidentificationnumber
-        - Corporateidentification
-        - Driverlicensenumber
-        - Foreigninvestmentidentitynumber
-        - Socialsecuritynumber
-        - Identitycardnumber
-        - Concat
-        - Nationalregistrationidentificationnumber
-      type: string
-      description: ">\r\n* `Taxidentificationnumber` - Number assigned by a tax authority to an entity.\r\n* `Nationalregistrationnumber` - Number assigned by a national registration authority to an entity. In Singapore this is known as the NRIC. (ISO20022)\r\n* `Registrationauthorityidentification` - An identifier for the Legal Entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority. (ISO20022)\r\n* `LEI(LegalEntityIdentifier)` - \r\n* `Alienregistrationnumber` - Number assigned by a government agency to identify foreign nationals.\r\n* `Passportnumber` - Number assigned by a passport authority.\r\n* `Taxexemptidentificationnumber` - Number assigned to a tax exempt entity.\r\n* `Corporateidentification` - Number assigned to a corporate entity.\r\n* `Driverlicensenumber` - Number assigned to a driver's license.\r\n* `Foreigninvestmentidentitynumber` - Number assigned to a foreign investor (other than the alien number).\r\n* `Socialsecuritynumber` - Number assigned by a social security agency.\r\n* `Identitycardnumber` - Number assigned by a national authority to an identity card.\r\n* `Concat` - Number assigned by an issuer to identify a customer via the concatenation of the birthdate and characters of the first name and surname.\r\n* `Nationalregistrationidentificationnumber` - National registration identification number. In Singapore this is known as the NRIC.\r\n"
-    value:
-      type: object
-      properties:
-        Value:
-          type: string
-          description: "Data or set of data \n\n- A value is the concept of worth in general that is assigned or is determined by measurement, assessment or calculation. (UN/CEFACT)"
-          format: datatype
-      description: ''
-    identifier:
-      type: object
-      properties:
-        IdentifierValue:
-          $ref: '#/components/schemas/value'
-        IdentifierIssuingAuthority:
-          $ref: '#/components/schemas/involvedparty'
-        IdentifierStartDate:
-          $ref: '#/components/schemas/datetime'
-        IdentifierEndDate:
-          $ref: '#/components/schemas/datetime'
-      description: ''
-    partyidentification:
-      type: object
-      properties:
-        PartyIdentificationType:
-          $ref: '#/components/schemas/partyidentificationtypevalues'
-        PartyIdentification:
-          $ref: '#/components/schemas/identifier'
-      description: ''
-    partylegalstructuretypevalues:
-      enum:
-        - Individual
-        - CommunityInterestCompany
-        - CharitableIncorporatedOrganisation
-        - Co-Operative
-        - Charity
-        - GeneralPartnership
-        - LimitedLiabilityPartnership
-        - ScottishLimitedPartnership
-        - LimitedPartnership
-        - PrivateLimitedCompany
-        - PublicLimitedCompany
-        - Sole(SoleTrader)
-      type: string
-      description: ">\r\n* `Individual` - \r\n* `CommunityInterestCompany` - \r\n* `CharitableIncorporatedOrganisation` - \r\n* `Co-Operative` - \r\n* `Charity` - \r\n* `GeneralPartnership` - \r\n* `LimitedLiabilityPartnership` - \r\n* `ScottishLimitedPartnership` - \r\n* `LimitedPartnership` - \r\n* `PrivateLimitedCompany` - \r\n* `PublicLimitedCompany` - \r\n* `Sole(SoleTrader)` - \r\n"
-    party:
-      type: object
-      properties:
-        PartyName:
-          $ref: '#/components/schemas/name'
-        PartyType:
-          $ref: '#/components/schemas/partytypevalues'
-        PartyDateTime:
-          $ref: '#/components/schemas/datetime'
-        PartyIdentification:
-          $ref: '#/components/schemas/partyidentification'
-        PartyLegalStructureType:
-          $ref: '#/components/schemas/partylegalstructuretypevalues'
-      description: ''
-    text:
-      type: object
-      properties:
-        Text:
-          type: string
-          description: Text is a character string such as a finite set of characters generally in the form of words of a language. (UN/CEFACT)
-          format: datatype
-      description: "Documentation of Branch Location Administrative Plan ||\r\n|"
-    datetimeperiod:
-      type: object
-      properties:
-        FromDateTime:
-          $ref: '#/components/schemas/datetime'
-        ToDateTime:
-          $ref: '#/components/schemas/datetime'
-      description: ''
-    partyinvolvementtypevalues:
-      enum:
-        - Agreementinvolvement
-        - Partyinvolvement
-        - Arrangementinvolvement
-        - Designspecificationinvolvement
-        - Relationshipinvolvement
-        - Locationinvolvement
-        - Bankguaranteeinvolvement
-      type: string
-      description: ">\r\n* `Agreementinvolvement` - \r\n* `Partyinvolvement` - \r\n* `Arrangementinvolvement` - \r\n* `Designspecificationinvolvement` - \r\n* `Relationshipinvolvement` - \r\n* `Locationinvolvement` - \r\n* `Bankguaranteeinvolvement` - \r\n"
-    partyrole:
-      type: object
-      properties:
-        PartyRoleType:
-          $ref: '#/components/schemas/text'
-        PartyRoleName:
-          $ref: '#/components/schemas/name'
-        PartyRoleValidityPeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        PartyInvolvementType:
-          $ref: '#/components/schemas/partyinvolvementtypevalues'
-      description: ''
-    involvedparty:
-      type: object
-      properties:
-        PartyReference:
-          $ref: '#/components/schemas/party'
-        PartyInvolvement:
-          $ref: '#/components/schemas/partyrole'
-      description: "Party who is involved in Branch Location Administrative Plan ||\r\n|"
-    schedule:
-      type: object
-      properties:
-        ScheduleType:
-          type: string
-          description: ''
-          format: string
-      description: The timing and key actions/milestones involved in completing the routine
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: The <BQ> specific Business Service
-    goal:
-      type: object
-      properties:
-        GoalType:
-          type: string
-          description: The type of goal
-          format: string
-        GoalDefinition:
-          type: string
-          description: 'A definition of the goal, including the intended actions required to achieve the goal'
-          format: string
-        GoalOrganisation:
-          type: string
-          description: Identifies the interested parties and their roles and responsibilities for the specific actions supporting the achievement of the goal
-          format: ''
-        GoalResult:
-          type: string
-          description: 'Assessment of how the work is progressing towards achieving the goal, including projections of likely outcomes'
-          format: string
-      description: ''
-    budgettypevalues:
-      enum:
-        - OperatingBudget
-        - FinancialBudget
-        - ResourceBudget
-      type: string
-      description: ">\r\n* `OperatingBudget` - \r\n* `FinancialBudget` - \r\n* `ResourceBudget` - \r\n"
-    budgettype:
-      type: object
-      properties:
-        BudgetTypeName:
-          $ref: '#/components/schemas/name'
-        BudgetType:
-          $ref: '#/components/schemas/budgettypevalues'
-      description: "A Classification value that distinguishes between Budgets within Branch Location Administrative Plan according to the type of resource and/or activity that is budgetted ||\r\n|"
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: ''
-    amounttypevalues:
-      enum:
-        - Principal
-        - Actual
-        - Estimated
-        - Maximum
-        - Default
-        - Replacement
-        - Incremental
-        - Decremental
-        - Reserved
-        - Available
-        - Used
-      type: string
-      description: ">\r\n* `Principal` - \r\n* `Actual` - Actual amount.\r\n* `Estimated` - Estimated amount (the final amount could be above or below).\r\n* `Maximum` - Maximum amount (the final amount must be less or equal).\r\n* `Default` - Default amount.\r\n* `Replacement` - Replacement amount.\r\n* `Incremental` - Incremental amount for reservation.\r\n* `Decremental` - Decremental amount for reservation.\r\n* `Reserved` - Reserved or updated reserved amount for reservation.\r\n* `Available` - \r\n* `Used` - \r\n"
-    amount:
-      type: object
-      properties:
-        AmountValue:
-          $ref: '#/components/schemas/value'
-        AmountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        DecimalPointPosition:
-          type: string
-          description: "Decimal point position starts calulating from the right\n"
-          format: string
-        AmountType:
-          $ref: '#/components/schemas/amounttypevalues'
-      description: Amount of budget which is arranged whitin Branch Location Administrative Plan CurrencyAndAmount|CurrencyAndAmount (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022  ()
-    budgetarrangement:
-      type: object
-      properties:
-        BudgetType:
-          $ref: '#/components/schemas/budgettype'
-        BudgetAmount:
-          $ref: '#/components/schemas/amount'
-      description: 'An arrangement which is specifying an estimate of costs, revenues, and resources over a specified period, reflecting a reading of future financial conditions and goals. (adapted from Business Dictionary)'
-    plannedaction:
-      type: object
-      properties:
-        PlannedAction:
-          type: string
-          description: 'An action that is arranged in a plan for doing or achieving something '
-          format: class
-      description: 'An action that is arranged in a plan for doing or achieving something '
-    plantypevalues:
-      enum:
-        - AdministrativePlan
-        - ManagementPlan
-        - StratgyPlan
-        - FinancialPlan
-      type: string
-      description: ">\r\n* `AdministrativePlan` - \r\n* `ManagementPlan` - \r\n* `StratgyPlan` - \r\n* `FinancialPlan` - \r\n"
-    plantype:
-      type: object
-      properties:
-        PlanTypeName:
-          $ref: '#/components/schemas/name'
-        PlanType:
-          $ref: '#/components/schemas/plantypevalues'
-      description: "The type of Branch Location Administrative Plan ||\r\n|"
-    plan:
-      type: object
-      properties:
-        PlanGoal:
-          $ref: '#/components/schemas/goal'
-        PlanBudget:
-          $ref: '#/components/schemas/budgetarrangement'
-        PlannedAction:
-          $ref: '#/components/schemas/plannedaction'
-        PlanType:
-          $ref: '#/components/schemas/plantype'
-        PlanOrganisation:
-          type: string
-          description: ''
-          format: string
-        PlanValidityPeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        PlanDescription:
-          $ref: '#/components/schemas/text'
-      description: "An unique reference to an item or an occurrence of Branch Location Administrative Plan ||\r\n|"
-    Non-cashInventoryHandling:
-      type: object
-      properties:
-        Preconditions:
-          $ref: '#/components/schemas/condition'
-        BusinessUnitEmployeeReference:
-          $ref: '#/components/schemas/involvedparty'
-        Schedule:
-          $ref: '#/components/schemas/schedule'
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        Postconditions:
-          $ref: '#/components/schemas/condition'
-        BranchLocationAdministrativePlanReference:
-          $ref: '#/components/schemas/plan'
-        Non-cashInventoryHandlingReference:
-          $ref: '#/components/schemas/plannedaction'
-        Non-cashInventoryHandlingType:
-          $ref: '#/components/schemas/text'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    LocationSecurityAdministration:
-      type: object
-      properties:
-        Preconditions:
-          $ref: '#/components/schemas/condition'
-        BusinessUnitEmployeeReference:
-          $ref: '#/components/schemas/involvedparty'
-        Schedule:
-          $ref: '#/components/schemas/schedule'
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        Postconditions:
-          $ref: '#/components/schemas/condition'
-        BranchLocationAdministrativePlanReference:
-          $ref: '#/components/schemas/plan'
-        LocationSecurityAdministrationReference:
-          $ref: '#/components/schemas/plannedaction'
-        LocationSecurityAdministrationType:
-          $ref: '#/components/schemas/text'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    StaffAssignment:
-      type: object
-      properties:
-        Preconditions:
-          $ref: '#/components/schemas/condition'
-        BusinessUnitEmployeeReference:
-          $ref: '#/components/schemas/involvedparty'
-        Schedule:
-          $ref: '#/components/schemas/schedule'
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        Postconditions:
-          $ref: '#/components/schemas/condition'
-        BranchLocationAdministrativePlanReference:
-          $ref: '#/components/schemas/plan'
-        StaffAssignmentReference:
-          $ref: '#/components/schemas/plannedaction'
-        StaffAssignmentType:
-          $ref: '#/components/schemas/text'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    WorkforceAdministration:
-      type: object
-      properties:
-        Preconditions:
-          $ref: '#/components/schemas/condition'
-        BusinessUnitEmployeeReference:
-          $ref: '#/components/schemas/involvedparty'
-        Schedule:
-          $ref: '#/components/schemas/schedule'
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        Postconditions:
-          $ref: '#/components/schemas/condition'
-        BranchLocationAdministrativePlanReference:
-          $ref: '#/components/schemas/plan'
-        WorkforceAdministrationReference:
-          $ref: '#/components/schemas/plannedaction'
-        WorkforceAdministrationType:
-          $ref: '#/components/schemas/text'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    SafeCustodyOperations:
-      type: object
-      properties:
-        Preconditions:
-          $ref: '#/components/schemas/condition'
-        BusinessUnitEmployeeReference:
-          $ref: '#/components/schemas/involvedparty'
-        Schedule:
-          $ref: '#/components/schemas/schedule'
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        Postconditions:
-          $ref: '#/components/schemas/condition'
-        BranchLocationAdministrativePlanReference:
-          $ref: '#/components/schemas/plan'
-        SafeCustodyOperationsReference:
-          $ref: '#/components/schemas/plannedaction'
-        SafeCustodyOperationsType:
-          $ref: '#/components/schemas/text'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    CashInventoryHandling:
-      type: object
-      properties:
-        Preconditions:
-          $ref: '#/components/schemas/condition'
-        BusinessUnitEmployeeReference:
-          $ref: '#/components/schemas/involvedparty'
-        Schedule:
-          $ref: '#/components/schemas/schedule'
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        Postconditions:
-          $ref: '#/components/schemas/condition'
-        BranchLocationAdministrationPlanReference:
-          $ref: '#/components/schemas/plan'
-        CashInventoryHandlingReference:
-          $ref: '#/components/schemas/plannedaction'
-        CashInventoryHandlingType:
-          $ref: '#/components/schemas/text'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    analysistypevalues:
-      enum:
-        - PerformanceAnalysis
-        - ActivityAnalysis
-      type: string
-      description: ">\r\n* `PerformanceAnalysis` - \r\n* `ActivityAnalysis` - \r\n"
-    financialdocumenttypevalues:
-      enum:
-        - Meteredserviceinvoice
-        - Creditnoterelatedtofinancialadjustment
-        - Debitnoterelatedtofinancialadjustment
-        - Commercialinvoice
-        - Creditnote
-        - Debitnote
-        - Hireinvoice
-        - Selfbilledinvoice
-        - Remittanceadvicemessage
-        - Relatedpaymentinstruction
-        - Commercialcontract
-        - Foreignexchangedealreference
-        - Statementofaccount
-        - Dispatchadvice
-        - Purchaseorder
-        - Structuredcommunicationreference
-        - Billoflading
-        - Voucher
-        - Accountreceivableopenitem
-        - Tradeservicesutilitytransaction
-        - Cashierreceipt
-        - Customerreceipt
-        - Journal
-        - Salereceipt
-      type: string
-      description: ">\r\n* `Meteredserviceinvoice` - Document is an invoice claiming payment for the supply of metered services, for example gas or electricity supplied to a fixed meter.\r\n* `Creditnoterelatedtofinancialadjustment` - Document is a credit note for the final amount settled for a commercial transaction.\r\n* `Debitnoterelatedtofinancialadjustment` - Document is a debit note for the final amount settled for a commercial transaction.\r\n* `Commercialinvoice` - Document is an invoice.\r\n* `Creditnote` - Document is a credit note.\r\n* `Debitnote` - Document is a debit note.\r\n* `Hireinvoice` - Document is an invoice for the hiring of human resources or renting goods or equipment.\r\n* `Selfbilledinvoice` - Document is an invoice issued by the debtor.\r\n* `Remittanceadvicemessage` - Document is a remittance advice sent separately from the current transaction.\r\n* `Relatedpaymentinstruction` - Document is a linked payment instruction to which the current payment instruction is related, for example, in a cover scenario.\r\n* `Commercialcontract` - Document is an agreement between the parties, stipulating the terms and conditions of the delivery of goods or services.\r\n* `Foreignexchangedealreference` - Document is a pre-agreed or pre-arranged foreign exchange transaction to which the payment transaction refers.\r\n* `Statementofaccount` - Document is a statement of the transactions posted to the debtor's account at the supplier.\r\n* `Dispatchadvice` - Document is a dispatch advice.\r\n* `Purchaseorder` - Document is a purchase order.\r\n* `Structuredcommunicationreference` - Document is a structured communication reference provided by the creditor to identify the referred transaction.\r\n* `Billoflading` - Document is a shipping notice.\r\n* `Voucher` - Document is an electronic payment document.\r\n* `Accountreceivableopenitem` - Document is a payment that applies to a specific source document.\r\n* `Tradeservicesutilitytransaction` - Document is a transaction identifier as assigned by the Trade Services Utility.\r\n* `Cashierreceipt` - When the Sale system print the Cashier copy of the Payment receipt.\r\n* `Customerreceipt` - When the Sale System requires   the POI system to print the Customer receipt.\r\n* `Journal` - When the POI or the Sale System wants to store a message on the journal printer or electronic journal of the Sale Terminal (it is sometimes a Sale Logging/Journal Printer).\r\n* `Salereceipt` - When the Sale System requires the POI system to print the Sale receipt.\r\n"
-    status:
-      type: object
-      properties:
-        StatusReason:
-          $ref: '#/components/schemas/text'
-        StatusDateTime:
-          $ref: '#/components/schemas/datetime'
-        StatusValidityPeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        StatusInvolvedParty:
-          $ref: '#/components/schemas/involvedparty'
-      description: 'Status of the document (e.g. delivered, paid, etc.). ISO20022'
-    documentdatetimetypevalues:
-      enum:
-        - CreationDate
-        - CapturingDate
-        - VersionDate
-        - ValueDate
-        - IssueDate
-      type: string
-      description: ">\r\n* `CreationDate` - \r\n* `CapturingDate` - \r\n* `VersionDate` - \r\n* `ValueDate` - \r\n* `IssueDate` - \r\n"
-    document:
-      type: object
-      properties:
-        DocumentIdentification:
-          $ref: '#/components/schemas/identifier'
-        DocumentVersion:
-          type: string
-          description: ''
-          format: number
-        DocumentType:
-          $ref: '#/components/schemas/financialdocumenttypevalues'
-        DocumentStatus:
-          $ref: '#/components/schemas/status'
-        DocumentDateTime:
-          $ref: '#/components/schemas/datetime'
-        DocumentName:
-          $ref: '#/components/schemas/name'
-        DocumentDateTimeType:
-          $ref: '#/components/schemas/documentdatetimetypevalues'
-        DocumentPurpose:
-          $ref: '#/components/schemas/text'
-        DocumentFormat:
-          $ref: '#/components/schemas/text'
-        DocumentSubject:
-          $ref: '#/components/schemas/text'
-        DocumentDescription:
-          $ref: '#/components/schemas/text'
-        DocumentValidityPeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-      description: ''
-    analysis:
-      type: object
-      properties:
-        AnalysisType:
-          $ref: '#/components/schemas/analysistypevalues'
-        AnalysisResult:
-          $ref: '#/components/schemas/text'
-        AnalysisPeriod:
-          $ref: '#/components/schemas/datetimeperiod'
-        AnalysisDocument:
-          $ref: '#/components/schemas/document'
-        AnalysisDateTime:
-          $ref: '#/components/schemas/datetime'
-        AnalysisSpecification:
-          $ref: '#/components/schemas/text'
-      description: ''
-    actiontypevalues:
-      enum:
-        - Initiate
-        - Execute
-        - Create
-        - Transfer
-        - Pay
-        - Deliver
-        - Apply
-        - Calculate
-      type: string
-      description: ">\r\n* `Initiate` - \r\n* `Execute` - \r\n* `Create` - \r\n* `Transfer` - \r\n* `Pay` - \r\n* `Deliver` - \r\n* `Apply` - \r\n* `Calculate` - \r\n"
-    action:
-      type: object
-      properties:
-        ActionType:
-          $ref: '#/components/schemas/actiontypevalues'
-      description: ''
-    arrangementlifecyclestatustypevalues:
-      enum:
-        - Requested
-        - Proposed
-        - Offered
-        - Accepted
-        - Cancelled
-        - Fulfilled
-        - Terminated
-      type: string
-      description: ">\r\n* `Requested` - \r\n* `Proposed` - \r\n* `Offered` - \r\n* `Accepted` - \r\n* `Cancelled` - \r\n* `Fulfilled` - \r\n* `Terminated` - \r\n"
-    arrangementlifecyclestatus:
-      type: object
-      properties:
-        ArrangementLifecycleStatus:
-          $ref: '#/components/schemas/status'
-        ArrangementLifecycleStatusType:
-          $ref: '#/components/schemas/arrangementlifecyclestatustypevalues'
-      description: 'A characteristic of arrangement which refers to the LifecycleStatus of arrangement (e.g., requested, proposed, offered, accepted, cancelled, terminated, fulfilled, etc.)'
-    subject:
-      type: object
-      properties:
-        Subject:
-          type: string
-          description: A thing that is discussed or dealt whit in agreement/arrangement about doing or not doing (as action) something.
-          format: class
-      description: ''
-    arrangementtypevalues:
-      enum:
-        - SweepArrangement
-        - WithdrawalArrangement
-        - DepositArrangement
-        - InterestArrangement
-        - FeeArrangement
-        - LienArrangement
-        - InformationArrangement
-        - PaymentArrangement
-        - EntitlementArrangement
-        - PeriodArrangement
-        - CollateralArrangement
-        - LimitArrangement
-        - AccessArrangement
-        - CardPaymentArrangement
-        - StandingOrderArrangement
-        - OverdraftArrangement
-        - RepaymentArrangement
-        - StatementArrangement
-        - CreditTransferArrangement
-        - ProductAndServiceArrangement
-        - FactoringArrangement
-        - RolloverArrangement
-        - RestructuringArrangement
-        - InsuranceArrangement
-        - CollectionArrangement
-        - UnderwritingArrangement
-        - TerminationArrangement
-        - MaturityArrangement
-      type: string
-      description: ">\r\n* `SweepArrangement` - An arrangement into which is promised for the set-up and execution of structured sweeps to and from the facility to a linked account.\r\n* `WithdrawalArrangement` - An arrangement into which is promised to deliver Withdraw Service  to take fund out of an account. \r\n* `DepositArrangement` - An arrangement into which is promised to deliver Deposit Service  to place funds into an account for safekeeping. \r\n* `InterestArrangement` - An arrangement into which is promised to apply a pricing element expressed in a percentage  to a principal amount.\r\n* `FeeArrangement` - An arrangement into which is promised to apply a charge for services rendered. \r\n* `LienArrangement` - An arrangement into which is promised for placing a lien or block on the account for a specified purpose, amount, and period. \r\n* `InformationArrangement` - An arrangement concerning the information the bank will provide about the agreement/account\r\n* `PaymentArrangement` - An arrangement into which is promised to deliver a specific payment service including regular payments, standing orders, direct debits and bill pay instructions. \r\n* `EntitlementArrangement` - Right or obligation linked to the involvement of a party in an agreement\r\n* `PeriodArrangement` - \r\n* `CollateralArrangement` - An arrangement into which is promised for handling the oversight of the allocation, valuation and administration of collateral associated with the facility. \r\n* `LimitArrangement` - An arrangement to limit something\ne.g., the number of transaction per week, the amount of money allowed to withdraw per week/day and etc. \r\n* `AccessArrangement` - An arrangement that allows or restricts the access to a service or product, channel or device through a specific access point\r\n* `CardPaymentArrangement` - An arrangement into which is promised to deliver Card payment Service to execute payment transactions through a payment card, including online payments. \r\n* `StandingOrderArrangement` - An arrangement into which is promised to deliver Standing Order Service to make regular transfers on given dates to a named beneﬁciary. \r\n* `OverdraftArrangement` - An arrangement into which is promised to deliver Overdraft Service  that allows fund transfer even if there is no provision on the account. \r\n* `RepaymentArrangement` - An arrangement into which is promised for paying back money previously borrowed from a lender. \r\n* `StatementArrangement` - An arrangement into which is promised to deliver a reporting service on payment transactions registered on an account. \r\n* `CreditTransferArrangement` - An arrangement into which is promised to allow a payer to transfer fund to a beneficiary. \r\n* `ProductAndServiceArrangement` - \r\n* `FactoringArrangement` - \r\n* `RolloverArrangement` - Arrangement stipulating the modalities for an automatic renewal of the agreement\n\ni.e. the replacement of the agreement with a new one without renewed negociation and witout explicit agreement of the customer \r\n* `RestructuringArrangement` - \r\n* `InsuranceArrangement` - \r\n* `CollectionArrangement` - An arrangement into which is promised to collect past-due debts from borrowers\r\n* `UnderwritingArrangement` - A contractual agreement between parties that commits the underwriter to assuming risk.\r\n* `TerminationArrangement` - \r\n* `MaturityArrangement` - \r\n"
-    arrangement:
-      type: object
-      properties:
-        ArrangementAction:
-          $ref: '#/components/schemas/action'
-        ArrangementStartDate:
-          $ref: '#/components/schemas/datetime'
-        ArrangementEndDate:
-          $ref: '#/components/schemas/datetime'
-        ArrangementStatus:
-          $ref: '#/components/schemas/arrangementlifecyclestatus'
-        ArrangementSubjectMatter:
-          $ref: '#/components/schemas/subject'
-        Arrangementtype:
-          $ref: '#/components/schemas/arrangementtypevalues'
-      description: The set of administrative responsibilities defined in Branch Location Administrative Plan Obligation|Obligation (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022 BM ()
-    BranchLocationOperationsOutcome:
-      type: object
-      properties:
-        BranchLocationOperationsPerformanceAnalysis:
-          $ref: '#/components/schemas/analysis'
-        BranchLocationOperationsActivityAnalysis:
-          $ref: '#/components/schemas/analysis'
-        BranchLocationOperationsAdministrativePlan:
-          $ref: '#/components/schemas/plan'
-        BranchLocationOperationsAdministrationTask:
-          $ref: '#/components/schemas/arrangement'
-      description: "The Non-cash Inventory Handling is an activity that is performed as one aspect of carrying out the Branch Location Administration Plan\n"
-    assignment:
-      type: object
-      properties:
-        PartyReference:
-          $ref: '#/components/schemas/party'
-        PartyInvolvement:
-          $ref: '#/components/schemas/partyrole'
-        SubjectMatter:
-          type: string
-          description: ''
-          format: object
-      description: "The assignment of a required activity to a responsibe party in Branch Location Administrative Plan ||\r\n|"
-    balancetypevalues:
-      enum:
-        - Openingbalance
-        - Closingbalance
-        - Currentbalance
-        - Availablebalance
-        - Ledgerbalance
-        - Reservebalance
-        - Freebalance
-        - Principalbalance
-      type: string
-      description: ">\r\n* `Openingbalance` - Book balance of the account at the beginning of the account servicer's business day. It always equals the closing book balance from the previous business day. Note: the available balance at the beginning of the account servicer's business day may be different from the closing book balance from the previous business day. (ISO20022)\r\n* `Closingbalance` - Balance of the account at the end of the account servicer's business day. It is the sum of the opening balance at the beginning of the day and all entries booked to the account during the account servicer's business day. (ISO20022)\r\n* `Currentbalance` - Balance of the account at a precise moment in time. (ISO20022)\r\n* `Availablebalance` - Balance of money or securities that is at the disposal of the account owner on the date specified. (ISO20022)\r\n* `Ledgerbalance` - Ledger balance refers to posted transactions (e.g. limit authorisation amount - posted transactions). (ISO20022)\r\n* `Reservebalance` - \r\n* `Freebalance` - \r\n* `Principalbalance` - \r\n"
-    debitcreditindicatortvalues:
-      enum:
-        - Debit
-        - Credit
-      type: string
-      description: ">\r\n* `Debit` - Transaction is a debt entry\r\n* `Credit` - Transaction is a credit entry\r\n"
-    accountbalance:
-      type: object
-      properties:
-        BalanceAmount:
-          $ref: '#/components/schemas/amount'
-        BalanceType:
-          $ref: '#/components/schemas/balancetypevalues'
-        BalanceDate:
-          $ref: '#/components/schemas/datetime'
-        BalanceIndicator:
-          $ref: '#/components/schemas/debitcreditindicatortvalues'
-      description: Balance of budget which is arranged whitin Branch Location Administrative Plan Balance|Balance (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022 BM ()
-    addresstypevalues:
-      enum:
-        - PostalAddress
-        - GeolocationAddress
-        - LatitudeAddress
-        - LongitudeAddress
-        - ElectronicAddress
-      type: string
-      description: ">\r\n* `PostalAddress` - \r\n* `GeolocationAddress` - \r\n* `LatitudeAddress` - \r\n* `LongitudeAddress` - \r\n* `ElectronicAddress` - \r\n"
-    geographicalareatypevalues:
-      enum:
-        - Continent
-        - Country
-        - State
-        - District
-        - Province
-        - Town
-        - City
-        - Region
-      type: string
-      description: ">\r\n* `Continent` - \r\n* `Country` - \r\n* `State` - \r\n* `District` - \r\n* `Province` - \r\n* `Town` - \r\n* `City` - \r\n* `Region` - \r\n"
-    location:
-      type: object
-      properties:
-        LocationDescription:
-          $ref: '#/components/schemas/text'
-        LocationDateTime:
-          $ref: '#/components/schemas/datetime'
-        LocationStatus:
-          $ref: '#/components/schemas/status'
-        LocationType:
-          $ref: '#/components/schemas/geographicalareatypevalues'
-        LocationZoningType:
-          $ref: '#/components/schemas/text'
-        LocationNeighborhoodType:
-          $ref: '#/components/schemas/text'
-        LocationConstructionType:
-          $ref: '#/components/schemas/text'
-        LocationOccupancyType:
-          $ref: '#/components/schemas/text'
-        LocationValue:
-          $ref: '#/components/schemas/value'
-        LocationCapacity:
-          $ref: '#/components/schemas/text'
-        LocationIdentification:
-          $ref: '#/components/schemas/identifier'
-        LocationAddress:
-          $ref: '#/components/schemas/address'
-        LocationName:
-          $ref: '#/components/schemas/name'
-        LocationTimeZone:
-          $ref: '#/components/schemas/text'
-      description: ''
-    address:
-      type: object
-      properties:
-        AddressType:
-          $ref: '#/components/schemas/addresstypevalues'
-        LocationReference:
-          $ref: '#/components/schemas/location'
-      description: ''
-    branch:
-      type: object
-      properties:
-        BranchIdentification:
-          $ref: '#/components/schemas/identifier'
-        BranchLegalEntityIdentification:
-          $ref: '#/components/schemas/identifier'
-        BranchAddress:
-          $ref: '#/components/schemas/address'
-        BranchName:
-          $ref: '#/components/schemas/name'
-      description: ''
-    branchlocation:
-      type: object
-      properties:
-        BranchReference:
-          $ref: '#/components/schemas/branch'
-        LocationReference:
-          $ref: '#/components/schemas/location'
-      description: "The subject matter of Branch Location Administrative Plan ||\r\n|"
-    BranchLocationAdministrativePlan:
-      type: object
-      properties:
-        BranchLocationAdministrativePlanBudgetType:
-          $ref: '#/components/schemas/budgettype'
-        BranchLocationAdministrativePlanBudget:
-          $ref: '#/components/schemas/amount'
-        BranchLocationAdministrativePlanAssignment:
-          $ref: '#/components/schemas/assignment'
-        BranchLocationAdministrativePlanDuty:
-          $ref: '#/components/schemas/arrangement'
-        BranchLocationAdministrativePlanAssociatedParty:
-          $ref: '#/components/schemas/involvedparty'
-        BranchLocationAdministrativePlanBudgetBalance:
-          $ref: '#/components/schemas/accountbalance'
-        BranchLocationAdministrativePlanSubjectMatter:
-          $ref: '#/components/schemas/branchlocation'
-        BranchLocationAdministrativePlanType:
-          $ref: '#/components/schemas/plantype'
-        BranchLocationAdministrativePlanReference:
-          $ref: '#/components/schemas/plan'
-        BranchLocationAdministrativePlanDescription:
-          $ref: '#/components/schemas/text'
-      description: 'Handle and assign the day to day activities, capture time, costs and income for an operational unit within Branch Location Operations. '
     ControlBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Control Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    Budgettype:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BudgetTypeName:
+              $ref: '#/components/schemas/Name'
+              description: ''
+          BudgetType:
+              enum:
+                  -  OperatingBudget
+                  -  FinancialBudget
+                  -  ResourceBudget
+              type: string
+              description: ">\r\n* `OperatingBudget` \r\n* `FinancialBudget` \r\n* `ResourceBudget` \r\n* "
+    Name:
+        type: object
+        description: >
+          (DDD Entity) - Name by which a party is known and which is usually used to
+          identify that party. (ISO20022)
+        properties:
+          Name:
+              type: string
+              description: ''
+              format: DataType
+    Assignment:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: ''
+          PartyInvolvement:
+              $ref: '#/components/schemas/Partyrole'
+              description: ''
+          SubjectMatter:
+              type: string
+              description: ''
+              format: Object
+    Party:
+        type: object
+        properties:
+          PartyName:
+              $ref: '#/components/schemas/Name'
+              description: ''
+          PartyType:
+              enum:
+                  -  Person
+                  -  Organisation
+              type: string
+              description: ">\r\n* `Person` \r\n* `Organisation` \r\n* "
+          PartyDateTime:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          PartyIdentification:
+              $ref: '#/components/schemas/Partyidentification'
+              description: ''
+          Party:
+              type: string
+              description: ''
+              format: Class
+          PartyLegalStructureType:
+              enum:
+                  -  Individual
+                  -  CommunityInterestCompany
+                  -  Co-Operative
+                  -  Charity
+                  -  GeneralPartnership
+                  -  LimitedLiabilityPartnership
+                  -  ScottishLimitedPartnership
+                  -  LimitedPartnership
+                  -  PrivateLimitedCompany
+                  -  PublicLimitedCompany
+                  -  Sole(SoleTrader)
+              type: string
+              description: ">\r\n* `Individual` \r\n* `CommunityInterestCompany` \r\n* `CoOperative` \r\n* `Charity` \r\n* `GeneralPartnership` \r\n* `LimitedLiabilityPartnership` \r\n* `ScottishLimitedPartnership` \r\n* `LimitedPartnership` \r\n* `PrivateLimitedCompany` \r\n* `PublicLimitedCompany` \r\n* `SoleSoleTrader` \r\n* "
+    Datetime:
+        type: object
+        description: (DDD Entity) - Date and time at which the range starts. (ISO20022)
+        properties:
+          DateTimeContent:
+              type: string
+              description: ''
+              format: String
+          TimeZoneCode:
+              type: string
+              description: ''
+              format: String
+          DaylightSavingIndicator:
+              type: string
+              description: ''
+              format: String
+          Datetime:
+              type: string
+              description: ''
+              format: DataType
+    Partyidentification:
+        type: object
+        properties:
+          PartyIdentificationType:
+              enum:
+                  -  Taxidentificationnumber
+                  -  Nationalregistrationnumber
+                  -  LEI(LegalEntityIdentifier)
+                  -  Alienregistrationnumber
+                  -  Passportnumber
+                  -  Corporateidentification
+                  -  Driverlicensenumber
+                  -  Socialsecuritynumber
+                  -  Identitycardnumber
+                  -  Concat
+              type: string
+              description: ">\r\n* `Taxidentificationnumber` \r\n* `Nationalregistrationnumber` \r\n* `LEILegalEntityIdentifier` \r\n* `Alienregistrationnumber` \r\n* `Passportnumber` \r\n* `Corporateidentification` \r\n* `Driverlicensenumber` \r\n* `Socialsecuritynumber` \r\n* `Identitycardnumber` \r\n* `Concat` \r\n* "
+          PartyIdentification:
+              $ref: '#/components/schemas/Identifier'
+              description: ''
+          Partyidentification:
+              type: string
+              description: ''
+              format: DataType
+    Identifier:
+        type: object
+        description: >-
+          (DDD Entity) - Unique and unambiguous identification of a branch of a financial
+          institution (ISO20022)
+        properties:
+          IdentifierValue:
+              $ref: '#/components/schemas/Value'
+              description: ''
+          IdentifierIssuingAuthority:
+              $ref: '#/components/schemas/Involvedparty'
+              description: ''
+          IdentifierStartDate:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          IdentifierEndDate:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          Identifier:
+              type: string
+              description: ''
+              format: DataType
+    Value:
+        type: object
+        description: >-
+          (DDD Entity) - The estimated (book) value of the property at the location -
+          rental and purchase as appropriate.
+        properties:
+          Value:
+              type: string
+              description: ''
+              format: DataType
+    Involvedparty:
+        type: object
+        description: (DDD Entity) - Entity that assigns and manages the identification.
+        properties:
+          PartyReference:
+              $ref: '#/components/schemas/Party'
+              description: ''
+          PartyInvolvement:
+              $ref: '#/components/schemas/Partyrole'
+              description: ''
+    Partyrole:
+        type: object
+        properties:
+          PartyRoleType:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          PartyRoleName:
+              $ref: '#/components/schemas/Name'
+              description: ''
+          PartyRoleValidityPeriod:
+              $ref: '#/components/schemas/Datetimeperiod'
+              description: ''
+          PartyInvolvementType:
+              enum:
+                  -  Agreementinvolvement
+                  -  Partyinvolvement
+                  -  Arrangementinvolvement
+                  -  Relationshipinvolvement
+                  -  Locationinvolvement
+                  -  Bankguaranteeinvolvement
+              type: string
+              description: ">\r\n* `Agreementinvolvement` \r\n* `Partyinvolvement` \r\n* `Arrangementinvolvement` \r\n* `Relationshipinvolvement` \r\n* `Locationinvolvement` \r\n* `Bankguaranteeinvolvement` \r\n* "
+          PartyRole:
+              type: string
+              description: ''
+              format: Class
+    Text:
+        type: object
+        description: >-
+          (DDD Entity) - A description of the property, particularly if it has landmark
+          characteristics.
+        properties:
+          Text:
+              type: string
+              description: ''
+              format: DataType
+    Datetimeperiod:
+        type: object
+        description: (DDD Entity) - Period of time during which the status is valid.
+        properties:
+          FromDateTime:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          ToDateTime:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          Datetimeperiod:
+              type: string
+              description: ''
+              format: DataType
+    BranchLocation:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BranchReference:
+              $ref: '#/components/schemas/Branch'
+              description: ''
+          LocationReference:
+              $ref: '#/components/schemas/Location'
+              description: ''
+    Branch:
+        type: object
+        properties:
+          BranchIdentification:
+              $ref: '#/components/schemas/Identifier'
+              description: ''
+          BranchLegalEntityIdentification:
+              $ref: '#/components/schemas/Identifier'
+              description: ''
+          BranchAddress:
+              $ref: '#/components/schemas/Address'
+              description: ''
+          BranchName:
+              $ref: '#/components/schemas/Name'
+              description: ''
+    Address:
+        type: object
+        properties:
+          AddressType:
+              enum:
+                  -  PostalAddress
+                  -  GeolocationAddress
+                  -  LatitudeAddress
+                  -  LongitudeAddress
+                  -  ElectronicAddress
+              type: string
+              description: ">\r\n* `PostalAddress` \r\n* `GeolocationAddress` \r\n* `LatitudeAddress` \r\n* `LongitudeAddress` \r\n* `ElectronicAddress` \r\n* "
+          LocationReference:
+              $ref: '#/components/schemas/Location'
+              description: ''
+          Address:
+              type: string
+              description: ''
+              format: Class
+    Location:
+        type: object
+        properties:
+          LocationDescription:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          LocationDateTime:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          LocationStatus:
+              $ref: '#/components/schemas/Status'
+              description: ''
+          LocationType:
+              enum:
+                  -  Continent
+                  -  Country
+                  -  State
+                  -  District
+                  -  Province
+                  -  Town
+                  -  City
+                  -  Region
+              type: string
+              description: ">\r\n* `Continent` \r\n* `Country` \r\n* `State` \r\n* `District` \r\n* `Province` \r\n* `Town` \r\n* `City` \r\n* `Region` \r\n* "
+          LocationZoningType:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          LocationNeighborhoodType:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          LocationConstructionType:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          LocationOccupancyType:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          LocationValue:
+              $ref: '#/components/schemas/Value'
+              description: ''
+          LocationCapacity:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          LocationIdentification:
+              $ref: '#/components/schemas/Identifier'
+              description: ''
+          LocationAddress:
+              $ref: '#/components/schemas/Address'
+              description: ''
+          LocationName:
+              $ref: '#/components/schemas/Name'
+              description: ''
+          LocationTimeZone:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          Location:
+              type: string
+              description: ''
+              format: Class
+    Status:
+        type: object
+        description: >-
+          (DDD Entity) - The tracked status (e.g. under construction or repair, inhabited,
+          vacant).
+        properties:
+          StatusReason:
+              $ref: '#/components/schemas/Text'
+              description: ''
+          StatusDateTime:
+              $ref: '#/components/schemas/Datetime'
+              description: ''
+          StatusValidityPeriod:
+              $ref: '#/components/schemas/Datetimeperiod'
+              description: ''
+          StatusInvolvedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: ''
+          Status:
+              type: string
+              description: ''
+              format: DataType
+    Plantype:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          PlanTypeName:
+              $ref: '#/components/schemas/Name'
+              description: ''
+          PlanType:
+              enum:
+                  -  AdministrativePlan
+                  -  ManagementPlan
+                  -  StratgyPlan
+                  -  FinancialPlan
+              type: string
+              description: ">\r\n* `AdministrativePlan` \r\n* `ManagementPlan` \r\n* `StratgyPlan` \r\n* `FinancialPlan` \r\n* "
+          Plantype:
+              type: string
+              description: ''
+              format: DataType
+    Plan:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          PlanGoal:
+              $ref: '#/components/schemas/Goal'
+              description: ''
+          PlanBudget:
+              $ref: '#/components/schemas/Budgetarrangement'
+              description: ''
+          PlannedAction:
+              $ref: '#/components/schemas/Plannedaction'
+              description: ''
+          PlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: ''
+          PlanOrganisation:
+              type: string
+              description: ''
+              format: String
+          PlanValidityPeriod:
+              $ref: '#/components/schemas/Datetimeperiod'
+              description: ''
+          PlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: ''
+    Goal:
+        type: object
+        properties:
+          GoalType:
+              type: string
+              description: ''
+              format: String
+          GoalDefinition:
+              type: string
+              description: ''
+              format: String
+          GoalOrganisation:
+              type: string
+              description: ''
+              format: ''
+          GoalResult:
+              type: string
+              description: ''
+              format: String
+          Goal:
+              type: string
+              description: ''
+              format: Class
+    Budgetarrangement:
+        type: object
+        description: >-
+          (DDD Entity) - An arrangement which is specifying an estimate of costs, revenues,
+          and resources over a specified period, reflecting a reading of future
+          financial conditions and goals. (adapted from Business Dictionary)
+        properties:
+          BudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: ''
+          BudgetAmount:
+              $ref: '#/components/schemas/Amount'
+              description: ''
+          BudgetArrangement:
+              type: string
+              description: ''
+              format: Class
+    Amount:
+        type: object
+        properties:
+          AmountValue:
+              $ref: '#/components/schemas/Value'
+              description: ''
+          AmountCurrency:
+              $ref: '#/components/schemas/Currencycode'
+              description: ''
+          DecimalPointPosition:
+              type: string
+              description: ''
+              format: String
+          AmountType:
+              enum:
+                  -  Principal
+                  -  Actual
+                  -  Estimated
+                  -  Maximum
+                  -  Default
+                  -  Replacement
+                  -  Incremental
+                  -  Decremental
+                  -  Reserved
+                  -  Available
+                  -  Used
+              type: string
+              description: ">\r\n* `Principal` \r\n* `Actual` \r\n* `Estimated` \r\n* `Maximum` \r\n* `Default` \r\n* `Replacement` \r\n* `Incremental` \r\n* `Decremental` \r\n* `Reserved` \r\n* `Available` \r\n* `Used` \r\n* "
+    Currencycode:
+        type: object
+        properties:
+          Currencycode:
+              type: string
+              description: ''
+              format: DataType
+    Plannedaction:
+        type: object
+        description: >-
+          (DDD Entity) - An action that is arranged in a plan for doing or achieving
+          something 
+        properties:
+          PlannedAction:
+              type: string
+              description: ''
+              format: Class
     ControlBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Control Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    ControlBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     CreateBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Create Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     CreateBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Create Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    CreateBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     ExchangeBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Exchange Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     ExchangeBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Exchange Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    ExchangeBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     GrantBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Grant Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     GrantBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Grant Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    GrantBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     NotifyBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Notify Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     NotifyBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Notify Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    NotifyBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     RequestBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Request Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     RequestBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Request Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    RequestBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     RetrieveBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Retrieve Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     RetrieveBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Retrieve Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    RetrieveBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
     UpdateBranchLocationAdministrativePlanRequest:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Input: Update Branch Location Administrative Plan'
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
     UpdateBranchLocationAdministrativePlanResponse:
-      type: object
-      properties:
-        BranchLocationAdministrativePlan:
-          type: object
-          properties:
-            BranchLocationAdministrativePlanBudgetType:
-              $ref: '#/components/schemas/budgettype'
-            BranchLocationAdministrativePlanAssignment:
-              $ref: '#/components/schemas/assignment'
-            BranchLocationAdministrativePlanDuty:
-              $ref: '#/components/schemas/arrangement'
-            BranchLocationAdministrativePlanAssociatedParty:
-              $ref: '#/components/schemas/involvedparty'
-            BranchLocationAdministrativePlanBudgetBalance:
-              $ref: '#/components/schemas/accountbalance'
-            BranchLocationAdministrativePlanSubjectMatter:
-              $ref: '#/components/schemas/branchlocation'
-            BranchLocationAdministrativePlanType:
-              $ref: '#/components/schemas/plantype'
-            BranchLocationAdministrativePlanReference:
-              $ref: '#/components/schemas/plan'
-            BranchLocationAdministrativePlanDescription:
-              $ref: '#/components/schemas/text'
-      description: 'Output: Update Branch Location Administrative Plan'
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    ControlBranchLocationAdministrativePlanResponse:
-      description: ControlBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlBranchLocationAdministrativePlanResponse'
-    CreateBranchLocationAdministrativePlanResponse:
-      description: CreateBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateBranchLocationAdministrativePlanResponse'
-    ExchangeBranchLocationAdministrativePlanResponse:
-      description: ExchangeBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeBranchLocationAdministrativePlanResponse'
-    GrantBranchLocationAdministrativePlanResponse:
-      description: GrantBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantBranchLocationAdministrativePlanResponse'
-    NotifyBranchLocationAdministrativePlanResponse:
-      description: NotifyBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotifyBranchLocationAdministrativePlanResponse'
-    RequestBranchLocationAdministrativePlanResponse:
-      description: RequestBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestBranchLocationAdministrativePlanResponse'
-    RetrieveBranchLocationAdministrativePlanResponse:
-      description: RetrieveBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveBranchLocationAdministrativePlanResponse'
-    UpdateBranchLocationAdministrativePlanResponse:
-      description: UpdateBranchLocationAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateBranchLocationAdministrativePlanResponse'
-  parameters:
-    branchlocationoperationsid:
-      name: branchlocationoperationsid
-      in: path
-      required: true
-      style: simple
-      schema:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: '|||'
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: '|||'
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: '|||'
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: '|||'
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: '|||'
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: '|||'
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: '|||'
+    UpdateBranchLocationAdministrativePlan:
+        type: object
+        properties:
+          BranchLocationAdministrativePlanBudgetType:
+              $ref: '#/components/schemas/Budgettype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudget:
+              $ref: '#/components/schemas/CurrencyAndAmount'
+              description: >-
+                CurrencyAndAmount|CurrencyAndAmount
+                (https://www.iso20022.org/standardsrepository/type/CurrencyAndAmount)|Standard|ISO20022 
+                ()
+          BranchLocationAdministrativePlanAssignment:
+              $ref: '#/components/schemas/Assignment'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDuty:
+              $ref: '#/components/schemas/Obligation'
+              description: >-
+                Obligation|Obligation
+                (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanAssociatedParty:
+              $ref: '#/components/schemas/Involvedparty'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanBudgetBalance:
+              $ref: '#/components/schemas/Balance'
+              description: >-
+                Balance|Balance
+                (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+                BM ()
+          BranchLocationAdministrativePlanSubjectMatter:
+              $ref: '#/components/schemas/BranchLocation'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanType:
+              $ref: '#/components/schemas/Plantype'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanReference:
+              $ref: '#/components/schemas/Plan'
+              description: "||\r\n|"
+          BranchLocationAdministrativePlanDescription:
+              $ref: '#/components/schemas/Text'
+              description: "||\r\n|"
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    Obligation:
+        type: object
+        description: >-
+          (DDD Entity) - The set of administrative responsibilities defined in Branch
+          Location Administrative Plan Obligation|Obligation
+          (https://www.iso20022.org/standardsrepository/type/Obligation)|Standard|ISO20022
+          BM ()
+        properties:
+          RequestedSettlementDate:
+              type: string
+              format: ISODateTime
+              description: >-
+                (DDD Entity) - Date and time at which a trade must be executed. For a
+                direct debit, it is the date and time at which the creditor
+                requests that the amount of money is to be collected from the
+                debtor. For a credit transfer, it is the date and time at which
+                the debtor requests the clearing agent to process the payment.
+                For a securities trade, it is the date and time at which the
+                securities are to be delivered or received. 
+          RequestedSettlementAmount:
+              type: string
+              format: CurrencyAndAmount
+              description: '(DDD Entity) - Total amount of money to be paid or received. '
+          Priority:
+              type: string
+              format: Max4AlphaNumericText
+              description: >-
+                (DDD Entity) - Specifies whether the transaction is to be executed with a
+                high priority. 
+          Trade:
+              type: string
+              format: Trade
+              description: >-
+                (DDD Entity) - Specifies the trade which originates the obligation to
+                deliver a product, cash or securities.. 
+          TransactionRisk:
+              type: string
+              format: TransactionRisk
+              description: '(DDD Entity) - Transaction risk calculated per obligation type. '
+          ParentObligation:
+              type: string
+              format: Obligation
+              description: '(DDD Entity) - Obligation which is divided into several sub-obligations. '
+          SubObligation:
+              type: string
+              format: Obligation
+              description: >-
+                (DDD Entity) - Specifies an obligation resulting from another existing
+                obligation, for instance each leg of a financing agreement is a
+                sub-obligation of the global financing obligation. 
+          Offset:
+              type: string
+              format: ObligationFulfilment
+              description: '(DDD Entity) - Specifies the method used to settle a specific obligation. '
+          OriginalObligationProcess:
+              type: string
+              format: ObligationFulfilment
+              description: >-
+                (DDD Entity) - Obligation fulfilment process which did not extinguish the
+                obligation but replaced it by a new one, for instance in case of
+                netting. 
+          ExposureType:
+              type: string
+              format: ExposureTypeV2Code
+              description: '(DDD Entity) - Type of exposure related to this obligation. '
+    Balance:
+        type: object
+        description: >-
+          (DDD Entity) - Balance of budget which is arranged whitin Branch Location
+          Administrative Plan Balance|Balance
+          (https://www.iso20022.org/standardsrepository/type/Balance)|Standard|ISO20022
+          BM ()
+        properties:
+          Type:
+              type: string
+              format: BalanceTypeCode
+              description: '(DDD Entity) - Specifies the nature of a balance. '
+          ValueDate:
+              type: string
+              format: ISODateTime
+              description: '(DDD Entity) - Date and time at which the balance is or will be available. '
+          CreditDebitIndicator:
+              type: string
+              format: DebitCreditCode
+              description: >-
+                (DDD Entity) - Indicates whether the balance is a credit or a debit
+                balance. A zero balance is considered to be a credit balance 
+          AssetHolding:
+              type: string
+              format: AssetHolding
+              description: >-
+                (DDD Entity) - Specifies in terms of value and quantity the assets held in
+                a balance. 
+          CalculationDate:
+              type: string
+              format: ISODateTime
+              description: >-
+                (DDD Entity) - Specifies the date and time at which the balance is
+                calculated. 
+          Adjustment:
+              type: string
+              format: Adjustment
+              description: '(DDD Entity) - Specifies the balance adjustments. '
+          Account:
+              type: string
+              format: Account
+              description: '(DDD Entity) - Account or sub-account for which a balance is calculated. '
+          Interest:
+              type: string
+              format: Interest
+              description: >-
+                (DDD Entity) - Set of elements used to provide interest information that
+                applies to the balance. 
+          BalanceEntry:
+              type: string
+              format: Entry
+              description: '(DDD Entity) - Credit or debit postings used to calculate a balance. '
+          ProcessingRestriction:
+              type: string
+              format: ProcessingTypeCode
+              description: >-
+                (DDD Entity) - Specifies the type of balance processing restrictions that
+                must be applied. 
+          OpeningClosingCode:
+              type: string
+              format: OpeningClosingCode
+              description: >-
+                (DDD Entity) - Specifies whether the balance is an opening or a closing
+                one. 
+    CurrencyAndAmount:
         type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Number of monetary units specified in a currency, where the unit
+          of currency is explicit and compliant with ISO 4217. The decimal
+          separator is a dot.
+
+          Note: A zero amount is considered a positive amount.
+  responses:
+    ControlBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanControl
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ControlBranchLocationAdministrativePlanResponse
+    CreateBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanCreate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CreateBranchLocationAdministrativePlanResponse
+    ExchangeBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExchangeBranchLocationAdministrativePlanResponse
+    GrantBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanGrant
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/GrantBranchLocationAdministrativePlanResponse
+    NotifyBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanNotify
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/NotifyBranchLocationAdministrativePlanResponse
+    RequestBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestBranchLocationAdministrativePlanResponse
+    RetrieveBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveBranchLocationAdministrativePlanResponse
+    UpdateBranchLocationAdministrativePlanResponse:
+        description: BranchLocationAdministrativePlanUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateBranchLocationAdministrativePlanResponse
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+  parameters:
+    branchlocationadministrativeplanid:
+        name: branchlocationadministrativeplanid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     ControlBranchLocationAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlBranchLocationAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ControlBranchLocationAdministrativePlanRequest
+        required: true
     CreateBranchLocationAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateBranchLocationAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CreateBranchLocationAdministrativePlanRequest
+        required: true
     ExchangeBranchLocationAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeBranchLocationAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExchangeBranchLocationAdministrativePlanRequest
+        required: true
     GrantBranchLocationAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantBranchLocationAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/GrantBranchLocationAdministrativePlanRequest
+        required: true
+    NotifyBranchLocationAdministrativePlanRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/NotifyBranchLocationAdministrativePlanRequest
+        required: true
     RequestBranchLocationAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestBranchLocationAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestBranchLocationAdministrativePlanRequest
+        required: true
+    RetrieveBranchLocationAdministrativePlanRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveBranchLocationAdministrativePlanRequest
+        required: true
     UpdateBranchLocationAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateBranchLocationAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateBranchLocationAdministrativePlanRequest
+        required: true

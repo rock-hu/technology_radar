@@ -1,1811 +1,2056 @@
 openapi: 3.0.1
 info:
   title: Party Authentication
-  description: This service domain provides a customer identify authentication service covering all channels and devices to support access to the banks products and services
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Party Authentication (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/PartyAuthentication/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/PartyAuthentication/12.0.1'
 paths:
-  /PartyAuthentication/Evaluate:
-    post:
-      tags:
-        - CR - PartyAuthenticationAssessment
-      summary: EvCR Evaluate a customer's authenticity
-      description: EvCR Evaluate a customer's authenticity
-      operationId: Evaluate
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluatePartyAuthenticationAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluatePartyAuthenticationAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Update':
-    put:
-      tags:
-        - CR - PartyAuthenticationAssessment
-      summary: UpCR Update details of a customer authentication assessment
-      description: UpCR Update details of a customer authentication assessment
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/PartyAuthenticationAssessment'
-      responses:
-        '200':
-          $ref: '#/components/responses/PartyAuthenticationAssessment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Execute':
-    put:
-      tags:
-        - CR - PartyAuthenticationAssessment
-      summary: ExCR Execute an automated action for an assessment (e.g. submit data)
-      description: ExCR Execute an automated action for an assessment (e.g. submit data)
-      operationId: Execute
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExecutePartyAuthenticationAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExecutePartyAuthenticationAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Request':
-    put:
-      tags:
-        - CR - PartyAuthenticationAssessment
-      summary: RqCR Request manual interventions in an assessment (e.g. engage specialist)
-      description: RqCR Request manual interventions in an assessment (e.g. engage specialist)
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestPartyAuthenticationAssessmentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestPartyAuthenticationAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Retrieve':
-    get:
-      tags:
-        - CR - PartyAuthenticationAssessment
-      summary: ReCR Retrieve details about an authentication assessment
-      description: ReCR Retrieve details about an authentication assessment
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievePartyAuthenticationAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Password/Evaluate':
-    post:
-      tags:
-        - BQ - Password
-      summary: EvBQ Evaluate customer authenticity using passwords
-      description: EvBQ Evaluate customer authenticity using passwords
-      operationId: EvaluatePassword
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluatePasswordRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluatePasswordResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Password/{passwordid}/Retrieve':
-    get:
-      tags:
-        - BQ - Password
-      summary: ReBQ Retrieve details about a password evaluation
-      description: ReBQ Retrieve details about a password evaluation
-      operationId: RetrievePassword
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-        - $ref: '#/components/parameters/passwordid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievePasswordResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Question/Evaluate':
-    post:
-      tags:
-        - BQ - Question
-      summary: EvBQ Evaluate customer authenticity using secret questions
-      description: EvBQ Evaluate customer authenticity using secret questions
-      operationId: EvaluateQuestion
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateQuestionRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateQuestionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Question/{questionid}/Retrieve':
-    get:
-      tags:
-        - BQ - Question
-      summary: ReBQ Retrieve details about a secret question evaluation
-      description: ReBQ Retrieve details about a secret question evaluation
-      operationId: RetrieveQuestion
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-        - $ref: '#/components/parameters/questionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveQuestionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Document/Evaluate':
-    post:
-      tags:
-        - BQ - Document
-      summary: EvBQ Evaluate customer authenticity using documents
-      description: EvBQ Evaluate customer authenticity using documents
-      operationId: EvaluateDocument
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateDocumentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateDocumentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Document/{documentid}/Retrieve':
-    get:
-      tags:
-        - BQ - Document
-      summary: ReBQ Retrieve details about a document evaluation
-      description: ReBQ Retrieve details about a document evaluation
-      operationId: RetrieveDocument
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-        - $ref: '#/components/parameters/documentid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveDocumentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Device/Evaluate':
-    post:
-      tags:
-        - BQ - Device
-      summary: EvBQ Evaluate customer authenticity using a device
-      description: EvBQ Evaluate customer authenticity using a device
-      operationId: EvaluateDevice
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateDeviceRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateDeviceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Device/{deviceid}/Retrieve':
-    get:
-      tags:
-        - BQ - Device
-      summary: ReBQ Retrieve details about a device evaluation
-      description: ReBQ Retrieve details about a device evaluation
-      operationId: RetrieveDevice
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-        - $ref: '#/components/parameters/deviceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveDeviceResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Biometric/Evaluate':
-    post:
-      tags:
-        - BQ - Biometric
-      summary: EvBQ Evaluate customer authenticity using biometrics
-      description: EvBQ Evaluate customer authenticity using biometrics
-      operationId: EvaluateBiometric
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateBiometricRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateBiometricResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Biometric/{biometricid}/Retrieve':
-    get:
-      tags:
-        - BQ - Biometric
-      summary: ReBQ Retrieve details about a biometric evaluation
-      description: ReBQ Retrieve details about a biometric evaluation
-      operationId: RetrieveBiometric
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-        - $ref: '#/components/parameters/biometricid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveBiometricResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Behavior/Evaluate':
-    post:
-      tags:
-        - BQ - Behavior
-      summary: EvBQ Evaluate customer authenticity using behaviors
-      description: EvBQ Evaluate customer authenticity using behaviors
-      operationId: EvaluateBehavior
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-      requestBody:
-        $ref: '#/components/requestBodies/EvaluateBehaviorRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/EvaluateBehaviorResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/PartyAuthentication/{partyauthenticationid}/Behavior/{behaviorid}/Retrieve':
-    get:
-      tags:
-        - BQ - Behavior
-      summary: ReBQ Retrieve details about a behavior evaluation
-      description: ReBQ Retrieve details about a behavior evaluation
-      operationId: RetrieveBehavior
-      parameters:
-        - $ref: '#/components/parameters/partyauthenticationid'
-        - $ref: '#/components/parameters/behaviorid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveBehaviorResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthenticationAssessment/Evaluate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - PartyAuthenticationAssessment'
+        summary: (DDD Service) EvCR Evaluate a customer's authenticity
+        description: (DDD Service) EvCR Evaluate a customer's authenticity
+        operationId: PartyAuthenticationAssessment/Evaluate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/EvaluatePartyAuthenticationAssessmentRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/EvaluatePartyAuthenticationAssessmentResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthenticationAssessment/{partyauthenticationassessmentid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - PartyAuthenticationAssessment'
+        summary: >-
+          (DDD Service) UpCR Update details of a customer authentication
+          assessment
+        description: >-
+          (DDD Service) UpCR Update details of a customer authentication
+          assessment
+        operationId: PartyAuthenticationAssessment/Update
+        parameters:
+          - $ref: '#/components/parameters/partyauthenticationassessmentid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdatePartyAuthenticationAssessmentRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdatePartyAuthenticationAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthenticationAssessment/{partyauthenticationassessmentid}/Execute':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - PartyAuthenticationAssessment'
+        summary: >-
+          (DDD Service) ExCR Execute an automated action for an assessment (e.g.
+          submit data)
+        description: >-
+          (DDD Service) ExCR Execute an automated action for an assessment (e.g.
+          submit data)
+        operationId: PartyAuthenticationAssessment/Execute
+        parameters:
+          - $ref: '#/components/parameters/partyauthenticationassessmentid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExecutePartyAuthenticationAssessmentRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExecutePartyAuthenticationAssessmentResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthenticationAssessment/{partyauthenticationassessmentid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - PartyAuthenticationAssessment'
+        summary: >-
+          (DDD Service) RqCR Request manual interventions in an assessment (e.g.
+          engage specialist)
+        description: >-
+          (DDD Service) RqCR Request manual interventions in an assessment (e.g.
+          engage specialist)
+        operationId: PartyAuthenticationAssessment/Request
+        parameters:
+          - $ref: '#/components/parameters/partyauthenticationassessmentid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestPartyAuthenticationAssessmentRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestPartyAuthenticationAssessmentResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthenticationAssessment/{partyauthenticationassessmentid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - PartyAuthenticationAssessment'
+        summary: (DDD Service) ReCR Retrieve details about an authentication assessment
+        description: (DDD Service) ReCR Retrieve details about an authentication assessment
+        operationId: PartyAuthenticationAssessment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/partyauthenticationassessmentid'
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrievePartyAuthenticationAssessmentResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Password/Evaluate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Password'
+        summary: (DDD Service) EvBQ Evaluate customer authenticity using passwords
+        description: (DDD Service) EvBQ Evaluate customer authenticity using passwords
+        operationId: Password/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluatePasswordRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluatePasswordResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthentication/{passwordid}/Password/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Password'
+        summary: (DDD Service) ReBQ Retrieve details about a password evaluation
+        description: (DDD Service) ReBQ Retrieve details about a password evaluation
+        operationId: Password/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/passwordid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrievePasswordResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Question/Evaluate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Question'
+        summary: >-
+          (DDD Service) EvBQ Evaluate customer authenticity using secret
+          questions
+        description: >-
+          (DDD Service) EvBQ Evaluate customer authenticity using secret
+          questions
+        operationId: Question/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateQuestionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateQuestionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthentication/{questionid}/Question/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Question'
+        summary: (DDD Service) ReBQ Retrieve details about a secret question evaluation
+        description: (DDD Service) ReBQ Retrieve details about a secret question evaluation
+        operationId: Question/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/questionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveQuestionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Document/Evaluate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Document'
+        summary: (DDD Service) EvBQ Evaluate customer authenticity using documents
+        description: (DDD Service) EvBQ Evaluate customer authenticity using documents
+        operationId: Document/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateDocumentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateDocumentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthentication/{documentid}/Document/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Document'
+        summary: (DDD Service) ReBQ Retrieve details about a document evaluation
+        description: (DDD Service) ReBQ Retrieve details about a document evaluation
+        operationId: Document/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/documentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveDocumentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Device/Evaluate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Device'
+        summary: (DDD Service) EvBQ Evaluate customer authenticity using a device
+        description: (DDD Service) EvBQ Evaluate customer authenticity using a device
+        operationId: Device/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateDeviceRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateDeviceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthentication/{deviceid}/Device/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Device'
+        summary: (DDD Service) ReBQ Retrieve details about a device evaluation
+        description: (DDD Service) ReBQ Retrieve details about a device evaluation
+        operationId: Device/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/deviceid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveDeviceResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Biometric/Evaluate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Biometric'
+        summary: (DDD Service) EvBQ Evaluate customer authenticity using biometrics
+        description: (DDD Service) EvBQ Evaluate customer authenticity using biometrics
+        operationId: Biometric/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateBiometricRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateBiometricResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthentication/{biometricid}/Biometric/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Biometric'
+        summary: (DDD Service) ReBQ Retrieve details about a biometric evaluation
+        description: (DDD Service) ReBQ Retrieve details about a biometric evaluation
+        operationId: Biometric/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/biometricid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveBiometricResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Behavior/Evaluate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Behavior'
+        summary: (DDD Service) EvBQ Evaluate customer authenticity using behaviors
+        description: (DDD Service) EvBQ Evaluate customer authenticity using behaviors
+        operationId: Behavior/Evaluate
+        requestBody:
+          $ref: '#/components/requestBodies/EvaluateBehaviorRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/EvaluateBehaviorResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/PartyAuthentication/{behaviorid}/Behavior/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Behavior'
+        summary: (DDD Service) ReBQ Retrieve details about a behavior evaluation
+        description: (DDD Service) ReBQ Retrieve details about a behavior evaluation
+        operationId: Behavior/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/behaviorid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveBehaviorResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The valid period for the stored password
-    Password:
-      type: object
-      properties:
-        AuthenticationReferenceDataReference:
-          type: string
-          description: Reference to a customer reference data item to be compared with submitted value
-          format: object
-        AuthenticationReferenceDataType:
-          type: string
-          description: Defines reference data item type submitted for comparison
-          format: string
-        AuthenticationReferenceDataValue:
-          type: string
-          description: The customer provided value is matched to the bank's maintained value
-          format: object
-        AuthenticationPasswordReference:
-          type: string
-          description: Reference to an issued password
-          format: object
-        AuthenticationPasswordTemplate:
-          type: string
-          description: Defines allowed values/format for an issued password
-          format: string
-        AuthenticationPasswordStoredValue:
-          type: string
-          description: The bank maintained value (can be customer provided or a bank generated value - encryption applies)
-          format: string
-        AuthenticationPasswordValidFromToDate:
-          $ref: '#/components/schemas/date'
-        AuthenticationPasswordPresentedValue:
-          type: string
-          description: The customer provided value is matched to the bank's maintained value
-          format: string
-        AuthenticationPasswordTestResult:
-          type: string
-          description: The result of the reference data and password checks
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    Device:
-      type: object
-      properties:
-        AuthenticationDeviceReference:
-          type: string
-          description: Reference to the device being used for authentication
-          format: object
-        AuthenticationDevicePropertyValue:
-          type: string
-          description: 'Property of the device being used to authenticate (e.g. phone number, URL)'
-          format: string
-        IssuedDeviceInstanceReference:
-          type: string
-          description: Reference to the customer issued device
-          format: object
-        IssuedDevicePropertyValue:
-          type: string
-          description: The registered customer device properties - maintained by SD-Issued Device Administration
-          format: string
-        DeviceTestResult:
-          type: string
-          description: The result of the device check
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    Question:
-      type: object
-      properties:
-        AuthenticationSecretQuestionReference:
-          type: string
-          description: Reference to the selected secret question
-          format: object
-        AuthenticationSecretQuestionTemplate:
-          type: string
-          description: Template includes the question text and provided customer response - given value is compared to the stored value
-          format: string
-        AuthenticationSecretQuestionValue:
-          type: string
-          description: 'This is the stored value, the provided value is compared to this'
-          format: string
-        SecretQuestionTestResult:
-          type: string
-          description: The result of the secret question check
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    Biometric:
-      type: object
-      properties:
-        AuthenticationBiometricType:
-          type: string
-          description: The type of biometric record being used for authentication
-          format: string
-        AuthenticationBiometricRecord:
-          type: string
-          description: 'The biometric record submitted for authentication (e.g. face scan, fingerprint, signature)'
-          format: string
-        RegisteredBiometricInstanceReference:
-          type: string
-          description: The registered customer biometric record reference - maintained as an issued device instance
-          format: object
-        BiometricTestResult:
-          type: string
-          description: The result of the biometric check
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    Document:
-      type: object
-      properties:
-        AuthenticationDocumentReference:
-          type: string
-          description: Reference to the document and document type being presented for authentication
-          format: object
-        AuthenticationDocumentContent:
-          type: string
-          description: The submitted document content in any appropriate format/media (e.g. scan)
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: The document reference for the authentication document
-          format: object
-        DocumentContent:
-          type: string
-          description: The stored document - available in any suitable media for comparison
-          format: string
-        AuthenticationDocumentComparisonTestResult:
-          type: string
-          description: The result of comparing the presented document to the stored value
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    Behavior:
-      type: object
-      properties:
-        AuthenticationBehaviorType:
-          type: string
-          description: The type of behavioral record being used for authentication
-          format: string
-        AuthenticationBehaviorRecord:
-          type: string
-          description: The behavioral record submitted for authentication
-          format: string
-        RegisteredBehaviorInstanceReference:
-          type: string
-          description: Reference to the registered customer behavioral record
-          format: object
-        BehaviorTestResult:
-          type: string
-          description: The result of the behavioral check
-          format: string
-      description: "All kind of verifications \n\nExamples: Password verification"
-    PartyAuthenticationAssessment:
-      type: object
-      properties:
-        CustomerReference:
-          type: string
-          description: Reference to the customer as the authentication subject
-          format: object
-        PartyReference:
-          type: string
-          description: Reference to the party or legal entity as the authentication subject
-          format: object
-        PartyAuthenticationAssessmentProfile:
-          type: string
-          description: Details the types of authentication assessments that are combined into the overall evaluation
-          format: string
-        AuthenticationType:
-          type: string
-          description: Reference to the different types of authentication assessment
-          format: string
-        PartyAuthenticationConsolidationRecord:
-          type: string
-          description: The combination of the different assessment results used in the authentication determination
-          format: string
-        CustomerContactAuthenticationLevel:
-          type: string
-          description: 'The required value and value returned as a result of the authentication task, defining the level of identity assurance achieved - valid for the duration of the current contact'
-          format: string
-      description: 'To test or assess an entity, possibly against some formal qualification or certification requirement within Party Authentication. '
     EvaluatePartyAuthenticationAssessmentRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EvCR Evaluate a customer''s authenticity'
+              description: '|||'
+              format: String
     EvaluatePartyAuthenticationAssessmentResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationAssessmentProfile:
+        type: object
+        properties:
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvCR Evaluate a customer''s authenticity'
+              description: '|||'
+              format: String
+    EvaluatePartyAuthenticationAssessment:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdatePartyAuthenticationAssessmentRequest:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: '|||'
+              format: String
+          AuthenticationType:
+              type: string
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: '|||'
+              format: String
+    UpdatePartyAuthenticationAssessmentResponse:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyReference:
+              type: string
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: '|||'
+              format: String
+          AuthenticationType:
+              type: string
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: '|||'
+              format: String
+    UpdatePartyAuthenticationAssessment:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     ExecutePartyAuthenticationAssessmentRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: ExCR Execute an automated action for an assessment (e.g. submit data)'
+              description: '|||'
+              format: String
     ExecutePartyAuthenticationAssessmentResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationAssessmentProfile:
+        type: object
+        properties:
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ExCR Execute an automated action for an assessment (e.g. submit data)'
+              description: '|||'
+              format: String
+    ExecutePartyAuthenticationAssessment:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestPartyAuthenticationAssessmentRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqCR Request manual interventions in an assessment (e.g. engage specialist)'
+              description: '|||'
+              format: String
     RequestPartyAuthenticationAssessmentResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationAssessmentProfile:
+        type: object
+        properties:
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual interventions in an assessment (e.g. engage specialist)'
+              description: '|||'
+              format: String
+    RequestPartyAuthenticationAssessment:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrievePartyAuthenticationAssessmentResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about an authentication assessment'
+              description: '|||'
+              format: String
+    RetrievePartyAuthenticationAssessment:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     EvaluatePasswordRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Password:
-          type: object
-          properties:
-            AuthenticationReferenceDataReference:
+              description: '|||'
+              format: String
+          AuthenticationReferenceDataReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationReferenceDataType:
+              description: '|||'
+              format: Object
+          AuthenticationReferenceDataType:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationReferenceDataValue:
+              description: '|||'
+              format: String
+          AuthenticationReferenceDataValue:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationPasswordReference:
+              description: '|||'
+              format: Object
+          AuthenticationPasswordReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationPasswordTemplate:
+              description: '|||'
+              format: Object
+          AuthenticationPasswordTemplate:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationPasswordStoredValue:
+              description: '|||'
+              format: String
+          AuthenticationPasswordStoredValue:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationPasswordValidFromToDate:
-              $ref: '#/components/schemas/date'
-            AuthenticationPasswordPresentedValue:
+              description: '|||'
+              format: String
+          AuthenticationPasswordValidFromToDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          AuthenticationPasswordPresentedValue:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EvBQ Evaluate customer authenticity using passwords'
+              description: '|||'
+              format: String
     EvaluatePasswordResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationConsolidationRecord:
+        type: object
+        properties:
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Password:
-          type: object
-          properties:
-            AuthenticationPasswordTestResult:
+              description: '|||'
+              format: String
+          AuthenticationPasswordTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvBQ Evaluate customer authenticity using passwords'
+              description: '|||'
+              format: String
+    EvaluatePassword:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrievePasswordResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Password:
-          type: object
-          properties:
-            AuthenticationReferenceDataReference:
+              description: '|||'
+              format: String
+          AuthenticationReferenceDataReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationReferenceDataType:
+              description: '|||'
+              format: Object
+          AuthenticationReferenceDataType:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationReferenceDataValue:
+              description: '|||'
+              format: String
+          AuthenticationReferenceDataValue:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationPasswordReference:
+              description: '|||'
+              format: Object
+          AuthenticationPasswordReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationPasswordTemplate:
+              description: '|||'
+              format: Object
+          AuthenticationPasswordTemplate:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationPasswordStoredValue:
+              description: '|||'
+              format: String
+          AuthenticationPasswordStoredValue:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationPasswordValidFromToDate:
-              $ref: '#/components/schemas/date'
-            AuthenticationPasswordPresentedValue:
+              description: '|||'
+              format: String
+          AuthenticationPasswordValidFromToDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          AuthenticationPasswordPresentedValue:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationPasswordTestResult:
+              description: '|||'
+              format: String
+          AuthenticationPasswordTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a password evaluation'
+              description: '|||'
+              format: String
+    RetrievePassword:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     EvaluateQuestionRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Question:
-          type: object
-          properties:
-            AuthenticationSecretQuestionReference:
+              description: '|||'
+              format: String
+          AuthenticationSecretQuestionReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationSecretQuestionTemplate:
+              description: '|||'
+              format: Object
+          AuthenticationSecretQuestionTemplate:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationSecretQuestionValue:
+              description: '|||'
+              format: String
+          AuthenticationSecretQuestionValue:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EvBQ Evaluate customer authenticity using secret questions'
+              description: '|||'
+              format: String
     EvaluateQuestionResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationConsolidationRecord:
+        type: object
+        properties:
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Question:
-          type: object
-          properties:
-            SecretQuestionTestResult:
+              description: '|||'
+              format: String
+          SecretQuestionTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvBQ Evaluate customer authenticity using secret questions'
+              description: '|||'
+              format: String
+    EvaluateQuestion:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveQuestionResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Question:
-          type: object
-          properties:
-            AuthenticationSecretQuestionReference:
+              description: '|||'
+              format: String
+          AuthenticationSecretQuestionReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationSecretQuestionTemplate:
+              description: '|||'
+              format: Object
+          AuthenticationSecretQuestionTemplate:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationSecretQuestionValue:
+              description: '|||'
+              format: String
+          AuthenticationSecretQuestionValue:
               type: string
-              description: "\r\n"
-              format: string
-            SecretQuestionTestResult:
+              description: '|||'
+              format: String
+          SecretQuestionTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a secret question evaluation'
+              description: '|||'
+              format: String
+    RetrieveQuestion:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     EvaluateDocumentRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Document:
-          type: object
-          properties:
-            AuthenticationDocumentReference:
+              description: '|||'
+              format: String
+          AuthenticationDocumentReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationDocumentContent:
+              description: '|||'
+              format: Object
+          AuthenticationDocumentContent:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EvBQ Evaluate customer authenticity using documents'
+              description: '|||'
+              format: Object
     EvaluateDocumentResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationConsolidationRecord:
+        type: object
+        properties:
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Document:
-          type: object
-          properties:
-            AuthenticationDocumentComparisonTestResult:
+              description: '|||'
+              format: String
+          AuthenticationDocumentComparisonTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvBQ Evaluate customer authenticity using documents'
+              description: '|||'
+              format: String
+    EvaluateDocument:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveDocumentResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Document:
-          type: object
-          properties:
-            AuthenticationDocumentReference:
+              description: '|||'
+              format: String
+          AuthenticationDocumentReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationDocumentContent:
+              description: '|||'
+              format: Object
+          AuthenticationDocumentContent:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationDocumentComparisonTestResult:
+              description: '|||'
+              format: Object
+          AuthenticationDocumentComparisonTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a document evaluation'
+              description: '|||'
+              format: String
+    RetrieveDocument:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     EvaluateDeviceRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Device:
-          type: object
-          properties:
-            AuthenticationDeviceReference:
+              description: '|||'
+              format: String
+          AuthenticationDeviceReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationDevicePropertyValue:
+              description: '|||'
+              format: Object
+          AuthenticationDevicePropertyValue:
               type: string
-              description: "\r\n"
-              format: string
-            IssuedDeviceInstanceReference:
+              description: '|||'
+              format: String
+          IssuedDeviceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevicePropertyValue:
+              description: '|||'
+              format: Object
+          IssuedDevicePropertyValue:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EvBQ Evaluate customer authenticity using a device'
+              description: '|||'
+              format: String
     EvaluateDeviceResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationConsolidationRecord:
+        type: object
+        properties:
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Device:
-          type: object
-          properties:
-            DeviceTestResult:
+              description: '|||'
+              format: String
+          DeviceTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvBQ Evaluate customer authenticity using a device'
+              description: '|||'
+              format: String
+    EvaluateDevice:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveDeviceResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Device:
-          type: object
-          properties:
-            AuthenticationDeviceReference:
+              description: '|||'
+              format: String
+          AuthenticationDeviceReference:
               type: string
-              description: "\r\n"
-              format: object
-            AuthenticationDevicePropertyValue:
+              description: '|||'
+              format: Object
+          AuthenticationDevicePropertyValue:
               type: string
-              description: "\r\n"
-              format: string
-            IssuedDeviceInstanceReference:
+              description: '|||'
+              format: String
+          IssuedDeviceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevicePropertyValue:
+              description: '|||'
+              format: Object
+          IssuedDevicePropertyValue:
               type: string
-              description: "\r\n"
-              format: string
-            DeviceTestResult:
+              description: '|||'
+              format: String
+          DeviceTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a device evaluation'
+              description: '|||'
+              format: String
+    RetrieveDevice:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     EvaluateBiometricRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Biometric:
-          type: object
-          properties:
-            AuthenticationBiometricType:
+              description: '|||'
+              format: String
+          AuthenticationBiometricType:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationBiometricRecord:
+              description: '|||'
+              format: String
+          AuthenticationBiometricRecord:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredBiometricInstanceReference:
+              description: '|||'
+              format: String
+          RegisteredBiometricInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EvBQ Evaluate customer authenticity using biometrics'
+              description: '|||'
+              format: Object
     EvaluateBiometricResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationConsolidationRecord:
+        type: object
+        properties:
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Biometric:
-          type: object
-          properties:
-            BiometricTestResult:
+              description: '|||'
+              format: String
+          BiometricTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvBQ Evaluate customer authenticity using biometrics'
+              description: '|||'
+              format: String
+    EvaluateBiometric:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveBiometricResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Biometric:
-          type: object
-          properties:
-            AuthenticationBiometricType:
+              description: '|||'
+              format: String
+          AuthenticationBiometricType:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationBiometricRecord:
+              description: '|||'
+              format: String
+          AuthenticationBiometricRecord:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredBiometricInstanceReference:
+              description: '|||'
+              format: String
+          RegisteredBiometricInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            BiometricTestResult:
+              description: '|||'
+              format: Object
+          BiometricTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a biometric evaluation'
+              description: '|||'
+              format: String
+    RetrieveBiometric:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     EvaluateBehaviorRequest:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Behavior:
-          type: object
-          properties:
-            AuthenticationBehaviorType:
+              description: '|||'
+              format: String
+          AuthenticationBehaviorType:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationBehaviorRecord:
+              description: '|||'
+              format: String
+          AuthenticationBehaviorRecord:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredBehaviorInstanceReference:
+              description: '|||'
+              format: String
+          RegisteredBehaviorInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EvBQ Evaluate customer authenticity using behaviors'
+              description: '|||'
+              format: Object
     EvaluateBehaviorResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            PartyAuthenticationConsolidationRecord:
+        type: object
+        properties:
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Behavior:
-          type: object
-          properties:
-            BehaviorTestResult:
+              description: '|||'
+              format: String
+          BehaviorTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EvBQ Evaluate customer authenticity using behaviors'
+              description: '|||'
+              format: String
+    EvaluateBehavior:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveBehaviorResponse:
-      type: object
-      properties:
-        PartyAuthenticationAssessment:
-          type: object
-          properties:
-            CustomerReference:
+        type: object
+        properties:
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyReference:
+              description: '|||'
+              format: Object
+          PartyReference:
               type: string
-              description: "\r\n"
-              format: object
-            PartyAuthenticationAssessmentProfile:
+              description: '|||'
+              format: Object
+          PartyAuthenticationAssessmentProfile:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationType:
+              description: '|||'
+              format: String
+          AuthenticationType:
               type: string
-              description: "\r\n"
-              format: string
-            PartyAuthenticationConsolidationRecord:
+              description: '|||'
+              format: String
+          PartyAuthenticationConsolidationRecord:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerContactAuthenticationLevel:
+              description: '|||'
+              format: String
+          CustomerContactAuthenticationLevel:
               type: string
-              description: "\r\n"
-              format: string
-        Behavior:
-          type: object
-          properties:
-            AuthenticationBehaviorType:
+              description: '|||'
+              format: String
+          AuthenticationBehaviorType:
               type: string
-              description: "\r\n"
-              format: string
-            AuthenticationBehaviorRecord:
+              description: '|||'
+              format: String
+          AuthenticationBehaviorRecord:
               type: string
-              description: "\r\n"
-              format: string
-            RegisteredBehaviorInstanceReference:
+              description: '|||'
+              format: String
+          RegisteredBehaviorInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            BehaviorTestResult:
+              description: '|||'
+              format: Object
+          BehaviorTestResult:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a behavior evaluation'
+              description: '|||'
+              format: String
+    RetrieveBehavior:
+        type: object
+        properties:
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PartyAuthenticationAssessmentProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AuthenticationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PartyAuthenticationConsolidationRecord:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerContactAuthenticationLevel:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     EvaluatePartyAuthenticationAssessmentResponse:
-      description: EvaluatePartyAuthenticationAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluatePartyAuthenticationAssessmentResponse'
-    PartyAuthenticationAssessment:
-      description: PartyAuthenticationAssessment
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PartyAuthenticationAssessment'
+        description: PartyAuthenticationAssessmentEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/EvaluatePartyAuthenticationAssessmentResponse
+    UpdatePartyAuthenticationAssessmentResponse:
+        description: PartyAuthenticationAssessmentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdatePartyAuthenticationAssessmentResponse'
     ExecutePartyAuthenticationAssessmentResponse:
-      description: ExecutePartyAuthenticationAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecutePartyAuthenticationAssessmentResponse'
+        description: PartyAuthenticationAssessmentExecute
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExecutePartyAuthenticationAssessmentResponse
     RequestPartyAuthenticationAssessmentResponse:
-      description: RequestPartyAuthenticationAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestPartyAuthenticationAssessmentResponse'
+        description: PartyAuthenticationAssessmentRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestPartyAuthenticationAssessmentResponse
     RetrievePartyAuthenticationAssessmentResponse:
-      description: RetrievePartyAuthenticationAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrievePartyAuthenticationAssessmentResponse'
+        description: PartyAuthenticationAssessmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrievePartyAuthenticationAssessmentResponse
     EvaluatePasswordResponse:
-      description: EvaluatePasswordResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluatePasswordResponse'
+        description: PasswordEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluatePasswordResponse'
     RetrievePasswordResponse:
-      description: RetrievePasswordResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrievePasswordResponse'
+        description: PasswordRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrievePasswordResponse'
     EvaluateQuestionResponse:
-      description: EvaluateQuestionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateQuestionResponse'
+        description: QuestionEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateQuestionResponse'
     RetrieveQuestionResponse:
-      description: RetrieveQuestionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveQuestionResponse'
+        description: QuestionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveQuestionResponse'
     EvaluateDocumentResponse:
-      description: EvaluateDocumentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateDocumentResponse'
+        description: DocumentEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateDocumentResponse'
     RetrieveDocumentResponse:
-      description: RetrieveDocumentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveDocumentResponse'
+        description: DocumentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveDocumentResponse'
     EvaluateDeviceResponse:
-      description: EvaluateDeviceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateDeviceResponse'
+        description: DeviceEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateDeviceResponse'
     RetrieveDeviceResponse:
-      description: RetrieveDeviceResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveDeviceResponse'
+        description: DeviceRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveDeviceResponse'
     EvaluateBiometricResponse:
-      description: EvaluateBiometricResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateBiometricResponse'
+        description: BiometricEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateBiometricResponse'
     RetrieveBiometricResponse:
-      description: RetrieveBiometricResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveBiometricResponse'
+        description: BiometricRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveBiometricResponse'
     EvaluateBehaviorResponse:
-      description: EvaluateBehaviorResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateBehaviorResponse'
+        description: BehaviorEvaluate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateBehaviorResponse'
     RetrieveBehaviorResponse:
-      description: RetrieveBehaviorResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveBehaviorResponse'
+        description: BehaviorRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveBehaviorResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    partyauthenticationid:
-      name: partyauthenticationid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    partyauthenticationassessmentid:
+        name: partyauthenticationassessmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     passwordid:
-      name: passwordid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: passwordid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     questionid:
-      name: questionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: questionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     documentid:
-      name: documentid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: documentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     deviceid:
-      name: deviceid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: deviceid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     biometricid:
-      name: biometricid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: biometricid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     behaviorid:
-      name: behaviorid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: behaviorid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     EvaluatePartyAuthenticationAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluatePartyAuthenticationAssessmentRequest'
-      required: true
-    PartyAuthenticationAssessment:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PartyAuthenticationAssessment'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/EvaluatePartyAuthenticationAssessmentRequest
+        required: true
+    UpdatePartyAuthenticationAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdatePartyAuthenticationAssessmentRequest'
+        required: true
     ExecutePartyAuthenticationAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecutePartyAuthenticationAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExecutePartyAuthenticationAssessmentRequest'
+        required: true
     RequestPartyAuthenticationAssessmentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestPartyAuthenticationAssessmentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestPartyAuthenticationAssessmentRequest'
+        required: true
+    RetrievePartyAuthenticationAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     EvaluatePasswordRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluatePasswordRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluatePasswordRequest'
+        required: true
+    RetrievePasswordRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     EvaluateQuestionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateQuestionRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateQuestionRequest'
+        required: true
+    RetrieveQuestionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     EvaluateDocumentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateDocumentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateDocumentRequest'
+        required: true
+    RetrieveDocumentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     EvaluateDeviceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateDeviceRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateDeviceRequest'
+        required: true
+    RetrieveDeviceRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     EvaluateBiometricRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateBiometricRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateBiometricRequest'
+        required: true
+    RetrieveBiometricRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     EvaluateBehaviorRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EvaluateBehaviorRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/EvaluateBehaviorRequest'
+        required: true
+    RetrieveBehaviorRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

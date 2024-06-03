@@ -1,1733 +1,2432 @@
 openapi: 3.0.1
 info:
   title: Commission Agreement
-  description: Maintain and administer the terms and transactions for employee and broker commissions
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Commission Agreement (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/CommissionAgreement/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/CommissionAgreement/12.0.1'
 paths:
-  '/CommissionAgreement/{commissionagreementid}/Control':
-    put:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: CoCR Control the processing of Employee Commission Agreement
-      description: CoCR Control the processing of Employee Commission Agreement
-      operationId: Control
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      requestBody:
-        $ref: '#/components/requestBodies/ControlEmployeeCommissionAgreementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ControlEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/Exchange':
-    put:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: 'EcCR Accept, verify, etc. aspects of Employee Commission Agreement processing'
-      description: 'EcCR Accept, verify, etc. aspects of Employee Commission Agreement processing'
-      operationId: Exchange
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeEmployeeCommissionAgreementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/Grant':
-    put:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: GrCR Obtain permission to act in relation to Employee Commission Agreement
-      description: GrCR Obtain permission to act in relation to Employee Commission Agreement
-      operationId: Grant
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      requestBody:
-        $ref: '#/components/requestBodies/GrantEmployeeCommissionAgreementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/GrantEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /CommissionAgreement/Initiate:
-    post:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: InCR Instantiate a new Employee Commission Agreement
-      description: InCR Instantiate a new Employee Commission Agreement
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateEmployeeCommissionAgreementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/Retrieve':
-    get:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: ReCR Retrieve details about any aspect of Employee Commission Agreement
-      description: ReCR Retrieve details about any aspect of Employee Commission Agreement
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/Request':
-    put:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: RqCR Request manual intervention or a decision with respect to Employee Commission Agreement
-      description: RqCR Request manual intervention or a decision with respect to Employee Commission Agreement
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestEmployeeCommissionAgreementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/Update':
-    put:
-      tags:
-        - CR - EmployeeCommissionAgreement
-      summary: UpCR Update details relating to Employee Commission Agreement
-      description: UpCR Update details relating to Employee Commission Agreement
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateEmployeeCommissionAgreementRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateEmployeeCommissionAgreementResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/{commissiontermsid}/Control':
-    put:
-      tags:
-        - BQ - CommissionTerms
-      summary: CoBQ Control the processing of Commission Terms
-      description: CoBQ Control the processing of Commission Terms
-      operationId: ControlCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-        - $ref: '#/components/parameters/commissiontermsid'
-      requestBody:
-        $ref: '#/components/requestBodies/ControlCommissionTermsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ControlCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/{commissiontermsid}/Exchange':
-    put:
-      tags:
-        - BQ - CommissionTerms
-      summary: 'EcBQ Accept, verify, etc. aspects of Commission Terms processing'
-      description: 'EcBQ Accept, verify, etc. aspects of Commission Terms processing'
-      operationId: ExchangeCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-        - $ref: '#/components/parameters/commissiontermsid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeCommissionTermsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/{commissiontermsid}/Grant':
-    put:
-      tags:
-        - BQ - CommissionTerms
-      summary: GrBQ Obtain permission to act in relation to Commission Terms
-      description: GrBQ Obtain permission to act in relation to Commission Terms
-      operationId: GrantCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-        - $ref: '#/components/parameters/commissiontermsid'
-      requestBody:
-        $ref: '#/components/requestBodies/GrantCommissionTermsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/GrantCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/Initiate':
-    post:
-      tags:
-        - BQ - CommissionTerms
-      summary: InBQ Instantiate a new Commission Terms
-      description: InBQ Instantiate a new Commission Terms
-      operationId: InitiateCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateCommissionTermsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/{commissiontermsid}/Retrieve':
-    get:
-      tags:
-        - BQ - CommissionTerms
-      summary: ReBQ Retrieve details about any aspect of Commission Terms
-      description: ReBQ Retrieve details about any aspect of Commission Terms
-      operationId: RetrieveCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-        - $ref: '#/components/parameters/commissiontermsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/{commissiontermsid}/Request':
-    put:
-      tags:
-        - BQ - CommissionTerms
-      summary: RqBQ Request manual intervention or a decision with respect to Commission Terms
-      description: RqBQ Request manual intervention or a decision with respect to Commission Terms
-      operationId: RequestCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-        - $ref: '#/components/parameters/commissiontermsid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestCommissionTermsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/CommissionAgreement/{commissionagreementid}/CommissionTerms/{commissiontermsid}/Update':
-    put:
-      tags:
-        - BQ - CommissionTerms
-      summary: UpBQ Update details relating to Commission Terms
-      description: UpBQ Update details relating to Commission Terms
-      operationId: UpdateCommissionTerms
-      parameters:
-        - $ref: '#/components/parameters/commissionagreementid'
-        - $ref: '#/components/parameters/commissiontermsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateCommissionTermsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateCommissionTermsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/{employeecommissionagreementid}/Control':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - EmployeeCommissionAgreement'
+        summary: >-
+          (DDD Service) CoCR Control the processing of Employee Commission
+          Agreement
+        description: >-
+          (DDD Service) CoCR Control the processing of Employee Commission
+          Agreement
+        operationId: EmployeeCommissionAgreement/Control
+        parameters:
+          - $ref: '#/components/parameters/employeecommissionagreementid'
+        requestBody:
+          $ref: '#/components/requestBodies/ControlEmployeeCommissionAgreementRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ControlEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/{employeecommissionagreementid}/Exchange':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - EmployeeCommissionAgreement'
+        summary: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Employee Commission
+          Agreement processing
+        description: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Employee Commission
+          Agreement processing
+        operationId: EmployeeCommissionAgreement/Exchange
+        parameters:
+          - $ref: '#/components/parameters/employeecommissionagreementid'
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExchangeEmployeeCommissionAgreementRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/{employeecommissionagreementid}/Grant':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - EmployeeCommissionAgreement'
+        summary: >-
+          (DDD Service) GrCR Obtain permission to act in relation to Employee
+          Commission Agreement
+        description: >-
+          (DDD Service) GrCR Obtain permission to act in relation to Employee
+          Commission Agreement
+        operationId: EmployeeCommissionAgreement/Grant
+        parameters:
+          - $ref: '#/components/parameters/employeecommissionagreementid'
+        requestBody:
+          $ref: '#/components/requestBodies/GrantEmployeeCommissionAgreementRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/GrantEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - EmployeeCommissionAgreement'
+        summary: (DDD Service) InCR Instantiate a new Employee Commission Agreement
+        description: (DDD Service) InCR Instantiate a new Employee Commission Agreement
+        operationId: EmployeeCommissionAgreement/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateEmployeeCommissionAgreementRequest
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/{employeecommissionagreementid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - EmployeeCommissionAgreement'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Employee
+          Commission Agreement
+        description: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Employee
+          Commission Agreement
+        operationId: EmployeeCommissionAgreement/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/employeecommissionagreementid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/{employeecommissionagreementid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - EmployeeCommissionAgreement'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Employee Commission Agreement
+        description: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Employee Commission Agreement
+        operationId: EmployeeCommissionAgreement/Request
+        parameters:
+          - $ref: '#/components/parameters/employeecommissionagreementid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestEmployeeCommissionAgreementRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/EmployeeCommissionAgreement/{employeecommissionagreementid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - EmployeeCommissionAgreement'
+        summary: >-
+          (DDD Service) UpCR Update details relating to Employee Commission
+          Agreement
+        description: >-
+          (DDD Service) UpCR Update details relating to Employee Commission
+          Agreement
+        operationId: EmployeeCommissionAgreement/Update
+        parameters:
+          - $ref: '#/components/parameters/employeecommissionagreementid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateEmployeeCommissionAgreementRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateEmployeeCommissionAgreementResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionAgreement/{commissiontermsid}/CommissionTerms/Control':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - CommissionTerms'
+        summary: (DDD Service) CoBQ Control the processing of Commission Terms
+        description: (DDD Service) CoBQ Control the processing of Commission Terms
+        operationId: CommissionTerms/Control
+        parameters:
+          - $ref: '#/components/parameters/commissiontermsid'
+        requestBody:
+          $ref: '#/components/requestBodies/ControlCommissionTermsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ControlCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionAgreement/{commissiontermsid}/CommissionTerms/Exchange':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - CommissionTerms'
+        summary: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Commission Terms
+          processing
+        description: >-
+          (DDD Service) EcBQ Accept, verify, etc. aspects of Commission Terms
+          processing
+        operationId: CommissionTerms/Exchange
+        parameters:
+          - $ref: '#/components/parameters/commissiontermsid'
+        requestBody:
+          $ref: '#/components/requestBodies/ExchangeCommissionTermsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/ExchangeCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionAgreement/{commissiontermsid}/CommissionTerms/Grant':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - CommissionTerms'
+        summary: >-
+          (DDD Service) GrBQ Obtain permission to act in relation to Commission
+          Terms
+        description: >-
+          (DDD Service) GrBQ Obtain permission to act in relation to Commission
+          Terms
+        operationId: CommissionTerms/Grant
+        parameters:
+          - $ref: '#/components/parameters/commissiontermsid'
+        requestBody:
+          $ref: '#/components/requestBodies/GrantCommissionTermsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/GrantCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionTerms/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - CommissionTerms'
+        summary: (DDD Service) InBQ Instantiate a new Commission Terms
+        description: (DDD Service) InBQ Instantiate a new Commission Terms
+        operationId: CommissionTerms/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateCommissionTermsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionAgreement/{commissiontermsid}/CommissionTerms/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - CommissionTerms'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Commission
+          Terms
+        description: >-
+          (DDD Service) ReBQ Retrieve details about any aspect of Commission
+          Terms
+        operationId: CommissionTerms/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/commissiontermsid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionAgreement/{commissiontermsid}/CommissionTerms/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - CommissionTerms'
+        summary: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Commission Terms
+        description: >-
+          (DDD Service) RqBQ Request manual intervention or a decision with
+          respect to Commission Terms
+        operationId: CommissionTerms/Request
+        parameters:
+          - $ref: '#/components/parameters/commissiontermsid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestCommissionTermsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/CommissionAgreement/{commissiontermsid}/CommissionTerms/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - CommissionTerms'
+        summary: (DDD Service) UpBQ Update details relating to Commission Terms
+        description: (DDD Service) UpBQ Update details relating to Commission Terms
+        operationId: CommissionTerms/Update
+        parameters:
+          - $ref: '#/components/parameters/commissiontermsid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateCommissionTermsRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateCommissionTermsResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: "The Employee Commission Agreement \nspecific Business Service"
-    CommissionTerms:
-      type: object
-      properties:
-        CommissionTermsPreconditions:
-          type: string
-          description: The required status/situation for the terms to applyand or tasks that need to be completed prior to the initiation of the workstep
-          format: string
-        CommissionTermsTermSchedule:
-          type: string
-          description: Any timing/duration considerations applying to the terms
-          format: string
-        CommissionTerms:
-          $ref: '#/components/schemas/businessservice'
-        CommissionTermsServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        CommissionTermsServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        CommissionTermsServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        CommissionTermsServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        CommissionTermsServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Maintain the terms and conditions that apply to a commercial relationship within Commission Agreement.\nExample: Define and maintain the terms govering the contratcual relationship with a customer."
-    CommissionAgreementOutcome:
-      type: object
-      properties:
-        CommissionAgreementAgreement:
-          type: string
-          description: ''
-          format: string
-        CommissionAgreementWorkProduct:
-          type: string
-          description: ''
-          format: string
-      description: "Maintain the terms and conditions that apply to a commercial relationship within Commission Agreement.\nExample: Define and maintain the terms govering the contratcual relationship with a customer."
-    EmployeeCommissionAgreement:
-      type: object
-      properties:
-        EmployeeCommissionAgreementParameterType:
-          type: string
-          description: A Classification  value that distinguishes between Options defined within Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementSelectedOption:
-          type: string
-          description: 'A selected optional feature in a product, identified by Parameter Type'
-          format: string
-        EmployeeCommissionAgreementType:
-          type: string
-          description: A Classification value that distinguishes between the subject matters of Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementReference:
-          type: string
-          description: Reference to Employee Commission Agreement
-          format: object
-        EmployeeCommissionAgreementRequest:
-          type: string
-          description: Request to discharge Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementSchedule:
-          type: string
-          description: Timetable to discharge Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementStatus:
-          type: string
-          description: The status of Employee Commission Agreement discharging
-          format: string
-        EmployeeCommissionAgreementAssociatedParty:
-          type: string
-          description: Reference to the party who is involved in Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementCustomerReference:
-          type: string
-          description: Reference to the customer who is involved in Employee Commission Agreement
-          format: object
-        EmployeeCommissionAgreementObligation:
-          type: string
-          description: Liability or duty to do something under the terms of Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementEntitlement:
-          type: string
-          description: Right to do something under the terms of Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementRegulationReference:
-          type: string
-          description: Reference to the regulation which is defined in Employee Commission Agreement
-          format: object
-        EmployeeCommissionAgreementRegulationType:
-          type: string
-          description: A Classification that distinguishes between the regularity domains of Employee Commission Agreement
-          format: string
-        EmployeeCommissionAgreementJurisdiction:
-          type: string
-          description: Reference to the jurisdiction that is assigned to Employee Commission Agreement in case of legal dispute.
-          format: string
-        EmployeeCommissionAgreementAccountReference:
-          type: string
-          description: Reference to the account which is linked to Employee Commission Agreement
-          format: object
-      description: "Maintain the terms and conditions that apply to a commercial relationship within Commission Agreement.\nExample: Define and maintain the terms govering the contratcual relationship with a customer."
     ControlEmployeeCommissionAgreementRequest:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CoCR Control the processing of Employee Commission Agreement'
+              description: '|||'
+              format: Object
     ControlEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementRequest:
+        type: object
+        properties:
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CoCR Control the processing of Employee Commission Agreement'
+              description: '|||'
+              format: String
+    ControlEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ExchangeEmployeeCommissionAgreementRequest:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EcCR Accept, verify, etc. aspects of Employee Commission Agreement processing'
+              description: '|||'
+              format: Object
     ExchangeEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementRequest:
+        type: object
+        properties:
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EcCR Accept, verify, etc. aspects of Employee Commission Agreement processing'
+              description: '|||'
+              format: String
+    ExchangeEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     GrantEmployeeCommissionAgreementRequest:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: GrCR Obtain permission to act in relation to Employee Commission Agreement'
+              description: '|||'
+              format: Object
     GrantEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementRequest:
+        type: object
+        properties:
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: GrCR Obtain permission to act in relation to Employee Commission Agreement'
+              description: '|||'
+              format: String
+    GrantEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateEmployeeCommissionAgreementRequest:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Instantiate a new Employee Commission Agreement'
+              description: '|||'
+              format: Object
     InitiateEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementRequest:
+        type: object
+        properties:
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Instantiate a new Employee Commission Agreement'
+              description: '|||'
+              format: String
+    InitiateEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about any aspect of Employee Commission Agreement'
+              description: '|||'
+              format: Object
+    RetrieveEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RequestEmployeeCommissionAgreementRequest:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: RqCR Request manual intervention or a decision with respect to Employee Commission Agreement'
+              description: '|||'
+              format: Object
     RequestEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementRequest:
+        type: object
+        properties:
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention or a decision with respect to Employee Commission Agreement'
+              description: '|||'
+              format: String
+    RequestEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateEmployeeCommissionAgreementRequest:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementParameterType:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSelectedOption:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementType:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRequest:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementCustomerReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementObligation:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementObligation:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementEntitlement:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementRegulationReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
               type: string
-              description: "\r\n"
-              format: object
-            EmployeeCommissionAgreementRegulationType:
+              description: '|||'
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementJurisdiction:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementAccountReference:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementAccountReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpCR Update details relating to Employee Commission Agreement'
+              description: '|||'
+              format: Object
     UpdateEmployeeCommissionAgreementResponse:
-      type: object
-      properties:
-        EmployeeCommissionAgreement:
-          type: object
-          properties:
-            EmployeeCommissionAgreementRequest:
+        type: object
+        properties:
+          EmployeeCommissionAgreementRequest:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementSchedule:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            EmployeeCommissionAgreementStatus:
+              description: '|||'
+              format: String
+          EmployeeCommissionAgreementStatus:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details relating to Employee Commission Agreement'
+              description: '|||'
+              format: String
+    UpdateEmployeeCommissionAgreement:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ControlCommissionTermsRequest:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CoBQ Control the processing of Commission Terms'
+              description: '|||'
+              format: String
     ControlCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CoBQ Control the processing of Commission Terms'
+              description: '|||'
+              format: String
+    ControlCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ExchangeCommissionTermsRequest:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: EcBQ Accept, verify, etc. aspects of Commission Terms processing'
+              description: '|||'
+              format: String
     ExchangeCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EcBQ Accept, verify, etc. aspects of Commission Terms processing'
+              description: '|||'
+              format: String
+    ExchangeCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     GrantCommissionTermsRequest:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: GrBQ Obtain permission to act in relation to Commission Terms'
+              description: '|||'
+              format: String
     GrantCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: GrBQ Obtain permission to act in relation to Commission Terms'
+              description: '|||'
+              format: String
+    GrantCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateCommissionTermsRequest:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Instantiate a new Commission Terms'
+              description: '|||'
+              format: String
     InitiateCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Instantiate a new Commission Terms'
+              description: '|||'
+              format: String
+    InitiateCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Commission Terms'
+              description: '|||'
+              format: String
+    RetrieveCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RequestCommissionTermsRequest:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: RqBQ Request manual intervention or a decision with respect to Commission Terms'
+              description: '|||'
+              format: String
     RequestCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqBQ Request manual intervention or a decision with respect to Commission Terms'
+              description: '|||'
+              format: String
+    RequestCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateCommissionTermsRequest:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details relating to Commission Terms'
+              description: '|||'
+              format: String
     UpdateCommissionTermsResponse:
-      type: object
-      properties:
-        CommissionTerms:
-          type: object
-          properties:
-            CommissionTermsPreconditions:
+        type: object
+        properties:
+          CommissionTermsPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsTermSchedule:
+              description: '|||'
+              format: String
+          CommissionTermsTermSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceType:
+              description: '|||'
+              format: String
+          CommissionTermsServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceDescription:
+              description: '|||'
+              format: String
+          CommissionTermsServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          CommissionTermsServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceWorkProduct:
+              description: '|||'
+              format: String
+          CommissionTermsServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            CommissionTermsServiceName:
+              description: '|||'
+              format: String
+          CommissionTermsServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details relating to Commission Terms'
+              description: '|||'
+              format: String
+    UpdateCommissionTerms:
+        type: object
+        properties:
+          EmployeeCommissionAgreementParameterType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSelectedOption:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRequest:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementStatus:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAssociatedParty:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementCustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementObligation:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementRegulationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          EmployeeCommissionAgreementRegulationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementJurisdiction:
+              type: string
+              description: "||\r\n|"
+              format: String
+          EmployeeCommissionAgreementAccountReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     ControlEmployeeCommissionAgreementResponse:
-      description: ControlEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementControl
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlEmployeeCommissionAgreementResponse'
     ExchangeEmployeeCommissionAgreementResponse:
-      description: ExchangeEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeEmployeeCommissionAgreementResponse'
     GrantEmployeeCommissionAgreementResponse:
-      description: GrantEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementGrant
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/GrantEmployeeCommissionAgreementResponse'
     InitiateEmployeeCommissionAgreementResponse:
-      description: InitiateEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateEmployeeCommissionAgreementResponse'
     RetrieveEmployeeCommissionAgreementResponse:
-      description: RetrieveEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveEmployeeCommissionAgreementResponse'
     RequestEmployeeCommissionAgreementResponse:
-      description: RequestEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestEmployeeCommissionAgreementResponse'
     UpdateEmployeeCommissionAgreementResponse:
-      description: UpdateEmployeeCommissionAgreementResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateEmployeeCommissionAgreementResponse'
+        description: EmployeeCommissionAgreementUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateEmployeeCommissionAgreementResponse'
     ControlCommissionTermsResponse:
-      description: ControlCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlCommissionTermsResponse'
+        description: CommissionTermsControl
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlCommissionTermsResponse'
     ExchangeCommissionTermsResponse:
-      description: ExchangeCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeCommissionTermsResponse'
+        description: CommissionTermsExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeCommissionTermsResponse'
     GrantCommissionTermsResponse:
-      description: GrantCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantCommissionTermsResponse'
+        description: CommissionTermsGrant
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/GrantCommissionTermsResponse'
     InitiateCommissionTermsResponse:
-      description: InitiateCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCommissionTermsResponse'
+        description: CommissionTermsInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCommissionTermsResponse'
     RetrieveCommissionTermsResponse:
-      description: RetrieveCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveCommissionTermsResponse'
+        description: CommissionTermsRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveCommissionTermsResponse'
     RequestCommissionTermsResponse:
-      description: RequestCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCommissionTermsResponse'
+        description: CommissionTermsRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestCommissionTermsResponse'
     UpdateCommissionTermsResponse:
-      description: UpdateCommissionTermsResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCommissionTermsResponse'
+        description: CommissionTermsUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCommissionTermsResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    commissionagreementid:
-      name: commissionagreementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    employeecommissionagreementid:
+        name: employeecommissionagreementid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     commissiontermsid:
-      name: commissiontermsid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: commissiontermsid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     ControlEmployeeCommissionAgreementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlEmployeeCommissionAgreementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlEmployeeCommissionAgreementRequest'
+        required: true
     ExchangeEmployeeCommissionAgreementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeEmployeeCommissionAgreementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeEmployeeCommissionAgreementRequest'
+        required: true
     GrantEmployeeCommissionAgreementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantEmployeeCommissionAgreementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/GrantEmployeeCommissionAgreementRequest'
+        required: true
     InitiateEmployeeCommissionAgreementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateEmployeeCommissionAgreementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateEmployeeCommissionAgreementRequest'
+        required: true
+    RetrieveEmployeeCommissionAgreementRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     RequestEmployeeCommissionAgreementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestEmployeeCommissionAgreementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestEmployeeCommissionAgreementRequest'
+        required: true
     UpdateEmployeeCommissionAgreementRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateEmployeeCommissionAgreementRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateEmployeeCommissionAgreementRequest'
+        required: true
     ControlCommissionTermsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlCommissionTermsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ControlCommissionTermsRequest'
+        required: true
     ExchangeCommissionTermsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeCommissionTermsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/ExchangeCommissionTermsRequest'
+        required: true
     GrantCommissionTermsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantCommissionTermsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/GrantCommissionTermsRequest'
+        required: true
     InitiateCommissionTermsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateCommissionTermsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateCommissionTermsRequest'
+        required: true
+    RetrieveCommissionTermsRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     RequestCommissionTermsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestCommissionTermsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestCommissionTermsRequest'
+        required: true
     UpdateCommissionTermsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCommissionTermsRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateCommissionTermsRequest'
+        required: true

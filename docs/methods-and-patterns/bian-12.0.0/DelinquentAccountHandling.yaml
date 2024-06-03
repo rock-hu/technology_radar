@@ -1,2177 +1,3788 @@
 openapi: 3.0.1
 info:
   title: Delinquent Account Handling
-  description: This service domain handles delinquent accounts (typically for active credit/charge cards) for follow-up of payments due through periodic review and contacts. This process ends when the account is cancelled and is transferred to Collections
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Delinquent Account Handling (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/DelinquentAccountHandling/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/DelinquentAccountHandling/12.0.1'
 paths:
-  /DelinquentAccountHandling/Initiate:
-    post:
-      tags:
-        - CR - DelinquentAccountProcedure
-      summary: InCR Initiate delinquent account processing
-      description: InCR Initiate delinquent account processing
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateDelinquentAccountProcedureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateDelinquentAccountProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Update':
-    put:
-      tags:
-        - CR - DelinquentAccountProcedure
-      summary: UpCR Update details of delinquent account processing
-      description: UpCR Update details of delinquent account processing
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateDelinquentAccountProcedureRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateDelinquentAccountProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Retrieve':
-    get:
-      tags:
-        - CR - DelinquentAccountProcedure
-      summary: ReCR Retrieve details about a delinquent account procedure
-      description: ReCR Retrieve details about a delinquent account procedure
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveDelinquentAccountProcedureResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Assessment/{assessmentid}/Retrieve':
-    get:
-      tags:
-        - BQ - Assessment
-      summary: ReBQ Retrieve details about a delinquent account assessment
-      description: ReBQ Retrieve details about a delinquent account assessment
-      operationId: RetrieveAssessment
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/assessmentid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveAssessmentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Contact/Initiate':
-    post:
-      tags:
-        - BQ - Contact
-      summary: InBQ Initiate contact with the customer for a delinquent account
-      description: InBQ Initiate contact with the customer for a delinquent account
-      operationId: InitiateContact
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateContactRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateContactRequest'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Contact/{contactid}/Request':
-    put:
-      tags:
-        - BQ - Contact
-      summary: RqBQ Request contact processing for an active delinquent account procedure
-      description: RqBQ Request contact processing for an active delinquent account procedure
-      operationId: RequestContact
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/contactid'
-      requestBody:
-        $ref: '#/components/requestBodies/Contact'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestContactResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Contact/{contactid}/Retrieve':
-    get:
-      tags:
-        - BQ - Contact
-      summary: ReBQ Retrieve details about a contact
-      description: ReBQ Retrieve details about a contact
-      operationId: RetrieveContact
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/contactid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveContactResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Payment/Initiate':
-    post:
-      tags:
-        - BQ - Payment
-      summary: InBQ Initiate payment processing against the delinquent account
-      description: InBQ Initiate payment processing against the delinquent account
-      operationId: InitiatePayment
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiatePaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiatePaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Payment/{paymentid}/Update':
-    put:
-      tags:
-        - BQ - Payment
-      summary: UpBQ Update a payment transaction
-      description: UpBQ Update a payment transaction
-      operationId: UpdatePayment
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/paymentid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdatePaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdatePaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Payment/{paymentid}/Retrieve':
-    get:
-      tags:
-        - BQ - Payment
-      summary: ReBQ Retrieve details about a payment made against the delinquent account
-      description: ReBQ Retrieve details about a payment made against the delinquent account
-      operationId: RetrievePayment
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/paymentid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievePaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Resolution/{resolutionid}/Update':
-    put:
-      tags:
-        - BQ - Resolution
-      summary: UpBQ Update a resolution plan
-      description: UpBQ Update a resolution plan
-      operationId: UpdateResolution
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/resolutionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Resolution'
-      responses:
-        '200':
-          $ref: '#/components/responses/Resolution'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/DelinquentAccountHandling/{delinquentaccounthandlingid}/Resolution/{resolutionid}/Retrieve':
-    get:
-      tags:
-        - BQ - Resolution
-      summary: ReBQ Retrieve details about a delinquent account recovery plan
-      description: ReBQ Retrieve details about a delinquent account recovery plan
-      operationId: RetrieveResolution
-      parameters:
-        - $ref: '#/components/parameters/delinquentaccounthandlingid'
-        - $ref: '#/components/parameters/resolutionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveResolutionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountProcedure/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - DelinquentAccountProcedure'
+        summary: (DDD Service) InCR Initiate delinquent account processing
+        description: (DDD Service) InCR Initiate delinquent account processing
+        operationId: DelinquentAccountProcedure/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateDelinquentAccountProcedureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateDelinquentAccountProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountProcedure/{delinquentaccountprocedureid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - DelinquentAccountProcedure'
+        summary: (DDD Service) UpCR Update details of delinquent account processing
+        description: (DDD Service) UpCR Update details of delinquent account processing
+        operationId: DelinquentAccountProcedure/Update
+        parameters:
+          - $ref: '#/components/parameters/delinquentaccountprocedureid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateDelinquentAccountProcedureRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateDelinquentAccountProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountProcedure/{delinquentaccountprocedureid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - DelinquentAccountProcedure'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about a delinquent account
+          procedure
+        description: >-
+          (DDD Service) ReCR Retrieve details about a delinquent account
+          procedure
+        operationId: DelinquentAccountProcedure/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/delinquentaccountprocedureid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveDelinquentAccountProcedureResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{assessmentid}/Assessment/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Assessment'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a delinquent account
+          assessment
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a delinquent account
+          assessment
+        operationId: Assessment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/assessmentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveAssessmentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Contact/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Contact'
+        summary: >-
+          (DDD Service) InBQ Initiate contact with the customer for a delinquent
+          account
+        description: >-
+          (DDD Service) InBQ Initiate contact with the customer for a delinquent
+          account
+        operationId: Contact/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateContactRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateContactResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{contactid}/Contact/Request':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Contact'
+        summary: >-
+          (DDD Service) RqBQ Request contact processing for an active delinquent
+          account procedure
+        description: >-
+          (DDD Service) RqBQ Request contact processing for an active delinquent
+          account procedure
+        operationId: Contact/Request
+        parameters:
+          - $ref: '#/components/parameters/contactid'
+        requestBody:
+          $ref: '#/components/requestBodies/RequestContactRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/RequestContactResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{contactid}/Contact/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Contact'
+        summary: (DDD Service) ReBQ Retrieve details about a contact
+        description: (DDD Service) ReBQ Retrieve details about a contact
+        operationId: Contact/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/contactid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveContactResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Payment/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Payment'
+        summary: >-
+          (DDD Service) InBQ Initiate payment processing against the delinquent
+          account
+        description: >-
+          (DDD Service) InBQ Initiate payment processing against the delinquent
+          account
+        operationId: Payment/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiatePaymentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiatePaymentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{paymentid}/Payment/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Payment'
+        summary: (DDD Service) UpBQ Update a payment transaction
+        description: (DDD Service) UpBQ Update a payment transaction
+        operationId: Payment/Update
+        parameters:
+          - $ref: '#/components/parameters/paymentid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdatePaymentRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdatePaymentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{paymentid}/Payment/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Payment'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a payment made against the
+          delinquent account
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a payment made against the
+          delinquent account
+        operationId: Payment/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/paymentid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrievePaymentResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{resolutionid}/Resolution/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Resolution'
+        summary: (DDD Service) UpBQ Update a resolution plan
+        description: (DDD Service) UpBQ Update a resolution plan
+        operationId: Resolution/Update
+        parameters:
+          - $ref: '#/components/parameters/resolutionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateResolutionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateResolutionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/DelinquentAccountHandling/{resolutionid}/Resolution/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Resolution'
+        summary: >-
+          (DDD Service) ReBQ Retrieve details about a delinquent account
+          recovery plan
+        description: >-
+          (DDD Service) ReBQ Retrieve details about a delinquent account
+          recovery plan
+        operationId: Resolution/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/resolutionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveResolutionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    date:
-      type: object
-      properties:
-        DateContent:
-          type: string
-          description: ''
-          format: string
-      description: The date and time of the contact
-    Contact:
-      type: object
-      properties:
-        CustomerDelinquentAccountContactRecord:
-          type: string
-          description: Reference to a contact established with the customer
-          format: string
-        ContactMessage:
-          type: string
-          description: Content of the reminder message
-          format: string
-        ContactDate:
-          $ref: '#/components/schemas/date'
-        ContactResult:
-          type: string
-          description: Any response arising from the contact
-          format: string
-        DocumentDirectoryEntryInstanceReference:
-          type: string
-          description: The document reference for associated documents
-          format: object
-        DocumentContent:
-          type: string
-          description: Document copy/content
-          format: string
-        CorrespondenceInstanceReference:
-          type: string
-          description: Reference to the correspondence generated and received
-          format: object
-        CorrespondenceContent:
-          type: string
-          description: Correspondence content
-          format: string
-        DelinquentAccountContactResult:
-          type: string
-          description: The result of the tracking and reminder activity
-          format: string
-        DelinquentAccountContactWorkProduct:
-          type: string
-          description: 'Work documentation, forms and schedules produced and referenced during the task'
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Resolution:
-      type: object
-      properties:
-        DelinquentAccountResolutionTaskResult:
-          type: string
-          description: 'The result of the resolution planning activity (e.g.. account recovered, passed to collections)'
-          format: string
-        DelinquentAccountResolutionActionPlan:
-          type: string
-          description: The recommended processing for the delinquent account - details passed on to associated function for execution as necessary
-          format: string
-        DelinquentAccountResolutionWorkProduct:
-          type: string
-          description: 'Work documentation, forms and schedules produced and referenced during the task'
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Assessment:
-      type: object
-      properties:
-        DelinquentAccountAssessmentWorkProduct:
-          type: string
-          description: The outcome of the assessment of the delinquent product account based on billing/payment and transaction history
-          format: string
-        DelinquentAccountAssessmentRecord:
-          type: string
-          description: The task to contact the customer and request/negotiate payment
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Payment:
-      type: object
-      properties:
-        PaymentTransactionReference:
-          type: string
-          description: Reference to the received payment
-          format: object
-        PaymentTransaction:
-          type: string
-          description: Payment transaction details
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    currencycode:
-      type: object
-      properties:
-        Currencycode:
-          type: string
-          description: "A code identifying a currency according to ISO-4217.\nA currency is a system of money in general use in a particular country.\n\nCode allocated to a currency, by a maintenance agency, under an international identification scheme as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\". Valid currency codes are registered with the ISO 4217 Maintenance Agency, and consist of three contiguous letters. (ISO20022)\n\n"
-          format: datatype
-      description: The primary account currency CurrencyCode|CurrencyCode (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022 BM ()
-    DelinquentAccountProcedure:
-      type: object
-      properties:
-        ProductInstanceReference:
-          type: string
-          description: The linked credit product reference
-          format: object
-        ProductAccountNumber:
-          type: string
-          description: The associated account number in any suitable format (e.g. IBAN)
-          format: string
-        ProductandServiceType:
-          type: string
-          description: The type of product
-          format: string
-        CustomerReference:
-          type: string
-          description: Reference to the account primary party/owner
-          format: object
-        BankBranchLocationReference:
-          type: string
-          description: Bank branch associated with the account for booking purposes
-          format: object
-        IssuedDevice:
-          type: string
-          description: Reference to an issued device associated with the facility (such as a card or key fob)
-          format: string
-        AccountCurrency:
-          $ref: '#/components/schemas/currencycode'
-        TaxReference:
-          type: string
-          description: Reference identifier linking the account to appropriate tax handling
-          format: object
-        Associations:
-          type: string
-          description: Definition of the associations to the account
-          format: string
-        AssociationType:
-          type: string
-          description: 'The type of association (e.g. guarantor, co-signer)'
-          format: string
-        AssociationObligationEntitlement:
-          type: string
-          description: 'Description of the role, obligations or entitlements of the associated party'
-          format: string
-        AssociationReference:
-          type: string
-          description: Reference to the associated party
-          format: object
-        LinkedAccounts:
-          type: string
-          description: Definition of the associations to the account
-          format: string
-        LinkType:
-          type: string
-          description: The type and purpose for the link
-          format: string
-        AccountDetails:
-          type: string
-          description: Details of the linked account
-          format: string
-        PositionLimits:
-          type: string
-          description: Position limits that are maintained by the account
-          format: string
-        PositionLimitType:
-          type: string
-          description: 'The type of position maintained for the account (e.g. transaction credit/debit, netting, position)'
-          format: string
-        PositionLimitSettings:
-          type: string
-          description: 'The position definition, associated limit settings and rules'
-          format: string
-        PositionLimitValue:
-          type: string
-          description: The current calculated position
-          format: string
-        CollateralAssetAllocationInstanceReference:
-          type: string
-          description: Reference to the customer's collateral holdings and allocations
-          format: object
-        CollateralAssetAllocationProfile:
-          type: string
-          description: Record of collateral applied to the customer products
-          format: string
-        DateType:
-          type: string
-          description: 'Key dates associated with the account (e.g. opening date, closing date)'
-          format: string
-        Date:
-          type: string
-          description: Value of the date type
-          format: string
-        BillingTransactions:
-          type: string
-          description: Customer billing transactions (and associated payments)
-          format: string
-        BillingTransactionReference:
-          type: string
-          description: Reference to individual transactions
-          format: object
-        PaymentTransactions:
-          type: string
-          description: Payments deposited to the account
-          format: string
-        PaymentTransactionReference:
-          type: string
-          description: Reference to individual transactions
-          format: object
-        ProductTransactions:
-          type: string
-          description: Product execution transactions (payments)
-          format: string
-        ProductTransactionReference:
-          type: string
-          description: Reference to individual transactions
-          format: object
-        InterestTransactions:
-          type: string
-          description: Interest accrued against the account
-          format: string
-        InterestTransactionReference:
-          type: string
-          description: Reference to individual transactions
-          format: object
-        FeeTransactions:
-          type: string
-          description: Fees applied against the account
-          format: string
-        FeeTransactionReference:
-          type: string
-          description: Reference to individual transactions
-          format: object
-        CreditPlanReference:
-          type: string
-          description: Reference to a linked credit plan if applicable
-          format: object
-        CreditPlanType:
-          type: string
-          description: 'The credit plan type (e.g. (Cash, Credit, Charge, Balance Transfer, Promotions, Securitized, etc.)'
-          format: string
-        DelinquentAccountProcessingSchedule:
-          type: string
-          description: Details the schedule of actions to be applied to the delinquent account
-          format: string
-      description: 'Complete work tasks following a defined procedure in support of general office activities and product and service delivery within Delinquent Account Handling. '
     InitiateDelinquentAccountProcedureRequest:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InCR Initiate delinquent account processing'
+              description: '|||'
+              format: String
     InitiateDelinquentAccountProcedureResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            DateType:
+        type: object
+        properties:
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Initiate delinquent account processing'
+              description: '|||'
+              format: String
+    InitiateDelinquentAccountProcedure:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdateDelinquentAccountProcedureRequest:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpCR Update details of delinquent account processing'
+              description: '|||'
+              format: String
     UpdateDelinquentAccountProcedureResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details of delinquent account processing'
+              description: '|||'
+              format: String
+    UpdateDelinquentAccountProcedure:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveDelinquentAccountProcedureResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReCR Retrieve details about a delinquent account procedure'
+              description: '|||'
+              format: String
+    RetrieveDelinquentAccountProcedure:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveAssessmentResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        Assessment:
-          type: object
-          properties:
-            DelinquentAccountAssessmentWorkProduct:
+              description: '|||'
+              format: String
+          DelinquentAccountAssessmentWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountAssessmentRecord:
+              description: '|||'
+              format: String
+          DelinquentAccountAssessmentRecord:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a delinquent account assessment'
+              description: '|||'
+              format: String
+    RetrieveAssessment:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    InitiateContactRequest:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: '|||'
+              format: String
+          ProductandServiceType:
+              type: string
+              description: '|||'
+              format: String
+          CustomerReference:
+              type: string
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: '|||'
+              format: Object
+          IssuedDevice:
+              type: string
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: '|||'
+              format: Object
+          Associations:
+              type: string
+              description: '|||'
+              format: String
+          AssociationType:
+              type: string
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: '|||'
+              format: String
+          AssociationReference:
+              type: string
+              description: '|||'
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: '|||'
+              format: String
+          LinkType:
+              type: string
+              description: '|||'
+              format: String
+          AccountDetails:
+              type: string
+              description: '|||'
+              format: String
+          PositionLimits:
+              type: string
+              description: '|||'
+              format: String
+          PositionLimitType:
+              type: string
+              description: '|||'
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: '|||'
+              format: String
+          PositionLimitValue:
+              type: string
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: '|||'
+              format: String
+          DateType:
+              type: string
+              description: '|||'
+              format: String
+          BillingTransactions:
+              type: string
+              description: '|||'
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: '|||'
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProductTransactions:
+              type: string
+              description: '|||'
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: '|||'
+              format: Object
+          InterestTransactions:
+              type: string
+              description: '|||'
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: '|||'
+              format: Object
+          FeeTransactions:
+              type: string
+              description: '|||'
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: '|||'
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: '|||'
+              format: Object
+          CreditPlanType:
+              type: string
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: '|||'
+              format: String
     InitiateContactResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            DateType:
+        type: object
+        properties:
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        Contact:
-          type: object
-          properties:
-            CustomerDelinquentAccountContactRecord:
+              description: '|||'
+              format: String
+          CustomerDelinquentAccountContactRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ContactMessage:
+              description: '|||'
+              format: String
+          ContactMessage:
               type: string
-              description: "\r\n"
-              format: string
-            ContactDate:
-              $ref: '#/components/schemas/date'
-            ContactResult:
+              description: '|||'
+              format: String
+          ContactDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ContactResult:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DocumentContent:
+              description: '|||'
+              format: Object
+          DocumentContent:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: String
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceContent:
+              description: '|||'
+              format: Object
+          CorrespondenceContent:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountContactResult:
+              description: '|||'
+              format: String
+          DelinquentAccountContactResult:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountContactWorkProduct:
+              description: '|||'
+              format: String
+          DelinquentAccountContactWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Initiate contact with the customer for a delinquent account'
-    InitiateContactRequest:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+              description: '|||'
+              format: String
+    InitiateContact:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: "||\r\n|"
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: "||\r\n|"
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: "||\r\n|"
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: "||\r\n|"
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: "||\r\n|"
+              format: String
+          Date:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate contact with the customer for a delinquent account'
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RequestContactResponse:
-      type: object
-      properties:
-        Contact:
-          type: object
-          properties:
-            CustomerDelinquentAccountContactRecord:
+        type: object
+        properties:
+          CustomerDelinquentAccountContactRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ContactMessage:
+              description: '|||'
+              format: String
+          ContactMessage:
               type: string
-              description: "\r\n"
-              format: string
-            ContactDate:
-              $ref: '#/components/schemas/date'
-            ContactResult:
+              description: '|||'
+              format: String
+          ContactDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ContactResult:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DocumentContent:
+              description: '|||'
+              format: Object
+          DocumentContent:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: String
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceContent:
+              description: '|||'
+              format: Object
+          CorrespondenceContent:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqBQ Request contact processing for an active delinquent account procedure'
+              description: '|||'
+              format: String
+    RequestContact:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveContactResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        Contact:
-          type: object
-          properties:
-            CustomerDelinquentAccountContactRecord:
+              description: '|||'
+              format: String
+          CustomerDelinquentAccountContactRecord:
               type: string
-              description: "\r\n"
-              format: string
-            ContactMessage:
+              description: '|||'
+              format: String
+          ContactMessage:
               type: string
-              description: "\r\n"
-              format: string
-            ContactDate:
-              $ref: '#/components/schemas/date'
-            ContactResult:
+              description: '|||'
+              format: String
+          ContactDate:
+              $ref: '#/components/schemas/ISODate'
+              description: >-
+                ISODate|ISODate
+                (https://www.iso20022.org/standardsrepository/type/ISODate)|Standard|ISO20022
+                BM ()
+          ContactResult:
               type: string
-              description: "\r\n"
-              format: string
-            DocumentDirectoryEntryInstanceReference:
+              description: '|||'
+              format: String
+          DocumentDirectoryEntryInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            DocumentContent:
+              description: '|||'
+              format: Object
+          DocumentContent:
               type: string
-              description: "\r\n"
-              format: string
-            CorrespondenceInstanceReference:
+              description: '|||'
+              format: String
+          CorrespondenceInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CorrespondenceContent:
+              description: '|||'
+              format: Object
+          CorrespondenceContent:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a contact'
+              description: '|||'
+              format: String
+    RetrieveContact:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     InitiatePaymentRequest:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Initiate payment processing against the delinquent account'
+              description: '|||'
+              format: String
     InitiatePaymentResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            PaymentTransactions:
+        type: object
+        properties:
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: InBQ Initiate payment processing against the delinquent account'
+              description: '|||'
+              format: Object
+    InitiatePayment:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     UpdatePaymentRequest:
-      type: object
-      properties:
-        Payment:
-          type: object
-          properties:
-            PaymentTransactionReference:
+        type: object
+        properties:
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpBQ Update a payment transaction'
+              description: '|||'
+              format: Object
     UpdatePaymentResponse:
-      type: object
-      properties:
-        Payment:
-          type: object
-          properties:
-            PaymentTransactionReference:
+        type: object
+        properties:
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: UpBQ Update a payment transaction'
+              description: '|||'
+              format: Object
+    UpdatePayment:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrievePaymentResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReBQ Retrieve details about a payment made against the delinquent account'
+              description: '|||'
+              format: Object
+    RetrievePayment:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    UpdateResolutionRequest:
+        type: object
+        properties:
+          DelinquentAccountResolutionTaskResult:
+              type: string
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionActionPlan:
+              type: string
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+    UpdateResolutionResponse:
+        type: object
+        properties:
+          DelinquentAccountResolutionTaskResult:
+              type: string
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionActionPlan:
+              type: string
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+    UpdateResolution:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
     RetrieveResolutionResponse:
-      type: object
-      properties:
-        DelinquentAccountProcedure:
-          type: object
-          properties:
-            ProductInstanceReference:
+        type: object
+        properties:
+          ProductInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductAccountNumber:
+              description: '|||'
+              format: Object
+          ProductAccountNumber:
               type: string
-              description: "\r\n"
-              format: string
-            ProductandServiceType:
+              description: '|||'
+              format: String
+          ProductandServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            CustomerReference:
+              description: '|||'
+              format: String
+          CustomerReference:
               type: string
-              description: "\r\n"
-              format: object
-            BankBranchLocationReference:
+              description: '|||'
+              format: Object
+          BankBranchLocationReference:
               type: string
-              description: "\r\n"
-              format: object
-            IssuedDevice:
+              description: '|||'
+              format: Object
+          IssuedDevice:
               type: string
-              description: "\r\n"
-              format: string
-            AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
-            TaxReference:
+              description: '|||'
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
               type: string
-              description: "\r\n"
-              format: object
-            Associations:
+              description: '|||'
+              format: Object
+          Associations:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationType:
+              description: '|||'
+              format: String
+          AssociationType:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationObligationEntitlement:
+              description: '|||'
+              format: String
+          AssociationObligationEntitlement:
               type: string
-              description: "\r\n"
-              format: string
-            AssociationReference:
+              description: '|||'
+              format: String
+          AssociationReference:
               type: string
-              description: "\r\n"
-              format: object
-            LinkedAccounts:
+              description: '|||'
+              format: Object
+          LinkedAccounts:
               type: string
-              description: "\r\n"
-              format: string
-            LinkType:
+              description: '|||'
+              format: String
+          LinkType:
               type: string
-              description: "\r\n"
-              format: string
-            AccountDetails:
+              description: '|||'
+              format: String
+          AccountDetails:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimits:
+              description: '|||'
+              format: String
+          PositionLimits:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitType:
+              description: '|||'
+              format: String
+          PositionLimitType:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitSettings:
+              description: '|||'
+              format: String
+          PositionLimitSettings:
               type: string
-              description: "\r\n"
-              format: string
-            PositionLimitValue:
+              description: '|||'
+              format: String
+          PositionLimitValue:
               type: string
-              description: "\r\n"
-              format: string
-            CollateralAssetAllocationInstanceReference:
+              description: '|||'
+              format: String
+          CollateralAssetAllocationInstanceReference:
               type: string
-              description: "\r\n"
-              format: object
-            CollateralAssetAllocationProfile:
+              description: '|||'
+              format: Object
+          CollateralAssetAllocationProfile:
               type: string
-              description: "\r\n"
-              format: string
-            DateType:
+              description: '|||'
+              format: String
+          DateType:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactions:
+              description: '|||'
+              format: String
+          BillingTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            BillingTransactionReference:
+              description: '|||'
+              format: String
+          BillingTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            PaymentTransactions:
+              description: '|||'
+              format: Object
+          PaymentTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            PaymentTransactionReference:
+              description: '|||'
+              format: String
+          PaymentTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProductTransactions:
+              description: '|||'
+              format: Object
+          ProductTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            ProductTransactionReference:
+              description: '|||'
+              format: String
+          ProductTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            InterestTransactions:
+              description: '|||'
+              format: Object
+          InterestTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            InterestTransactionReference:
+              description: '|||'
+              format: String
+          InterestTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            FeeTransactions:
+              description: '|||'
+              format: Object
+          FeeTransactions:
               type: string
-              description: "\r\n"
-              format: string
-            FeeTransactionReference:
+              description: '|||'
+              format: String
+          FeeTransactionReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanReference:
+              description: '|||'
+              format: Object
+          CreditPlanReference:
               type: string
-              description: "\r\n"
-              format: object
-            CreditPlanType:
+              description: '|||'
+              format: Object
+          CreditPlanType:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountProcessingSchedule:
+              description: '|||'
+              format: String
+          DelinquentAccountProcessingSchedule:
               type: string
-              description: "\r\n"
-              format: string
-        Resolution:
-          type: object
-          properties:
-            DelinquentAccountResolutionTaskResult:
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionTaskResult:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountResolutionActionPlan:
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionActionPlan:
               type: string
-              description: "\r\n"
-              format: string
-            DelinquentAccountResolutionWorkProduct:
+              description: '|||'
+              format: String
+          DelinquentAccountResolutionWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about a delinquent account recovery plan'
+              description: '|||'
+              format: String
+    RetrieveResolution:
+        type: object
+        properties:
+          ProductInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductAccountNumber:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductandServiceType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CustomerReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          BankBranchLocationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          IssuedDevice:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountCurrency:
+              $ref: '#/components/schemas/CurrencyCode'
+              description: >-
+                CurrencyCode|CurrencyCode
+                (https://www.iso20022.org/standardsrepository/type/CurrencyCode)|Standard|ISO20022
+                BM ()
+          TaxReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          Associations:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationObligationEntitlement:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AssociationReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          LinkedAccounts:
+              type: string
+              description: "||\r\n|"
+              format: String
+          LinkType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          AccountDetails:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimits:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitSettings:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PositionLimitValue:
+              type: string
+              description: "||\r\n|"
+              format: String
+          CollateralAssetAllocationInstanceReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CollateralAssetAllocationProfile:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DateType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          Date:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          BillingTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          PaymentTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          PaymentTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          ProductTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          InterestTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          InterestTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          FeeTransactions:
+              type: string
+              description: "||\r\n|"
+              format: String
+          FeeTransactionReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+          CreditPlanType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          DelinquentAccountProcessingSchedule:
+              type: string
+              description: "||\r\n|"
+              format: String
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
+    CurrencyCode:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - Code allocated to a currency, by a maintenance agency, under an
+          international identification scheme as described in the latest edition
+          of the international standard ISO 4217 "Codes for the representation
+          of currencies and funds". Valid currency codes are registered with the
+          ISO 4217 Maintenance Agency, and consist of three contiguous letters.
+    ISODate:
+        type: string
+        format: ''
+        description: >-
+          (DDD Entity) - A particular point in the progression of time in a calendar year
+          expressed in the YYYY-MM-DD format. This representation is defined in
+          "XML Schema Part 2: Datatypes Second Edition W3C Recommendation 28
+          October 2004" which is aligned with ISO 8601.
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     InitiateDelinquentAccountProcedureResponse:
-      description: InitiateDelinquentAccountProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateDelinquentAccountProcedureResponse'
+        description: DelinquentAccountProcedureInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateDelinquentAccountProcedureResponse'
     UpdateDelinquentAccountProcedureResponse:
-      description: UpdateDelinquentAccountProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateDelinquentAccountProcedureResponse'
+        description: DelinquentAccountProcedureUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateDelinquentAccountProcedureResponse'
     RetrieveDelinquentAccountProcedureResponse:
-      description: RetrieveDelinquentAccountProcedureResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveDelinquentAccountProcedureResponse'
+        description: DelinquentAccountProcedureRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveDelinquentAccountProcedureResponse'
     RetrieveAssessmentResponse:
-      description: RetrieveAssessmentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveAssessmentResponse'
-    InitiateContactRequest:
-      description: InitiateContactRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateContactRequest'
+        description: AssessmentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveAssessmentResponse'
+    InitiateContactResponse:
+        description: ContactInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateContactResponse'
     RequestContactResponse:
-      description: RequestContactResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestContactResponse'
+        description: ContactRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RequestContactResponse'
     RetrieveContactResponse:
-      description: RetrieveContactResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveContactResponse'
+        description: ContactRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveContactResponse'
     InitiatePaymentResponse:
-      description: InitiatePaymentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiatePaymentResponse'
+        description: PaymentInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiatePaymentResponse'
     UpdatePaymentResponse:
-      description: UpdatePaymentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdatePaymentResponse'
+        description: PaymentUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentResponse'
     RetrievePaymentResponse:
-      description: RetrievePaymentResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrievePaymentResponse'
-    Resolution:
-      description: Resolution
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resolution'
+        description: PaymentRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrievePaymentResponse'
+    UpdateResolutionResponse:
+        description: ResolutionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateResolutionResponse'
     RetrieveResolutionResponse:
-      description: RetrieveResolutionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveResolutionResponse'
+        description: ResolutionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveResolutionResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    delinquentaccounthandlingid:
-      name: delinquentaccounthandlingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    delinquentaccountprocedureid:
+        name: delinquentaccountprocedureid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     assessmentid:
-      name: assessmentid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: assessmentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     contactid:
-      name: contactid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: contactid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     paymentid:
-      name: paymentid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: paymentid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     resolutionid:
-      name: resolutionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: resolutionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     InitiateDelinquentAccountProcedureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateDelinquentAccountProcedureRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateDelinquentAccountProcedureRequest'
+        required: true
     UpdateDelinquentAccountProcedureRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateDelinquentAccountProcedureRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateDelinquentAccountProcedureRequest'
+        required: true
+    RetrieveDelinquentAccountProcedureRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveAssessmentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiateContactRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateContactRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateContactRequest'
+        required: true
+    RequestContactRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveContactRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     InitiatePaymentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiatePaymentRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiatePaymentRequest'
+        required: true
     UpdatePaymentRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdatePaymentRequest'
-      required: true
-    Resolution:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resolution'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentRequest'
+        required: true
+    RetrievePaymentRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateResolutionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateResolutionRequest'
+        required: true
+    RetrieveResolutionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true

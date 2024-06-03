@@ -1,1889 +1,3049 @@
 openapi: 3.0.1
 info:
   title: Product Inventory Distribution
-  description: Administer the provisioning and distribution of product inventory across the branch network and/or distribute direct to customers (e.g. mail) where appropriate
-  contact:
-    name: BIAN
-    url: https://bian.org
-  version: 12.0.0
+  description: >-
+    BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context
+    Product Inventory Distribution (expanded with ISO200022)
+  version: 12.0.1
 servers:
-  - url: https://virtserver.swaggerhub.com/B154/BIAN/ProductInventoryDistribution/12.0.0
+  - url: ' https://virtserver.swaggerhub.com/BIAN-3/ProductInventoryDistribution/12.0.1'
 paths:
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Capture':
-    put:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: CaCR Capture Product Inventory Distribution Administrative Plan activity or event related information
-      description: CaCR Capture Product Inventory Distribution Administrative Plan activity or event related information
-      operationId: Capture
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Control':
-    put:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: CoCR Control the processing of Product Inventory Distribution Administrative Plan
-      description: CoCR Control the processing of Product Inventory Distribution Administrative Plan
-      operationId: Control
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/ControlProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ControlProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Exchange':
-    put:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: 'EcCR Accept, verify, etc. aspects of Product Inventory Distribution Administrative Plan processing'
-      description: 'EcCR Accept, verify, etc. aspects of Product Inventory Distribution Administrative Plan processing'
-      operationId: Exchange
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/ExchangeProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ExchangeProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Grant':
-    put:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: GrCR Obtain permission to act in relation to Product Inventory Distribution Administrative Plan
-      description: GrCR Obtain permission to act in relation to Product Inventory Distribution Administrative Plan
-      operationId: Grant
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/GrantProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/GrantProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /ProductInventoryDistribution/Initiate:
-    post:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: InCR Instantiate a new Product Inventory Distribution Administrative Plan
-      description: InCR Instantiate a new Product Inventory Distribution Administrative Plan
-      operationId: Initiate
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Retrieve':
-    get:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: ReCR Retrieve details about any aspect of Product Inventory Distribution Administrative Plan
-      description: ReCR Retrieve details about any aspect of Product Inventory Distribution Administrative Plan
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Request':
-    put:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: RqCR Request manual intervention or a decision with respect to Product Inventory Distribution Administrative Plan
-      description: RqCR Request manual intervention or a decision with respect to Product Inventory Distribution Administrative Plan
-      operationId: Request
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/RequestProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/RequestProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Update':
-    put:
-      tags:
-        - CR - ProductInventoryDistributionAdministrativePlan
-      summary: UpCR Update details relating to Product Inventory Distribution Administrative Plan
-      description: UpCR Update details relating to Product Inventory Distribution Administrative Plan
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateProductInventoryDistributionAdministrativePlanRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateProductInventoryDistributionAdministrativePlanResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Distribution/{distributionid}/Capture':
-    put:
-      tags:
-        - BQ - Distribution
-      summary: CaBQ Capture Distribution activity or event related information
-      description: CaBQ Capture Distribution activity or event related information
-      operationId: CaptureDistribution
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/distributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Distribution'
-      responses:
-        '200':
-          $ref: '#/components/responses/Distribution'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Mailing/{mailingid}/Capture':
-    put:
-      tags:
-        - BQ - Mailing
-      summary: CaBQ Capture Mailing activity or event related information
-      description: CaBQ Capture Mailing activity or event related information
-      operationId: CaptureMailing
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/mailingid'
-      requestBody:
-        $ref: '#/components/requestBodies/CaptureMailingRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CaptureMailingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Oversight/{oversightid}/Capture':
-    put:
-      tags:
-        - BQ - Oversight
-      summary: CaBQ Capture Oversight activity or event related information
-      description: CaBQ Capture Oversight activity or event related information
-      operationId: CaptureOversight
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/oversightid'
-      requestBody:
-        $ref: '#/components/requestBodies/Oversight'
-      responses:
-        '200':
-          $ref: '#/components/responses/Oversight'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Provisioning/{provisioningid}/Capture':
-    put:
-      tags:
-        - BQ - Provisioning
-      summary: CaBQ Capture Provisioning activity or event related information
-      description: CaBQ Capture Provisioning activity or event related information
-      operationId: CaptureProvisioning
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/provisioningid'
-      requestBody:
-        $ref: '#/components/requestBodies/Provisioning'
-      responses:
-        '200':
-          $ref: '#/components/responses/Provisioning'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Distribution/Initiate':
-    post:
-      tags:
-        - BQ - Distribution
-      summary: InBQ Instantiate a new Distribution
-      description: InBQ Instantiate a new Distribution
-      operationId: InitiateDistribution
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Distribution'
-      responses:
-        '200':
-          $ref: '#/components/responses/Distribution'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Mailing/Initiate':
-    post:
-      tags:
-        - BQ - Mailing
-      summary: InBQ Instantiate a new Mailing
-      description: InBQ Instantiate a new Mailing
-      operationId: InitiateMailing
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateMailingRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateMailingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Oversight/Initiate':
-    post:
-      tags:
-        - BQ - Oversight
-      summary: InBQ Instantiate a new Oversight
-      description: InBQ Instantiate a new Oversight
-      operationId: InitiateOversight
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Oversight'
-      responses:
-        '200':
-          $ref: '#/components/responses/Oversight'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Provisioning/Initiate':
-    post:
-      tags:
-        - BQ - Provisioning
-      summary: InBQ Instantiate a new Provisioning
-      description: InBQ Instantiate a new Provisioning
-      operationId: InitiateProvisioning
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Provisioning'
-      responses:
-        '200':
-          $ref: '#/components/responses/Provisioning'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Distribution/{distributionid}/Retrieve':
-    get:
-      tags:
-        - BQ - Distribution
-      summary: ReBQ Retrieve details about any aspect of Distribution
-      description: ReBQ Retrieve details about any aspect of Distribution
-      operationId: RetrieveDistribution
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/distributionid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveDistributionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Mailing/{mailingid}/Retrieve':
-    get:
-      tags:
-        - BQ - Mailing
-      summary: ReBQ Retrieve details about any aspect of Mailing
-      description: ReBQ Retrieve details about any aspect of Mailing
-      operationId: RetrieveMailing
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/mailingid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveMailingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Oversight/{oversightid}/Retrieve':
-    get:
-      tags:
-        - BQ - Oversight
-      summary: ReBQ Retrieve details about any aspect of Oversight
-      description: ReBQ Retrieve details about any aspect of Oversight
-      operationId: RetrieveOversight
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/oversightid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveOversightResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Provisioning/{provisioningid}/Retrieve':
-    get:
-      tags:
-        - BQ - Provisioning
-      summary: ReBQ Retrieve details about any aspect of Provisioning
-      description: ReBQ Retrieve details about any aspect of Provisioning
-      operationId: RetrieveProvisioning
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/provisioningid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProvisioningResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Distribution/{distributionid}/Update':
-    put:
-      tags:
-        - BQ - Distribution
-      summary: UpBQ Update details relating to Distribution
-      description: UpBQ Update details relating to Distribution
-      operationId: UpdateDistribution
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/distributionid'
-      requestBody:
-        $ref: '#/components/requestBodies/Distribution'
-      responses:
-        '200':
-          $ref: '#/components/responses/Distribution'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Mailing/{mailingid}/Update':
-    put:
-      tags:
-        - BQ - Mailing
-      summary: UpBQ Update details relating to Mailing
-      description: UpBQ Update details relating to Mailing
-      operationId: UpdateMailing
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/mailingid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateMailingRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateMailingResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Oversight/{oversightid}/Update':
-    put:
-      tags:
-        - BQ - Oversight
-      summary: UpBQ Update details relating to Oversight
-      description: UpBQ Update details relating to Oversight
-      operationId: UpdateOversight
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/oversightid'
-      requestBody:
-        $ref: '#/components/requestBodies/Oversight'
-      responses:
-        '200':
-          $ref: '#/components/responses/Oversight'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/ProductInventoryDistribution/{productinventorydistributionid}/Provisioning/{provisioningid}/Update':
-    put:
-      tags:
-        - BQ - Provisioning
-      summary: UpBQ Update details relating to Provisioning
-      description: UpBQ Update details relating to Provisioning
-      operationId: UpdateProvisioning
-      parameters:
-        - $ref: '#/components/parameters/productinventorydistributionid'
-        - $ref: '#/components/parameters/provisioningid'
-      requestBody:
-        $ref: '#/components/requestBodies/Provisioning'
-      responses:
-        '200':
-          $ref: '#/components/responses/Provisioning'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Capture':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) CaCR Capture Product Inventory Distribution
+          Administrative Plan activity or event related information
+        description: >-
+          (DDD Service) CaCR Capture Product Inventory Distribution
+          Administrative Plan activity or event related information
+        operationId: ProductInventoryDistributionAdministrativePlan/Capture
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/CaptureProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/CaptureProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Control':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) CoCR Control the processing of Product Inventory
+          Distribution Administrative Plan
+        description: >-
+          (DDD Service) CoCR Control the processing of Product Inventory
+          Distribution Administrative Plan
+        operationId: ProductInventoryDistributionAdministrativePlan/Control
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ControlProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ControlProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Exchange':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Product Inventory
+          Distribution Administrative Plan processing
+        description: >-
+          (DDD Service) EcCR Accept, verify, etc. aspects of Product Inventory
+          Distribution Administrative Plan processing
+        operationId: ProductInventoryDistributionAdministrativePlan/Exchange
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/ExchangeProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/ExchangeProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Grant':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) GrCR Obtain permission to act in relation to Product
+          Inventory Distribution Administrative Plan
+        description: >-
+          (DDD Service) GrCR Obtain permission to act in relation to Product
+          Inventory Distribution Administrative Plan
+        operationId: ProductInventoryDistributionAdministrativePlan/Grant
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/GrantProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/GrantProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/Initiate':
+      post:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) InCR Instantiate a new Product Inventory Distribution
+          Administrative Plan
+        description: >-
+          (DDD Service) InCR Instantiate a new Product Inventory Distribution
+          Administrative Plan
+        operationId: ProductInventoryDistributionAdministrativePlan/Initiate
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/InitiateProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/InitiateProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Retrieve':
+      get:
+        tags:
+          - CR (DDD Aggregate) - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Product
+          Inventory Distribution Administrative Plan
+        description: >-
+          (DDD Service) ReCR Retrieve details about any aspect of Product
+          Inventory Distribution Administrative Plan
+        operationId: ProductInventoryDistributionAdministrativePlan/Retrieve
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RetrieveProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Request':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Product Inventory Distribution Administrative Plan
+        description: >-
+          (DDD Service) RqCR Request manual intervention or a decision with
+          respect to Product Inventory Distribution Administrative Plan
+        operationId: ProductInventoryDistributionAdministrativePlan/Request
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/RequestProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/RequestProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistributionAdministrativePlan/{productinventorydistributionadministrativeplanid}/Update':
+      put:
+        tags:
+          - CR (DDD Aggregate)  - ProductInventoryDistributionAdministrativePlan'
+        summary: >-
+          (DDD Service) UpCR Update details relating to Product Inventory
+          Distribution Administrative Plan
+        description: >-
+          (DDD Service) UpCR Update details relating to Product Inventory
+          Distribution Administrative Plan
+        operationId: ProductInventoryDistributionAdministrativePlan/Update
+        parameters:
+          - $ref: >-
+              #/components/parameters/productinventorydistributionadministrativeplanid
+        requestBody:
+          $ref: >-
+            #/components/requestBodies/UpdateProductInventoryDistributionAdministrativePlanRequest
+        responses:
+          '200':
+            $ref: >-
+              #/components/responses/UpdateProductInventoryDistributionAdministrativePlanResponse
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{distributionid}/Distribution/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Distribution'
+        summary: >-
+          (DDD Service) CaBQ Capture Distribution activity or event related
+          information
+        description: >-
+          (DDD Service) CaBQ Capture Distribution activity or event related
+          information
+        operationId: Distribution/Capture
+        parameters:
+          - $ref: '#/components/parameters/distributionid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureDistributionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureDistributionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{mailingid}/Mailing/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Mailing'
+        summary: >-
+          (DDD Service) CaBQ Capture Mailing activity or event related
+          information
+        description: >-
+          (DDD Service) CaBQ Capture Mailing activity or event related
+          information
+        operationId: Mailing/Capture
+        parameters:
+          - $ref: '#/components/parameters/mailingid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureMailingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureMailingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{oversightid}/Oversight/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Oversight'
+        summary: >-
+          (DDD Service) CaBQ Capture Oversight activity or event related
+          information
+        description: >-
+          (DDD Service) CaBQ Capture Oversight activity or event related
+          information
+        operationId: Oversight/Capture
+        parameters:
+          - $ref: '#/components/parameters/oversightid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureOversightRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureOversightResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{provisioningid}/Provisioning/Capture':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Provisioning'
+        summary: >-
+          (DDD Service) CaBQ Capture Provisioning activity or event related
+          information
+        description: >-
+          (DDD Service) CaBQ Capture Provisioning activity or event related
+          information
+        operationId: Provisioning/Capture
+        parameters:
+          - $ref: '#/components/parameters/provisioningid'
+        requestBody:
+          $ref: '#/components/requestBodies/CaptureProvisioningRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/CaptureProvisioningResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Distribution/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Distribution'
+        summary: (DDD Service) InBQ Instantiate a new Distribution
+        description: (DDD Service) InBQ Instantiate a new Distribution
+        operationId: Distribution/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateDistributionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateDistributionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Mailing/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Mailing'
+        summary: (DDD Service) InBQ Instantiate a new Mailing
+        description: (DDD Service) InBQ Instantiate a new Mailing
+        operationId: Mailing/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateMailingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateMailingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Oversight/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Oversight'
+        summary: (DDD Service) InBQ Instantiate a new Oversight
+        description: (DDD Service) InBQ Instantiate a new Oversight
+        operationId: Oversight/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateOversightRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateOversightResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/Provisioning/Initiate':
+      post:
+        tags:
+          - BQ (DDD Aggregate)  - Provisioning'
+        summary: (DDD Service) InBQ Instantiate a new Provisioning
+        description: (DDD Service) InBQ Instantiate a new Provisioning
+        operationId: Provisioning/Initiate
+        requestBody:
+          $ref: '#/components/requestBodies/InitiateProvisioningRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/InitiateProvisioningResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{distributionid}/Distribution/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Distribution'
+        summary: (DDD Service) ReBQ Retrieve details about any aspect of Distribution
+        description: (DDD Service) ReBQ Retrieve details about any aspect of Distribution
+        operationId: Distribution/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/distributionid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveDistributionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{mailingid}/Mailing/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Mailing'
+        summary: (DDD Service) ReBQ Retrieve details about any aspect of Mailing
+        description: (DDD Service) ReBQ Retrieve details about any aspect of Mailing
+        operationId: Mailing/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/mailingid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveMailingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{oversightid}/Oversight/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Oversight'
+        summary: (DDD Service) ReBQ Retrieve details about any aspect of Oversight
+        description: (DDD Service) ReBQ Retrieve details about any aspect of Oversight
+        operationId: Oversight/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/oversightid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveOversightResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{provisioningid}/Provisioning/Retrieve':
+      get:
+        tags:
+          - BQ (DDD Aggregate) - Provisioning'
+        summary: (DDD Service) ReBQ Retrieve details about any aspect of Provisioning
+        description: (DDD Service) ReBQ Retrieve details about any aspect of Provisioning
+        operationId: Provisioning/Retrieve
+        parameters:
+          - $ref: '#/components/parameters/provisioningid'
+        responses:
+          '200':
+            $ref: '#/components/responses/RetrieveProvisioningResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{distributionid}/Distribution/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Distribution'
+        summary: (DDD Service) UpBQ Update details relating to Distribution
+        description: (DDD Service) UpBQ Update details relating to Distribution
+        operationId: Distribution/Update
+        parameters:
+          - $ref: '#/components/parameters/distributionid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateDistributionRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateDistributionResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{mailingid}/Mailing/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Mailing'
+        summary: (DDD Service) UpBQ Update details relating to Mailing
+        description: (DDD Service) UpBQ Update details relating to Mailing
+        operationId: Mailing/Update
+        parameters:
+          - $ref: '#/components/parameters/mailingid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateMailingRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateMailingResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{oversightid}/Oversight/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Oversight'
+        summary: (DDD Service) UpBQ Update details relating to Oversight
+        description: (DDD Service) UpBQ Update details relating to Oversight
+        operationId: Oversight/Update
+        parameters:
+          - $ref: '#/components/parameters/oversightid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateOversightRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateOversightResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+  '/ProductInventoryDistribution/{provisioningid}/Provisioning/Update':
+      put:
+        tags:
+          - BQ (DDD Aggregate)  - Provisioning'
+        summary: (DDD Service) UpBQ Update details relating to Provisioning
+        description: (DDD Service) UpBQ Update details relating to Provisioning
+        operationId: Provisioning/Update
+        parameters:
+          - $ref: '#/components/parameters/provisioningid'
+        requestBody:
+          $ref: '#/components/requestBodies/UpdateProvisioningRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/UpdateProvisioningResponse'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/Forbidden'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '429':
+            $ref: '#/components/responses/TooManyRequests'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    HTTPError:
-      type: object
-      properties:
-        status_code:
-          type: string
-          format: string
-        status:
-          type: string
-          format: string
-        message:
-          type: string
-          format: string
-      description: Status Attributes
-    businessservicetypevalues:
-      type: object
-      properties:
-        Businessservicetypevalues:
-          type: string
-          description: ''
-          format: enumeration
-      description: ''
-    businessservice:
-      type: object
-      properties:
-        BusinessServiceType:
-          $ref: '#/components/schemas/businessservicetypevalues'
-      description: The Product Inventory Distribution AdministrativePlan specific Business Service
-    Oversight:
-      type: object
-      properties:
-        OversightPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        OversightBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        OversightWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        AdministrativeOversight:
-          $ref: '#/components/schemas/businessservice'
-        OversightPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        OversightAdministrativeOversightServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        OversightAdministrativeOversightServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        OversightAdministrativeOversightServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        OversightAdministrativeOversightServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        OversightAdministrativeOversightServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Product Inventory Distribution. \nExample: Administer the time reporting and billing for the specialist sales support team."
-    Provisioning:
-      type: object
-      properties:
-        ProvisioningPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        ProvisioningBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        ProvisioningWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        ProvisioningPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        ProvisioningServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        ProvisioningServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        ProvisioningServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        ProvisioningServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        ProvisioningServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Product Inventory Distribution. \nExample: Administer the time reporting and billing for the specialist sales support team."
-    Distribution:
-      type: object
-      properties:
-        DistributionPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        DistributionBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        DistributionWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        BusinessService:
-          $ref: '#/components/schemas/businessservice'
-        DistributionPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        DistributionServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        DistributionServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        DistributionServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        DistributionServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        DistributionServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Product Inventory Distribution. \nExample: Administer the time reporting and billing for the specialist sales support team."
-    ProductInventoryDistributionOutcome:
-      type: object
-      properties:
-        ProductInventoryDistributionPerformanceAnalysis:
-          type: string
-          description: ''
-          format: string
-        ProductInventoryDistributionActivityAnalysis:
-          type: string
-          description: ''
-          format: string
-        ProductInventoryDistributionAdministrativePlan:
-          type: string
-          description: ''
-          format: string
-        ProductInventoryDistributionAdministrationTask:
-          type: string
-          description: ''
-          format: string
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Product Inventory Distribution. \nExample: Administer the time reporting and billing for the specialist sales support team."
-    Mailing:
-      type: object
-      properties:
-        MailingPreconditions:
-          type: string
-          description: The required status/situation before the routine can be undertaken
-          format: string
-        MailingBusinessUnitEmployeeReference:
-          type: string
-          description: The operating unit/employee responsible for performing the routine
-          format: object
-        MailingWorkSchedule:
-          type: string
-          description: The timing and key actions/milestones involved in completing the routine
-          format: string
-        Mailing:
-          $ref: '#/components/schemas/businessservice'
-        MailingPostconditions:
-          type: string
-          description: The completion status once the routine has been completed (note the need to fulfill a routine may recur frequently)
-          format: string
-        MailingMailingServiceType:
-          type: string
-          description: Reference to the specific business service type
-          format: string
-        MailingMailingServiceDescription:
-          type: string
-          description: Description of the performed business service
-          format: string
-        MailingMailingServiceInputsandOuputs:
-          type: string
-          description: Mandatory and optional inputs and output information for the business service
-          format: string
-        MailingMailingServiceWorkProduct:
-          type: string
-          description: 'Documentation, meeting schedules, notes, reasearch. calculations and any other work products produced by the business service'
-          format: string
-        MailingMailingServiceName:
-          type: string
-          description: ''
-          format: string
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Product Inventory Distribution. \nExample: Administer the time reporting and billing for the specialist sales support team."
-    ProductInventoryDistributionAdministrativePlan:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlanBudgetType:
-          type: string
-          description: A Classification value that distinguishes between Budgets within Product Inventory Distribution AdministrativePlan according to the type of resource and/or activity that is budgetted
-          format: string
-        ProductInventoryDistributionAdministrativePlanBudget:
-          type: string
-          description: 'An estimate of costs, revenues, and resources  over a specified period which is defined for Product Inventory Distribution AdministrativePlan'
-          format: string
-        ProductInventoryDistributionAdministrativePlanAssignment:
-          type: string
-          description: The allocation of someone or something which is specified for Product Inventory Distribution AdministrativePlan
-          format: string
-        ProductInventoryDistributionAdministrativePlanPlan:
-          type: string
-          description: A plan that defines clerical support for ProductInventoryDistribution
-          format: string
-        ProductInventoryDistributionAdministrativePlanReference:
-          type: string
-          description: Party who is involved in  Product Inventory Distribution AdministrativePlan
-          format: object
-      description: "Handle and assign the day to day activities, capture time, costs and income for an operational unit  within Product Inventory Distribution. \nExample: Administer the time reporting and billing for the specialist sales support team."
     CaptureProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CaCR Capture Product Inventory Distribution Administrative Plan activity or event related information'
+              description: '|||'
+              format: Object
     CaptureProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CaCR Capture Product Inventory Distribution Administrative Plan activity or event related information'
+              description: '|||'
+              format: String
+    CaptureProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ControlProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: CoCR Control the processing of Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: Object
     ControlProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CoCR Control the processing of Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: String
+    ControlProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     ExchangeProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: EcCR Accept, verify, etc. aspects of Product Inventory Distribution Administrative Plan processing'
+              description: '|||'
+              format: Object
     ExchangeProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: EcCR Accept, verify, etc. aspects of Product Inventory Distribution Administrative Plan processing'
+              description: '|||'
+              format: String
+    ExchangeProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     GrantProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: GrCR Obtain permission to act in relation to Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: Object
     GrantProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: GrCR Obtain permission to act in relation to Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: String
+    GrantProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: InCR Instantiate a new Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: Object
     InitiateProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InCR Instantiate a new Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: String
+    InitiateProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Output: ReCR Retrieve details about any aspect of Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: Object
+    RetrieveProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RequestProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: RqCR Request manual intervention or a decision with respect to Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: Object
     RequestProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: RqCR Request manual intervention or a decision with respect to Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: String
+    RequestProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateProductInventoryDistributionAdministrativePlanRequest:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanReference:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
               type: string
-              description: "\r\n"
-              format: object
-      description: 'Input: UpCR Update details relating to Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: Object
     UpdateProductInventoryDistributionAdministrativePlanResponse:
-      type: object
-      properties:
-        ProductInventoryDistributionAdministrativePlan:
-          type: object
-          properties:
-            ProductInventoryDistributionAdministrativePlanBudgetType:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanAssignment:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
               type: string
-              description: "\r\n"
-              format: string
-            ProductInventoryDistributionAdministrativePlanPlan:
+              description: '|||'
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpCR Update details relating to Product Inventory Distribution Administrative Plan'
+              description: '|||'
+              format: String
+    UpdateProductInventoryDistributionAdministrativePlan:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    CaptureDistributionRequest:
+        type: object
+        properties:
+          DistributionPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    BusinessService:
+        type: object
+        description: "(DDD Entity) - \r\n"
+        properties:
+          BusinessServiceType:
+              enum:
+                  -  Businessservicetypevalues
+              type: string
+              description: ">\r\n* `Businessservicetypevalues` \r\n* "
+    CaptureDistributionResponse:
+        type: object
+        properties:
+          DistributionPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureDistribution:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     CaptureMailingRequest:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: CaBQ Capture Mailing activity or event related information'
+              description: '|||'
+              format: String
     CaptureMailingResponse:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: CaBQ Capture Mailing activity or event related information'
+              description: '|||'
+              format: String
+    CaptureMailing:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    CaptureOversightRequest:
+        type: object
+        properties:
+          OversightPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureOversightResponse:
+        type: object
+        properties:
+          OversightPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureOversight:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    CaptureProvisioningRequest:
+        type: object
+        properties:
+          ProvisioningPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureProvisioningResponse:
+        type: object
+        properties:
+          ProvisioningPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
+              type: string
+              description: '|||'
+              format: String
+    CaptureProvisioning:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    InitiateDistributionRequest:
+        type: object
+        properties:
+          DistributionPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateDistributionResponse:
+        type: object
+        properties:
+          DistributionPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateDistribution:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     InitiateMailingRequest:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: InBQ Instantiate a new Mailing'
+              description: '|||'
+              format: String
     InitiateMailingResponse:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: InBQ Instantiate a new Mailing'
+              description: '|||'
+              format: String
+    InitiateMailing:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    InitiateOversightRequest:
+        type: object
+        properties:
+          OversightPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateOversightResponse:
+        type: object
+        properties:
+          OversightPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateOversight:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    InitiateProvisioningRequest:
+        type: object
+        properties:
+          ProvisioningPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateProvisioningResponse:
+        type: object
+        properties:
+          ProvisioningPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
+              type: string
+              description: '|||'
+              format: String
+    InitiateProvisioning:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveDistributionResponse:
-      type: object
-      properties:
-        Distribution:
-          type: object
-          properties:
-            DistributionPreconditions:
+        type: object
+        properties:
+          DistributionPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            DistributionBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            DistributionWorkSchedule:
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessService:
-              $ref: '#/components/schemas/businessservice'
-            DistributionPostconditions:
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            DistributionServiceType:
+              description: '|||'
+              format: String
+          DistributionServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            DistributionServiceDescription:
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            DistributionServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            DistributionServiceWorkProduct:
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            DistributionServiceName:
+              description: '|||'
+              format: String
+          DistributionServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Distribution'
+              description: '|||'
+              format: String
+    RetrieveDistribution:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveMailingResponse:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Mailing'
+              description: '|||'
+              format: String
+    RetrieveMailing:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveOversightResponse:
-      type: object
-      properties:
-        Oversight:
-          type: object
-          properties:
-            OversightPreconditions:
+        type: object
+        properties:
+          OversightPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            OversightBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            OversightWorkSchedule:
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            AdministrativeOversight:
-              $ref: '#/components/schemas/businessservice'
-            OversightPostconditions:
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            OversightAdministrativeOversightServiceType:
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            OversightAdministrativeOversightServiceDescription:
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            OversightAdministrativeOversightServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            OversightAdministrativeOversightServiceWorkProduct:
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            OversightAdministrativeOversightServiceName:
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Oversight'
+              description: '|||'
+              format: String
+    RetrieveOversight:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     RetrieveProvisioningResponse:
-      type: object
-      properties:
-        Provisioning:
-          type: object
-          properties:
-            ProvisioningPreconditions:
+        type: object
+        properties:
+          ProvisioningPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ProvisioningBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            ProvisioningWorkSchedule:
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            BusinessService:
-              $ref: '#/components/schemas/businessservice'
-            ProvisioningPostconditions:
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            ProvisioningServiceType:
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            ProvisioningServiceDescription:
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            ProvisioningServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            ProvisioningServiceWorkProduct:
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            ProvisioningServiceName:
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: ReBQ Retrieve details about any aspect of Provisioning'
+              description: '|||'
+              format: String
+    RetrieveProvisioning:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateDistributionRequest:
+        type: object
+        properties:
+          DistributionPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateDistributionResponse:
+        type: object
+        properties:
+          DistributionPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          DistributionWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          DistributionPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceType:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          DistributionServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateDistribution:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
     UpdateMailingRequest:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Input: UpBQ Update details relating to Mailing'
+              description: '|||'
+              format: String
     UpdateMailingResponse:
-      type: object
-      properties:
-        Mailing:
-          type: object
-          properties:
-            MailingPreconditions:
+        type: object
+        properties:
+          MailingPreconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingBusinessUnitEmployeeReference:
+              description: '|||'
+              format: String
+          MailingBusinessUnitEmployeeReference:
               type: string
-              description: "\r\n"
-              format: object
-            MailingWorkSchedule:
+              description: '|||'
+              format: Object
+          MailingWorkSchedule:
               type: string
-              description: "\r\n"
-              format: string
-            MailingPostconditions:
+              description: '|||'
+              format: String
+          MailingPostconditions:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceType:
+              description: '|||'
+              format: String
+          MailingMailingServiceType:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceDescription:
+              description: '|||'
+              format: String
+          MailingMailingServiceDescription:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceInputsandOuputs:
+              description: '|||'
+              format: String
+          MailingMailingServiceInputsandOuputs:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceWorkProduct:
+              description: '|||'
+              format: String
+          MailingMailingServiceWorkProduct:
               type: string
-              description: "\r\n"
-              format: string
-            MailingMailingServiceName:
+              description: '|||'
+              format: String
+          MailingMailingServiceName:
               type: string
-              description: "\r\n"
-              format: string
-      description: 'Output: UpBQ Update details relating to Mailing'
+              description: '|||'
+              format: String
+    UpdateMailing:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateOversightRequest:
+        type: object
+        properties:
+          OversightPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateOversightResponse:
+        type: object
+        properties:
+          OversightPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          OversightWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          AdministrativeOversight:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          OversightPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceType:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          OversightAdministrativeOversightServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateOversight:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    UpdateProvisioningRequest:
+        type: object
+        properties:
+          ProvisioningPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProvisioningResponse:
+        type: object
+        properties:
+          ProvisioningPreconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningBusinessUnitEmployeeReference:
+              type: string
+              description: '|||'
+              format: Object
+          ProvisioningWorkSchedule:
+              type: string
+              description: '|||'
+              format: String
+          BusinessService:
+              $ref: '#/components/schemas/BusinessService'
+              description: '|||'
+          ProvisioningPostconditions:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceType:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceDescription:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceInputsandOuputs:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceWorkProduct:
+              type: string
+              description: '|||'
+              format: String
+          ProvisioningServiceName:
+              type: string
+              description: '|||'
+              format: String
+    UpdateProvisioning:
+        type: object
+        properties:
+          ProductInventoryDistributionAdministrativePlanBudgetType:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanBudget:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanAssignment:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanPlan:
+              type: string
+              description: "||\r\n|"
+              format: String
+          ProductInventoryDistributionAdministrativePlanReference:
+              type: string
+              description: "||\r\n|"
+              format: Object
+    HTTPError:
+        type: object
+        properties:
+          status_code:
+            type: string
+            format: string
+          status:
+            type: string
+            format: string
+          message:
+            type: string
+            format: string
+        description: Status Attributes
   responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
     CaptureProductInventoryDistributionAdministrativePlanResponse:
-      description: CaptureProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CaptureProductInventoryDistributionAdministrativePlanResponse
     ControlProductInventoryDistributionAdministrativePlanResponse:
-      description: ControlProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanControl
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ControlProductInventoryDistributionAdministrativePlanResponse
     ExchangeProductInventoryDistributionAdministrativePlanResponse:
-      description: ExchangeProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanExchange
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExchangeProductInventoryDistributionAdministrativePlanResponse
     GrantProductInventoryDistributionAdministrativePlanResponse:
-      description: GrantProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanGrant
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/GrantProductInventoryDistributionAdministrativePlanResponse
     InitiateProductInventoryDistributionAdministrativePlanResponse:
-      description: InitiateProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateProductInventoryDistributionAdministrativePlanResponse
     RetrieveProductInventoryDistributionAdministrativePlanResponse:
-      description: RetrieveProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RetrieveProductInventoryDistributionAdministrativePlanResponse
     RequestProductInventoryDistributionAdministrativePlanResponse:
-      description: RequestProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductInventoryDistributionAdministrativePlanResponse'
+        description: ProductInventoryDistributionAdministrativePlanRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestProductInventoryDistributionAdministrativePlanResponse
     UpdateProductInventoryDistributionAdministrativePlanResponse:
-      description: UpdateProductInventoryDistributionAdministrativePlanResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProductInventoryDistributionAdministrativePlanResponse'
-    Distribution:
-      description: Distribution
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Distribution'
+        description: ProductInventoryDistributionAdministrativePlanUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateProductInventoryDistributionAdministrativePlanResponse
+    CaptureDistributionResponse:
+        description: DistributionCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureDistributionResponse'
     CaptureMailingResponse:
-      description: CaptureMailingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureMailingResponse'
-    Oversight:
-      description: Oversight
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Oversight'
-    Provisioning:
-      description: Provisioning
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Provisioning'
+        description: MailingCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureMailingResponse'
+    CaptureOversightResponse:
+        description: OversightCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureOversightResponse'
+    CaptureProvisioningResponse:
+        description: ProvisioningCapture
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureProvisioningResponse'
+    InitiateDistributionResponse:
+        description: DistributionInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateDistributionResponse'
     InitiateMailingResponse:
-      description: InitiateMailingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateMailingResponse'
+        description: MailingInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateMailingResponse'
+    InitiateOversightResponse:
+        description: OversightInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOversightResponse'
+    InitiateProvisioningResponse:
+        description: ProvisioningInitiate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProvisioningResponse'
     RetrieveDistributionResponse:
-      description: RetrieveDistributionResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveDistributionResponse'
+        description: DistributionRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveDistributionResponse'
     RetrieveMailingResponse:
-      description: RetrieveMailingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveMailingResponse'
+        description: MailingRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveMailingResponse'
     RetrieveOversightResponse:
-      description: RetrieveOversightResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveOversightResponse'
+        description: OversightRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveOversightResponse'
     RetrieveProvisioningResponse:
-      description: RetrieveProvisioningResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveProvisioningResponse'
+        description: ProvisioningRetrieve
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/RetrieveProvisioningResponse'
+    UpdateDistributionResponse:
+        description: DistributionUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateDistributionResponse'
     UpdateMailingResponse:
-      description: UpdateMailingResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateMailingResponse'
+        description: MailingUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateMailingResponse'
+    UpdateOversightResponse:
+        description: OversightUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateOversightResponse'
+    UpdateProvisioningResponse:
+        description: ProvisioningUpdate
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProvisioningResponse'
+    BadRequest:
+        description: BadRequest
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+        description: Unauthorized
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+        description: Forbidden
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    NotFound:
+        description: NotFound
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+        description: TooManyRequests
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+        description: InternalServerError
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/HTTPError'
   parameters:
-    productinventorydistributionid:
-      name: productinventorydistributionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+    productinventorydistributionadministrativeplanid:
+        name: productinventorydistributionadministrativeplanid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     distributionid:
-      name: distributionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: distributionid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     mailingid:
-      name: mailingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: mailingid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     oversightid:
-      name: oversightid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: oversightid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
     provisioningid:
-      name: provisioningid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        name: provisioningid
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
   requestBodies:
     CaptureProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureProductInventoryDistributionAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/CaptureProductInventoryDistributionAdministrativePlanRequest
+        required: true
     ControlProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ControlProductInventoryDistributionAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ControlProductInventoryDistributionAdministrativePlanRequest
+        required: true
     ExchangeProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExchangeProductInventoryDistributionAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/ExchangeProductInventoryDistributionAdministrativePlanRequest
+        required: true
     GrantProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GrantProductInventoryDistributionAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/GrantProductInventoryDistributionAdministrativePlanRequest
+        required: true
     InitiateProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateProductInventoryDistributionAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/InitiateProductInventoryDistributionAdministrativePlanRequest
+        required: true
+    RetrieveProductInventoryDistributionAdministrativePlanRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
     RequestProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RequestProductInventoryDistributionAdministrativePlanRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/RequestProductInventoryDistributionAdministrativePlanRequest
+        required: true
     UpdateProductInventoryDistributionAdministrativePlanRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateProductInventoryDistributionAdministrativePlanRequest'
-      required: true
-    Distribution:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Distribution'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: >-
+                #/components/schemas/UpdateProductInventoryDistributionAdministrativePlanRequest
+        required: true
+    CaptureDistributionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureDistributionRequest'
+        required: true
     CaptureMailingRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CaptureMailingRequest'
-      required: true
-    Oversight:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Oversight'
-      required: true
-    Provisioning:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Provisioning'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureMailingRequest'
+        required: true
+    CaptureOversightRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureOversightRequest'
+        required: true
+    CaptureProvisioningRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/CaptureProvisioningRequest'
+        required: true
+    InitiateDistributionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateDistributionRequest'
+        required: true
     InitiateMailingRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateMailingRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateMailingRequest'
+        required: true
+    InitiateOversightRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateOversightRequest'
+        required: true
+    InitiateProvisioningRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/InitiateProvisioningRequest'
+        required: true
+    RetrieveDistributionRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveMailingRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveOversightRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    RetrieveProvisioningRequest:
+        content:
+          'application/json:':
+            schema:
+              type: string
+        required: true
+    UpdateDistributionRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateDistributionRequest'
+        required: true
     UpdateMailingRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateMailingRequest'
-      required: true
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateMailingRequest'
+        required: true
+    UpdateOversightRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateOversightRequest'
+        required: true
+    UpdateProvisioningRequest:
+        content:
+          'application/json:':
+            schema:
+              $ref: '#/components/schemas/UpdateProvisioningRequest'
+        required: true
