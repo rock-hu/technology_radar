@@ -1,0 +1,17 @@
+strategy:
+  matrix:
+    node-version: ["19.x", "20.x"]
+steps:
+  - uses: actions/checkout@v4
+  - name: use Node.js ${{ matrix.node-version }}
+    uses: actions/setup-node@v4
+    with:
+      node-version: ${{ matrix.node-version }}
+  - name: npm install
+    run: npm install
+  - name: Install dependencies
+    run: npm install
+  - name: npm run build:pages
+    run: npm run build:pages
+  - name: npm run deploy
+    run: npm run deploy

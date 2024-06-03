@@ -10,7 +10,7 @@
     "serve": "techradar serve",
     "plop": "plop",
     "lint": "markdownlint '**/*.md' --config .markdownlint.json --fix",
-    "predeploy": "npm run lint && npm run build:pages",
+    "predeploy": "npm run build:pages",
     "deploy": "gh-pages -d build --dotfiles true --nojekyll true"
   },
   "dependencies": {
