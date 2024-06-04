@@ -1,4 +1,6 @@
 # technology_radar
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frock-hu%2Ftechnology_radar.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Frock-hu%2Ftechnology_radar?ref=badge_shield)
+
 
 This is the location of AOE techradar content - published under: <https://www.aoe.com/techradar/>
 
@@ -42,3 +44,7 @@ Then open here: <http://localhost:3000/techradar>
 npm i
 npm run build
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frock-hu%2Ftechnology_radar.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frock-hu%2Ftechnology_radar?ref=badge_large)
